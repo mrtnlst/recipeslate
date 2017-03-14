@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9614D671E77F8F0009CA034"
-               BuildableName = "Link&apos;s Recipe.app"
-               BlueprintName = "Link&apos;s Recipe"
-               ReferencedContainer = "container:Link&apos;s Recipe.xcodeproj">
+               BuildableName = "Link&apos;s Recipes.app"
+               BlueprintName = "Link&apos;s Recipes"
+               ReferencedContainer = "container:Link&apos;s Recipes.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A9614D671E77F8F0009CA034"
-            BuildableName = "Link&apos;s Recipe.app"
-            BlueprintName = "Link&apos;s Recipe"
-            ReferencedContainer = "container:Link&apos;s Recipe.xcodeproj">
+            BuildableName = "Link&apos;s Recipes.app"
+            BlueprintName = "Link&apos;s Recipes"
+            ReferencedContainer = "container:Link&apos;s Recipes.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A9614D671E77F8F0009CA034"
-            BuildableName = "Link&apos;s Recipe.app"
-            BlueprintName = "Link&apos;s Recipe"
-            ReferencedContainer = "container:Link&apos;s Recipe.xcodeproj">
+            BuildableName = "Link&apos;s Recipes.app"
+            BlueprintName = "Link&apos;s Recipes"
+            ReferencedContainer = "container:Link&apos;s Recipes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A9614D671E77F8F0009CA034"
-            BuildableName = "Link&apos;s Recipe.app"
-            BlueprintName = "Link&apos;s Recipe"
-            ReferencedContainer = "container:Link&apos;s Recipe.xcodeproj">
+            BuildableName = "Link&apos;s Recipes.app"
+            BlueprintName = "Link&apos;s Recipes"
+            ReferencedContainer = "container:Link&apos;s Recipes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

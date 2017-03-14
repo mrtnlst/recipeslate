@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Link's Recipe
+//  Link's Recipes
 //
 //  Created by Martin List on 14/03/2017.
 //  Copyright © 2017 Martin List. All rights reserved.

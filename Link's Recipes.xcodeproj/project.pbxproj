@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */; };
-		A9614D6E1E77F8F0009CA034 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D6D1E77F8F0009CA034 /* FirstViewController.swift */; };
-		A9614D701E77F8F0009CA034 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D6F1E77F8F0009CA034 /* SecondViewController.swift */; };
 		A9614D731E77F8F0009CA034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9614D711E77F8F0009CA034 /* Main.storyboard */; };
 		A9614D751E77F8F0009CA034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9614D741E77F8F0009CA034 /* Assets.xcassets */; };
 		A9614D781E77F8F0009CA034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9614D761E77F8F0009CA034 /* LaunchScreen.storyboard */; };
+		A9614D801E77F978009CA034 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D7F1E77F978009CA034 /* MealViewController.swift */; };
+		A9614D821E77FA0D009CA034 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D811E77FA0D009CA034 /* Meal.swift */; };
+		A9614D841E77FACA009CA034 /* SampleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D831E77FACA009CA034 /* SampleDate.swift */; };
+		A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D871E77FF0C009CA034 /* Ingredients.swift */; };
+		A9614D8B1E783926009CA034 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8A1E783926009CA034 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A9614D681E77F8F0009CA034 /* Link's Recipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Link's Recipe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9614D681E77F8F0009CA034 /* Link's Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Link's Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A9614D6D1E77F8F0009CA034 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		A9614D6F1E77F8F0009CA034 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		A9614D721E77F8F0009CA034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9614D741E77F8F0009CA034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9614D771E77F8F0009CA034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9614D791E77F8F0009CA034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9614D7F1E77F978009CA034 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		A9614D811E77FA0D009CA034 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		A9614D831E77FACA009CA034 /* SampleDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDate.swift; sourceTree = "<group>"; };
+		A9614D871E77FF0C009CA034 /* Ingredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
+		A9614D8A1E783926009CA034 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +46,7 @@
 		A9614D5F1E77F8F0009CA034 = {
 			isa = PBXGroup;
 			children = (
-				A9614D6A1E77F8F0009CA034 /* Link's Recipe */,
+				A9614D6A1E77F8F0009CA034 /* Link's Recipes */,
 				A9614D691E77F8F0009CA034 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,31 +54,43 @@
 		A9614D691E77F8F0009CA034 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A9614D681E77F8F0009CA034 /* Link's Recipe.app */,
+				A9614D681E77F8F0009CA034 /* Link's Recipes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A9614D6A1E77F8F0009CA034 /* Link's Recipe */ = {
+		A9614D6A1E77F8F0009CA034 /* Link's Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				A9614D8A1E783926009CA034 /* DetailViewController.swift */,
 				A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */,
-				A9614D6D1E77F8F0009CA034 /* FirstViewController.swift */,
-				A9614D6F1E77F8F0009CA034 /* SecondViewController.swift */,
 				A9614D711E77F8F0009CA034 /* Main.storyboard */,
+				A9614D891E780E21009CA034 /* Meal */,
+				A9614D871E77FF0C009CA034 /* Ingredients.swift */,
+				A9614D831E77FACA009CA034 /* SampleDate.swift */,
 				A9614D741E77F8F0009CA034 /* Assets.xcassets */,
 				A9614D761E77F8F0009CA034 /* LaunchScreen.storyboard */,
 				A9614D791E77F8F0009CA034 /* Info.plist */,
 			);
+			name = "Link's Recipes";
 			path = "Link's Recipe";
+			sourceTree = "<group>";
+		};
+		A9614D891E780E21009CA034 /* Meal */ = {
+			isa = PBXGroup;
+			children = (
+				A9614D7F1E77F978009CA034 /* MealViewController.swift */,
+				A9614D811E77FA0D009CA034 /* Meal.swift */,
+			);
+			name = Meal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A9614D671E77F8F0009CA034 /* Link's Recipe */ = {
+		A9614D671E77F8F0009CA034 /* Link's Recipes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9614D7C1E77F8F0009CA034 /* Build configuration list for PBXNativeTarget "Link's Recipe" */;
+			buildConfigurationList = A9614D7C1E77F8F0009CA034 /* Build configuration list for PBXNativeTarget "Link's Recipes" */;
 			buildPhases = (
 				A9614D641E77F8F0009CA034 /* Sources */,
 				A9614D651E77F8F0009CA034 /* Frameworks */,
@@ -82,9 +100,9 @@
 			);
 			dependencies = (
 			);
-			name = "Link's Recipe";
+			name = "Link's Recipes";
 			productName = "Link's Recipe";
-			productReference = A9614D681E77F8F0009CA034 /* Link's Recipe.app */;
+			productReference = A9614D681E77F8F0009CA034 /* Link's Recipes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,11 +117,12 @@
 				TargetAttributes = {
 					A9614D671E77F8F0009CA034 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4853CED358;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = A9614D631E77F8F0009CA034 /* Build configuration list for PBXProject "Link's Recipe" */;
+			buildConfigurationList = A9614D631E77F8F0009CA034 /* Build configuration list for PBXProject "Link's Recipes" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -116,7 +135,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A9614D671E77F8F0009CA034 /* Link's Recipe */,
+				A9614D671E77F8F0009CA034 /* Link's Recipes */,
 			);
 		};
 /* End PBXProject section */
@@ -139,9 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9614D701E77F8F0009CA034 /* SecondViewController.swift in Sources */,
 				A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */,
-				A9614D6E1E77F8F0009CA034 /* FirstViewController.swift in Sources */,
+				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
+				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
+				A9614D8B1E783926009CA034 /* DetailViewController.swift in Sources */,
+				A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */,
+				A9614D841E77FACA009CA034 /* SampleDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Link's Recipe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinlist.Link-s-Recipe";
@@ -274,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Link's Recipe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinlist.Link-s-Recipe";
@@ -285,7 +309,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A9614D631E77F8F0009CA034 /* Build configuration list for PBXProject "Link's Recipe" */ = {
+		A9614D631E77F8F0009CA034 /* Build configuration list for PBXProject "Link's Recipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A9614D7A1E77F8F0009CA034 /* Debug */,
@@ -294,7 +318,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9614D7C1E77F8F0009CA034 /* Build configuration list for PBXNativeTarget "Link's Recipe" */ = {
+		A9614D7C1E77F8F0009CA034 /* Build configuration list for PBXNativeTarget "Link's Recipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A9614D7D1E77F8F0009CA034 /* Debug */,
