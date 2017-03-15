@@ -44,11 +44,87 @@ class MealViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell", for: indexPath)
 
         let meal = meals[indexPath.row] as Meal
-        cell.textLabel?.text = meal.name
-        cell.detailTextLabel?.text = String(describing: meal.hearts)
-        return cell
+       
+        if let nameLabel = cell.viewWithTag(100) as? UILabel {
+            nameLabel.text = meal.name
+        }
+        
+        let hearts = calcHeartsImages(heartsValue: meal.hearts)
+        var position = 101
+        let imageForDecimalHeart: String
+        
+        if hearts.fullHearts > 0 {
+            switch(hearts.fullHearts){
+            case 5:
+                if let firstHeart = cell.viewWithTag(105) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                    position += 1
+                fallthrough
+            case 4:
+                if let firstHeart = cell.viewWithTag(104) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                    position += 1
+                fallthrough
+            case 3:
+                if let firstHeart = cell.viewWithTag(103) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                    position += 1
+                fallthrough
+            case 2:
+                if let firstHeart = cell.viewWithTag(102) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                    position += 1
+                fallthrough
+            case 1:
+                if let firstHeart = cell.viewWithTag(101) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                    position += 1
+                fallthrough
+                
+            default: print("End Reached")
+            }
+            
+
+        }
+        if hearts.decimalHearts > 0 {
+                switch(hearts.decimalHearts){
+                case 0.75:
+                    imageForDecimalHeart = "threeQuarterHeart"
+                case 0.5:
+                    imageForDecimalHeart = "halfHeart"
+                case 0.25:
+                    imageForDecimalHeart = "oneQuarterHeart"
+                default:
+                    print("No decimal hearts.")
+                    imageForDecimalHeart = "emptyHeart"
+                }
+                if let firstHeart = cell.viewWithTag(position) as? UIImageView{
+                    firstHeart.image = UIImage(named: imageForDecimalHeart)}
+            }
+        
+        
+        
+    return cell
         
     }
+//    
+//    let cell = tableView.dequeueReusableCellWithIdentifier("PlayerCell", forIndexPath: indexPath) //1
+//    
+//    let player = players[indexPath.row] as Player //2
+//    
+//    if let nameLabel = cell.viewWithTag(100) as? UILabel { //3
+//        nameLabel.text = player.name
+//    }
+//    if let gameLabel = cell.viewWithTag(101) as? UILabel {
+//        gameLabel.text = player.game
+//    }
+//    if let ratingImageView = cell.viewWithTag(102) as? UIImageView {
+//        ratingImageView.image = self.imageForRating(player.rating)
+//    }
+//    return cell
+//}
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let number = indexPath.row
         print(number)
@@ -56,30 +132,27 @@ class MealViewController: UITableViewController {
     
     }
     
-//    func prepareForSegue(segue: UIStoryboardSegue!, sender: Any?) {
-//            
-//        if segue.identifier == "showDetail" {
-////                let nextScene = segue.destination as? DetailViewController
-//                let indexPath = self.tableView.indexPathForSelectedRow {
-//                let selectedCell = meals[indexPath.row] as Meal
-//                print("Hello")
-//                print(indexPath.row)
-//                nextScene.currentCell = selectedCell
-//            }
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let destinatenViewController = segue.destination as! DetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectedCell = meals[(indexPath?.row)!] as Meal
-            destinatenViewController.currentCell = selectedCell
+            destinatenViewController.mealCell = selectedCell
+            
+            // Hiding tab bar, when in DetailViewController.
+            destinatenViewController.hidesBottomBarWhenPushed = true
         }
         
     }
     
-
+    func calcHeartsImages(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
+        let fullHearts = Int(heartsValue)
+        let decimalHearts = heartsValue - Float(fullHearts)
+        
+        return(fullHearts, decimalHearts)
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -16,6 +16,8 @@
 		A9614D841E77FACA009CA034 /* SampleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D831E77FACA009CA034 /* SampleDate.swift */; };
 		A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D871E77FF0C009CA034 /* Ingredients.swift */; };
 		A9614D8B1E783926009CA034 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8A1E783926009CA034 /* DetailViewController.swift */; };
+		A9614D8D1E795104009CA034 /* Elixir.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8C1E795104009CA034 /* Elixir.swift */; };
+		A9614D8F1E7956A4009CA034 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8E1E7956A4009CA034 /* ElixirViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A9614D831E77FACA009CA034 /* SampleDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDate.swift; sourceTree = "<group>"; };
 		A9614D871E77FF0C009CA034 /* Ingredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		A9614D8A1E783926009CA034 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A9614D8C1E795104009CA034 /* Elixir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elixir.swift; sourceTree = "<group>"; };
+		A9614D8E1E7956A4009CA034 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 				A9614D711E77F8F0009CA034 /* Main.storyboard */,
 				A9614D891E780E21009CA034 /* Meal */,
 				A9614D871E77FF0C009CA034 /* Ingredients.swift */,
+				A9614D901E7956AB009CA034 /* Elixir */,
 				A9614D831E77FACA009CA034 /* SampleDate.swift */,
 				A9614D741E77F8F0009CA034 /* Assets.xcassets */,
 				A9614D761E77F8F0009CA034 /* LaunchScreen.storyboard */,
@@ -83,6 +88,15 @@
 				A9614D811E77FA0D009CA034 /* Meal.swift */,
 			);
 			name = Meal;
+			sourceTree = "<group>";
+		};
+		A9614D901E7956AB009CA034 /* Elixir */ = {
+			isa = PBXGroup;
+			children = (
+				A9614D8E1E7956A4009CA034 /* ElixirViewController.swift */,
+				A9614D8C1E795104009CA034 /* Elixir.swift */,
+			);
+			name = Elixir;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,8 +173,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */,
+				A9614D8F1E7956A4009CA034 /* ElixirViewController.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
+				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
 				A9614D8B1E783926009CA034 /* DetailViewController.swift in Sources */,
 				A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */,
 				A9614D841E77FACA009CA034 /* SampleDate.swift in Sources */,
@@ -325,6 +341,7 @@
 				A9614D7E1E77F8F0009CA034 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

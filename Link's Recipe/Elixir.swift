@@ -1,23 +1,23 @@
 //
-//  Meal.swift
+//  Elixir.swift
 //  Link's Recipes
 //
-//  Created by Martin List on 14/03/2017.
+//  Created by Martin List on 15/03/2017.
 //  Copyright © 2017 Martin List. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-struct Meal {
+struct Elixir {
     var name: String
-    var hearts: Float
-    var duration: String?
-    var effect: String?
+    var hearts: Float?
+    var duration: String
+    var effect: String
     var ingredientNames: Ingredients
-    var tag = "Meal"
+    var tag = "Elixir"
     
-    init(name: String, hearts: Float, duration: String? = nil, effect: String? = nil, ingredientNames: Ingredients ) {
+    init(name: String, duration: String, hearts: Float? = nil, effect: String, ingredientNames: Ingredients ) {
         self.name = name
         self.hearts = hearts
         self.duration = duration
