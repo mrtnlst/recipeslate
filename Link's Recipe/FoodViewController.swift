@@ -1,57 +1,55 @@
 //
-//  MealViewController.swift
+//  FoodViewController.swift
 //  Link's Recipes
 //
-//  Created by Martin List on 14/03/2017.
+//  Created by Martin List on 17/03/2017.
 //  Copyright © 2017 Martin List. All rights reserved.
 //
 
 import UIKit
 
-class MealViewController: UITableViewController {
+class FoodViewController: UITableViewController {
 
-    var meals:[Meal] = mealData
+    var foods:[Food] = foodData
+    
     var sortedFirstLetters: [String] = []
-    var sections: [[Meal]] = [[]]
+    var sections: [[Food]] = [[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Creating alphabetical sections.
-        let firstLetters = meals.map { $0.titleFirstLetter }
+        let firstLetters = foods.map { $0.titleFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))
         
         sortedFirstLetters = uniqueFirstLetters.sorted()
         sections = sortedFirstLetters.map { firstLetter in
-            return meals
+            return foods
                 .filter { $0.titleFirstLetter == firstLetter }
                 .sorted { $0.name < $1.name }
         }
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sortedFirstLetters[section]
     }
-    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sortedFirstLetters
     }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].count
     }
@@ -61,117 +59,139 @@ class MealViewController: UITableViewController {
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor(red: 35/255, green: 43/255, blue: 49/255, alpha: 1.0)
         (view as! UITableViewHeaderFooterView).textLabel?.textColor = UIColor.white
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MealCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoodCell", for: indexPath)
         
         // Changing the selection color for a cell to a darker tone.
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
         
-        let meal = sections[indexPath.section][indexPath.row]
-
-       
+        let food = sections[indexPath.section][indexPath.row]
+        
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
-            nameLabel.text = meal.name
+            nameLabel.text = food.name
         }
         
-     
-        if meal.effect == "Cold Resistance" {
-            if let effect = cell.viewWithTag(101) as? UIImageView{
-                effect.image = UIImage(named: "coldResistance")}
-        }
-        if meal.effect == "Heat Resistance" {
-            if let effect = cell.viewWithTag(101) as? UIImageView{
+        let hearts = calcHeartsImages(heartsValue: food.hearts)
+        print(food.name)
+        print("Section: ", indexPath.section)
+        print("Row: ", indexPath.row)
+        print(hearts.decimalHearts)
+        print(hearts.fullHearts)
+        print(" ")
+        var position = 101
+        var imageForDecimalHeart: String
+        imageForDecimalHeart = "emptyHeart"
+        
+        
+        
+        // Init & Reset of the imageViews.
+        if let firstHeart = cell.viewWithTag(101) as? UIImageView{
+            firstHeart.image = .none}   // UIImage(named: "emptyHeart")}
+        if let secondHeart = cell.viewWithTag(102) as? UIImageView{
+            secondHeart.image = .none}
+        if let thirdHeart = cell.viewWithTag(103) as? UIImageView{
+            thirdHeart.image = .none}
+        if let fourthHeart = cell.viewWithTag(104) as? UIImageView{
+            fourthHeart.image = .none}
+        if let fifthHeart = cell.viewWithTag(105) as? UIImageView{
+            fifthHeart.image = .none}
+        if let sixthHeart = cell.viewWithTag(106) as? UIImageView{
+            sixthHeart.image = .none}
+        if let effectImage = cell.viewWithTag(107) as? UIImageView{
+            effectImage.image = .none}
+        
+        // Frozen & Icy Food effect images.
+        if food.effect == "Heat Resistance" {
+            if let effect = cell.viewWithTag(107) as? UIImageView{
                 effect.image = UIImage(named: "heatResistance")}
         }
         
+        if hearts.fullHearts > 0 {
+            switch(hearts.fullHearts){
+            case 6:
+                if let firstHeart = cell.viewWithTag(106) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                position += 1
+                fallthrough
+            case 5:
+                if let firstHeart = cell.viewWithTag(105) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                position += 1
+                fallthrough
+            case 4:
+                if let firstHeart = cell.viewWithTag(104) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                position += 1
+                fallthrough
+                
+            case 3:
+                if let firstHeart = cell.viewWithTag(103) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                position += 1
+                fallthrough
+            
+            case 2:
+                if let firstHeart = cell.viewWithTag(102) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                position += 1
+                fallthrough
+                
+            case 1:
+                if let firstHeart = cell.viewWithTag(101) as? UIImageView{
+                    firstHeart.image = UIImage(named: "fullHeart")}
+                position += 1
+                fallthrough
+            default: print("End Reached")
+            }
+        }
         
-//        let hearts = calcHeartsImages(heartsValue: meal.hearts)
-//        var position = 101
-//        let imageForDecimalHeart: String
-//        
-//        if hearts.fullHearts > 0 {
-//            switch(hearts.fullHearts){
-//            case 5:
-//                if let firstHeart = cell.viewWithTag(105) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 4:
-//                if let firstHeart = cell.viewWithTag(104) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 3:
-//                if let firstHeart = cell.viewWithTag(103) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 2:
-//                if let firstHeart = cell.viewWithTag(102) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 1:
-//                if let firstHeart = cell.viewWithTag(101) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//                
-//            default: print("End Reached")
-//            }
-//            
-//
-//        }
-//        if hearts.decimalHearts > 0 {
-//            switch(hearts.decimalHearts){
-//                case 0.75:
-//                    imageForDecimalHeart = "threeQuarterHeart"
-//                case 0.5:
-//                    imageForDecimalHeart = "halfHeart"
-//                case 0.25:
-//                    imageForDecimalHeart = "oneQuarterHeart"
-//                default:
-//                    print("No decimal hearts.")
-//                    imageForDecimalHeart = "emptyHeart"
-//            }
-//            if let firstHeart = cell.viewWithTag(position) as? UIImageView{
-//                firstHeart.image = UIImage(named: imageForDecimalHeart)}
-//        }
+        if hearts.decimalHearts > 0 {
+            switch(hearts.decimalHearts){
+            case 0.75:
+                imageForDecimalHeart = "threeQuarterHeart"
+            case 0.5:
+                imageForDecimalHeart = "halfHeart"
+            case 0.25:
+                imageForDecimalHeart = "oneQuarterHeart"
+            default:
+                print("No decimal hearts.")
+                imageForDecimalHeart = "emptyHeart"
+            }
+            if let firstHeart = cell.viewWithTag(position) as? UIImageView{
+                firstHeart.image = UIImage(named: imageForDecimalHeart)}
+        }
         
-    return cell
+        return cell
     }
- 
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let number = indexPath.row
         print(number)
         self.performSegue(withIdentifier: "showDetail", sender: indexPath);
-        
-    
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let destinatenViewController = segue.destination as! DetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
-            destinatenViewController.mealCell = selectedCell
+            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]//foods[(indexPath?.row)!] as Food
+            destinatenViewController.foodCell = selectedCell
             
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true
         }
-        
     }
     
-//    func calcHeartsImages(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
-//        let fullHearts = Int(heartsValue)
-//        let decimalHearts = heartsValue - Float(fullHearts)
-//        
-//        return(fullHearts, decimalHearts)
-//    }
+    func calcHeartsImages(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
+        let fullHearts = Int(heartsValue)
+        let decimalHearts = heartsValue - Float(fullHearts)
+        
+        return(fullHearts, decimalHearts)
+    }
     
     /*
     // Override to support conditional editing of the table view.

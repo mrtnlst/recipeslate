@@ -11,9 +11,22 @@ import UIKit
 class ElixirViewController: UITableViewController {
 
     var elixirs:[Elixir] = elixirData
+    var sortedFirstLetters: [String] = []
+    var sections: [[Elixir]] = [[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Creating alphabetical sections.
+        let firstLetters = elixirs.map { $0.titleFirstLetter }
+        let uniqueFirstLetters = Array(Set(firstLetters))
+        
+        sortedFirstLetters = uniqueFirstLetters.sorted()
+        sections = sortedFirstLetters.map { firstLetter in
+            return elixirs
+                .filter { $0.titleFirstLetter == firstLetter }
+                .sorted { $0.name < $1.name }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -22,27 +35,43 @@ class ElixirViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sortedFirstLetters[section]
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sortedFirstLetters
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return elixirs.count
+        return sections[section].count
     }
-
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        // Customizing the color of the section headers.
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor(red: 35/255, green: 43/255, blue: 49/255, alpha: 1.0)
+        (view as! UITableViewHeaderFooterView).textLabel?.textColor = UIColor.white
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ElixirCell", for: indexPath)
         
-        let elixir = elixirs[indexPath.row] as Elixir
+        // Changing the selection color for a cell to a darker tone.
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
+        cell.selectedBackgroundView = selectedView
+   
+        let elixir = sections[indexPath.section][indexPath.row]
+
         cell.textLabel?.text = elixir.name
         cell.detailTextLabel?.text = elixir.effect
         return cell
@@ -59,7 +88,7 @@ class ElixirViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             let destinatenViewController = segue.destination as! DetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectedCell = elixirs[(indexPath?.row)!] as Elixir
+            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             destinatenViewController.elixirCell = selectedCell
             
             // Hiding tab bar, when in DetailViewController.

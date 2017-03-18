@@ -24,4 +24,8 @@ struct Meal {
         self.effect = effect
         self.ingredientNames = ingredientNames
     }
+    
+    var titleFirstLetter: String {
+        return String(self.name[self.name.startIndex]).uppercased()
+    }
 }
