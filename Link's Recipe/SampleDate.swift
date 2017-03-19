@@ -139,14 +139,17 @@ let foodData = [
 let mealData = [
     
     Meal(name:"Spicy Sautéed Peppers",
-         hearts: 1.0, duration: "2:30 min", effect: "Cold Resistance",
+         hearts: 1.5, duration: "2:30 min", effect: "Cold Resistance",
          ingredientNames: Ingredients(firstIngredient: "Spicy Pepper")),
-        Meal(name:"Spicy Fish Skewer",
+    Meal(name:"Spicy Fish Skewer",
          hearts: 2.0, duration: "2:30 min", effect: "Cold Resistance",
          ingredientNames: Ingredients(firstIngredient: "Sizzlefin Trout")),
-        Meal(name:"Chilly Simmered Fruit",
-             hearts: 0.5, duration: "2:30 min", effect: "Heat Resistance",
-             ingredientNames: Ingredients(firstIngredient: "Hydromelon")),
+    Meal(name:"Chilly Simmered Fruit",
+         hearts: 0.5, duration: "2:30 min", effect: "Heat Resistance",
+         ingredientNames: Ingredients(firstIngredient: "Hydromelon")),
+    Meal(name: "Hearty Salmon Meunière", hearts: 100.0,
+         ingredientNames: Ingredients(firstIngredient: "Tabantha Wheat", secondIngredient: "Goat Butter", thirdIngredient: "Hearty Salmon"),
+         heartsAdded: 4),
 ]
 
 let elixirData = [

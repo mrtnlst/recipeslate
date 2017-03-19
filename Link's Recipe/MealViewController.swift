@@ -77,73 +77,47 @@ class MealViewController: UITableViewController {
             nameLabel.text = meal.name
         }
         
-     
+        // Resetting imageViews.
+        if let effectImage = cell.viewWithTag(103) as? UIImageView{
+            effectImage.image = .none}
+        if let heartsImage = cell.viewWithTag(101) as? UIImageView{
+            heartsImage.image = .none}
+        if let heartsYellowImage = cell.viewWithTag(102) as? UIImageView{
+            heartsYellowImage.image = .none}
+        
+        // Setting imageViews for hearts.
+        
+        if meal.hearts >= 0.00{
+            //Setting the image for fullHeart.
+            if let heartsRestoredImage = cell.viewWithTag(101) as? UIImageView{
+                heartsRestoredImage.image = UIImage(named: "fullHeart")
+            }
+        }
+        
+        // Setting the added hearts.
+        if meal.heartsAdded != nil {
+            if let heartsAddedImage = cell.viewWithTag(102) as? UIImageView{
+                heartsAddedImage.image = UIImage(named: "fullYellowHeart")
+            }
+        }
+        
+        // Setting effect imageView.
         if meal.effect == "Cold Resistance" {
-            if let effect = cell.viewWithTag(101) as? UIImageView{
+            if let effect = cell.viewWithTag(103) as? UIImageView{
                 effect.image = UIImage(named: "coldResistance")}
         }
         if meal.effect == "Heat Resistance" {
-            if let effect = cell.viewWithTag(101) as? UIImageView{
+            if let effect = cell.viewWithTag(103) as? UIImageView{
                 effect.image = UIImage(named: "heatResistance")}
         }
-        
-        
-//        let hearts = calcHeartsImages(heartsValue: meal.hearts)
-//        var position = 101
-//        let imageForDecimalHeart: String
-//        
-//        if hearts.fullHearts > 0 {
-//            switch(hearts.fullHearts){
-//            case 5:
-//                if let firstHeart = cell.viewWithTag(105) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 4:
-//                if let firstHeart = cell.viewWithTag(104) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 3:
-//                if let firstHeart = cell.viewWithTag(103) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 2:
-//                if let firstHeart = cell.viewWithTag(102) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//            case 1:
-//                if let firstHeart = cell.viewWithTag(101) as? UIImageView{
-//                    firstHeart.image = UIImage(named: "fullHeart")}
-//                    position += 1
-//                fallthrough
-//                
-//            default: print("End Reached")
-//            }
-//            
-//
-//        }
-//        if hearts.decimalHearts > 0 {
-//            switch(hearts.decimalHearts){
-//                case 0.75:
-//                    imageForDecimalHeart = "threeQuarterHeart"
-//                case 0.5:
-//                    imageForDecimalHeart = "halfHeart"
-//                case 0.25:
-//                    imageForDecimalHeart = "oneQuarterHeart"
-//                default:
-//                    print("No decimal hearts.")
-//                    imageForDecimalHeart = "emptyHeart"
-//            }
-//            if let firstHeart = cell.viewWithTag(position) as? UIImageView{
-//                firstHeart.image = UIImage(named: imageForDecimalHeart)}
-//        }
+        if meal.effect == "Speed Up" {
+            if let effect = cell.viewWithTag(103) as? UIImageView{
+                effect.image = UIImage(named: "speedUp")}
+        }
         
     return cell
     }
- 
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let number = indexPath.row
@@ -166,12 +140,12 @@ class MealViewController: UITableViewController {
         
     }
     
-//    func calcHeartsImages(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
-//        let fullHearts = Int(heartsValue)
-//        let decimalHearts = heartsValue - Float(fullHearts)
-//        
-//        return(fullHearts, decimalHearts)
-//    }
+    func calcHeartsImages(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
+        let fullHearts = Int(heartsValue)
+        let decimalHearts = heartsValue - Float(fullHearts)
+        
+        return(fullHearts, decimalHearts)
+    }
     
     /*
     // Override to support conditional editing of the table view.

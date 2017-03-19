@@ -15,13 +15,15 @@ struct Meal {
     var duration: String?
     var effect: String?
     var ingredientNames: Ingredients
+    var heartsAdded: Int?
     var tag = "Meal"
     
-    init(name: String, hearts: Float, duration: String? = nil, effect: String? = nil, ingredientNames: Ingredients ) {
+    init(name: String, hearts: Float, duration: String? = nil, effect: String? = nil, ingredientNames: Ingredients, heartsAdded: Int? = nil) {
         self.name = name
         self.hearts = hearts
         self.duration = duration
         self.effect = effect
+        self.heartsAdded = heartsAdded
         self.ingredientNames = ingredientNames
     }
     
