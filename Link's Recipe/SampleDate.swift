@@ -150,6 +150,15 @@ let mealData = [
     Meal(name: "Hearty Salmon Meunière", hearts: 100.0,
          ingredientNames: Ingredients(firstIngredient: "Tabantha Wheat", secondIngredient: "Goat Butter", thirdIngredient: "Hearty Salmon"),
          heartsAdded: 4),
+    Meal(name:"Apple Pie",
+         hearts: 3.0,
+         ingredientNames: Ingredients(firstIngredient: "Apple", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar", fourthIngredient: "Goat Butter")),
+    Meal(name:"Enduring Carrot Cake",
+         hearts: 6.0, effect: "Overfills Stamina",
+         ingredientNames: Ingredients(firstIngredient: "Enduring Carrot", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar", fourthIngredient: "Goat Butter"), staminaAdded: 0.4),
+    Meal(name:"Hasty Veggie Cream Soup",
+         hearts: 2.0, duration: "03:20 min", effect: "Speed Up",
+         ingredientNames: Ingredients(firstIngredient: "Swift Carrot", secondIngredient: "Fresh Milk", thirdIngredient: "Rock Salt")),
 ]
 
 let elixirData = [
@@ -158,6 +167,6 @@ let elixirData = [
     Elixir(name:"Hasty Elixir", duration: "2:10 min", effect: "Speed Up",
            ingredientNames: Ingredients(firstIngredient: "Hot-Footed Frog", secondIngredient: "Bokoblin Horn")),
     Elixir(name:"Energizing Elixir", effect: "Restores Stamina",
-           ingredientNames: Ingredients(firstIngredient: "Hot-Footed Frog", secondIngredient: "Bokoblin Horn"))
+           ingredientNames: Ingredients(firstIngredient: "Restless Cricket", secondIngredient: "Bokoblin Horn"), staminaAdded: 0.2)
 ]
 

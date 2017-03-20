@@ -114,6 +114,14 @@ class MealViewController: UITableViewController {
             if let effect = cell.viewWithTag(103) as? UIImageView{
                 effect.image = UIImage(named: "speedUp")}
         }
+        if meal.effect == "Restores Stamina" {
+            if let effect = cell.viewWithTag(103) as? UIImageView{
+                effect.image = UIImage(named: "fullStamina")}
+        }
+        if meal.effect == "Overfills Stamina" {
+            if let effect = cell.viewWithTag(103) as? UIImageView{
+                effect.image = UIImage(named: "staminaAdded")}
+        }
         
     return cell
     }

@@ -20,6 +20,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var fourthIngredientLabel: UILabel!
     @IBOutlet weak var fifthIngredientLabel: UILabel!
     
+    @IBOutlet weak var heartsRestoredLabel: UILabel!
+    @IBOutlet weak var plusLabel: UILabel!
+    @IBOutlet weak var heartsAddedLabel: UILabel!
+    @IBOutlet weak var staminaAmountLabel: UILabel!
+    
     var mealCell: Meal?
     var elixirCell: Elixir?
     var foodCell: Food?
@@ -27,6 +32,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Resetting labels.
+        staminaAmountLabel.isHidden = true
+        plusLabel.isHidden = true
+        heartsAddedLabel.isHidden = true
+        
+        // Checking forwarded cells.
         if (mealCell != nil){
             setLabels(type: "Meal")
             setHearts(heartValueOfCellItem: (mealCell?.hearts)!)
@@ -49,6 +60,7 @@ class DetailViewController: UIViewController {
             if foodCell?.effect != nil{
                 setEffects(effectOfCellItem: (foodCell?.effect)!)
             }
+
         }
 
     }
@@ -61,7 +73,6 @@ class DetailViewController: UIViewController {
             
             if ((mealCell?.effect) != nil){
                 effectsLabel.text = mealCell?.effect
-                effectsLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
             } else {
                 effectsLabel.text = "None"
                 effectsLabel.textColor = .gray
@@ -69,32 +80,29 @@ class DetailViewController: UIViewController {
             
             if ((mealCell?.duration) != nil){
                 durationLabel.text = mealCell?.duration
-                durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
             } else {
                 durationLabel.text = "None"
                 durationLabel.textColor = .gray
                 durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)}
             
+            if mealCell?.staminaAdded != nil {
+                staminaAmountLabel.isHidden = false
+                if let staminaAmount = view.viewWithTag(2) as? UILabel{
+                    staminaAmount.text = String(format: "%.1f", (mealCell?.staminaAdded)!)
+                }
+            }
+            
+            // IngredientLabels.
             firstIngredientLabel.text = mealCell?.ingredientNames.firstIngredient
-            firstIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             secondIngredientLabel.text = mealCell?.ingredientNames.secondIngredient
-            secondIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             thirdIngredientLabel.text = mealCell?.ingredientNames.thirdIngredient
-            thirdIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             fourthIngredientLabel.text = mealCell?.ingredientNames.fourthIngredient
-            fourthIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             fifthIngredientLabel.text = mealCell?.ingredientNames.fifthIngredient
-            fifthIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
         }
         if type == "Elixir" {
         
             nameLabel.text = elixirCell?.name
             effectsLabel.text = elixirCell?.effect
-            effectsLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
 
             if let heartsRestoredLabel = view.viewWithTag(100) as? UILabel {
                 heartsRestoredLabel.text = "None "
@@ -105,7 +113,6 @@ class DetailViewController: UIViewController {
 
             if ((elixirCell?.duration) != nil){
                 durationLabel.text = elixirCell?.duration
-                durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
 
             } else {
                 durationLabel.text = "None"
@@ -113,20 +120,19 @@ class DetailViewController: UIViewController {
                 durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
             }
             
+            if elixirCell?.staminaAdded != nil {
+                staminaAmountLabel.isHidden = false
+                if let staminaAmount = view.viewWithTag(2) as? UILabel{
+                    staminaAmount.text = String(format: "%.1f", (elixirCell?.staminaAdded)!)
+                }
+            }
+            
+            // IngredientLabels.
             firstIngredientLabel.text = elixirCell?.ingredientNames.firstIngredient
-            firstIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-           
             secondIngredientLabel.text = elixirCell?.ingredientNames.secondIngredient
-            secondIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-
             thirdIngredientLabel.text = elixirCell?.ingredientNames.thirdIngredient
-            thirdIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-
             fourthIngredientLabel.text = elixirCell?.ingredientNames.fourthIngredient
-            fourthIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-
             fifthIngredientLabel.text = elixirCell?.ingredientNames.fifthIngredient
-            fifthIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
 
         }
         if type == "Food" {
@@ -135,7 +141,6 @@ class DetailViewController: UIViewController {
             // Checking, whether effects or duration are nil.
             if foodCell?.effect != nil{
                 effectsLabel.text = foodCell?.effect
-                effectsLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
             } else{
                 effectsLabel.text = "None"
                 effectsLabel.textColor = .gray
@@ -143,7 +148,6 @@ class DetailViewController: UIViewController {
             }
             if foodCell?.duration != nil{
                 durationLabel.text = foodCell?.duration
-                durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
 
             } else{
                 durationLabel.text = "None"
@@ -151,20 +155,12 @@ class DetailViewController: UIViewController {
                 durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
             }
             
+            // IngredientLabels.
             firstIngredientLabel.text = foodCell?.ingredientNames.firstIngredient
-            firstIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             secondIngredientLabel.text = foodCell?.ingredientNames.secondIngredient
-            secondIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             thirdIngredientLabel.text = foodCell?.ingredientNames.thirdIngredient
-            thirdIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             fourthIngredientLabel.text = foodCell?.ingredientNames.fourthIngredient
-            fourthIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
-            
             fifthIngredientLabel.text = foodCell?.ingredientNames.fifthIngredient
-            fifthIngredientLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
         }
     }
     
@@ -177,28 +173,19 @@ class DetailViewController: UIViewController {
     
     func setHearts(heartValueOfCellItem: Float){
         let hearts = calcHeartsImages(heartsValue: heartValueOfCellItem)
-        let imageForDecimalHeart: String
-        
-        // Position for the secondHeart, if neccesary.
-        var position: Int = 102
         
         // If full hearts have to be displayed.
-        if hearts.fullHearts > 0{
+        if (hearts.fullHearts > 0) || (hearts.decimalHearts > 0.00){
             
             // If full health is restored, the label displays "full".
             if hearts.fullHearts == 100 {
-                if let heartsRestoredLabel = view.viewWithTag(100) as? UILabel {
                     heartsRestoredLabel.text = "full "
-                    
-                    heartsRestoredLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
-                }
             } else {
-                
-                // Every other case, the label displays the number of restored full hearts.
-                if let heartsRestoredLabel = view.viewWithTag(100) as? UILabel {
-                    heartsRestoredLabel.text = String(format: "%d\t", (hearts.fullHearts))
-                    
-                    heartsRestoredLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
+                if hearts.decimalHearts > 0.00 {
+                        heartsRestoredLabel.text = String(format: "%.2f ", (heartValueOfCellItem))
+                } else {
+                    // Every other case, the label displays the number of restored full hearts.
+                        heartsRestoredLabel.text = String(format: "%d ", (hearts.fullHearts))
                 }
             }
             
@@ -207,57 +194,19 @@ class DetailViewController: UIViewController {
                 heartsRestoredImage.image = UIImage(named: "fullHeart")
             }
         }
-        else {
-            
-            // If no full heart image has to be displayed.
-            if let heartsRestoredLabel = view.viewWithTag(100) as? UILabel {
-                heartsRestoredLabel.text = ""
-            }
-            
-            // The decimal heart can move to the first imageView.
-            position = 101
-            if let heartsRestoredImage = view.viewWithTag(101) as? UIImageView{
-                heartsRestoredImage.image = UIImage(named: "emptyHeart")
-            }
-        }
-        
-        // If a decimal heart has to be displayed.
-        if hearts.decimalHearts > 0{
-            
-            if hearts.decimalHearts > 0 {
-                switch(hearts.decimalHearts){
-                case 0.75:
-                    imageForDecimalHeart = "threeQuarterHeart"
-                case 0.5:
-                    imageForDecimalHeart = "halfHeart"
-                case 0.25:
-                    imageForDecimalHeart = "oneQuarterHeart"
-                default:
-                    print("No decimal hearts.")
-                    imageForDecimalHeart = "emptyHeart"
-                }
-                if let firstHeart = view.viewWithTag(position) as? UIImageView{
-                    firstHeart.image = UIImage(named: imageForDecimalHeart)}
-            }
-        } else {
-            
-            // If no decimal heart has to be displayed, remove the second imageView
-            if let heartsRestoredImage = view.viewWithTag(102) as? UIImageView{
-                heartsRestoredImage.removeFromSuperview()
-            }
-        }
     }
     
     func setAddedHearts(heartsAdded: Int){
         
         // Setting the added hearts.
-        if let heartsAddedLabel = view.viewWithTag(200) as? UILabel {
-            heartsAddedLabel.text = String(format: "%d ", (mealCell?.heartsAdded)!)
-            heartsAddedLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
-        }
+
         if let heartsAddedImage = view.viewWithTag(201) as? UIImageView{
             heartsAddedImage.image = UIImage(named: "fullYellowHeart")
         }
+        heartsAddedLabel.text = String(format: "%d ", (mealCell?.heartsAdded)!)
+        
+        heartsAddedLabel.isHidden = false
+        plusLabel.isHidden = false
     }
     
     func setEffects(effectOfCellItem: String?){
@@ -278,6 +227,10 @@ class DetailViewController: UIViewController {
         if effectOfCellItem == "Speed Up" {
             if let effect = view.viewWithTag(1) as? UIImageView{
                 effect.image = UIImage(named: "speedUp")}
+        }
+        if effectOfCellItem == "Overfills Stamina" {
+                if let effect = view.viewWithTag(1) as? UIImageView{
+                effect.image = UIImage(named: "staminaAdded")}
         }
     }
 }
