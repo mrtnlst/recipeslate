@@ -11,8 +11,8 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var effectsLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var heartsRestoredLabel: UILabel!
+
     
     @IBOutlet weak var firstIngredientLabel: UILabel!
     @IBOutlet weak var secondIngredientLabel: UILabel!
@@ -20,10 +20,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var fourthIngredientLabel: UILabel!
     @IBOutlet weak var fifthIngredientLabel: UILabel!
     
-    @IBOutlet weak var heartsRestoredLabel: UILabel!
-    @IBOutlet weak var plusLabel: UILabel!
-    @IBOutlet weak var heartsAddedLabel: UILabel!
-    @IBOutlet weak var staminaAmountLabel: UILabel!
+    @IBOutlet weak var firstPlusLabel: UILabel!
+    @IBOutlet weak var specialIngredientOne: UILabel!
+    @IBOutlet weak var specialEffectOneImage: UIImageView!
+    @IBOutlet weak var firstDurationLabel: UILabel!
+    @IBOutlet weak var firstEffectsLabel: UILabel!
+
+    @IBOutlet weak var specialIngredientTwo: UILabel!
+    @IBOutlet weak var specialEffectTwoImage: UIImageView!
+    @IBOutlet weak var secondPlusLabel: UILabel!
+    @IBOutlet weak var secondDurationLabel: UILabel!
+    @IBOutlet weak var secondEffectsLabel: UILabel!
+    
     
     var mealCell: Meal?
     var elixirCell: Elixir?
@@ -33,36 +41,44 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         // Resetting labels.
-        staminaAmountLabel.isHidden = true
-        plusLabel.isHidden = true
-        heartsAddedLabel.isHidden = true
+        firstPlusLabel.isHidden = true
+        secondPlusLabel.isHidden = true
         
         // Checking forwarded cells.
         if (mealCell != nil){
             setLabels(type: "Meal")
             setHearts(heartValueOfCellItem: (mealCell?.hearts)!)
             
-            if mealCell?.effect != nil{
-                setEffects(effectOfCellItem: (mealCell?.effect)!)
+            if mealCell?.firstEffect != nil{
+                setFirstEffect(effectOfCellItem: mealCell?.firstEffect)
             }
-            if mealCell?.heartsAdded != nil {
-                setAddedHearts(heartsAdded: (mealCell?.heartsAdded)!)
+            else{
+                hideFirstEffect()
             }
+            if mealCell?.secondEffect != nil{
+                setSecondEffect(effectOfCellItem: mealCell?.secondEffect)
+            }
+            else{
+                hideSecondEffect()
+            }
+            
+
         }
         if (elixirCell != nil){
             setLabels(type: "Elixir")
-            setEffects(effectOfCellItem: (elixirCell?.effect)!)
         }
         if (foodCell != nil){
             setLabels(type: "Food")
             setHearts(heartValueOfCellItem: (foodCell?.hearts)!)
             
-            if foodCell?.effect != nil{
-                setEffects(effectOfCellItem: (foodCell?.effect)!)
+            if foodCell?.firstEffect != nil{
+                setFirstEffect(effectOfCellItem: foodCell?.firstEffect)
             }
-
+            else{
+                hideFirstEffect()
+                hideSecondEffect()
+            }
         }
-
     }
 
     func setLabels(type: String){
@@ -70,27 +86,6 @@ class DetailViewController: UIViewController {
         if type == "Meal" {
             
             nameLabel.text = mealCell?.name
-            
-            if ((mealCell?.effect) != nil){
-                effectsLabel.text = mealCell?.effect
-            } else {
-                effectsLabel.text = "None"
-                effectsLabel.textColor = .gray
-                effectsLabel.font = UIFont.italicSystemFont(ofSize: 18.0)}
-            
-            if ((mealCell?.duration) != nil){
-                durationLabel.text = mealCell?.duration
-            } else {
-                durationLabel.text = "None"
-                durationLabel.textColor = .gray
-                durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)}
-            
-            if mealCell?.staminaAdded != nil {
-                staminaAmountLabel.isHidden = false
-                if let staminaAmount = view.viewWithTag(2) as? UILabel{
-                    staminaAmount.text = String(format: "%.1f", (mealCell?.staminaAdded)!)
-                }
-            }
             
             // IngredientLabels.
             firstIngredientLabel.text = mealCell?.ingredientNames.firstIngredient
@@ -102,30 +97,6 @@ class DetailViewController: UIViewController {
         if type == "Elixir" {
         
             nameLabel.text = elixirCell?.name
-            effectsLabel.text = elixirCell?.effect
-
-            if let heartsRestoredLabel = view.viewWithTag(100) as? UILabel {
-                heartsRestoredLabel.text = "None "
-                heartsRestoredLabel.textColor = .gray
-                heartsRestoredLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
-            }
-            
-
-            if ((elixirCell?.duration) != nil){
-                durationLabel.text = elixirCell?.duration
-
-            } else {
-                durationLabel.text = "None"
-                durationLabel.textColor = .gray
-                durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
-            }
-            
-            if elixirCell?.staminaAdded != nil {
-                staminaAmountLabel.isHidden = false
-                if let staminaAmount = view.viewWithTag(2) as? UILabel{
-                    staminaAmount.text = String(format: "%.1f", (elixirCell?.staminaAdded)!)
-                }
-            }
             
             // IngredientLabels.
             firstIngredientLabel.text = elixirCell?.ingredientNames.firstIngredient
@@ -137,23 +108,6 @@ class DetailViewController: UIViewController {
         }
         if type == "Food" {
             nameLabel.text = foodCell?.name
-            
-            // Checking, whether effects or duration are nil.
-            if foodCell?.effect != nil{
-                effectsLabel.text = foodCell?.effect
-            } else{
-                effectsLabel.text = "None"
-                effectsLabel.textColor = .gray
-                effectsLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
-            }
-            if foodCell?.duration != nil{
-                durationLabel.text = foodCell?.duration
-
-            } else{
-                durationLabel.text = "None"
-                durationLabel.textColor = .gray
-                durationLabel.font = UIFont.italicSystemFont(ofSize: 18.0)
-            }
             
             // IngredientLabels.
             firstIngredientLabel.text = foodCell?.ingredientNames.firstIngredient
@@ -196,41 +150,148 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func setAddedHearts(heartsAdded: Int){
+    func setAddedHearts(heartsAdded: Float, effectNumber: Int){
         
         // Setting the added hearts.
 
-        if let heartsAddedImage = view.viewWithTag(201) as? UIImageView{
-            heartsAddedImage.image = UIImage(named: "fullYellowHeart")
-        }
-        heartsAddedLabel.text = String(format: "%d ", (mealCell?.heartsAdded)!)
-        
-        heartsAddedLabel.isHidden = false
-        plusLabel.isHidden = false
+    
     }
     
-    func setEffects(effectOfCellItem: String?){
+    func setFirstEffect(effectOfCellItem: Effect?){
         print("Inside setEffects")
         
-        if effectOfCellItem == "Cold Resistance" {
-            if let effect = view.viewWithTag(1) as? UIImageView{
-                effect.image = UIImage(named: "coldResistance")}
+        if effectOfCellItem?.effectName == "Cold Resistance" {
+                specialEffectOneImage.image = UIImage(named: "coldResistance")
+                firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
         }
-        if effectOfCellItem == "Heat Resistance" {
-            if let effect = view.viewWithTag(1) as? UIImageView{
-                effect.image = UIImage(named: "heatResistance")}
+        
+        if effectOfCellItem?.effectName == "Heat Resistance" {
+                specialEffectOneImage.image = UIImage(named: "heatResistance")
+                firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
         }
-        if effectOfCellItem == "Restores Stamina" {
-            if let effect = view.viewWithTag(1) as? UIImageView{
-                effect.image = UIImage(named: "fullStamina")}
+        
+        if effectOfCellItem?.effectName == "Restores Stamina" {
+                specialEffectOneImage.image = UIImage(named: "fullStamina")
+                firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.amount != nil {
+                firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+
         }
-        if effectOfCellItem == "Speed Up" {
-            if let effect = view.viewWithTag(1) as? UIImageView{
-                effect.image = UIImage(named: "speedUp")}
+        
+        if effectOfCellItem?.effectName == "Speed Up" {
+                specialEffectOneImage.image = UIImage(named: "speedUp")
+                firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+
         }
-        if effectOfCellItem == "Overfills Stamina" {
-                if let effect = view.viewWithTag(1) as? UIImageView{
-                effect.image = UIImage(named: "staminaAdded")}
+        
+        if effectOfCellItem?.effectName == "Overfills Stamina" {
+                specialEffectOneImage.image = UIImage(named: "staminaAdded")
+                firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.amount != nil {
+                firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
         }
+        
+        if effectOfCellItem?.effectName == "Temporary Hearts" {
+            specialEffectOneImage.image = UIImage(named: "fullYellowHeart")
+            
+            firstDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
+            firstPlusLabel.isHidden = false
+            
+            firstEffectsLabel.text = effectOfCellItem?.effectName
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+
+        }
+    }
+    
+    func setSecondEffect(effectOfCellItem: Effect?){
+        print("Inside setEffects")
+        
+        if effectOfCellItem?.effectName == "Cold Resistance" {
+            specialEffectTwoImage.image = UIImage(named: "coldResistance")
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Heat Resistance" {
+            specialEffectTwoImage.image = UIImage(named: "heatResistance")
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Restores Stamina" {
+            specialEffectTwoImage.image = UIImage(named: "fullStamina")
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.amount != nil {
+                secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+            
+        }
+        
+        if effectOfCellItem?.effectName == "Speed Up" {
+            specialEffectTwoImage.image = UIImage(named: "speedUp")
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+            
+        }
+        
+        if effectOfCellItem?.effectName == "Overfills Stamina" {
+            specialEffectTwoImage.image = UIImage(named: "staminaAdded")
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.amount != nil {
+                secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Temporary Hearts" {
+            specialEffectTwoImage.image = UIImage(named: "fullYellowHeart")
+            
+            secondDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
+            secondPlusLabel.isHidden = false
+            
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+            
+        }
+    }
+    
+    func hideFirstEffect(){
+        firstEffectsLabel.isHidden = true
+        firstDurationLabel.isHidden = true
+        specialIngredientOne.text = "None"
+        specialIngredientOne.textColor = .gray
+        specialIngredientOne.font = UIFont.italicSystemFont(ofSize: 16.0)
+    }
+    func hideSecondEffect(){
+        secondEffectsLabel.isHidden = true
+        secondDurationLabel.isHidden = true
+        specialIngredientTwo.isHidden = true
+
     }
 }

@@ -12,17 +12,15 @@ import UIKit
 struct Food {
     var name: String
     var hearts: Float
-    var effect: String?
-    var duration: String?
     var ingredientNames: Ingredients
-    var tag = "Food"
+    var firstEffect: Effect?
+
     
-    init(name: String, hearts: Float, effect: String? = nil, duration: String? = nil, ingredientNames: Ingredients ) {
+    init(name: String, hearts: Float, effect: String? = nil, duration: String? = nil, ingredientNames: Ingredients, firstEffect: Effect? = nil) {
         self.name = name
-        self.effect = effect
-        self.duration = duration
         self.hearts = hearts
         self.ingredientNames = ingredientNames
+        self.firstEffect = firstEffect
     }
     
     var titleFirstLetter: String {
@@ -30,16 +28,3 @@ struct Food {
     }
 }
 
-//class Name {
-//    let nameTitle: String
-//    let nameDetail: String
-//    
-//    init(nameTitle: String, nameDetail: String) {
-//        self.nameTitle = nameTitle
-//        self.nameDetail = nameDetail
-//    }
-//    
-//    var titleFirstLetter: String {
-//        return String(self.nameTitle[self.nameTitle.startIndex]).uppercased()
-//    }
-//}

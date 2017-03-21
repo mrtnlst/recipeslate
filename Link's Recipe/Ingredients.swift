@@ -9,7 +9,6 @@
 import Foundation
 
 struct Ingredients {
-    //var ingredientNames = Array(repeating: "Null", count: 5)
     
     var firstIngredient: String?
     var secondIngredient: String?
@@ -25,12 +24,6 @@ struct Ingredients {
         self.fourthIngredient = fourthIngredient
         self.fifthIngredient = fifthIngredient
         
-//        ingredientNames.append(firstIngredient!)
-//        ingredientNames.append(secondIngredient!)
-//        ingredientNames.append(thirdIngredient!)
-//        ingredientNames.append(fourthIngredient!)
-//        ingredientNames.append(fifthIngredient!)
     }
 }
 
-//firstIngredient: String?, secondIngredient: String?, thirdIngredient: String?, fourthIngredient: String?, fifthIngredient: String?

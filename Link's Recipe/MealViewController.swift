@@ -78,12 +78,12 @@ class MealViewController: UITableViewController {
         }
         
         // Resetting imageViews.
-        if let effectImage = cell.viewWithTag(103) as? UIImageView{
-            effectImage.image = .none}
+//        if let effectImage = cell.viewWithTag(103) as? UIImageView{
+//            effectImage.image = .none}
         if let heartsImage = cell.viewWithTag(101) as? UIImageView{
             heartsImage.image = .none}
-        if let heartsYellowImage = cell.viewWithTag(102) as? UIImageView{
-            heartsYellowImage.image = .none}
+//        if let heartsYellowImage = cell.viewWithTag(102) as? UIImageView{
+//            heartsYellowImage.image = .none}
         
         // Setting imageViews for hearts.
         
@@ -95,33 +95,33 @@ class MealViewController: UITableViewController {
         }
         
         // Setting the added hearts.
-        if meal.heartsAdded != nil {
-            if let heartsAddedImage = cell.viewWithTag(102) as? UIImageView{
-                heartsAddedImage.image = UIImage(named: "fullYellowHeart")
-            }
-        }
+//        if meal.heartsAdded != nil {
+//            if let heartsAddedImage = cell.viewWithTag(102) as? UIImageView{
+//                heartsAddedImage.image = UIImage(named: "fullYellowHeart")
+//            }
+//        }
         
         // Setting effect imageView.
-        if meal.effect == "Cold Resistance" {
-            if let effect = cell.viewWithTag(103) as? UIImageView{
-                effect.image = UIImage(named: "coldResistance")}
-        }
-        if meal.effect == "Heat Resistance" {
-            if let effect = cell.viewWithTag(103) as? UIImageView{
-                effect.image = UIImage(named: "heatResistance")}
-        }
-        if meal.effect == "Speed Up" {
-            if let effect = cell.viewWithTag(103) as? UIImageView{
-                effect.image = UIImage(named: "speedUp")}
-        }
-        if meal.effect == "Restores Stamina" {
-            if let effect = cell.viewWithTag(103) as? UIImageView{
-                effect.image = UIImage(named: "fullStamina")}
-        }
-        if meal.effect == "Overfills Stamina" {
-            if let effect = cell.viewWithTag(103) as? UIImageView{
-                effect.image = UIImage(named: "staminaAdded")}
-        }
+//        if meal.effect == "Cold Resistance" {
+//            if let effect = cell.viewWithTag(103) as? UIImageView{
+//                effect.image = UIImage(named: "coldResistance")}
+//        }
+//        if meal.effect == "Heat Resistance" {
+//            if let effect = cell.viewWithTag(103) as? UIImageView{
+//                effect.image = UIImage(named: "heatResistance")}
+//        }
+//        if meal.effect == "Speed Up" {
+//            if let effect = cell.viewWithTag(103) as? UIImageView{
+//                effect.image = UIImage(named: "speedUp")}
+//        }
+//        if meal.effect == "Restores Stamina" {
+//            if let effect = cell.viewWithTag(103) as? UIImageView{
+//                effect.image = UIImage(named: "fullStamina")}
+//        }
+//        if meal.effect == "Overfills Stamina" {
+//            if let effect = cell.viewWithTag(103) as? UIImageView{
+//                effect.image = UIImage(named: "staminaAdded")}
+//        }
         
     return cell
     }
