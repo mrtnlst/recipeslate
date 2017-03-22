@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
     
     
     var mealCell: Meal?
-    var elixirCell: Elixir?
+    //var elixirCell: Elixir?
     var foodCell: Food?
     
     override func viewDidLoad() {
@@ -64,15 +64,16 @@ class DetailViewController: UIViewController {
             
 
         }
-        if (elixirCell != nil){
-            setLabels(type: "Elixir")
-        }
+//        if (elixirCell != nil){
+//            setLabels(type: "Elixir")
+//        }
         if (foodCell != nil){
             setLabels(type: "Food")
             setHearts(heartValueOfCellItem: (foodCell?.hearts)!)
             
             if foodCell?.firstEffect != nil{
                 setFirstEffect(effectOfCellItem: foodCell?.firstEffect)
+                hideSecondEffect()
             }
             else{
                 hideFirstEffect()
@@ -94,18 +95,18 @@ class DetailViewController: UIViewController {
             fourthIngredientLabel.text = mealCell?.ingredientNames.fourthIngredient
             fifthIngredientLabel.text = mealCell?.ingredientNames.fifthIngredient
         }
-        if type == "Elixir" {
-        
-            nameLabel.text = elixirCell?.name
-            
-            // IngredientLabels.
-            firstIngredientLabel.text = elixirCell?.ingredientNames.firstIngredient
-            secondIngredientLabel.text = elixirCell?.ingredientNames.secondIngredient
-            thirdIngredientLabel.text = elixirCell?.ingredientNames.thirdIngredient
-            fourthIngredientLabel.text = elixirCell?.ingredientNames.fourthIngredient
-            fifthIngredientLabel.text = elixirCell?.ingredientNames.fifthIngredient
-
-        }
+//        if type == "Elixir" {
+//        
+//            nameLabel.text = elixirCell?.name
+//            
+//            // IngredientLabels.
+//            firstIngredientLabel.text = elixirCell?.ingredientNames.firstIngredient
+//            secondIngredientLabel.text = elixirCell?.ingredientNames.secondIngredient
+//            thirdIngredientLabel.text = elixirCell?.ingredientNames.thirdIngredient
+//            fourthIngredientLabel.text = elixirCell?.ingredientNames.fourthIngredient
+//            fifthIngredientLabel.text = elixirCell?.ingredientNames.fifthIngredient
+//
+//        }
         if type == "Food" {
             nameLabel.text = foodCell?.name
             
@@ -161,7 +162,7 @@ class DetailViewController: UIViewController {
         print("Inside setEffects")
         
         if effectOfCellItem?.effectName == "Cold Resistance" {
-                specialEffectOneImage.image = UIImage(named: "coldResistance")
+                specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
                 firstEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.duration != nil {
                 firstDurationLabel.text = effectOfCellItem?.duration
@@ -170,7 +171,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Heat Resistance" {
-                specialEffectOneImage.image = UIImage(named: "heatResistance")
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
                 firstEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.duration != nil {
                 firstDurationLabel.text = effectOfCellItem?.duration
@@ -179,7 +180,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Restores Stamina" {
-                specialEffectOneImage.image = UIImage(named: "fullStamina")
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
                 firstEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.amount != nil {
                 firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
@@ -189,7 +190,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Speed Up" {
-                specialEffectOneImage.image = UIImage(named: "speedUp")
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
                 firstEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.duration != nil {
                 firstDurationLabel.text = effectOfCellItem?.duration
@@ -199,7 +200,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Overfills Stamina" {
-                specialEffectOneImage.image = UIImage(named: "staminaAdded")
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
                 firstEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.amount != nil {
                 firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
@@ -208,8 +209,8 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Temporary Hearts" {
-            specialEffectOneImage.image = UIImage(named: "fullYellowHeart")
-            
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+
             firstDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
             firstPlusLabel.isHidden = false
             
@@ -223,7 +224,7 @@ class DetailViewController: UIViewController {
         print("Inside setEffects")
         
         if effectOfCellItem?.effectName == "Cold Resistance" {
-            specialEffectTwoImage.image = UIImage(named: "coldResistance")
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
             secondEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.duration != nil {
                 secondDurationLabel.text = effectOfCellItem?.duration
@@ -232,7 +233,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Heat Resistance" {
-            specialEffectTwoImage.image = UIImage(named: "heatResistance")
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
             secondEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.duration != nil {
                 secondDurationLabel.text = effectOfCellItem?.duration
@@ -241,7 +242,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Restores Stamina" {
-            specialEffectTwoImage.image = UIImage(named: "fullStamina")
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
             secondEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.amount != nil {
                 secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
@@ -251,7 +252,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Speed Up" {
-            specialEffectTwoImage.image = UIImage(named: "speedUp")
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
             secondEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.duration != nil {
                 secondDurationLabel.text = effectOfCellItem?.duration
@@ -261,7 +262,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Overfills Stamina" {
-            specialEffectTwoImage.image = UIImage(named: "staminaAdded")
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
             secondEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.amount != nil {
                 secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
@@ -270,7 +271,7 @@ class DetailViewController: UIViewController {
         }
         
         if effectOfCellItem?.effectName == "Temporary Hearts" {
-            specialEffectTwoImage.image = UIImage(named: "fullYellowHeart")
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
             
             secondDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
             secondPlusLabel.isHidden = false

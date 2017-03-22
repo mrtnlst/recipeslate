@@ -11,20 +11,14 @@ import UIKit
 
 struct Elixir {
     var name: String
-    var hearts: Float?
-    var duration: String?
+    var category: String
     var effect: String
-    var ingredientNames: Ingredients
-    var staminaAdded: Float?
-    var tag = "Elixir"
+
     
-    init(name: String, duration: String? = nil, hearts: Float? = nil, effect: String, ingredientNames: Ingredients, staminaAdded: Float? = nil) {
+    init(name: String, category: String, effect: String) {
         self.name = name
-        self.hearts = hearts
-        self.duration = duration
+        self.category = category
         self.effect = effect
-        self.ingredientNames = ingredientNames
-        self.staminaAdded = staminaAdded
     }
     
     var titleFirstLetter: String {

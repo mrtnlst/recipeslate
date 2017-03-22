@@ -107,7 +107,7 @@ class FoodViewController: UITableViewController {
         // Frozen & Icy Food effect images.
         if food.firstEffect?.effectName == "Heat Resistance" {
             if let effect = cell.viewWithTag(107) as? UIImageView{
-                effect.image = UIImage(named: "heatResistance")}
+                effect.image = UIImage(named: "Heat Resistance")}
         }
         
         if hearts.fullHearts > 0 {

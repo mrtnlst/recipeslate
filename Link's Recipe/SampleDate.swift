@@ -162,11 +162,22 @@ let mealData = [
 ]
 
 let elixirData = [
-    Elixir(name:"Spicy Elixir", duration: "3:40 min", effect: "Cold Resistance",
-           ingredientNames: Ingredients(firstIngredient: "Warm Darner", secondIngredient: "Bokoblin Horn")),
-    Elixir(name:"Hasty Elixir", duration: "2:10 min", effect: "Speed Up",
-           ingredientNames: Ingredients(firstIngredient: "Hot-Footed Frog", secondIngredient: "Bokoblin Horn")),
-    Elixir(name:"Energizing Elixir", effect: "Restores Stamina",
-           ingredientNames: Ingredients(firstIngredient: "Restless Cricket", secondIngredient: "Bokoblin Horn"), staminaAdded: 0.2)
+    Elixir(name:"Spicy Elixir", category: "Spicy", effect: "Cold Resistance"),
+    Elixir(name:"Hasty Elixir", category: "Hasty", effect: "Speed Up"),
+    Elixir(name:"Chilly Elixir", category: "Spicy", effect: "Heat Resistance"),
+    Elixir(name:"Electro Elixir", category: "Spicy", effect: "Electricity Resistance"),
+    Elixir(name:"Enduring Elixir", category: "Spicy", effect: "Overfills Stamina"),
+    Elixir(name:"Energizing Elixir", category: "Spicy", effect: "Restores Stamina"),
+    Elixir(name:"Fireproof Elixir", category: "Spicy", effect: "Fire Resistance"),
+    Elixir(name:"Hearty Elixir", category: "Spicy", effect: "Temporary Hearts"),
+    Elixir(name:"Sneaky Elixir", category: "Spicy", effect: "Increased Stealth"),
+    Elixir(name:"Tough Elixir", category: "Spicy", effect: "Defense Up"),
+    Elixir(name:"Mighty Elixir", category: "Spicy", effect: "Attack Up"),
 ]
 
+let critterData = [
+    Critter(name: "Hightail Lizard", category: "Hasty", effect: "Speed Up", duration: 60),
+    Critter(name: "Warm Darner", category: "Spicy", effect: "Heat Resistance", duration: 90),
+    Critter(name: "Summerwing Butterfly", category: "Spicy", effect: "Heat Resistance", duration: 90)
+    
+]

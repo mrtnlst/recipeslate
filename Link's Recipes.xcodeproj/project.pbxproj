@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A2491E82EA980023C3B9 /* ElixirViewController.swift */; };
+		A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */; };
+		A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24D1E82F7130023C3B9 /* Critter.swift */; };
 		A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */; };
 		A9614D731E77F8F0009CA034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9614D711E77F8F0009CA034 /* Main.storyboard */; };
 		A9614D751E77F8F0009CA034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9614D741E77F8F0009CA034 /* Assets.xcassets */; };
@@ -17,13 +20,15 @@
 		A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D871E77FF0C009CA034 /* Ingredients.swift */; };
 		A9614D8B1E783926009CA034 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8A1E783926009CA034 /* DetailViewController.swift */; };
 		A9614D8D1E795104009CA034 /* Elixir.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8C1E795104009CA034 /* Elixir.swift */; };
-		A9614D8F1E7956A4009CA034 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8E1E7956A4009CA034 /* ElixirViewController.swift */; };
 		A96FD1361E7BE8C700CE60D6 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FD1351E7BE8C700CE60D6 /* FoodViewController.swift */; };
 		A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FD1371E7BE8D900CE60D6 /* Food.swift */; };
 		A9C784D11E80819000551990 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C784D01E80819000551990 /* Effect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A914A2491E82EA980023C3B9 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
+		A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirDetailViewController.swift; sourceTree = "<group>"; };
+		A914A24D1E82F7130023C3B9 /* Critter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Critter.swift; sourceTree = "<group>"; };
 		A9614D681E77F8F0009CA034 /* Link's Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Link's Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9614D721E77F8F0009CA034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,7 +41,6 @@
 		A9614D871E77FF0C009CA034 /* Ingredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		A9614D8A1E783926009CA034 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A9614D8C1E795104009CA034 /* Elixir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elixir.swift; sourceTree = "<group>"; };
-		A9614D8E1E7956A4009CA034 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
 		A96FD1351E7BE8C700CE60D6 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		A96FD1371E7BE8D900CE60D6 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		A9C784D01E80819000551990 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -101,7 +105,9 @@
 		A9614D901E7956AB009CA034 /* Elixir */ = {
 			isa = PBXGroup;
 			children = (
-				A9614D8E1E7956A4009CA034 /* ElixirViewController.swift */,
+				A914A24D1E82F7130023C3B9 /* Critter.swift */,
+				A914A2491E82EA980023C3B9 /* ElixirViewController.swift */,
+				A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */,
 				A9614D8C1E795104009CA034 /* Elixir.swift */,
 			);
 			name = Elixir;
@@ -190,13 +196,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */,
-				A9614D8F1E7956A4009CA034 /* ElixirViewController.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
+				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
+				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* FoodViewController.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
 				A9614D8B1E783926009CA034 /* DetailViewController.swift in Sources */,
+				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
 				A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */,
 				A9614D841E77FACA009CA034 /* SampleDate.swift in Sources */,

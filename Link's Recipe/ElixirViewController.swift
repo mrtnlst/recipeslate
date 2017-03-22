@@ -72,21 +72,36 @@ class ElixirViewController: UITableViewController {
    
         let elixir = sections[indexPath.section][indexPath.row]
 
-        cell.textLabel?.text = elixir.name
-        cell.detailTextLabel?.text = elixir.effect
-        return cell
+        if let nameLabel = cell.viewWithTag(100) as? UILabel {
+            nameLabel.text = elixir.name
+        }
         
+        // Setting name.
+        //cell.detailTextLabel?.text = elixir.effect
+        
+        // Resetting imageView.
+//        if let effectImage = cell.viewWithTag(101) as? UIImageView{
+//            effectImage.image = .none
+//        }
+        
+        if let effectImage = cell.viewWithTag(101) as? UIImageView{
+            effectImage.image = UIImage(named: elixir.effect)
+        }
+        
+        return cell
+
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let number = indexPath.row
         print(number)
-        self.performSegue(withIdentifier: "showDetail", sender: indexPath);
+        self.performSegue(withIdentifier: "showElixirDetail", sender: indexPath);
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            let destinatenViewController = segue.destination as! DetailViewController
+        if segue.identifier == "showElixirDetail" {
+            let destinatenViewController = segue.destination as! ElixirDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             destinatenViewController.elixirCell = selectedCell
