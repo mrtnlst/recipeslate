@@ -12,36 +12,75 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var effectNameLabel: UILabel!
-    
     @IBOutlet weak var effectImageView: UIImageView!
     
     @IBOutlet weak var critterNamePicker: UIPickerView!
     @IBOutlet weak var critterAmountPicker: UIPickerView!
 
+    @IBOutlet weak var monsterNamePicker: UIPickerView!
+    @IBOutlet weak var monsterAmountPicker: UIPickerView!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var durationAmountLabel: UILabel!
+    @IBOutlet weak var resultImageView: UIImageView!
+    
+    // Chosen item from UITableview list.
     var elixirCell: Elixir?
-
+    
+    // Array with generalData.
     var critters:[Critter] = critterData
-    var amount: [String] = ["1", "2", "3", "4", "5"]
+    var monsterParts:[MonsterPart] = monsterPartData
+    
+    // Arrays for UIPicker.
+    var amount: [String] = ["1", "2", "3", "4"]
     var critterNames: [String] = []
-
+    
+    // Those are used for calculation.
+    var selectedCritterDuration: TimeInterval?
+    var critterDurationForEffect: [TimeInterval] = []
+    var selectedCritterAmount: Float?
+    var critterAmountForEffect: [Float] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        critterNamePicker.dataSource = self;
-        critterNamePicker.delegate = self;
-        critterAmountPicker.dataSource = self;
-        critterAmountPicker.delegate = self;
+        critterNamePicker.dataSource = self
+        critterNamePicker.delegate = self
+        critterAmountPicker.dataSource = self
+        critterAmountPicker.delegate = self
         
+        monsterNamePicker.dataSource = self
+        monsterNamePicker.delegate = self
+        monsterAmountPicker.dataSource = self
+        monsterAmountPicker.delegate = self
+        
+        // Select correct critter names & duration based on what elixir was chosen.
             for item in critters{
                 if item.category == elixirCell?.category{
                     critterNames.append(item.name)
+                    if item.duration != nil {
+                        critterDurationForEffect.append(item.duration!)
+                    }
+                    else {
+                        critterAmountForEffect.append(item.amount!)
+                    }
                 }
             }
+       
+        // Pre-load UIPicker and execute them.
+        critterNamePicker.selectRow(0, inComponent: 0, animated: true)
+        critterAmountPicker.selectRow(0, inComponent: 0, animated: true)
         
+        monsterNamePicker.selectRow(0, inComponent: 0, animated: true)
+        monsterAmountPicker.selectRow(0, inComponent: 0, animated: true)
+
+        pickerView(critterNamePicker, didSelectRow: 0, inComponent: 0)
+        pickerView(critterAmountPicker, didSelectRow: 0, inComponent: 0)
         
+        // Setting the name and effect label.
         if elixirCell != nil{
             nameLabel.text = elixirCell?.name
             effectNameLabel.text = elixirCell?.effect
             effectImageView.image = UIImage(named: (elixirCell?.effect)!)
+            resultImageView.image = UIImage(named: (elixirCell?.effect)!)
         }
 
         // Do any additional setup after loading the view.
@@ -56,31 +95,30 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         if pickerView == critterNamePicker{
            return critterNames.count
         }
+//        if pickerView == critterAmountPicker {
+//            return amount.count
+//        }
+        if pickerView == monsterNamePicker{
+            return monsterPartData.count
+        }
         else {
             return amount.count
         }
+        
     }
-    
-//     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//            return critter[component][row]
-//     
-//    }
-
-//        func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//            let pickerLabel = UILabel()
-//            let titleData = critter[component][row]
-//            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0),NSForegroundColorAttributeName:UIColor.white])
-//            
-//            pickerLabel.attributedText = myTitle
-//            return pickerLabel
-//
-//        }
-//    }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         if pickerView == critterNamePicker{
             let pickerLabel = UILabel()
             let titleData = critterNames[row]
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+            pickerLabel.textAlignment = .center
+            pickerLabel.attributedText = myTitle
+            return pickerLabel
+        }
+        if pickerView == monsterNamePicker {
+            let pickerLabel = UILabel()
+            let titleData = monsterPartData[row].name
             let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
             pickerLabel.textAlignment = .center
             pickerLabel.attributedText = myTitle
@@ -96,9 +134,82 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        // Check wrong UIPicker Position.
+        if pickerView == critterAmountPicker {
+            if (critterAmountPicker.selectedRow(inComponent: 0) + 1 + monsterAmountPicker.selectedRow(inComponent: 0) + 1) > 5{
+                let position = 5 - (monsterAmountPicker.selectedRow(inComponent: 0) + 1)
+                critterAmountPicker.selectRow(position - 1, inComponent: 0, animated: true)
+            }
+        }
+        
+        if pickerView == monsterAmountPicker {
+            if (critterAmountPicker.selectedRow(inComponent: 0) + 1 + monsterAmountPicker.selectedRow(inComponent: 0) + 1) > 5{
+                let position = 5 - (critterAmountPicker.selectedRow(inComponent: 0) + 1)
+                monsterAmountPicker.selectRow(position - 1, inComponent: 0, animated: true)
+            }
+        }
+        
+        // Saving duration or amount into variable.
+        if pickerView == critterNamePicker{
+            if critterDurationForEffect.isEmpty == false {
+                selectedCritterDuration = critterDurationForEffect[row]
+            }
+            else {
+                selectedCritterAmount = critterAmountForEffect[row]
+            }
+        }
+        
+        // Updating the resultLabel.
+        if selectedCritterDuration != nil {
+            let result =
+                selectedCritterDuration! * Double(critterAmountPicker.selectedRow(inComponent: 0) + 1) +
+                Double(monsterAmountPicker.selectedRow(inComponent: 0) + 1) *
+                Double(monsterPartData[monsterNamePicker.selectedRow(inComponent: 0)].duration)
+            
+            resultLabel.text = durationToString(duration: result)
+        }
+        else {
+            let result = amountToString(selectedCritter: critterNames[critterNamePicker.selectedRow(inComponent: 0)],
+                                        numberSelected: critterAmountPicker.selectedRow(inComponent: 0) + 1)
+            resultLabel.text = result
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func amountToString(selectedCritter: String, numberSelected: Int) -> String{
+        var result = ""
+        
+        if selectedCritter == "Energetic Rhino Beetle"{
+            switch numberSelected{
+            case 1: result = "1.6"
+            case 2, 3, 4: result = "3.0"
+            default: print("no rhino selected")
+            }
+            durationAmountLabel.text = "Restores:"
+        }
+        else if selectedCritter == "Restless Cricket"{
+            switch numberSelected{
+            case 1: result = "0.2"
+            case 2: result = "0.4"
+            case 3: result = "0.8"
+            case 4: result = "1.0"
+            default: print("no cricket selected")
+            }
+            durationAmountLabel.text = "Restores:"
+        }
+        else {
+            let temp = selectedCritterAmount! * Float(critterAmountPicker.selectedRow(inComponent: 0) + 1)
+            result = String(format: "%.1f", temp)
+            durationAmountLabel.text = "Increases:"
+        }
+        
+        return result
     }
     
     func durationToString(duration: TimeInterval) -> String{
@@ -108,9 +219,11 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         formatter.allowedUnits = [ .minute, .second ]
         formatter.zeroFormattingBehavior = [ .pad ]
         
-        let formattedDuration = formatter.string(from: duration)
+        var formattedDuration = formatter.string(from: duration)
+        formattedDuration?.append(" min")
         return formattedDuration!
     }
+    
     /*
     // MARK: - Navigation
 

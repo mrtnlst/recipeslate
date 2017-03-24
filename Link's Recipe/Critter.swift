@@ -20,7 +20,7 @@ struct Critter {
         self.category = category
         self.duration = duration
         self.effect = effect
-        self.duration = duration
+        self.amount = amount
         
     }
 }

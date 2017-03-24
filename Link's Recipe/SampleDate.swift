@@ -153,31 +153,90 @@ let mealData = [
     Meal(name:"Apple Pie",
          hearts: 3.0,
          ingredientNames: Ingredients(firstIngredient: "Apple", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar", fourthIngredient: "Goat Butter")),
-    Meal(name:"Carrot Cake", hearts: 6.0, ingredientNames: Ingredients(firstIngredient: "Any Carrot", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar", fourthIngredient: "Goat Butter"), firstEffect: Effect(effectName: "Overfills Stamina", amount: 0.4, effectIngredient: "Enduring Carrot" ),
+    Meal(name:"Carrot Cake", hearts: 3.0, ingredientNames: Ingredients(firstIngredient: "Any Carrot", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar", fourthIngredient: "Goat Butter"), firstEffect: Effect(effectName: "Overfills Stamina", amount: 0.4, effectIngredient: "Enduring Carrot" ),
          secondEffect: Effect(effectName: "Speed Up", duration: "3:20 min", effectIngredient: "Swift Carrot" )),
     Meal(name:"Veggie Cream Soup",
          hearts: 2.0,
          ingredientNames: Ingredients(firstIngredient: "Any Carrot", secondIngredient: "Fresh Milk", thirdIngredient: "Rock Salt"),
          firstEffect: Effect(effectName: "Speed Up", duration: "3:20 min", effectIngredient: "Swift Carrot" )),
+    Meal(name:"Carrot Stew", hearts: 4.0, ingredientNames: Ingredients(firstIngredient: "Any Carrot", secondIngredient: "Tabantha Wheat", thirdIngredient: "Fresh Milk", fourthIngredient: "Goat Butter"), firstEffect: Effect(effectName: "Overfills Stamina", amount: 0.4, effectIngredient: "Enduring Carrot" ),
+         secondEffect: Effect(effectName: "Speed Up", duration: "3:20 min", effectIngredient: "Swift Carrot" )),
+    Meal(name:"Crab Omelet with Rice", hearts: 6.0, ingredientNames: Ingredients(firstIngredient: "Hylian Rice", secondIngredient: "Bird Egg", thirdIngredient: "Rock Salt", fourthIngredient: "Any Crab"), firstEffect: Effect(effectName: "Restores Stamina", amount: 0.2, effectIngredient: "Bright-Eyed Crab" ),
+         secondEffect: Effect(effectName: "Defense Up", duration: "0:50 min", effectIngredient: "Ironshell Crab" ),
+         thirdEffect: Effect(effectName: "Attack Up", duration: "0:50 min", effectIngredient: "Razorclaw Crab" )),
+    Meal(name:"Crab Risotto", hearts: 4.0, ingredientNames: Ingredients(firstIngredient: "Hylian Rice", secondIngredient: "Goat Butter", thirdIngredient: "Rock Salt", fourthIngredient: "Any Crab"), firstEffect: Effect(effectName: "Restores Stamina", amount: 0.2, effectIngredient: "Bright-Eyed Crab" ),
+         secondEffect: Effect(effectName: "Defense Up", duration: "0:50 min", effectIngredient: "Ironshell Crab" ),
+         thirdEffect: Effect(effectName: "Attack Up", duration: "0:50 min", effectIngredient: "Razorclaw Crab")),
+    Meal(name:"Crab Stir-Fry", hearts: 4.0, ingredientNames: Ingredients(firstIngredient: "Goron Spice", secondIngredient: "Any Crab"), firstEffect: Effect(effectName: "Restores Stamina", amount: 0.2, effectIngredient: "Bright-Eyed Crab" ),
+         secondEffect: Effect(effectName: "Defense Up", duration: "2:20 min", effectIngredient: "Ironshell Crab" ),
+         thirdEffect: Effect(effectName: "Attack Up", duration: "2:20 min", effectIngredient: "Razorclaw Crab")),
+    Meal(name:"Cream of Mushroom Soup", hearts: 4.0, ingredientNames: Ingredients(firstIngredient: "Rock Salt", secondIngredient: "Fresh Milk", thirdIngredient: "Any Mushroom", fourthIngredient: "Any Herb"), firstEffect: Effect(effectName: "Restores Stamina", amount: 0.2, effectIngredient: "Bright-Eyed Crab" ),
+         secondEffect: Effect(effectName: "Defense Up", duration: "0:50 min", effectIngredient: "Ironshell Crab" ),
+         thirdEffect: Effect(effectName: "Attack Up", duration: "0:50 min", effectIngredient: "Razorclaw Crab")),
+
 ]
 
 let elixirData = [
     Elixir(name:"Spicy Elixir", category: "Spicy", effect: "Cold Resistance"),
     Elixir(name:"Hasty Elixir", category: "Hasty", effect: "Speed Up"),
-    Elixir(name:"Chilly Elixir", category: "Spicy", effect: "Heat Resistance"),
-    Elixir(name:"Electro Elixir", category: "Spicy", effect: "Electricity Resistance"),
-    Elixir(name:"Enduring Elixir", category: "Spicy", effect: "Overfills Stamina"),
-    Elixir(name:"Energizing Elixir", category: "Spicy", effect: "Restores Stamina"),
-    Elixir(name:"Fireproof Elixir", category: "Spicy", effect: "Fire Resistance"),
-    Elixir(name:"Hearty Elixir", category: "Spicy", effect: "Temporary Hearts"),
-    Elixir(name:"Sneaky Elixir", category: "Spicy", effect: "Increased Stealth"),
-    Elixir(name:"Tough Elixir", category: "Spicy", effect: "Defense Up"),
-    Elixir(name:"Mighty Elixir", category: "Spicy", effect: "Attack Up"),
+    Elixir(name:"Chilly Elixir", category: "Chilly", effect: "Heat Resistance"),
+    Elixir(name:"Electro Elixir", category: "Electro", effect: "Electricity Resistance"),
+    Elixir(name:"Enduring Elixir", category: "Enduring", effect: "Overfills Stamina"),
+    Elixir(name:"Energizing Elixir", category: "Energizing", effect: "Restores Stamina"),
+    Elixir(name:"Fireproof Elixir", category: "Fireproof", effect: "Fire Resistance"),
+    Elixir(name:"Hearty Elixir", category: "Hearty", effect: "Temporary Hearts"),
+    Elixir(name:"Sneaky Elixir", category: "Sneaky", effect: "Increased Stealth"),
+    Elixir(name:"Tough Elixir", category: "Tough", effect: "Defense Up"),
+    Elixir(name:"Mighty Elixir", category: "Mighty", effect: "Attack Up"),
 ]
 
 let critterData = [
     Critter(name: "Hightail Lizard", category: "Hasty", effect: "Speed Up", duration: 60),
-    Critter(name: "Warm Darner", category: "Spicy", effect: "Heat Resistance", duration: 90),
-    Critter(name: "Summerwing Butterfly", category: "Spicy", effect: "Heat Resistance", duration: 90)
+    Critter(name: "Hot-Footed Frog", category: "Hasty", effect: "Speed Up", duration: 60),
     
+    Critter(name: "Warm Darner", category: "Spicy", effect: "Cold Resistance", duration: 150),
+    Critter(name: "Summerwing Butterfly", category: "Spicy", effect: "Cold Resistance", duration: 150),
+    
+    
+    Critter(name: "Tireless Frog", category: "Enduring", effect: "Overfills Stamina", amount: 0.2),
+
+    Critter(name: "Thunderwing Butterfly", category: "Electro", effect: "Electricity Resistance", duration: 150),
+    Critter(name: "Electric Darner", category: "Electro", effect: "Electricity Resistance", duration: 150),
+
+    Critter(name: "Sunset Firefly", category: "Sneaky", effect: "Increased Stealth", duration: 120),
+    
+    Critter(name: "Smootherwing Butterfly", category: "Fireproof", effect: "Fire Resistance", duration: 150),
+    Critter(name: "Fireproof Lizard", category: "Fireproof", effect: "Fire Resistance", duration: 150),
+    
+    Critter(name: "Rugged Rhino Beetle", category: "Tough", effect: "Defense Up", duration: 50),
+    
+    Critter(name: "Cold Darner", category: "Chilly", effect: "Heat Resistance", duration: 150),
+    Critter(name: "Winterwing Butterfly", category: "Chilly", effect: "Heat Resistance", duration: 150),
+    
+    Critter(name: "Hearty Lizard", category: "Hearty", effect: "Temporary Hearts", amount: 0.2),
+    
+    Critter(name: "Restless Cricket", category: "Energizing", effect: "Restores Stamina", amount: 0.2),
+    Critter(name: "Energetic Rhino Beetle", category: "Energizing", effect: "Restores Stamina", amount: 1.6),
+    
+    Critter(name: "Bladed Rhino Beetle", category: "Mighty", effect: "Attack Up", duration: 50),
+
+]
+
+let monsterPartData = [
+    MonsterPart(name: "Bokoblin Fang", duration: 110),
+    MonsterPart(name: "Bokoblin Horn", duration: 70),
+    MonsterPart(name: "Chuchu Jelly", duration: 70),
+    MonsterPart(name: "Electric Keese Wing", duration: 110),
+    MonsterPart(name: "Keese Eyeball", duration: 190),
+    MonsterPart(name: "Keese Wing", duration: 70),
+    MonsterPart(name: "Lizalfos Horn", duration: 70),
+    MonsterPart(name: "Lizalfos Tail", duration: 190),
+    MonsterPart(name: "Lizalfos Talon", duration: 110),
+    MonsterPart(name: "Moblin Fang", duration: 110),
+    MonsterPart(name: "Moblin Horn", duration: 70),
+    MonsterPart(name: "Octorok Balloon", duration: 70),
+    MonsterPart(name: "Octorok Eyeball", duration: 110),
+    MonsterPart(name: "Octorok Tentacle", duration: 70),
+    MonsterPart(name: "Red Chuchu Jelly", duration: 110),
+    MonsterPart(name: "White Chuchu Jelly", duration: 110),
 ]

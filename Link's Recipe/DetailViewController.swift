@@ -161,6 +161,51 @@ class DetailViewController: UIViewController {
     func setFirstEffect(effectOfCellItem: Effect?){
         print("Inside setEffects")
         
+        if effectOfCellItem?.effectName == "Electricity Resistance" {
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Fire Resistance" {
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Increased Stealth" {
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Defense Up" {
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Attack Up" {
+            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            firstEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                firstDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
         if effectOfCellItem?.effectName == "Cold Resistance" {
                 specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
                 firstEffectsLabel.text = effectOfCellItem?.effectName
@@ -222,6 +267,51 @@ class DetailViewController: UIViewController {
     
     func setSecondEffect(effectOfCellItem: Effect?){
         print("Inside setEffects")
+        
+        if effectOfCellItem?.effectName == "Electricity Resistance" {
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Fire Resistance" {
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Increased Stealth" {
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Defense Up" {
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
+        
+        if effectOfCellItem?.effectName == "Attack Up" {
+            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+            secondEffectsLabel.text = effectOfCellItem?.effectName
+            if effectOfCellItem?.duration != nil {
+                secondDurationLabel.text = effectOfCellItem?.duration
+            }
+            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+        }
         
         if effectOfCellItem?.effectName == "Cold Resistance" {
             specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
