@@ -11,14 +11,12 @@ import Foundation
 struct Effect {
     var effectName: String
     var amount: Float?
-    var duration: String?
-    var effectIngredient: String
+    var duration: TimeInterval?
     
-    init(effectName: String, amount: Float? = nil, duration: String? = nil, effectIngredient: String) {
+    init(effectName: String, amount: Float? = nil, duration: TimeInterval? = nil) {
         self.effectName = effectName
         self.amount = amount
         self.duration = duration
-        self.effectIngredient = effectIngredient
    
     }
 }

@@ -176,7 +176,7 @@ class FoodViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            let destinatenViewController = segue.destination as! DetailViewController
+            let destinatenViewController = segue.destination as! FoodDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]//foods[(indexPath?.row)!] as Food
             destinatenViewController.foodCell = selectedCell

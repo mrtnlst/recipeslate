@@ -9,7 +9,7 @@
 import UIKit
 
 class MealViewController: UITableViewController {
-
+    
     var meals:[Meal] = mealData
     var sortedFirstLetters: [String] = []
     var sections: [[Meal]] = [[]]
@@ -85,14 +85,12 @@ class MealViewController: UITableViewController {
 //        if let heartsYellowImage = cell.viewWithTag(102) as? UIImageView{
 //            heartsYellowImage.image = .none}
         
-        // Setting imageViews for hearts.
-        
-        if meal.hearts >= 0.00{
-            //Setting the image for fullHeart.
-            if let heartsRestoredImage = cell.viewWithTag(101) as? UIImageView{
-                heartsRestoredImage.image = UIImage(named: "fullHeart")
-            }
+
+        //Setting the image for fullHeart.
+        if let heartsRestoredImage = cell.viewWithTag(101) as? UIImageView{
+            heartsRestoredImage.image = UIImage(named: "fullHeart")
         }
+        
         
         // Setting the added hearts.
 //        if meal.heartsAdded != nil {
@@ -130,14 +128,14 @@ class MealViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let number = indexPath.row
         print(number)
-        self.performSegue(withIdentifier: "showDetail", sender: indexPath);
+        self.performSegue(withIdentifier: "showMealDetail", sender: indexPath);
         
     
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            let destinatenViewController = segue.destination as! DetailViewController
+        if segue.identifier == "showMealDetail" {
+            let destinatenViewController = segue.destination as! MealDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             destinatenViewController.mealCell = selectedCell

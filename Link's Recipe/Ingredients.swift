@@ -10,13 +10,13 @@ import Foundation
 
 struct Ingredients {
     
-    var firstIngredient: String?
+    var firstIngredient: String
     var secondIngredient: String?
     var thirdIngredient: String?
     var fourthIngredient: String?
     var fifthIngredient: String?
     
-    init(firstIngredient: String? = nil, secondIngredient: String? = nil, thirdIngredient: String? = nil, fourthIngredient: String? = nil, fifthIngredient: String? = nil) {
+    init(firstIngredient: String, secondIngredient: String? = nil, thirdIngredient: String? = nil, fourthIngredient: String? = nil, fifthIngredient: String? = nil) {
    
         self.firstIngredient = firstIngredient
         self.secondIngredient = secondIngredient

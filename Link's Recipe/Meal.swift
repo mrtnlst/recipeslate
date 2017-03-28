@@ -11,19 +11,29 @@ import UIKit
 
 struct Meal {
     var name: String
-    var hearts: Float
-    var ingredientNames: Ingredients
-    var firstEffect: Effect?
-    var secondEffect: Effect?
-    var thirdEffect: Effect?
+    var firstIngredient: String?
+    var secondIngredient: String?
+    var thirdIngredient: String?
+    var fourthIngredient: String?
+    var fifthIngredient: String?
+    var firstCategory: String?
+    var secondCategory: String?
+    var thirdCategory: String?
+    var fourthCategory: String?
     
-    init(name: String, hearts: Float, ingredientNames: Ingredients, firstEffect: Effect? = nil, secondEffect: Effect? = nil, thirdEffect: Effect? = nil) {
+    init(name: String, firstIngredient: String? = nil, secondIngredient: String? = nil, thirdIngredient: String? = nil, fourthIngredient: String? = nil, fifthIngredient: String? = nil, firstCategory: String? = nil, secondCategory: String? = nil, thirdCategory: String? = nil, fourthCategory: String? = nil) {
         self.name = name
-        self.hearts = hearts
-        self.ingredientNames = ingredientNames
-        self.firstEffect = firstEffect
-        self.secondEffect = secondEffect
-        self.thirdEffect = thirdEffect
+        self.firstIngredient = firstIngredient
+        self.secondIngredient = secondIngredient
+        self.thirdIngredient = thirdIngredient
+        self.fourthIngredient = fourthIngredient
+        self.fifthIngredient = fifthIngredient
+        
+        self.firstCategory = firstCategory
+        self.secondCategory = secondCategory
+        self.thirdCategory = thirdCategory
+        self.fourthCategory = fourthCategory
+    
     }
     
     var titleFirstLetter: String {

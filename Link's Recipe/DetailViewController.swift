@@ -21,20 +21,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var fifthIngredientLabel: UILabel!
     
     @IBOutlet weak var firstPlusLabel: UILabel!
-    @IBOutlet weak var specialIngredientOne: UILabel!
     @IBOutlet weak var specialEffectOneImage: UIImageView!
     @IBOutlet weak var firstDurationLabel: UILabel!
     @IBOutlet weak var firstEffectsLabel: UILabel!
 
-    @IBOutlet weak var specialIngredientTwo: UILabel!
-    @IBOutlet weak var specialEffectTwoImage: UIImageView!
-    @IBOutlet weak var secondPlusLabel: UILabel!
-    @IBOutlet weak var secondDurationLabel: UILabel!
-    @IBOutlet weak var secondEffectsLabel: UILabel!
     
     
-    var mealCell: Meal?
-    //var elixirCell: Elixir?
     var foodCell: Food?
     
     override func viewDidLoad() {
@@ -42,59 +34,57 @@ class DetailViewController: UIViewController {
         
         // Resetting labels.
         firstPlusLabel.isHidden = true
-        secondPlusLabel.isHidden = true
+//        secondPlusLabel.isHidden = true
         
-        // Checking forwarded cells.
-        if (mealCell != nil){
-            setLabels(type: "Meal")
-            setHearts(heartValueOfCellItem: (mealCell?.hearts)!)
-            
-            if mealCell?.firstEffect != nil{
-                setFirstEffect(effectOfCellItem: mealCell?.firstEffect)
-            }
-            else{
-                hideFirstEffect()
-            }
-            if mealCell?.secondEffect != nil{
-                setSecondEffect(effectOfCellItem: mealCell?.secondEffect)
-            }
-            else{
-                hideSecondEffect()
-            }
-            
-
-        }
-//        if (elixirCell != nil){
-//            setLabels(type: "Elixir")
+//        // Checking forwarded cells.
+//        if (mealCell != nil){
+//            setLabels(type: "Meal")
+//            setHearts(heartValueOfCellItem: (mealCell?.hearts)!)
+//            
+//            if mealCell?.firstEffect != nil{
+//                setFirstEffect(effectOfCellItem: mealCell?.firstEffect)
+//            }
+//            else{
+//                hideFirstEffect()
+//            }
+//            if mealCell?.secondEffect != nil{
+//                setSecondEffect(effectOfCellItem: mealCell?.secondEffect)
+//            }
+//            else{
+//                hideSecondEffect()
+//            }
+//            
+//
 //        }
+////        if (elixirCell != nil){
+////            setLabels(type: "Elixir")
+////        }
         if (foodCell != nil){
             setLabels(type: "Food")
             setHearts(heartValueOfCellItem: (foodCell?.hearts)!)
             
             if foodCell?.firstEffect != nil{
                 setFirstEffect(effectOfCellItem: foodCell?.firstEffect)
-                hideSecondEffect()
             }
             else{
                 hideFirstEffect()
-                hideSecondEffect()
             }
         }
     }
 
     func setLabels(type: String){
         
-        if type == "Meal" {
-            
-            nameLabel.text = mealCell?.name
-            
-            // IngredientLabels.
-            firstIngredientLabel.text = mealCell?.ingredientNames.firstIngredient
-            secondIngredientLabel.text = mealCell?.ingredientNames.secondIngredient
-            thirdIngredientLabel.text = mealCell?.ingredientNames.thirdIngredient
-            fourthIngredientLabel.text = mealCell?.ingredientNames.fourthIngredient
-            fifthIngredientLabel.text = mealCell?.ingredientNames.fifthIngredient
-        }
+//        if type == "Meal" {
+//            
+//            nameLabel.text = mealCell?.name
+//            
+//            // IngredientLabels.
+//            firstIngredientLabel.text = mealCell?.ingredientNames.firstIngredient
+//            secondIngredientLabel.text = mealCell?.ingredientNames.secondIngredient
+//            thirdIngredientLabel.text = mealCell?.ingredientNames.thirdIngredient
+//            fourthIngredientLabel.text = mealCell?.ingredientNames.fourthIngredient
+//            fifthIngredientLabel.text = mealCell?.ingredientNames.fifthIngredient
+//        }
 //        if type == "Elixir" {
 //        
 //            nameLabel.text = elixirCell?.name
@@ -150,226 +140,236 @@ class DetailViewController: UIViewController {
             }
         }
     }
-    
-    func setAddedHearts(heartsAdded: Float, effectNumber: Int){
-        
-        // Setting the added hearts.
-
-    
-    }
+//    
+//    func setAddedHearts(heartsAdded: Float, effectNumber: Int){
+//        
+//        // Setting the added hearts.
+//
+//    
+//    }
     
     func setFirstEffect(effectOfCellItem: Effect?){
         print("Inside setEffects")
         
-        if effectOfCellItem?.effectName == "Electricity Resistance" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Fire Resistance" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Increased Stealth" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Defense Up" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Attack Up" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Cold Resistance" {
-                specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-                firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
+//        if effectOfCellItem?.effectName == "Electricity Resistance" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                firstDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Fire Resistance" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                firstDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Increased Stealth" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                firstDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Defense Up" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                firstDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Attack Up" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                firstDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Cold Resistance" {
+//                specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//                firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                firstDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
         
         if effectOfCellItem?.effectName == "Heat Resistance" {
             specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
                 firstEffectsLabel.text = effectOfCellItem?.effectName
             if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
+                firstDurationLabel.text = durationToString(duration: (effectOfCellItem?.duration)!)
             }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
         }
         
-        if effectOfCellItem?.effectName == "Restores Stamina" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-                firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.amount != nil {
-                firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-
-        }
-        
-        if effectOfCellItem?.effectName == "Speed Up" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-                firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                firstDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-
-        }
-        
-        if effectOfCellItem?.effectName == "Overfills Stamina" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-                firstEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.amount != nil {
-                firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
-            }
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Temporary Hearts" {
-            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-
-            firstDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
-            firstPlusLabel.isHidden = false
-            
-            firstEffectsLabel.text = effectOfCellItem?.effectName
-            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
-
-        }
+//        if effectOfCellItem?.effectName == "Restores Stamina" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//                firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.amount != nil {
+//                firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Speed Up" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//                firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                firstDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Overfills Stamina" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//                firstEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.amount != nil {
+//                firstDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+//            }
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Temporary Hearts" {
+//            specialEffectOneImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//
+//            firstDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
+//            firstPlusLabel.isHidden = false
+//            
+//            firstEffectsLabel.text = effectOfCellItem?.effectName
+//            specialIngredientOne.text = (effectOfCellItem?.effectIngredient)!+":"
+//
+//        }
     }
     
-    func setSecondEffect(effectOfCellItem: Effect?){
-        print("Inside setEffects")
+//    func setSecondEffect(effectOfCellItem: Effect?){
+//        print("Inside setEffects")
+//        
+//        if effectOfCellItem?.effectName == "Electricity Resistance" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Fire Resistance" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Increased Stealth" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Defense Up" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Attack Up" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Cold Resistance" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Heat Resistance" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Restores Stamina" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.amount != nil {
+//                secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//            
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Speed Up" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.duration != nil {
+//                secondDurationLabel.text = effectOfCellItem?.duration
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//            
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Overfills Stamina" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            if effectOfCellItem?.amount != nil {
+//                secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
+//            }
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//        }
+//        
+//        if effectOfCellItem?.effectName == "Temporary Hearts" {
+//            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
+//            
+//            secondDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
+//            secondPlusLabel.isHidden = false
+//            
+//            secondEffectsLabel.text = effectOfCellItem?.effectName
+//            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
+//            
+//        }
+//    }
+    func durationToString(duration: TimeInterval) -> String{
         
-        if effectOfCellItem?.effectName == "Electricity Resistance" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [ .minute, .second ]
+        formatter.zeroFormattingBehavior = [ .pad ]
         
-        if effectOfCellItem?.effectName == "Fire Resistance" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Increased Stealth" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Defense Up" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Attack Up" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Cold Resistance" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Heat Resistance" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Restores Stamina" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.amount != nil {
-                secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-            
-        }
-        
-        if effectOfCellItem?.effectName == "Speed Up" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.duration != nil {
-                secondDurationLabel.text = effectOfCellItem?.duration
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-            
-        }
-        
-        if effectOfCellItem?.effectName == "Overfills Stamina" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            if effectOfCellItem?.amount != nil {
-                secondDurationLabel.text = String(format: "%.1f", (effectOfCellItem?.amount)!)
-            }
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-        }
-        
-        if effectOfCellItem?.effectName == "Temporary Hearts" {
-            specialEffectTwoImage.image = UIImage(named: (effectOfCellItem?.effectName)!)
-            
-            secondDurationLabel.text = String(format: " %.0f", (effectOfCellItem?.amount)!)
-            secondPlusLabel.isHidden = false
-            
-            secondEffectsLabel.text = effectOfCellItem?.effectName
-            specialIngredientTwo.text = (effectOfCellItem?.effectIngredient)!+":"
-            
-        }
+        var formattedDuration = formatter.string(from: duration)
+        formattedDuration?.append(" min")
+        return formattedDuration!
     }
     
     func hideFirstEffect(){
@@ -378,11 +378,5 @@ class DetailViewController: UIViewController {
         specialIngredientOne.text = "None"
         specialIngredientOne.textColor = .gray
         specialIngredientOne.font = UIFont.italicSystemFont(ofSize: 16.0)
-    }
-    func hideSecondEffect(){
-        secondEffectsLabel.isHidden = true
-        secondDurationLabel.isHidden = true
-        specialIngredientTwo.isHidden = true
-
     }
 }
