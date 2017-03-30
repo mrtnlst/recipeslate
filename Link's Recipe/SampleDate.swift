@@ -175,6 +175,7 @@ let materialData = [
     Material(materialName: "Mighty Porgy", category: Category(mainCategory: "Seafood", subCategory: "Fish", subSubCategory: "Porgy"), hearts: 1.0, effect: Effect(effectName: "Attack Up", duration: 50)),
     Material(materialName: "Sizzlefin Trout", category: Category(mainCategory: "Seafood", subCategory: "Fish"), hearts: 1.0, effect: Effect(effectName: "Cold Resistance", duration: 150)),
     Material(materialName: "Sanke Carp", category: Category(mainCategory: "Seafood", subCategory: "Fish"), hearts: 1.0, effect: Effect(effectName: "Duration", duration: 30)),
+    Material(materialName: "Staminoka Bass", category: Category(mainCategory: "Seafood", subCategory: "Fish"), hearts: 1.0, effect: Effect(effectName: "Restores Stamina", amount: 1.0)),
     Material(materialName: "Stealthfin Trout", category: Category(mainCategory: "Seafood", subCategory: "Fish"), hearts: 1.0, effect: Effect(effectName: "Increased Stealth", duration: 120)),
     Material(materialName: "Voltfin Trout", category: Category(mainCategory: "Seafood", subCategory: "Fish"), hearts: 1.0, effect: Effect(effectName: "Electricity Resistance", duration: 150)),
     
@@ -216,6 +217,7 @@ let mealData = [
 //    Meal(name:"Copious Fish Skewer", firstCategory: "Fish"),
     Meal(name:"Fish and Mushroom Skewer", firstCategory: "Fish", secondCategory: "Mushroom"),
     Meal(name:"Copious Meat Skewers", firstCategory: "Meat", secondCategory: "Meat", thirdCategory: "Meat", fourthCategory: "Meat"),
+    Meal(name:"Copious Mushroom Skewers", firstCategory: "Mushroom", secondCategory: "Mushroom", thirdCategory: "Mushroom", fourthCategory: "Mushroom"),
     
     
 //    Meal(name:"Fish Skewer",

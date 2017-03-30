@@ -222,7 +222,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         case 4: checkForFourPicker(firstEffect: firstEffect!, secondEffect: secondEffect!, thirdEffect: thirdEffect!, fourthEffect: fourthEffect!)
         
         default:
-//            setNone()
+//             setNone()
             firstNamePicker.isHidden = true
             secondNamePicker.isHidden = true
             thirdNamePicker.isHidden = true
@@ -294,40 +294,115 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         print("Four Picker")
         calcHeartsForCategoryIngredients()
         
-        if firstEffect.effectName == secondEffect.effectName && firstEffect.effectName == thirdEffect.effectName && firstEffect.effectName == fourthEffect.effectName {
-            if firstEffect.effectName == "Duration"{
+        let durationAmount = calcAmountOfDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+        print ("Duration Amount: \(durationAmount)")
+        
+        switch durationAmount{
+        case 1: compareForOneDuration(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+        case 2: compareForTwoDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+        case 3: compareForThreeDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+        case 4: setNone()
+        default:
+            if firstEffect.effectName == secondEffect.effectName && firstEffect.effectName == thirdEffect.effectName && firstEffect.effectName == fourthEffect.effectName {
+                if firstEffect.duration != nil {
+                    var tempDuration = firstEffect.duration! + secondEffect.duration!
+                    tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
+                    
+                    setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
+                }
+                if firstEffect.amount != nil {
+                    setEffectWithAmount(effectOfPicker: firstEffect)
+                }
+            }
+            else {
                 setNone()
             }
-            else if firstEffect.duration != nil {
-                var tempDuration = firstEffect.duration! + secondEffect.duration!
-                    tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
-                
-                setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
+        }
+    }
+    
+    func compareForOneDuration(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect){
+        let effect: [Effect] = [firstEffect, secondEffect, thirdEffect, fourthEffect]
+        var notDuration: [Effect] = []
+
+        for items in effect{
+            if items.effectName != "Duration" {
+                notDuration.append(items)
             }
         }
-//        else if firstEffect.effectName == "Duration" && secondEffect.effectName != "Duration"{
-//            if secondEffect.duration != nil{
-//                let tempDuration = firstEffect.duration! + secondEffect.duration!
-//                setEffectWithDuration(effectOfPicker: secondEffect.effectName, duration: tempDuration)
-//            }
-//            if secondEffect.amount != nil{
-//                setEffectWithAmount(effectOfPicker: secondEffect)
-//            }
-//        }
-//        else if (secondEffect.effectName == "Duration" && firstEffect.effectName != "Duration"){
-//            if firstEffect.duration != nil{
-//                let tempDuration = firstEffect.duration! + secondEffect.duration!
-//                setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
-//            }
-//            if firstEffect.amount != nil{
-//                setEffectWithAmount(effectOfPicker: firstEffect)
-//            }
-//        }
+        
+        if (notDuration.first?.effectName == notDuration.last?.effectName) && (notDuration.last?.effectName == notDuration[1].effectName){
+            if notDuration.first?.duration != nil{
+                var tempDuration = firstEffect.duration! + secondEffect.duration!
+                tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
+                
+                setEffectWithDuration(effectOfPicker: (notDuration.first?.effectName)!, duration: tempDuration)
+            }
+            if notDuration.first?.amount != nil {
+                setEffectWithAmount(effectOfPicker: (notDuration.first)!)
+            }
+        }
         else {
             setNone()
         }
+    }
+    
+    func compareForTwoDurations(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect){
+        let effect: [Effect] = [firstEffect, secondEffect, thirdEffect, fourthEffect]
+        var notDuration: [Effect] = []
+        
+        for items in effect{
+            if items.effectName != "Duration" {
+                notDuration.append(items)
+            }
+        }
+        
+        if notDuration.first?.effectName == notDuration.last?.effectName{
+            if notDuration.first?.duration != nil{
+                var tempDuration = firstEffect.duration! + secondEffect.duration!
+                tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
+                
+                setEffectWithDuration(effectOfPicker: (notDuration.first?.effectName)!, duration: tempDuration)
+            }
+            if notDuration.first?.amount != nil {
+                setEffectWithAmount(effectOfPicker: (notDuration.first)!)
+            }
+        }
+        else {
+            setNone()
+        }
+        
+    }
 
-
+    func compareForThreeDurations(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect){
+        let effect: [Effect] = [firstEffect, secondEffect, thirdEffect, fourthEffect]
+        
+        for items in effect{
+            if items.effectName != "Duration" {
+                if items.duration != nil {
+                    var tempDuration = firstEffect.duration! + secondEffect.duration!
+                    tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
+                    
+                    setEffectWithDuration(effectOfPicker: items.effectName, duration: tempDuration)
+                }
+                if items.amount != nil {
+                    setEffectWithAmount(effectOfPicker: items)
+                }
+            }
+        }
+        
+    }
+    
+    func calcAmountOfDurations(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect) -> Int{
+        
+        let effect: [Effect] = [firstEffect, secondEffect, thirdEffect, fourthEffect]
+        var count: Int = 0
+        
+        for items in effect{
+            if items.effectName == "Duration"{
+                count += 1
+            }
+        }
+        return count
     }
     
     
