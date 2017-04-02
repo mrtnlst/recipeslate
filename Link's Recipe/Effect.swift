@@ -19,4 +19,7 @@ struct Effect {
         self.duration = duration
    
     }
+    var titleFirstLetter: String {
+        return String(self.effectName[self.effectName.startIndex]).uppercased()
+    }
 }

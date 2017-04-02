@@ -185,8 +185,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 
         var firstEffect: Effect?
         var secondEffect: Effect?
-        var thirdEffect: Effect?
-        var fourthEffect: Effect?
+//        var thirdEffect: Effect?
+//        var fourthEffect: Effect?
         var count: Int = 0
         
         if firstPickerData.isEmpty == false{
@@ -197,14 +197,14 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             secondEffect = secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].effect!
             count = 2
         }
-        if thirdPickerData.isEmpty == false{
-            thirdEffect = thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].effect!
-            count = 3
-        }
-        if fourthPickerData.isEmpty == false{
-            fourthEffect = fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].effect!
-            count = 4
-        }
+//        if thirdPickerData.isEmpty == false{
+//            thirdEffect = thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].effect!
+//            count = 3
+//        }
+//        if fourthPickerData.isEmpty == false{
+//            fourthEffect = fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].effect!
+//            count = 4
+//        }
         
         switch count{
         case 1: checkForOnePicker(firstEffect: firstEffect!)
@@ -216,10 +216,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 thirdNamePicker.isHidden = true
                 fourthNamePicker.isHidden = true
         
-        case 3: checkForThreePicker(firstEffect: firstEffect!, secondEffect: secondEffect!, thirdEffect: thirdEffect!)
-                fourthNamePicker.isHidden = true
+//        case 3: checkForThreePicker(firstEffect: firstEffect!, secondEffect: secondEffect!, thirdEffect: thirdEffect!)
+//                fourthNamePicker.isHidden = true
         
-        case 4: checkForFourPicker(firstEffect: firstEffect!, secondEffect: secondEffect!, thirdEffect: thirdEffect!, fourthEffect: fourthEffect!)
+//        case 4: checkForFourPicker(firstEffect: firstEffect!, secondEffect: secondEffect!, thirdEffect: thirdEffect!, fourthEffect: fourthEffect!)
         
         default:
 //             setNone()
@@ -262,6 +262,11 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 let tempDuration = firstEffect.duration! + secondEffect.duration!
                 setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
             }
+            else if firstEffect.amount != nil{
+                if firstEffect.effectName == "Temporary Hearts"{
+                    setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: secondEffect.amount!)
+                }
+            }
         }
         else if firstEffect.effectName == "Duration" && secondEffect.effectName != "Duration"{
             if secondEffect.duration != nil{
@@ -272,7 +277,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithAmount(effectOfPicker: secondEffect)
             }
         }
-        else if (secondEffect.effectName == "Duration" && firstEffect.effectName != "Duration"){
+        else if (firstEffect.effectName != "Duration" && secondEffect.effectName == "Duration"){
             if firstEffect.duration != nil{
                 let tempDuration = firstEffect.duration! + secondEffect.duration!
                 setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
@@ -286,10 +291,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         
     }
+    
     func checkForThreePicker(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect){
         print("Third Picker")
         calcHeartsForCategoryIngredients()
     }
+    
     func checkForFourPicker(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect){
         print("Four Picker")
         calcHeartsForCategoryIngredients()
@@ -405,40 +412,18 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         return count
     }
     
-    
-    func parseDuration(_ timeString:String) -> TimeInterval {
-        guard !timeString.isEmpty else {
-            return 0
-        }
-        
-        var interval:Double = 0
-        
-        let parts = timeString.components(separatedBy: ":")
-        for (index, part) in parts.reversed().enumerated() {
-            interval += (Double(part) ?? 0) * pow(Double(60), Double(index))
-        }
-        
-        return interval
-    }
-    
-    func setEffectWithDuration(effectOfPicker: String, duration: TimeInterval? = nil){
-        
-        effectLabel.text = effectOfPicker
-        effectImageView.image = UIImage(named: effectOfPicker)
-        effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-        
-        let result = durationToString(duration: duration!)
-        
-        durationLabel.text = result
-        durationLabel.isHidden = false
-    }
-    
-    func setEffectWithAmount(effectOfPicker: Effect){
+    func setEffectWithAmount(effectOfPicker: Effect, optionalAmount: Float? = nil){
         effectLabel.text = effectOfPicker.effectName
         effectImageView.image = UIImage(named: effectOfPicker.effectName)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
+        
+        var amount = effectOfPicker.amount!
+        
+        if optionalAmount != nil {
+            amount += optionalAmount!
+        }
     
-        let result = String(format: " %.1f", effectOfPicker.amount!)
+        let result = String(format: " %.1f", amount)
         durationLabel.text = result
         plusLabel.isHidden = false
         durationLabel.isHidden = false
@@ -452,74 +437,106 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         durationLabel.isHidden = true
         plusLabel.isHidden = true
     }
-    
 
     func calcHeartsForMainIngredients(){
+        var fullRestore: Bool = false
         var hearts: Float
         hearts = 0.00
         for item in materialData {
             if item.hearts != nil{
                 if mealCell?.firstIngredient == item.materialName {
                     hearts += item.hearts!
+                    if item.effect?.effectName == "Temporary Hearts"{
+                        fullRestore = true
+                    }
                 }
                 if mealCell?.secondIngredient == item.materialName {
                     hearts += item.hearts!
+                    if item.effect?.effectName == "Temporary Hearts"{
+                        fullRestore = true
+                    }
                 }
                 if mealCell?.thirdIngredient == item.materialName {
                     hearts += item.hearts!
+                    if item.effect?.effectName == "Temporary Hearts"{
+                        fullRestore = true
+                    }
                 }
                 if mealCell?.fourthIngredient == item.materialName {
                     hearts += item.hearts!
+                    if item.effect?.effectName == "Temporary Hearts"{
+                        fullRestore = true
+                    }
                 }
                 if mealCell?.fifthIngredient == item.materialName {
                     hearts += item.hearts!
+                    if item.effect?.effectName == "Temporary Hearts"{
+                        fullRestore = true
+                    }
                 }
             }
         }
         print("Hearts for main ingredients: \(hearts)")
         heartsOfMainIngredients = hearts
         hearts = hearts * 2
-        setHearts(heartValueOfCellItem: hearts)
+        setHearts(heartValueOfCellItem: hearts, fullHearts: fullRestore)
     }
     
     func calcHeartsForCategoryIngredients(){
+        var fullRestore: Bool = false
         var categoryHearts: Float = 0.0
         
         if mealCell?.firstCategory != nil {
             if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].hearts != nil{
                 categoryHearts += firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].hearts!
+                
+                if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+                    fullRestore = true
+                }
             }
         }
         if mealCell?.secondCategory != nil {
             if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts != nil{
                 categoryHearts += secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts!
+                
+                if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+                    fullRestore = true
                 }
+            }
         }
         if mealCell?.thirdCategory != nil {
             if thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].hearts != nil{
                 categoryHearts += thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].hearts!
+                
+                if thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+                    fullRestore = true
+                }
             }
         }
         if mealCell?.fourthCategory != nil {
             if fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].hearts != nil{
                 categoryHearts += fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].hearts!
+                
+                if fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+                    fullRestore = true
+                }
             }
         }
         
         let result = (heartsOfMainIngredients + categoryHearts) * 2
         print("Hearts for category ingredients: \(categoryHearts)")
         
-        setHearts(heartValueOfCellItem: result)
+        setHearts(heartValueOfCellItem: result, fullHearts: fullRestore)
     }
     
-    func setHearts(heartValueOfCellItem: Float){
+    func setHearts(heartValueOfCellItem: Float, fullHearts: Bool? = nil){
         let hearts = splitHeartsValue(heartsValue: heartValueOfCellItem)
         
         // If full hearts have to be displayed.
         if (hearts.fullHearts > 0) || (hearts.decimalHearts > 0.00){
             
             // If full health is restored, the label displays "full".
-            if hearts.fullHearts >= 100 {
+            if fullHearts == true {
                 amountOfHeartsLabel.text = "full "
             } else {
                 if hearts.decimalHearts > 0.00 {
@@ -589,26 +606,27 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         fourthIngredientLabel.text = mealCell?.fourthIngredient
         fifthIngredientLabel.text = mealCell?.fifthIngredient
 
+        setNone()
 
         if mealCell?.firstIngredient != nil {
             setEffectLabelForMainIngredients(ingredient: (mealCell?.firstIngredient)!)
         }
         
-        else if mealCell?.secondIngredient != nil {
+        if mealCell?.secondIngredient != nil {
             setEffectLabelForMainIngredients(ingredient: (mealCell?.secondIngredient)!)
         }
-        else if mealCell?.thirdIngredient != nil {
+        if mealCell?.thirdIngredient != nil {
             setEffectLabelForMainIngredients(ingredient: (mealCell?.thirdIngredient)!)
         }
-        else if mealCell?.fourthIngredient != nil {
+        if mealCell?.fourthIngredient != nil {
             setEffectLabelForMainIngredients(ingredient: (mealCell?.fourthIngredient)!)
         }
-        else if mealCell?.fifthIngredient != nil {
+        if mealCell?.fifthIngredient != nil {
             setEffectLabelForMainIngredients(ingredient: (mealCell?.fifthIngredient)!)
         }
-        else {
-            setNone()
-        }
+//        else {
+//            setNone()
+//        }
     }
     
     func setOnlyDuration(duration: TimeInterval? = nil){
@@ -625,6 +643,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func durationToString(duration: TimeInterval) -> String{
         var effectDuration = duration
+//        print("Duration: \(effectDuration)")
+
         
         if additionalDurationIncrease.isEmpty == false {
             for durations in additionalDurationIncrease {
@@ -632,6 +652,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
         }
         
+        if effectDuration > 1800{
+            effectDuration = 1800
+        }
+        
+//        print("Duration: \(effectDuration)")
+
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [ .minute, .second ]
@@ -642,17 +668,49 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         return formattedDuration!
     }
     
+    func parseDuration(_ timeString:String) -> TimeInterval {
+        guard !timeString.isEmpty else {
+            return 0
+        }
+        
+        var interval:Double = 0
+        
+        let parts = timeString.components(separatedBy: ":")
+        for (index, part) in parts.reversed().enumerated() {
+            interval += (Double(part) ?? 0) * pow(Double(60), Double(index))
+        }
+        
+        return interval
+    }
+    
+    func setEffectWithDuration(effectOfPicker: String, duration: TimeInterval? = nil){
+        
+        effectLabel.text = effectOfPicker
+        effectImageView.image = UIImage(named: effectOfPicker)
+        effectLabel.font = UIFont.systemFont(ofSize: 16.0)
+        
+        
+        let result = durationToString(duration: duration!)
+
+//        print("Here: \(result)")
+        
+        durationLabel.text = result
+        durationLabel.isHidden = false
+    }
+
     func setEffectLabelForMainIngredients(ingredient: String){
         
         for items in materials{
             if ingredient == items.materialName{
                 if items.effect != nil{
 
-                    effectLabel.text = items.effect?.effectName
-                    effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-                    effectImageView.image = UIImage(named: (items.effect?.effectName)!)
+                    
                     
                     if items.effect?.amount != nil {
+                        effectLabel.text = items.effect?.effectName
+                        effectLabel.font = UIFont.systemFont(ofSize: 16.0)
+                        effectImageView.image = UIImage(named: (items.effect?.effectName)!)
+                        
                         let result = String(format: " %.1f", (items.effect?.amount!)!)
                         durationLabel.text = result
                         durationLabel.isHidden = false
@@ -665,11 +723,17 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                         if items.effect?.effectName == "Duration" {
                             
                             additionalDurationIncrease.append(items)
-                            effectLabel.text = "None"
-                            effectLabel.textColor = .gray
-                            effectLabel.font = UIFont.italicSystemFont(ofSize: 16.0)
+//                            effectLabel.text = "None"
+//                            effectLabel.textColor = .gray
+//                            effectLabel.font = UIFont.italicSystemFont(ofSize: 16.0)
+//                            setNone()
+                            print("Additional : \(items.materialName)")
                         }
                         else{
+                            effectLabel.text = items.effect?.effectName
+                            effectLabel.font = UIFont.systemFont(ofSize: 16.0)
+                            effectImageView.image = UIImage(named: (items.effect?.effectName)!)
+                            
                             durationLabel.text = result
                             durationLabel.isHidden = false
                         }
