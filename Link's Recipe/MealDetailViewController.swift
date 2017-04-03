@@ -41,6 +41,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     
     var additionalDurationIncrease: [Material] = []
+    var mainIngredientWithEffect: [Material] = []
+    
     var heartsOfMainIngredients: Float = 0.0
  
 
@@ -246,6 +248,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
         }
         else {
+//            if mainIngredientWithEffect.isEmpty == false{
+//                if
+//                
+//            }
             setNone()
         }
     }
@@ -715,6 +721,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                         durationLabel.text = result
                         durationLabel.isHidden = false
                         plusLabel.isHidden = true
+                        
+                        mainIngredientWithEffect.append(items)
                     }
                     if items.effect?.duration != nil {
                         let result = durationToString(duration: (items.effect?.duration!)!)
@@ -736,6 +744,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                             
                             durationLabel.text = result
                             durationLabel.isHidden = false
+                            
+                            mainIngredientWithEffect.append(items)
                         }
                         print("Effect: \(result)")
                     }

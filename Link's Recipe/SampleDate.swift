@@ -226,6 +226,9 @@ let materialData = [
     Material(materialName: "Wildberry", category: Category(mainCategory: "Fruit"), hearts: 1.0, effect: Effect(effectName: "Duration", duration: 30)),
     
     Material(materialName: "Monster Extract", category: Category(mainCategory: "Misc"), hearts: 1.5, effect: Effect(effectName: "Duration", duration: 1800)),
+    
+    Material(materialName: "Acorn", category: Category(mainCategory: "Nut"), hearts: 0.5, effect: Effect(effectName: "Duration", duration: 50)),
+    Material(materialName: "Chickaloo Tree Nut", category: Category(mainCategory: "Nut"), hearts: 0.5, effect: Effect(effectName: "Duration", duration: 50)),
 ]
 
 let mealData = [
@@ -255,7 +258,7 @@ let mealData = [
 //    Meal(name:"Copious Fish Skewer", firstCategory: "Fish"),
     Meal(name:"Fish and Mushroom Skewer", firstCategory: "Fish", secondCategory: "Mushroom"),
 //    Meal(name:"Copious Meat Skewers", firstCategory: "Meat", secondCategory: "Meat", thirdCategory: "Meat", fourthCategory: "Meat"),
-//    Meal(name:"Copious Mushroom Skewers", firstCategory: "Mushroom", secondCategory: "Mushroom", thirdCategory: "Mushroom", fourthCategory: "Mushroom"),
+
     Meal(name:"Fried Bananas", firstIngredient: "Mighty Bananas", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar"),
     Meal(name:"Fried Egg and Rice", firstIngredient: "Hylian Rice", secondIngredient: "Bird Egg"),
     Meal(name:"Fried Wild Greens", firstCategory: "Vegetables"),
@@ -289,8 +292,17 @@ let mealData = [
 
     Meal(name:"Monster Cake", firstIngredient: "Goat Butter", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar", fourthIngredient: "Monster Extract"),
     Meal(name:"Monster Stew", firstIngredient: "Monster Extract", firstCategory: "Meat", secondCategory: "Seafood"),
-     
-
+    Meal(name:"Monster Curry", firstIngredient: "Hylian Rice", secondIngredient: "Goron Spice", thirdIngredient: "Monster Extract"),
+    Meal(name:"Monster Rice Balls", firstIngredient: "Hylian Rice", secondIngredient: "Rock Salt", thirdIngredient: "Monster Extract"),
+    Meal(name:"Monster Soup", firstIngredient: "Goat Butter", secondIngredient: "Tabantha Wheat", thirdIngredient: "Fresh Milk", fourthIngredient: "Monster Extract"),
+    Meal(name:"Mushroom Omelet", firstIngredient: "Bird Egg", secondIngredient: "Goat Butter", thirdIngredient: "Rock Salt", firstCategory: "Mushroom"),
+    Meal(name:"Mushroom Rice Balls", firstIngredient: "Hylian Rice", firstCategory: "Mushroom"),
+    Meal(name:"Mushroom Risotto", firstIngredient: "Hylian Rice", secondIngredient: "Goat Butter", thirdIngredient: "Rock Salt", firstCategory: "Mushroom"),
+    Meal(name:"Mushroom Skewer", firstCategory: "Mushroom"),
+    //    Meal(name:"Copious Mushroom Skewers", firstCategory: "Mushroom", secondCategory: "Mushroom", thirdCategory: "Mushroom", fourthCategory: "Mushroom"),
+    Meal(name:"Nut Cake", firstIngredient: "Tabantha Wheat", secondIngredient: "Goat Butter", thirdIngredient: "Cane Sugar", firstCategory: "Nut"),
+    Meal(name:"Omelet", firstIngredient: "Bird Egg"),
+    Meal(name:"Pepper Seafood", firstIngredient: "Spicy Pepper", firstCategory: "Seafood"),
 ]
 
 let elixirData = [

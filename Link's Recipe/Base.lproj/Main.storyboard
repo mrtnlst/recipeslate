@@ -448,7 +448,7 @@
         <!--Effects-->
         <scene sceneID="tr1-wu-MSA">
             <objects>
-                <tableViewController id="flb-HT-MBl" customClass="EffectViewController" sceneMemberID="viewController">
+                <tableViewController id="flb-HT-MBl" customClass="EffectViewController" customModule="Link_s_Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gwC-ap-Kus">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
