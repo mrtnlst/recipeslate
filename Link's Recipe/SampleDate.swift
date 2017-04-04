@@ -143,15 +143,18 @@ let materialData = [
     Material(materialName: "Hylian Rice", category: Category(mainCategory: "Misc"), hearts: 1.0, effect: Effect(effectName: "Duration", duration: 60)),
     Material(materialName: "Goat Butter", category: Category(mainCategory: "Misc"), effect: Effect(effectName: "Duration", duration: 80)),
     Material(materialName: "Rock Salt", category: Category(mainCategory: "Misc"), effect: Effect(effectName: "Duration", duration: 60)),
-    Material(materialName: "Bright-Eyed Crab", category: Category(mainCategory: "Seafood", subCategory: "Crab"), hearts: 1.0, effect: Effect(effectName: "Restores Stamina", amount: 0.2)),
-    Material(materialName: "Ironshell Crab", category: Category(mainCategory: "Seafood", subCategory: "Crab"),hearts: 1.0, effect: Effect(effectName: "Defense Up", duration: 50)),
-    Material(materialName: "Razorclaw Crab", category: Category(mainCategory: "Seafood", subCategory: "Crab"),hearts: 1.0, effect: Effect(effectName: "Attack Up", duration: 50)),
     Material(materialName: "Tabantha Wheat", category: Category(mainCategory: "Misc"), hearts: 1.0, effect: Effect(effectName: "Duration", duration: 60)),
     Material(materialName: "Cane Sugar", category: Category(mainCategory: "Misc"), effect: Effect(effectName: "Duration", duration: 80)),
-   
     
-    Material(materialName: "Swift Carrot", category: Category(mainCategory: "Vegetables", subCategory: "Carrot"), hearts: 0.5, effect: Effect(effectName: "Speed Up", duration: 60)),
-    Material(materialName: "Endura Carrot", category: Category(mainCategory: "Vegetables", subCategory: "Carrot"), hearts: 2.0, effect: Effect(effectName: "Overfills Stamina", amount: 0.4)),
+    // Crabs.
+    Material(materialName: "Bright-Eyed Crab", category: Category(mainCategory: "Seafood", subCategory: "Crab", subSubCategory: "Crab or Snail"), hearts: 1.0, effect: Effect(effectName: "Restores Stamina", amount: 0.2)),
+    Material(materialName: "Ironshell Crab", category: Category(mainCategory: "Seafood", subCategory: "Crab", subSubCategory: "Crab or Snail"),hearts: 1.0, effect: Effect(effectName: "Defense Up", duration: 50)),
+    Material(materialName: "Razorclaw Crab", category: Category(mainCategory: "Seafood", subCategory: "Crab", subSubCategory: "Crab or Snail"),hearts: 1.0, effect: Effect(effectName: "Attack Up", duration: 50)),
+    
+    
+    
+    Material(materialName: "Swift Carrot", category: Category(mainCategory: "Vegetables", subCategory: "Carrot", subSubCategory: "Carrot or Pumpkin"), hearts: 0.5, effect: Effect(effectName: "Speed Up", duration: 60)),
+    Material(materialName: "Endura Carrot", category: Category(mainCategory: "Vegetables", subCategory: "Carrot", subSubCategory: "Carrot or Pumpkin"), hearts: 2.0, effect: Effect(effectName: "Overfills Stamina", amount: 0.4)),
     Material(materialName: "Fresh Milk", category: Category(mainCategory: "Misc"), hearts: 0.5, effect: Effect(effectName: "Duration", duration: 80)),
     Material(materialName: "Bird Egg", category: Category(mainCategory: "Misc"), hearts: 1.0, effect: Effect(effectName: "Duration", duration: 90)),
     Material(materialName: "Goron Spice", category: Category(mainCategory: "Misc"), effect: Effect(effectName: "Duration", duration: 90)),
@@ -159,7 +162,7 @@ let materialData = [
 
     Material(materialName: "Big Hearty Radish", category: Category(mainCategory: "Vegetables", subCategory: "Radish"), hearts: 4.0, effect: Effect(effectName: "Temporary Hearts", amount: 5.0)),
     Material(materialName: "Hearty Radish", category: Category(mainCategory: "Vegetables", subCategory: "Radish"), hearts: 2.5, effect: Effect(effectName: "Temporary Hearts", amount: 3.0)),
-    Material(materialName: "Fortified Pumpkin", category: Category(mainCategory: "Vegetables"), hearts: 0.5, effect: Effect(effectName: "Defense Up", duration: 50)),
+    Material(materialName: "Fortified Pumpkin", category: Category(mainCategory: "Vegetables", subCategory: "Carrot or Pumpkin"), hearts: 0.5, effect: Effect(effectName: "Defense Up", duration: 50)),
     Material(materialName: "Courser Bee Honey", category: Category(mainCategory: "Misc"), hearts: 2.0, effect: Effect(effectName: "Restores Stamina", amount: 0.4)),
    
     // Meat.
@@ -211,8 +214,8 @@ let materialData = [
     Material(materialName: "Warm Safflina", category: Category(mainCategory: "Vegetables", subCategory: "Flower and Herbs"), effect: Effect(effectName: "Cold Resistance", duration: 150)),
     
     // Snails.
-    Material(materialName: "Hearty Blueshell Snail", category: Category(mainCategory: "Seafood", subCategory: "Snail"), hearts: 3.0, effect: Effect(effectName: "Temporary Hearts", amount: 3.0)),
-    Material(materialName: "Sneaky River Snail", category: Category(mainCategory: "Seafood", subCategory: "Snail"), hearts: 1.0, effect: Effect(effectName: "Increased Stealth", duration: 120)),
+    Material(materialName: "Hearty Blueshell Snail", category: Category(mainCategory: "Seafood", subCategory: "Snail", subSubCategory: "Crab or Snail"), hearts: 3.0, effect: Effect(effectName: "Temporary Hearts", amount: 3.0)),
+    Material(materialName: "Sneaky River Snail", category: Category(mainCategory: "Seafood", subCategory: "Snail", subSubCategory: "Crab or Snail"), hearts: 1.0, effect: Effect(effectName: "Increased Stealth", duration: 120)),
     
     // Fruit.
     Material(materialName: "Apple", category: Category(mainCategory: "Fruit"), hearts: 0.5, effect: Effect(effectName: "Duration", duration: 30)),
@@ -229,6 +232,8 @@ let materialData = [
     
     Material(materialName: "Acorn", category: Category(mainCategory: "Nut"), hearts: 0.5, effect: Effect(effectName: "Duration", duration: 50)),
     Material(materialName: "Chickaloo Tree Nut", category: Category(mainCategory: "Nut"), hearts: 0.5, effect: Effect(effectName: "Duration", duration: 50)),
+    Material(materialName: "Wood", category: Category(mainCategory: "Misc"), hearts: 0.125),
+
 ]
 
 let mealData = [
@@ -303,6 +308,48 @@ let mealData = [
     Meal(name:"Nut Cake", firstIngredient: "Tabantha Wheat", secondIngredient: "Goat Butter", thirdIngredient: "Cane Sugar", firstCategory: "Nut"),
     Meal(name:"Omelet", firstIngredient: "Bird Egg"),
     Meal(name:"Pepper Seafood", firstIngredient: "Spicy Pepper", firstCategory: "Seafood"),
+    Meal(name:"Plain Crepe", firstIngredient: "Tabantha Wheat", secondIngredient: "Bird Egg", thirdIngredient: "Fresh Milk", fourthIngredient: "Cane Sugar", fifthIngredient: "Goat Butter"),
+    Meal(name:"Porgy Meunière", firstIngredient: "Tabantha Wheat", secondIngredient: "Goat Butter", firstCategory: "Porgy"),
+    Meal(name:"Pumpkin Pie", firstIngredient: "Fortified Pumpkin", secondIngredient: "Tabantha Wheat", thirdIngredient: "Cane Sugar", fourthIngredient: "Goat Butter"),
+    Meal(name:"Pumpkin Stew", firstIngredient: "Fortified Pumpkin", secondIngredient: "Tabantha Wheat", thirdIngredient: "Fresh Milk", fourthIngredient: "Goat Butter"),
+    Meal(name:"Rock-Hard Food", firstIngredient: "Wood"),
+    Meal(name:"Salmon Risotto", firstIngredient: "Hylian Rice", secondIngredient: "Goat Butter", thirdIngredient: "Rock Salt", fourthIngredient: "Hearty Salmon"),
+    Meal(name:"Salt-Grilled Crab", firstIngredient: "Rock Salt", firstCategory: "Crab"),
+    Meal(name:"Salt-Grilled Fish", firstIngredient: "Rock Salt", firstCategory: "Seafood"),
+    Meal(name:"Salt-Grilled Meat", firstIngredient: "Rock Salt", firstCategory: "Meat"),
+    Meal(name:"Salt-Grilled Greens", firstIngredient: "Rock Salt", firstCategory: "Vegetables"),
+    Meal(name:"Salt-Grilled Mushrooms", firstIngredient: "Rock Salt", firstCategory: "Mushrooms"),
+    Meal(name:"Sautéed Nuts", firstCategory: "Nut"),
+//    Meal(name:"Seafood Curry", firstCategory: "Nut"),
+//    Meal(name:"Seafood Fried Rice", firstCategory: "Nut"),
+//    Meal(name:"Seafood Meunière", firstCategory: "Nut"),
+    Meal(name:"Seafood Paella", firstIngredient: "Hylian Rice", secondIngredient: "Goat Butter", thirdIngredient: "Rock Salt", fourthIngredient: "Hearty Blueshell Snail", firstCategory: "Porgy"),
+    Meal(name:"Seafood Rice Balls", firstIngredient: "Hylian Rice", firstCategory: "Seafood"),
+    Meal(name:"Seafood Skewer", firstIngredient: "Hylian Rice", firstCategory: "Crab or Snail"),
+    Meal(name:"Simmered Fruit", firstCategory: "Fruit"),
+//    Meal(name:"Copious Simmered Fruit", firstCategory: "Fruit"),
+    Meal(name:"Pepper Steak", firstIngredient: "Spicy Pepper", firstCategory: "Meat"),
+   
+    // ?????? Pumpkin Carrot
+    Meal(name:"Steamed Fish", firstCategory: "Vegetables", secondCategory: "Seafood"),
+    Meal(name:"Steamed Meat", firstCategory: "Vegetables", secondCategory: "Meat"),
+    
+    Meal(name:"Steamed Fruit", firstCategory: "Vegetables", secondCategory: "Fruit"),
+    Meal(name:"Steamed Mushrooms", firstCategory: "Vegetables", secondCategory: "Mushrooms"),
+    
+    Meal(name:"Tough Meat-Stuffed Pumpkin", firstIngredient: "Fortified Pumpkin", firstCategory: "Meat"),
+    
+    Meal(name:"Vegetable Curry", firstIngredient: "Hylian Rice", secondIngredient: "Goron Spice", firstCategory: "Carrot or Pumpkin"),
+    Meal(name:"Vegetable Omelet", firstIngredient: "Bird Egg", secondIngredient: "Goat Butter", thirdIngredient: "Rock Salt", firstCategory: "Vegetables"),
+
+    Meal(name:"Vegetable Risotto", firstIngredient: "Hylian Rice", secondIngredient: "Goat Butter", thirdIngredient: "Rock Salt", firstCategory: "Carrot or Pumpkin"),
+    Meal(name:"Veggie Cream Soup", firstIngredient: "Fresh Milk", secondIngredient: "Rock Salt", firstCategory: "Carrot or Pumpkin"),
+    Meal(name:"Veggie Rice Balls", firstIngredient: "Hylian Rice", firstCategory: "Vegetables"),
+    Meal(name:"Warm Milk", firstIngredient: "Fresh Milk"),
+    Meal(name:"Wheat Bread", firstIngredient: "Tabantha Wheat", secondIngredient: "Rock Salt"),
+    Meal(name:"Wildberry Crepe", firstIngredient: "Tabantha Wheat", secondIngredient: "Fresh Milk", thirdIngredient: "Cane Sugar", fourthIngredient: "Bird Egg", fifthIngredient: "Wildberry"),
+    
+    
 ]
 
 let elixirData = [

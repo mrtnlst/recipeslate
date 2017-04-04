@@ -42,6 +42,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     var additionalDurationIncrease: [Material] = []
     var mainIngredientWithEffect: [Material] = []
+    var additionalMainIngredient: Material?
     
     var heartsOfMainIngredients: Float = 0.0
  
@@ -238,21 +239,54 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         print("One Picker")
         
         calcHeartsForCategoryIngredients()
+        var amount: Float = 0.0
+        var duration: Double = 0
         
+        // If the picker item has only duration effect, go to else.
         if firstEffect.effectName != "Duration"{
+            print("huhu 22")
+
+            // Check if there is a main ingredient with an effect.
+            if additionalMainIngredient != nil{
+
+                
+                // Check, if a main Ingredient has the same effect.
+                if firstEffect.effectName == additionalMainIngredient?.effect?.effectName{
+
+                    if additionalMainIngredient?.effect?.duration != nil{
+                        duration = (additionalMainIngredient?.effect?.duration)!
+                    }
+                    if additionalMainIngredient?.effect?.amount != nil{
+                        amount = (additionalMainIngredient?.effect?.amount)!
+                    }
+                }
+                else {
+                    // If it has not, no effect is displayed.
+
+                    setNone()
+                    return
+                }
+            }
+        
             if firstEffect.duration != nil{
-                setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: firstEffect.duration)
+                setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: firstEffect.duration! + duration)
             }
             if firstEffect.amount != nil{
                 setEffectWithAmount(effectOfPicker: firstEffect)
             }
         }
         else {
-//            if mainIngredientWithEffect.isEmpty == false{
-//                if
-//                
-//            }
-            setNone()
+            print("Additional Main Ingredient verstärkt")
+
+            if additionalMainIngredient != nil {
+                if additionalMainIngredient?.effect?.duration != nil{
+
+                    setEffectWithDuration(effectOfPicker: (additionalMainIngredient?.effect?.effectName)!, duration: firstEffect.duration! + (additionalMainIngredient?.effect?.duration)!)
+                }
+            }
+            else{
+                setNone()
+            }
         }
     }
     
@@ -568,7 +602,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func fillPickerData(){
         if mealCell?.firstCategory != nil {
             for items in materials{
-                if mealCell?.firstCategory == items.category.mainCategory || mealCell?.firstCategory == items.category.subCategory{
+                if mealCell?.firstCategory == items.category.mainCategory || mealCell?.firstCategory == items.category.subCategory || mealCell?.firstCategory == items.category.subSubCategory{
                     firstPickerData.append(items)
                     print(items.materialName)
                 }
@@ -576,7 +610,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         if mealCell?.secondCategory != nil {
             for items in materials{
-                if mealCell?.secondCategory == items.category.mainCategory || mealCell?.secondCategory == items.category.subCategory{
+                if mealCell?.secondCategory == items.category.mainCategory || mealCell?.secondCategory == items.category.subCategory || mealCell?.firstCategory == items.category.subSubCategory{
                     secondPickerData.append(items)
                     print(items.materialName)
                 }
@@ -584,7 +618,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         if mealCell?.thirdCategory != nil {
             for items in materials{
-                if mealCell?.thirdCategory == items.category.mainCategory || mealCell?.thirdCategory == items.category.subCategory{
+                if mealCell?.thirdCategory == items.category.mainCategory || mealCell?.thirdCategory == items.category.subCategory || mealCell?.firstCategory == items.category.subSubCategory{
                     thirdPickerData.append(items)
                     print(items.materialName)
                 }
@@ -615,30 +649,99 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         setNone()
 
         if mealCell?.firstIngredient != nil {
-            setEffectLabelForMainIngredients(ingredient: (mealCell?.firstIngredient)!)
+            checkForMainIngredientEffects(ingredient: (mealCell?.firstIngredient)!)
         }
-        
         if mealCell?.secondIngredient != nil {
-            setEffectLabelForMainIngredients(ingredient: (mealCell?.secondIngredient)!)
+            checkForMainIngredientEffects(ingredient: (mealCell?.secondIngredient)!)
         }
         if mealCell?.thirdIngredient != nil {
-            setEffectLabelForMainIngredients(ingredient: (mealCell?.thirdIngredient)!)
+            checkForMainIngredientEffects(ingredient: (mealCell?.thirdIngredient)!)
         }
         if mealCell?.fourthIngredient != nil {
-            setEffectLabelForMainIngredients(ingredient: (mealCell?.fourthIngredient)!)
+            checkForMainIngredientEffects(ingredient: (mealCell?.fourthIngredient)!)
         }
         if mealCell?.fifthIngredient != nil {
-            setEffectLabelForMainIngredients(ingredient: (mealCell?.fifthIngredient)!)
+            checkForMainIngredientEffects(ingredient: (mealCell?.fifthIngredient)!)
         }
-//        else {
-//            setNone()
-//        }
+        
+        handleMainIngredientEffects()
+    }
+    
+    func calcAmountOfDurationsForMainIngredients() -> Int{
+        
+        var count: Int = 0
+        
+        for items in mainIngredientWithEffect{
+            if items.effect?.effectName == "Duration"{
+                additionalDurationIncrease.append(items)
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    func handleMainIngredientEffects(){
+        
+        
+        if mainIngredientWithEffect.isEmpty == false{
+            let count = calcAmountOfDurationsForMainIngredients()
+            
+            let difference = mainIngredientWithEffect.count - count
+            
+            print("Difference: \(difference)")
+            
+            switch difference {
+            case 1:
+                checkOneMainIngredientEffect()
+            case 2:
+                checkTwoMainIngredientEffect()
+            default:
+                setNone()
+                
+            }
+        }
+    }
+    
+    func checkOneMainIngredientEffect(){
+        
+        for item in mainIngredientWithEffect{
+            if item.effect?.effectName != "Duration"{
+                if item.effect?.duration != nil{
+                    let tempDuration = item.effect?.duration
+                    
+                    additionalMainIngredient = item
+                    setEffectWithDuration(effectOfPicker: (item.effect?.effectName)!, duration: tempDuration)
+                }
+                if item.effect?.amount != nil{
+                    setEffectWithAmount(effectOfPicker: (item.effect)!)
+                    
+                    additionalMainIngredient = item
+                }
+            }
+        }
+    }
+    
+    func checkTwoMainIngredientEffect(){
+        var amount: Float = 0.0
+        var duration: Double = 0
+        
+        if mainIngredientWithEffect.first?.effect?.effectName == mainIngredientWithEffect.last?.effect?.effectName{
+            if mainIngredientWithEffect.first?.effect?.duration != nil{
+                
+                duration = (mainIngredientWithEffect.first?.effect?.duration)! + (mainIngredientWithEffect.last?.effect?.duration)!
+                setEffectWithDuration(effectOfPicker: (mainIngredientWithEffect.first?.effect?.effectName)!, duration: duration)
+                
+                additionalMainIngredient = Material(materialName: "empty", category: Category(mainCategory: "empty"), effect: Effect(effectName: (mainIngredientWithEffect.first?.effect?.effectName)!, duration: duration))
+            }
+        }
+        else{
+            print("huhu")
+            additionalMainIngredient = Material(materialName: "empty", category: Category(mainCategory: "empty"), effect: Effect(effectName: "empty"))
+            
+        }
     }
     
     func setOnlyDuration(duration: TimeInterval? = nil){
-//        effectLabel.text = effectOfPicker.effectName
-//        effectImageView.image = UIImage(named: effectOfPicker.effectName)
-//        effectLabel.font = UIFont.systemFont(ofSize: 16.0)
         
         let result = durationToString(duration: duration!)
         
@@ -704,53 +807,52 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         durationLabel.isHidden = false
     }
 
-    func setEffectLabelForMainIngredients(ingredient: String){
+    func checkForMainIngredientEffects(ingredient: String){
         
         for items in materials{
             if ingredient == items.materialName{
                 if items.effect != nil{
 
-                    
-                    
-                    if items.effect?.amount != nil {
-                        effectLabel.text = items.effect?.effectName
-                        effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-                        effectImageView.image = UIImage(named: (items.effect?.effectName)!)
-                        
-                        let result = String(format: " %.1f", (items.effect?.amount!)!)
-                        durationLabel.text = result
-                        durationLabel.isHidden = false
-                        plusLabel.isHidden = true
-                        
-                        mainIngredientWithEffect.append(items)
-                    }
-                    if items.effect?.duration != nil {
-                        let result = durationToString(duration: (items.effect?.duration!)!)
-
-                        // If main ingredient has additional duration effect.
-                        if items.effect?.effectName == "Duration" {
-                            
-                            additionalDurationIncrease.append(items)
-//                            effectLabel.text = "None"
-//                            effectLabel.textColor = .gray
-//                            effectLabel.font = UIFont.italicSystemFont(ofSize: 16.0)
-//                            setNone()
-                            print("Additional : \(items.materialName)")
-                        }
-                        else{
-                            effectLabel.text = items.effect?.effectName
-                            effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-                            effectImageView.image = UIImage(named: (items.effect?.effectName)!)
-                            
-                            durationLabel.text = result
-                            durationLabel.isHidden = false
-                            
-                            mainIngredientWithEffect.append(items)
-                        }
-                        print("Effect: \(result)")
-                    }
-                    
-                } 
+                     mainIngredientWithEffect.append(items)
+//                    if items.effect?.amount != nil {
+//                        effectLabel.text = items.effect?.effectName
+//                        effectLabel.font = UIFont.systemFont(ofSize: 16.0)
+//                        effectImageView.image = UIImage(named: (items.effect?.effectName)!)
+//                        
+//                        let result = String(format: " %.1f", (items.effect?.amount!)!)
+//                        durationLabel.text = result
+//                        durationLabel.isHidden = false
+//                        plusLabel.isHidden = true
+//                        
+//                        mainIngredientWithEffect.append(items)
+//                    }
+//                    if items.effect?.duration != nil {
+//                        let result = durationToString(duration: (items.effect?.duration!)!)
+//
+//                        // If main ingredient has additional duration effect.
+//                        if items.effect?.effectName == "Duration" {
+//                            
+//                            additionalDurationIncrease.append(items)
+////                            effectLabel.text = "None"
+////                            effectLabel.textColor = .gray
+////                            effectLabel.font = UIFont.italicSystemFont(ofSize: 16.0)
+////                            setNone()
+//                            print("Additional : \(items.materialName)")
+//                        }
+//                        else{
+//                            effectLabel.text = items.effect?.effectName
+//                            effectLabel.font = UIFont.systemFont(ofSize: 16.0)
+//                            effectImageView.image = UIImage(named: (items.effect?.effectName)!)
+//                            
+//                            durationLabel.text = result
+//                            durationLabel.isHidden = false
+//                            
+//                            mainIngredientWithEffect.append(items)
+//                        }
+//                        print("Effect: \(result)")
+//                    }
+//                    
+                }
             }
         }
     }

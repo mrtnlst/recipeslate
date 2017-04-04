@@ -53,14 +53,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6CJ-QQ-syw">
-                                            <rect key="frame" x="20.000000000000004" y="5" width="33.333333333333336" height="20.333333333333332"/>
+                                            <rect key="frame" x="15" y="5" width="33.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cP1-Zo-ktU">
-                                            <rect key="frame" x="19.999999999999996" y="25.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
+                                            <rect key="frame" x="14.999999999999996" y="25.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="1606" y="-973"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Food-->
         <scene sceneID="j8O-it-dRj">
             <objects>
-                <viewController title="Detail View Controller" id="7A5-pf-hou" customClass="FoodDetailViewController" customModule="Link_s_Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Food" id="7A5-pf-hou" customClass="FoodDetailViewController" customModule="Link_s_Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zj1-96-w9N"/>
                         <viewControllerLayoutGuide type="bottom" id="v6C-XX-h5r"/>
@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="2484" y="1051"/>
         </scene>
-        <!--Elixir Detail Controller-->
+        <!--Elixir-->
         <scene sceneID="a9e-Tb-IHM">
             <objects>
-                <viewController title="Elixir Detail Controller" id="VyA-Xb-b4O" customClass="ElixirDetailViewController" customModule="Link_s_Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Elixir" id="VyA-Xb-b4O" customClass="ElixirDetailViewController" customModule="Link_s_Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eQm-ai-hA6"/>
                         <viewControllerLayoutGuide type="bottom" id="pSB-7d-bcn"/>
@@ -461,7 +461,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MxS-kv-EkI" id="CgI-33-G88">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk9-zg-tzs">
@@ -495,7 +495,9 @@
                             <outlet property="delegate" destination="flb-HT-MBl" id="i8S-1w-hdL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Effects" id="Z0s-fv-HSd"/>
+                    <navigationItem key="navigationItem" title="Effects" id="Z0s-fv-HSd">
+                        <barButtonItem key="backBarButtonItem" title=" " id="iom-jY-pYP"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHH-WJ-2n5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -517,7 +519,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vmE-tE-igR" id="ceM-6U-IJJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9if-Nh-xax">
@@ -560,7 +562,9 @@
                             <outlet property="delegate" destination="04M-xa-ROD" id="Uu5-uz-hcU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Meals" id="g6X-aH-b1S"/>
+                    <navigationItem key="navigationItem" title="Meals" id="g6X-aH-b1S">
+                        <barButtonItem key="backBarButtonItem" title=" " id="zBM-OJ-YFE"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNm-3K-8eO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -582,7 +586,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y6h-n1-ZdX" id="f26-tH-Ptg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYd-dx-0kx">
@@ -619,7 +623,9 @@
                             <outlet property="delegate" destination="AgH-GQ-3F5" id="d4U-vf-TUl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Elixirs" id="cdy-qw-mgG"/>
+                    <navigationItem key="navigationItem" title="Elixirs" id="cdy-qw-mgG">
+                        <barButtonItem key="backBarButtonItem" title=" " id="m41-Pm-de0"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tb2-n3-iqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -861,16 +867,18 @@
                             <outlet property="delegate" destination="Fwl-RW-dcn" id="vUU-TC-CbI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Food" id="yPy-me-ZxN"/>
+                    <navigationItem key="navigationItem" title="Food " id="yPy-me-ZxN">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Cxu-eA-dn5"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PO-tV-SYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1537.5999999999999" y="1051.5742128935533"/>
         </scene>
-        <!--Meal Detail Controller-->
+        <!--Meal-->
         <scene sceneID="vGX-Mf-GXE">
             <objects>
-                <viewController title="Meal Detail Controller" id="no8-uf-0tF" customClass="MealDetailViewController" customModule="Link_s_Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Meal" id="no8-uf-0tF" customClass="MealDetailViewController" customModule="Link_s_Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ojT-KP-GRG"/>
                         <viewControllerLayoutGuide type="bottom" id="VUd-eO-wfo"/>
