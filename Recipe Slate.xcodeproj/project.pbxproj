@@ -359,7 +359,7 @@
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Link's Recipe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinlist.Link-s-Recipe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -372,7 +372,7 @@
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Link's Recipe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinlist.Link-s-Recipe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

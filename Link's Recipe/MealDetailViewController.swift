@@ -272,7 +272,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: firstEffect.duration! + duration)
             }
             if firstEffect.amount != nil{
-                setEffectWithAmount(effectOfPicker: firstEffect)
+                setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: amount, singleAmount: false)
             }
         }
         else {
@@ -282,6 +282,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 if additionalMainIngredient?.effect?.duration != nil{
 
                     setEffectWithDuration(effectOfPicker: (additionalMainIngredient?.effect?.effectName)!, duration: firstEffect.duration! + (additionalMainIngredient?.effect?.duration)!)
+                }
+                if additionalMainIngredient?.effect?.amount != nil{
+                    
+                    setEffectWithAmount(effectOfPicker: (additionalMainIngredient?.effect)!, singleAmount: true)
                 }
             }
             else{
@@ -304,8 +308,11 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
             else if firstEffect.amount != nil{
                 if firstEffect.effectName == "Temporary Hearts"{
-                    setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: secondEffect.amount!)
+                    setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: secondEffect.amount!, singleAmount: true )
+                } else {
+                    setEffectWithAmount(effectOfPicker: firstEffect, singleAmount: false)
                 }
+                
             }
         }
         else if firstEffect.effectName == "Duration" && secondEffect.effectName != "Duration"{
@@ -314,7 +321,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithDuration(effectOfPicker: secondEffect.effectName, duration: tempDuration)
             }
             if secondEffect.amount != nil{
-                setEffectWithAmount(effectOfPicker: secondEffect)
+                setEffectWithAmount(effectOfPicker: secondEffect, singleAmount: true)
             }
         }
         else if (firstEffect.effectName != "Duration" && secondEffect.effectName == "Duration"){
@@ -323,7 +330,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
             }
             if firstEffect.amount != nil{
-                setEffectWithAmount(effectOfPicker: firstEffect)
+                setEffectWithAmount(effectOfPicker: firstEffect, singleAmount: true)
             }
         }
         else {
@@ -358,7 +365,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                     setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
                 }
                 if firstEffect.amount != nil {
-                    setEffectWithAmount(effectOfPicker: firstEffect)
+                    setEffectWithAmount(effectOfPicker: firstEffect, singleAmount: true )
                 }
             }
             else {
@@ -385,7 +392,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithDuration(effectOfPicker: (notDuration.first?.effectName)!, duration: tempDuration)
             }
             if notDuration.first?.amount != nil {
-                setEffectWithAmount(effectOfPicker: (notDuration.first)!)
+                setEffectWithAmount(effectOfPicker: (notDuration.first)!, singleAmount: true )
             }
         }
         else {
@@ -411,7 +418,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithDuration(effectOfPicker: (notDuration.first?.effectName)!, duration: tempDuration)
             }
             if notDuration.first?.amount != nil {
-                setEffectWithAmount(effectOfPicker: (notDuration.first)!)
+                setEffectWithAmount(effectOfPicker: (notDuration.first)!,  singleAmount: true)
             }
         }
         else {
@@ -432,7 +439,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                     setEffectWithDuration(effectOfPicker: items.effectName, duration: tempDuration)
                 }
                 if items.amount != nil {
-                    setEffectWithAmount(effectOfPicker: items)
+                    setEffectWithAmount(effectOfPicker: items,  singleAmount: true )
                 }
             }
         }
@@ -452,7 +459,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         return count
     }
     
-    func setEffectWithAmount(effectOfPicker: Effect, optionalAmount: Float? = nil){
+    func setEffectWithAmount(effectOfPicker: Effect, optionalAmount: Float? = nil, singleAmount: Bool? = nil){
         effectLabel.text = effectOfPicker.effectName
         effectImageView.image = UIImage(named: effectOfPicker.effectName)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
@@ -462,12 +469,35 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if optionalAmount != nil {
             amount += optionalAmount!
         }
+        
+        if effectOfPicker.effectName == "Restores Stamina" && singleAmount == false{
+           amount = calculateAmountForRestoreStamina()
+        }
     
         let result = String(format: " %.1f", amount)
         durationLabel.text = result
         plusLabel.isHidden = false
         durationLabel.isHidden = false
     }
+    
+    func calculateAmountForRestoreStamina() -> Float{
+        var result: Float = 0.0
+        
+        if mealCell?.name == "Glazed Mushrooms"{
+            result = 0.8
+        }
+        if mealCell?.name == "Fish and Mushroom Skewer"{
+            result = 1.4
+        }
+        if mealCell?.name == "Glazed Seafood"{
+            result = 1.6
+            if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].materialName == "Bright-Eyed Crab" {
+                result = 1.0
+            }
+        }
+        
+        return result
+}
     
     func setNone(){
         effectLabel.text = "None"
