@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B2CC7E11E91979400E02C55 /* EffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectViewController.swift */; };
+		5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */; };
 		A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A2491E82EA980023C3B9 /* ElixirViewController.swift */; };
 		A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */; };
 		A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24D1E82F7130023C3B9 /* Critter.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		5B2CC7E01E91979400E02C55 /* EffectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectViewController.swift; sourceTree = "<group>"; };
+		5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		A914A2491E82EA980023C3B9 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
 		A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirDetailViewController.swift; sourceTree = "<group>"; };
 		A914A24D1E82F7130023C3B9 /* Critter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Critter.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		A9614D6A1E77F8F0009CA034 /* Link's Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */,
 				A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */,
 				A9614D711E77F8F0009CA034 /* Main.storyboard */,
 				A96FD1391E7BE8DE00CE60D6 /* Food */,
@@ -228,6 +231,7 @@
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* FoodViewController.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
+				5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
 				A9C338801E8544B0003A574F /* MealDetailViewController.swift in Sources */,
 				A9D5795D1E868B6D00E7FFBC /* Category.swift in Sources */,

@@ -30,6 +30,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var plusLabel: UILabel!
     
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     var mealCell: Meal?
     var materials:[Material] = materialData
     var categoryItems: [String] = []
@@ -77,6 +79,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         // Setting the ingredient labels and check if an ingredient has an effect. If so, it gets displayed.
         setIngredientLabels()
+        
+        // Check, if Meal is already a favorite.
+        let favoriteBool = checkFavorite()
+        setFavorite(isItemFavorite: favoriteBool)
         
         // Default position of picker.
         firstNamePicker.selectRow(0, inComponent: 0, animated: true)
@@ -208,7 +214,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 //            fourthEffect = fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].effect!
 //            count = 4
 //        }
-        
+        print("Count: \(count)")
         switch count{
         case 1: checkForOnePicker(firstEffect: firstEffect!)
                 secondNamePicker.isHidden = true
@@ -241,10 +247,9 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         calcHeartsForCategoryIngredients()
         var amount: Float = 0.0
         var duration: Double = 0
-        
+        var singleAmount = true
         // If the picker item has only duration effect, go to else.
         if firstEffect.effectName != "Duration"{
-            print("huhu 22")
 
             // Check if there is a main ingredient with an effect.
             if additionalMainIngredient != nil{
@@ -258,6 +263,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                     }
                     if additionalMainIngredient?.effect?.amount != nil{
                         amount = (additionalMainIngredient?.effect?.amount)!
+                        singleAmount = false
                     }
                 }
                 else {
@@ -272,7 +278,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: firstEffect.duration! + duration)
             }
             if firstEffect.amount != nil{
-                setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: amount, singleAmount: false)
+                setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: amount, singleAmount: singleAmount)
             }
         }
         else {
@@ -307,9 +313,17 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
             }
             else if firstEffect.amount != nil{
+                
+                // Amount options for Temporary Hearts and Overfilling Stamina.
                 if firstEffect.effectName == "Temporary Hearts"{
                     setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: secondEffect.amount!, singleAmount: true )
-                } else {
+                }
+                else if firstEffect.effectName == "Overfills Stamina"{
+                    
+                    let tempEffect = Effect(effectName: "Overfills Stamina", amount: 0.4)
+                    setEffectWithAmount(effectOfPicker: tempEffect, singleAmount: true )
+                }
+                else{
                     setEffectWithAmount(effectOfPicker: firstEffect, singleAmount: false)
                 }
                 
@@ -470,10 +484,11 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             amount += optionalAmount!
         }
         
+        
         if effectOfPicker.effectName == "Restores Stamina" && singleAmount == false{
            amount = calculateAmountForRestoreStamina()
         }
-    
+        
         let result = String(format: " %.1f", amount)
         durationLabel.text = result
         plusLabel.isHidden = false
@@ -632,7 +647,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func fillPickerData(){
         if mealCell?.firstCategory != nil {
             for items in materials{
-                if mealCell?.firstCategory == items.category.mainCategory || mealCell?.firstCategory == items.category.subCategory || mealCell?.firstCategory == items.category.subSubCategory{
+                if mealCell?.firstCategory == items.category.mainCategory || mealCell?.firstCategory == items.category.subCategory
+                                                                          || mealCell?.firstCategory == items.category.subSubCategory
+                                                                          || mealCell?.firstCategory == items.category.subSubSubCategory
+                                                                          || mealCell?.firstCategory == items.category.subSubSubSubCategory{
                     firstPickerData.append(items)
                     print(items.materialName)
                 }
@@ -640,7 +658,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         if mealCell?.secondCategory != nil {
             for items in materials{
-                if mealCell?.secondCategory == items.category.mainCategory || mealCell?.secondCategory == items.category.subCategory || mealCell?.firstCategory == items.category.subSubCategory{
+                if mealCell?.secondCategory == items.category.mainCategory || mealCell?.secondCategory == items.category.subCategory
+                                                                           || mealCell?.secondCategory == items.category.subSubCategory
+                                                                           || mealCell?.secondCategory == items.category.subSubSubCategory
+                                                                           || mealCell?.secondCategory == items.category.subSubSubSubCategory{
                     secondPickerData.append(items)
                     print(items.materialName)
                 }
@@ -648,7 +669,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         if mealCell?.thirdCategory != nil {
             for items in materials{
-                if mealCell?.thirdCategory == items.category.mainCategory || mealCell?.thirdCategory == items.category.subCategory || mealCell?.firstCategory == items.category.subSubCategory{
+                if mealCell?.thirdCategory == items.category.mainCategory || mealCell?.thirdCategory == items.category.subCategory || mealCell?.thirdCategory == items.category.subSubCategory{
                     thirdPickerData.append(items)
                     print(items.materialName)
                 }
@@ -752,7 +773,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func checkTwoMainIngredientEffect(){
-        var amount: Float = 0.0
+//        var amount: Float = 0.0
         var duration: Double = 0
         
         if mainIngredientWithEffect.first?.effect?.effectName == mainIngredientWithEffect.last?.effect?.effectName{
@@ -887,6 +908,79 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
     }
 
+    @IBAction func favoriteButtonTouchUpInside(_ sender: Any) {
+//        favoriteButton.setImage(UIImage(named: "Favorite"), for: UIControlState.normal)
+
+        var favorites: [String] = []
+        let defaults = UserDefaults.standard
+        if let favoritesDefaults = defaults.object(forKey: "favorites"){
+            favorites = favoritesDefaults as! [String]
+        }
+        
+        let favoriteBool = checkFavorite()
+        
+        if favoriteBool == false {
+            setFavorite(isItemFavorite: true)
+            favorites.append((mealCell?.name)!)
+            defaults.set(favorites, forKey: "favorites")
+            defaults.synchronize()
+            print(favorites)
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
+
+
+        }
+        else {
+            setFavorite(isItemFavorite: false)
+            removeFavorite(name: (mealCell?.name)!)
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
+            
+        }
+        
+    }
+
+    func checkFavorite() -> Bool{
+        var favorites: [String] = []
+        let defaults = UserDefaults.standard
+        
+        if let favoritesDefaults = defaults.object(forKey: "favorites"){
+            favorites = favoritesDefaults as! [String]
+        }
+        
+        for item in favorites{
+            if mealCell?.name == item{
+                return true
+            }
+        }
+        return false
+    }
+    
+    func setFavorite(isItemFavorite: Bool){
+        if isItemFavorite == true {
+            favoriteButton.setImage(UIImage(named: "Favorite"), for: UIControlState.normal)
+        }
+        else {
+            favoriteButton.setImage(UIImage(named: "Unfavorite"), for: UIControlState.normal)
+        }
+    }
+    func removeFavorite(name: String){
+        var favorites: [String] = []
+        let defaults = UserDefaults.standard
+        
+        if let favoritesDefaults = defaults.object(forKey: "favorites"){
+            favorites = favoritesDefaults as! [String]
+        }
+        
+        let position = favorites.index(of: (mealCell?.name)!)
+        favorites.remove(at: position!)
+       
+        defaults.set(favorites, forKey: "favorites")
+        defaults.synchronize()
+        print(favorites)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
