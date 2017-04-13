@@ -10,11 +10,11 @@ import Foundation
 
 struct Material {
     var materialName: String
-    var category: Category
+    var category: [String]
     var hearts: Float?
     var effect: Effect?
     
-    init(materialName: String, category: Category, hearts: Float? = nil, effect: Effect? = nil) {
+    init(materialName: String, category: [String], hearts: Float? = nil, effect: Effect? = nil) {
         self.materialName = materialName
         self.category = category
         self.hearts = hearts

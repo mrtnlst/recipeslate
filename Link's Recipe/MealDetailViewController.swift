@@ -647,45 +647,41 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func fillPickerData(){
         if mealCell?.firstCategory != nil {
             for items in materials{
-                if mealCell?.firstCategory == items.category.mainCategory || mealCell?.firstCategory == items.category.subCategory
-                                                                          || mealCell?.firstCategory == items.category.subSubCategory
-                                                                          || mealCell?.firstCategory == items.category.subSubSubCategory
-                                                                          || mealCell?.firstCategory == items.category.subSubSubSubCategory{
-                    firstPickerData.append(items)
-                    print(items.materialName)
+                for tag in items.category{
+                    if mealCell?.firstCategory == tag{
+                        firstPickerData.append(items)
+                        //            print(items.materialName)
+                    }
                 }
             }
         }
         if mealCell?.secondCategory != nil {
             for items in materials{
-                if mealCell?.secondCategory == items.category.mainCategory || mealCell?.secondCategory == items.category.subCategory
-                                                                           || mealCell?.secondCategory == items.category.subSubCategory
-                                                                           || mealCell?.secondCategory == items.category.subSubSubCategory
-                                                                           || mealCell?.secondCategory == items.category.subSubSubSubCategory{
-                    secondPickerData.append(items)
-                    print(items.materialName)
+                for tag in items.category{
+                    if mealCell?.secondCategory == tag{
+                        secondPickerData.append(items)
+                    }
                 }
             }
         }
         if mealCell?.thirdCategory != nil {
             for items in materials{
-                if mealCell?.thirdCategory == items.category.mainCategory || mealCell?.thirdCategory == items.category.subCategory || mealCell?.thirdCategory == items.category.subSubCategory{
-                    thirdPickerData.append(items)
-                    print(items.materialName)
+                for tag in items.category{
+                    if mealCell?.thirdCategory == tag{
+                        thirdPickerData.append(items)
+                    }
                 }
             }
         }
         if mealCell?.fourthCategory != nil {
             for items in materials{
-                if mealCell?.fourthCategory == items.category.mainCategory || mealCell?.fourthCategory == items.category.subCategory{
-                    fourthPickerData.append(items)
-                    print(items.materialName)
+                for tag in items.category{
+                    if mealCell?.fourthCategory == tag{
+                        fourthPickerData.append(items)
+                    }
                 }
             }
         }
-//        else {
-//        secondNamePicker.removeFromSuperview()
-//        }
         
     }
     
@@ -782,12 +778,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 duration = (mainIngredientWithEffect.first?.effect?.duration)! + (mainIngredientWithEffect.last?.effect?.duration)!
                 setEffectWithDuration(effectOfPicker: (mainIngredientWithEffect.first?.effect?.effectName)!, duration: duration)
                 
-                additionalMainIngredient = Material(materialName: "empty", category: Category(mainCategory: "empty"), effect: Effect(effectName: (mainIngredientWithEffect.first?.effect?.effectName)!, duration: duration))
+                additionalMainIngredient = Material(materialName: "empty", category: ["empty"], effect: Effect(effectName: (mainIngredientWithEffect.first?.effect?.effectName)!, duration: duration))
             }
         }
         else{
             print("huhu")
-            additionalMainIngredient = Material(materialName: "empty", category: Category(mainCategory: "empty"), effect: Effect(effectName: "empty"))
+            additionalMainIngredient = Material(materialName: "empty", category: ["empty"], effect: Effect(effectName: "empty"))
             
         }
     }

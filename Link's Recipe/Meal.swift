@@ -16,6 +16,7 @@ struct Meal {
     var thirdIngredient: String?
     var fourthIngredient: String?
     var fifthIngredient: String?
+    
     var firstCategory: String?
     var secondCategory: String?
     var thirdCategory: String?
