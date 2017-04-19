@@ -1,6 +1,5 @@
 //
-//  EffectViewController.swift
-//  Link's Recipes
+//  EffectsViewController.swift
 //
 //  Created by martin on 02.04.17.
 //  Copyright © 2017 Martin List. All rights reserved.
@@ -8,7 +7,7 @@
 
 import UIKit
 
-class EffectViewController: UITableViewController {
+class EffectsViewController: UITableViewController {
 
     var effects:[Effect] = effectData
     var sortedFirstLetters: [String] = []
@@ -79,24 +78,24 @@ class EffectViewController: UITableViewController {
         
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-//        let number = indexPath.row
-//        print(number)
-//        self.performSegue(withIdentifier: "showElixirDetail", sender: indexPath);
-//        
-//    }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showElixirDetail" {
-//            let destinatenViewController = segue.destination as! ElixirDetailViewController
-//            let indexPath = self.tableView.indexPathForSelectedRow
-//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
-//            destinatenViewController.elixirCell = selectedCell
-//            
-//            // Hiding tab bar, when in DetailViewController.
-//            destinatenViewController.hidesBottomBarWhenPushed = true
-//        }
-//        
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let number = indexPath.row
+        print(number)
+        self.performSegue(withIdentifier: "showEffects", sender: indexPath);
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEffects" {
+            let destinatenViewController = segue.destination as! EffectTableViewController
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
+            destinatenViewController.effectCell = selectedCell
+            
+            // Hiding tab bar, when in DetailViewController.
+            destinatenViewController.hidesBottomBarWhenPushed = true
+        }
+        
+    }
 
 }

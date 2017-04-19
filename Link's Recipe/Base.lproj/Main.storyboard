@@ -98,7 +98,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvX-Ig-VWy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.7971014492755" y="-973.36956521739137"/>
+            <point key="canvasLocation" x="1716" y="-973"/>
         </scene>
         <!--Food-->
         <scene sceneID="j8O-it-dRj">
@@ -265,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFV-QI-i7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2484" y="1051"/>
+            <point key="canvasLocation" x="316" y="1728"/>
         </scene>
         <!--Elixir-->
         <scene sceneID="a9e-Tb-IHM">
@@ -461,12 +461,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCD-cx-DWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2519" y="342"/>
+            <point key="canvasLocation" x="1716" y="999"/>
         </scene>
         <!--Effects-->
         <scene sceneID="tr1-wu-MSA">
             <objects>
-                <tableViewController id="flb-HT-MBl" customClass="EffectViewController" customModule="Recipe_Slate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="flb-HT-MBl" customClass="EffectsViewController" customModule="Recipe_Slate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gwC-ap-Kus">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -506,6 +506,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.15607225890000001" green="0.19520995020000001" blue="0.21774250270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="a6U-hU-V0I" kind="show" identifier="showEffects" trigger="accessoryAction" id="tDV-04-Tb4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -519,7 +522,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHH-WJ-2n5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="1586"/>
+            <point key="canvasLocation" x="1716" y="324"/>
         </scene>
         <!--Meals-->
         <scene sceneID="bTp-Br-2QD">
@@ -586,7 +589,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNm-3K-8eO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="-315"/>
+            <point key="canvasLocation" x="1716" y="-315"/>
         </scene>
         <!--Elixirs-->
         <scene sceneID="FG7-nI-vNW">
@@ -647,7 +650,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tb2-n3-iqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1771" y="342"/>
+            <point key="canvasLocation" x="977" y="999"/>
         </scene>
         <!--Meals Navigation Controller-->
         <scene sceneID="ZME-te-bhs">
@@ -699,7 +702,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3A-dS-HAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="-972"/>
+            <point key="canvasLocation" x="977" y="-973"/>
         </scene>
         <!--Elixirs Navigation Controller-->
         <scene sceneID="Aku-K8-yco">
@@ -725,7 +728,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSj-H0-IYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="342"/>
+            <point key="canvasLocation" x="316" y="999"/>
         </scene>
         <!--Effects Navigation Controller-->
         <scene sceneID="dFo-Lv-l5q">
@@ -751,7 +754,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMb-Xh-cdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="832"/>
+            <point key="canvasLocation" x="977" y="324"/>
         </scene>
         <!--Food Navigation Controller-->
         <scene sceneID="dCu-bG-oTQ">
@@ -777,7 +780,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7K5-kR-RT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="1052"/>
+            <point key="canvasLocation" x="-399" y="999"/>
         </scene>
         <!--Food-->
         <scene sceneID="GQf-lt-OpC">
@@ -888,7 +891,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2PO-tV-SYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537.5999999999999" y="1051.5742128935533"/>
+            <point key="canvasLocation" x="-400" y="1729"/>
         </scene>
         <!--Meal-->
         <scene sceneID="vGX-Mf-GXE">
@@ -915,16 +918,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rUU-XX-kgb">
-                                <rect key="frame" x="137.33333333333337" y="128" width="73.666666666666657" height="20"/>
+                                <rect key="frame" x="137.33333333333337" y="128" width="34.666666666666657" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovc-5H-2v1">
-                                        <rect key="frame" x="0.0" y="0.0" width="43.666666666666657" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovc-5H-2v1">
+                                        <rect key="frame" x="0.0" y="0.0" width="4.6666666666666572" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lPY-kg-8TN">
-                                        <rect key="frame" x="48.666666666666657" y="0.0" width="25" height="20"/>
+                                        <rect key="frame" x="9.6666666666666572" y="0.0" width="25" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Akl-Ob-dGe"/>
                                             <constraint firstAttribute="height" constant="20" id="KRj-J9-dRZ"/>
@@ -1124,7 +1127,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsu-NL-LIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2865" y="-723"/>
+            <point key="canvasLocation" x="3693" y="-646"/>
+        </scene>
+        <!--Effect-->
+        <scene sceneID="0ZR-UW-8ly">
+            <objects>
+                <tableViewController id="a6U-hU-V0I" customClass="EffectTableViewController" customModule="Recipe_Slate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ety-Ou-yKw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.15607225890000001" green="0.19520995020000001" blue="0.21774250270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.21176470589999999" green="0.2666666667" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.15607225890000001" green="0.19520995020000001" blue="0.21774250270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealCell" rowHeight="60" id="nKE-Zh-OcX">
+                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nKE-Zh-OcX" id="Y1j-cY-6zd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbM-bX-Orq">
+                                            <rect key="frame" x="20" y="8" width="366" height="43"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LbM-bX-Orq" secondAttribute="bottom" id="1C2-Nb-Qvd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LbM-bX-Orq" secondAttribute="trailing" constant="20" id="Esm-0C-Bsb"/>
+                                        <constraint firstItem="LbM-bX-Orq" firstAttribute="top" secondItem="Y1j-cY-6zd" secondAttribute="topMargin" id="l7n-YT-oiw"/>
+                                        <constraint firstItem="LbM-bX-Orq" firstAttribute="leading" secondItem="Y1j-cY-6zd" secondAttribute="leadingMargin" constant="12" id="wQV-1a-viQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.15607225890000001" green="0.19520995020000001" blue="0.21774250270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="no8-uf-0tF" kind="show" identifier="showMealDetail" trigger="accessoryAction" id="Rho-pT-v9e"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="a6U-hU-V0I" id="aNl-qI-Q7S"/>
+                            <outlet property="delegate" destination="a6U-hU-V0I" id="E18-U9-g2Q"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Effect" id="BPl-e5-X8J">
+                        <barButtonItem key="backBarButtonItem" title=" " id="txt-jT-rIA"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agD-sb-jwi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2486" y="324"/>
         </scene>
     </scenes>
     <resources>
@@ -1135,6 +1191,6 @@
         <image name="Meals Tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8Hp-vj-byW"/>
+        <segue reference="Rho-pT-v9e"/>
     </inferredMetricsTieBreakers>
 </document>

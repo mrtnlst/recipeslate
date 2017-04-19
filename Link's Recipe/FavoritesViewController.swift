@@ -104,8 +104,15 @@ class FavoritesViewController: UITableViewController {
   
         //Setting the image for fullHeart.
         if let heartsRestoredImage = cell.viewWithTag(101) as? UIImageView{
-            heartsRestoredImage.image = UIImage(named: "fullHeart")
+            let check = checkForMealEffect(meal: meal)
+            if check == true {
+                heartsRestoredImage.image = UIImage(named: "Effect")
+            }
+            else {
+                heartsRestoredImage.image = UIImage(named: "fullHeart")
+            }
         }
+
         
         return cell
     }
@@ -149,4 +156,77 @@ class FavoritesViewController: UITableViewController {
         }
     }
 
+    func checkForMealEffect(meal: Meal) -> Bool{
+        var check = false
+        
+        let mainCheck = checkMainIngredients(meal: meal)
+        if mainCheck == true{
+            check = true
+        }
+        
+        let categoryCheck = checkCategoryIngredients(meal: meal)
+        if categoryCheck == true {
+            check = true
+        }
+        return check
+    }
+    
+    func checkMainIngredients(meal: Meal) -> Bool{
+        var check = false
+        
+        for material in materialData{
+            if meal.firstIngredient == material.materialName{
+                if material.effect?.effectName != "Duration"{
+                    check = true
+                }
+            }
+            if meal.secondIngredient == material.materialName{
+                if material.effect?.effectName != "Duration"{
+                    check = true
+                }
+            }
+            if meal.thirdIngredient == material.materialName{
+                if material.effect?.effectName != "Duration"{
+                    check = true
+                }
+            }
+            if meal.fourthIngredient == material.materialName{
+                if material.effect?.effectName != "Duration"{
+                    check = true
+                }
+            }
+            if meal.fifthIngredient == material.materialName{
+                if material.effect?.effectName != "Duration"{
+                    check = true
+                }
+            }
+        }
+        return check
+    }
+    
+    func checkCategoryIngredients(meal: Meal) -> Bool{
+        var check = false
+        if meal.firstCategory != nil{
+            for items in materialData{
+                for tag in items.category{
+                    
+                    if meal.firstCategory == tag && items.effect?.effectName != "Duration"{
+                        check = true
+                    }
+                }
+            }
+        }
+        
+        if meal.secondCategory != nil{
+            for items in materialData{
+                for tag in items.category{
+                    
+                    if meal.secondCategory == tag && items.effect?.effectName != "Duration"{
+                        check = true
+                    }
+                }
+            }
+        }
+        return check
+    }
 }

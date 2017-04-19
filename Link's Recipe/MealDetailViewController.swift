@@ -33,6 +33,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var favoriteButton: UIButton!
     
     var mealCell: Meal?
+    var selectedEffect: String?
+    
     var materials:[Material] = materialData
     var categoryItems: [String] = []
     
@@ -51,7 +53,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Delegate and Data Source for UIPicker.
         firstNamePicker.dataSource = self
         firstNamePicker.delegate = self
@@ -77,6 +79,11 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         // Checking if a category ingredient is in the meal, if yes, add to array.
         fillPickerData()
         
+        var position: [Int] = [0, 0]
+        if selectedEffect != nil{
+            position = checkPickerForEarlyEffect()
+        }
+        
         // Setting the ingredient labels and check if an ingredient has an effect. If so, it gets displayed.
         setIngredientLabels()
         
@@ -85,8 +92,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         setFavorite(isItemFavorite: favoriteBool)
         
         // Default position of picker.
-        firstNamePicker.selectRow(0, inComponent: 0, animated: true)
-        secondNamePicker.selectRow(0, inComponent: 0, animated: true)
+        firstNamePicker.selectRow(position[0], inComponent: 0, animated: true)
+        secondNamePicker.selectRow(position[1], inComponent: 0, animated: true)
         thirdNamePicker.selectRow(0, inComponent: 0, animated: true)
         fourthNamePicker.selectRow(0, inComponent: 0, animated: true)
         
@@ -635,6 +642,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             // Setting the image for fullHeart.
             amountOfHeartsImageView.image = UIImage(named: "fullHeart")
         }
+        
+        if mealCell?.name == "Herb Sauté"{
+            amountOfHeartsLabel.text = String(format: "2")
+        }
     }
     
     func splitHeartsValue(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
@@ -990,5 +1001,55 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         // Pass the selected object to the new view controller.
     }
     */
+    func checkPickerForEarlyEffect() -> [Int]{
+        var position: [Int] = [0, 0]
+        var success = false
+        
+        if selectedEffect != nil{
+            
+            // First picker.
+            for (index, items) in firstPickerData.enumerated(){
+                if items.effect?.effectName == selectedEffect{
+                    position[0] = index
+                    print("Gott y'a at: \(position)")
+                    success = true
+                    
+                    // If successful, secondPicker set to Duration item.
+                    if mealCell?.secondCategory != nil{
+                        for (number, item) in secondPickerData.enumerated(){
+                            if item.effect?.effectName == "Duration"{
+                                position[1] = number
+                                break
+                            }
+                        }
+                    }
+                    break
+                }
+            }
+            
+            if success == false{
+                for (index, items) in secondPickerData.enumerated(){
+                    if items.effect?.effectName == selectedEffect{
+                        position[1] = index
+                        print("Gott y'a at: \(position)")
+                        success = true
+                        
+                        // If successful, firstPicker set to Duration item.
+                        if mealCell?.firstCategory != nil{
+                            for (number, item) in firstPickerData.enumerated(){
+                                if item.effect?.effectName == "Duration"{
+                                    position[0] = number
+                                    break
+                                }
+                            }
+                        }
+                        break
+                    }
+                }
+            }
+        }
+        
+        return position
+    }
 
 }
