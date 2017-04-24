@@ -84,7 +84,7 @@
 		A9614D5F1E77F8F0009CA034 = {
 			isa = PBXGroup;
 			children = (
-				A9614D6A1E77F8F0009CA034 /* Link's Recipes */,
+				A9614D6A1E77F8F0009CA034 /* Recipe Slate */,
 				A9614D691E77F8F0009CA034 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,7 +97,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A9614D6A1E77F8F0009CA034 /* Link's Recipes */ = {
+		A9614D6A1E77F8F0009CA034 /* Recipe Slate */ = {
 			isa = PBXGroup;
 			children = (
 				5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */,
@@ -114,8 +114,7 @@
 				A9614D761E77F8F0009CA034 /* LaunchScreen.storyboard */,
 				A9614D791E77F8F0009CA034 /* Info.plist */,
 			);
-			name = "Link's Recipes";
-			path = "Link's Recipe";
+			path = "Recipe Slate";
 			sourceTree = "<group>";
 		};
 		A9614D891E780E21009CA034 /* Meal */ = {
@@ -365,7 +364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
-				INFOPLIST_FILE = "Link's Recipe/Info.plist";
+				INFOPLIST_FILE = "Recipe Slate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,7 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
-				INFOPLIST_FILE = "Link's Recipe/Info.plist";
+				INFOPLIST_FILE = "Recipe Slate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
