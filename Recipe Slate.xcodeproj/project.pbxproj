@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B224E331EAE0A3A006D47DB /* AboutViewController.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */; };
 		5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = ../AboutViewController.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectTableViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		A9614D6A1E77F8F0009CA034 /* Recipe Slate */ = {
 			isa = PBXGroup;
 			children = (
+				5B224E331EAE0A3A006D47DB /* AboutViewController.swift */,
 				5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */,
 				A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */,
 				A9614D711E77F8F0009CA034 /* Main.storyboard */,
@@ -226,6 +229,7 @@
 				A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
+				5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */,
 				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
 				A9D5795B1E86893800E7FFBC /* FoodDetailViewController.swift in Sources */,
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
