@@ -106,7 +106,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         fourthNamePicker.selectRow(0, inComponent: 0, animated: true)
         
         checkPickers()
-//        calcHeartsForCategoryIngredients()
 //        pickerView(firstNamePicker, didSelectRow: 0, inComponent: 0)
         
         // Do any additional setup after loading the view.

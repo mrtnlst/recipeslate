@@ -10,7 +10,6 @@ import UIKit
 
 class FavoritesViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    
     var favorites: [String] = []
     var meals: [Meal] = []
     var sortedFirstLetters: [String] = []
