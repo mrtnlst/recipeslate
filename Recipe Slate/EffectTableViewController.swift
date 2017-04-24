@@ -240,7 +240,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-        self.searchController.isActive = false
+//        self.searchController.isActive = false
 
     }
     
@@ -270,6 +270,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
     
     func setupSearchVC()
     {
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self

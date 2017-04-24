@@ -94,7 +94,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorite Meals" id="hhA-Kl-fQV">
                         <barButtonItem key="backBarButtonItem" title=" " id="DLZ-bb-0Hs"/>
-                        <barButtonItem key="leftBarButtonItem" image="About Button" id="f5c-GF-R1X">
+                        <barButtonItem key="rightBarButtonItem" image="About Button" id="f5c-GF-R1X">
                             <connections>
                                 <segue destination="B12-QK-cDQ" kind="show" id="y29-WC-6kL"/>
                             </connections>
@@ -523,7 +523,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Effects" id="Z0s-fv-HSd">
                         <barButtonItem key="backBarButtonItem" title=" " id="iom-jY-pYP"/>
-                        <barButtonItem key="leftBarButtonItem" image="About Button" id="sSe-kp-ItF">
+                        <barButtonItem key="rightBarButtonItem" image="About Button" id="sSe-kp-ItF">
                             <connections>
                                 <segue destination="B12-QK-cDQ" kind="show" id="yn9-GV-vhg"/>
                             </connections>
@@ -595,7 +595,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Meals" id="g6X-aH-b1S">
                         <barButtonItem key="backBarButtonItem" title=" " id="zBM-OJ-YFE"/>
-                        <barButtonItem key="leftBarButtonItem" image="About Button" id="9JX-vg-VmQ">
+                        <barButtonItem key="rightBarButtonItem" image="About Button" id="9JX-vg-VmQ">
                             <connections>
                                 <segue destination="B12-QK-cDQ" kind="presentation" modalTransitionStyle="coverVertical" id="oBI-aZ-IPY"/>
                             </connections>
@@ -661,7 +661,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Elixirs" id="cdy-qw-mgG">
                         <barButtonItem key="backBarButtonItem" title=" " id="m41-Pm-de0"/>
-                        <barButtonItem key="leftBarButtonItem" image="About Button" id="9hi-6h-k70">
+                        <barButtonItem key="rightBarButtonItem" image="About Button" id="9hi-6h-k70">
                             <connections>
                                 <segue destination="B12-QK-cDQ" kind="show" id="Qns-lX-RcM"/>
                             </connections>
@@ -1012,7 +1012,7 @@ write an email at:</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Food " id="yPy-me-ZxN">
                         <barButtonItem key="backBarButtonItem" title=" " id="Cxu-eA-dn5"/>
-                        <barButtonItem key="leftBarButtonItem" image="About Button" id="Z9k-tl-tjt">
+                        <barButtonItem key="rightBarButtonItem" image="About Button" id="Z9k-tl-tjt">
                             <connections>
                                 <segue destination="B12-QK-cDQ" kind="show" id="Mpd-50-Y70"/>
                             </connections>
@@ -1348,7 +1348,7 @@ write an email at:</string>
         <image name="Meals Tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rho-pT-v9e"/>
-        <segue reference="oBI-aZ-IPY"/>
+        <segue reference="Mpd-50-Y70"/>
+        <segue reference="8Hp-vj-byW"/>
     </inferredMetricsTieBreakers>
 </document>

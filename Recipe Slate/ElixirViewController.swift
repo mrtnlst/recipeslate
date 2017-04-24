@@ -116,7 +116,7 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
        
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-        self.searchController.isActive = false
+//        self.searchController.isActive = false
 
         
     }
@@ -148,6 +148,7 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func setupSearchVC()
     {
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self

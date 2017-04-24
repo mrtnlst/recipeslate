@@ -112,7 +112,7 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-        self.searchController.isActive = false
+//        self.searchController.isActive = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -216,6 +216,7 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     
     func setupSearchVC()
     {
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self

@@ -107,7 +107,7 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-        self.searchController.isActive = false
+//        self.searchController.isActive = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -135,6 +135,7 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
     
     func setupSearchVC()
     {
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
