@@ -8,15 +8,26 @@
 
 import UIKit
 
-class MealViewController: UITableViewController {
+class MealViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var meals:[Meal] = mealData
     var sortedFirstLetters: [String] = []
     var sections: [[Meal]] = [[]]
     
+    var filteredResults = [Meal]()
+    let searchController = UISearchController(searchResultsController: nil)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
+        
         // Creating alphabetical sections.
         let firstLetters = meals.map { $0.titleFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))
@@ -27,15 +38,14 @@ class MealViewController: UITableViewController {
                 .filter { $0.titleFirstLetter == firstLetter }
                 .sorted { $0.name < $1.name }
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        setupSearchVC()
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchController.isActive {
+            return ""
+        }
         return sortedFirstLetters[section]
     }
     
@@ -44,15 +54,16 @@ class MealViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if searchController.isActive {
+            return 1
+        }
         return sections.count
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive {
+            return filteredResults.count
+        }
         return sections[section].count
     }
     
@@ -70,21 +81,16 @@ class MealViewController: UITableViewController {
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
         
-        let meal = sections[indexPath.section][indexPath.row]
-
+        let meal: Meal = getCorrectCellItem(path: indexPath)
+//        let meal = sections[indexPath.section][indexPath.row]
        
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
             nameLabel.text = meal.name
         }
         
         // Resetting imageViews.
-//        if let effectImage = cell.viewWithTag(103) as? UIImageView{
-//            effectImage.image = .none}
         if let heartsImage = cell.viewWithTag(101) as? UIImageView{
             heartsImage.image = .none}
-//        if let heartsYellowImage = cell.viewWithTag(102) as? UIImageView{
-//            heartsYellowImage.image = .none}
-        
         
         //Setting the image for fullHeart.
         if let heartsRestoredImage = cell.viewWithTag(101) as? UIImageView{
@@ -96,67 +102,33 @@ class MealViewController: UITableViewController {
                 heartsRestoredImage.image = UIImage(named: "fullHeart")
             }
         }
-        
-        
-        // Setting the added hearts.
-//        if meal.heartsAdded != nil {
-//            if let heartsAddedImage = cell.viewWithTag(102) as? UIImageView{
-//                heartsAddedImage.image = UIImage(named: "fullYellowHeart")
-//            }
-//        }
-        
-        // Setting effect imageView.
-//        if meal.effect == "Cold Resistance" {
-//            if let effect = cell.viewWithTag(103) as? UIImageView{
-//                effect.image = UIImage(named: "coldResistance")}
-//        }
-//        if meal.effect == "Heat Resistance" {
-//            if let effect = cell.viewWithTag(103) as? UIImageView{
-//                effect.image = UIImage(named: "heatResistance")}
-//        }
-//        if meal.effect == "Speed Up" {
-//            if let effect = cell.viewWithTag(103) as? UIImageView{
-//                effect.image = UIImage(named: "speedUp")}
-//        }
-//        if meal.effect == "Restores Stamina" {
-//            if let effect = cell.viewWithTag(103) as? UIImageView{
-//                effect.image = UIImage(named: "fullStamina")}
-//        }
-//        if meal.effect == "Overfills Stamina" {
-//            if let effect = cell.viewWithTag(103) as? UIImageView{
-//                effect.image = UIImage(named: "staminaAdded")}
-//        }
-        
-    return cell
+        return cell
     }
-
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let number = indexPath.row
         print(number)
         self.performSegue(withIdentifier: "showMealDetail", sender: indexPath);
         
-    
+        // Prevent horrible bug.
+        self.searchController.searchBar.endEditing(true)
+        self.searchController.isActive = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMealDetail" {
             let destinatenViewController = segue.destination as! MealDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
-            destinatenViewController.mealCell = selectedCell
+//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
+            let selectedCell = getCorrectCellItem(path: indexPath!)
             
+            destinatenViewController.mealCell = selectedCell
+
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true
+            
         }
         
-    }
-    
-    func calcHeartsImages(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
-        let fullHearts = Int(heartsValue)
-        let decimalHearts = heartsValue - Float(fullHearts)
-        
-        return(fullHearts, decimalHearts)
     }
     
     func checkForMealEffect(meal: Meal) -> Bool{
@@ -231,5 +203,55 @@ class MealViewController: UITableViewController {
             }
         }
         return check
+    }
+    
+    // MARK: SearchController.
+    func filterContentForSearchText(_ searchText: String)
+    {
+        filteredResults = meals.filter { meal in
+            return meal.name.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
+    
+    func setupSearchVC()
+    {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+    }
+    
+    public func updateSearchResults(for searchController: UISearchController)
+    {
+        let searchBar = searchController.searchBar
+        
+        // Set light statusbar theme.
+        setNeedsStatusBarAppearanceUpdate()
+        
+        print("*updateSearchResults - \(String(describing: searchBar.text))")
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func getCorrectCellItem(path: IndexPath) -> Meal
+    {
+        let meal: Meal
+        if searchController.isActive {
+            meal = filteredResults[path.row]
+        } else {
+            meal = sections[path.section][path.row]
+        }
+        return meal
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
 }

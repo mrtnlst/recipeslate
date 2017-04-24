@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupAppAppearance()
+
         return true
     }
 
@@ -33,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
+    private func setupAppAppearance()
+    {
+        UISearchBar.appearance().barTintColor = UIColor.headerBlue()
+        UISearchBar.appearance().tintColor = UIColor.white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.headerBlue()
+    }
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
@@ -41,6 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-
+extension UIColor
+{
+    static func headerBlue() -> UIColor
+    {
+        return UIColor(red: 35/255, green: 43/255, blue: 49/255, alpha: 1.0)    }
+    
+    static func backgroundBlue() -> UIColor
+    {
+        return UIColor(red: 40.0/255.0, green: 50.0/255.0, blue: 56.0/255.0, alpha: 1.0)
+    }
+}

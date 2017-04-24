@@ -1,6 +1,6 @@
 //
 //  MealDetailViewController.swift
-//  Link's Recipes
+//  Recipe Slate
 //
 //  Created by Martin List on 24/03/2017.
 //  Copyright © 2017 Martin List. All rights reserved.
@@ -39,7 +39,9 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     var categoryItems: [String] = []
     
     var firstPickerData: [Material] = []
+    var firstPickerSpecialData: [Material] = []
     var secondPickerData: [Material] = []
+    var secondPickerSpecialData: [Material] = []
     var thirdPickerData: [Material] = []
     var fourthPickerData: [Material] = []
     
@@ -79,10 +81,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         // Checking if a category ingredient is in the meal, if yes, add to array.
         fillPickerData()
         
-        var position: [Int] = [0, 0]
-        if selectedEffect != nil{
-            position = checkPickerForEarlyEffect()
-        }
+//        var position: [Int] = [0, 0]
+//        if selectedEffect != nil{
+//            position = checkPickerForEarlyEffect()
+//        }
+        
+        checkPickerForEarlyEffect()
         
         // Setting the ingredient labels and check if an ingredient has an effect. If so, it gets displayed.
         setIngredientLabels()
@@ -92,8 +96,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         setFavorite(isItemFavorite: favoriteBool)
         
         // Default position of picker.
-        firstNamePicker.selectRow(position[0], inComponent: 0, animated: true)
-        secondNamePicker.selectRow(position[1], inComponent: 0, animated: true)
+//        firstNamePicker.selectRow(position[0], inComponent: 0, animated: true)
+//        secondNamePicker.selectRow(position[1], inComponent: 0, animated: true)
+
+        firstNamePicker.selectRow(0, inComponent: 0, animated: true)
+        secondNamePicker.selectRow(0, inComponent: 0, animated: true)
+
         thirdNamePicker.selectRow(0, inComponent: 0, animated: true)
         fourthNamePicker.selectRow(0, inComponent: 0, animated: true)
         
@@ -198,12 +206,20 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func checkPickers(){
-
+        
         var firstEffect: Effect?
         var secondEffect: Effect?
 //        var thirdEffect: Effect?
 //        var fourthEffect: Effect?
         var count: Int = 0
+        
+        // If View was accessed from effects tab.
+        if firstPickerSpecialData.isEmpty == false {
+            firstPickerData = firstPickerSpecialData
+        }
+        if secondPickerSpecialData.isEmpty == false {
+            secondPickerData = secondPickerSpecialData
+        }
         
         if firstPickerData.isEmpty == false{
             firstEffect = firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].effect!
@@ -810,8 +826,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func durationToString(duration: TimeInterval) -> String{
         var effectDuration = duration
-//        print("Duration: \(effectDuration)")
-
         
         if additionalDurationIncrease.isEmpty == false {
             for durations in additionalDurationIncrease {
@@ -823,8 +837,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             effectDuration = 1800
         }
         
-//        print("Duration: \(effectDuration)")
-
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [ .minute, .second ]
@@ -856,10 +868,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         effectImageView.image = UIImage(named: effectOfPicker)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
         
-        
         let result = durationToString(duration: duration!)
-
-//        print("Here: \(result)")
         
         durationLabel.text = result
         durationLabel.isHidden = false
@@ -872,51 +881,13 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 if items.effect != nil{
 
                      mainIngredientWithEffect.append(items)
-//                    if items.effect?.amount != nil {
-//                        effectLabel.text = items.effect?.effectName
-//                        effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-//                        effectImageView.image = UIImage(named: (items.effect?.effectName)!)
-//                        
-//                        let result = String(format: " %.1f", (items.effect?.amount!)!)
-//                        durationLabel.text = result
-//                        durationLabel.isHidden = false
-//                        plusLabel.isHidden = true
-//                        
-//                        mainIngredientWithEffect.append(items)
-//                    }
-//                    if items.effect?.duration != nil {
-//                        let result = durationToString(duration: (items.effect?.duration!)!)
-//
-//                        // If main ingredient has additional duration effect.
-//                        if items.effect?.effectName == "Duration" {
-//                            
-//                            additionalDurationIncrease.append(items)
-////                            effectLabel.text = "None"
-////                            effectLabel.textColor = .gray
-////                            effectLabel.font = UIFont.italicSystemFont(ofSize: 16.0)
-////                            setNone()
-//                            print("Additional : \(items.materialName)")
-//                        }
-//                        else{
-//                            effectLabel.text = items.effect?.effectName
-//                            effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-//                            effectImageView.image = UIImage(named: (items.effect?.effectName)!)
-//                            
-//                            durationLabel.text = result
-//                            durationLabel.isHidden = false
-//                            
-//                            mainIngredientWithEffect.append(items)
-//                        }
-//                        print("Effect: \(result)")
-//                    }
-//                    
+
                 }
             }
         }
     }
 
     @IBAction func favoriteButtonTouchUpInside(_ sender: Any) {
-//        favoriteButton.setImage(UIImage(named: "Favorite"), for: UIControlState.normal)
 
         var favorites: [String] = []
         let defaults = UserDefaults.standard
@@ -992,64 +963,50 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    func checkPickerForEarlyEffect() -> [Int]{
-        var position: [Int] = [0, 0]
+ 
+    func checkPickerForEarlyEffect(){
         var success = false
         
         if selectedEffect != nil{
             
             // First picker.
-            for (index, items) in firstPickerData.enumerated(){
+            for items in firstPickerData{
                 if items.effect?.effectName == selectedEffect{
-                    position[0] = index
-                    print("Gott y'a at: \(position)")
+                    firstPickerSpecialData.append(items)
                     success = true
-                    
-                    // If successful, secondPicker set to Duration item.
-                    if mealCell?.secondCategory != nil{
-                        for (number, item) in secondPickerData.enumerated(){
-                            if item.effect?.effectName == "Duration"{
-                                position[1] = number
-                                break
-                            }
-                        }
-                    }
-                    break
                 }
             }
             
+            if success == true {
+                if mealCell?.secondCategory != nil{
+                    for items in secondPickerData{
+                        if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
+                            secondPickerSpecialData.append(items)
+                        }
+                    }
+                }
+                
+            }
+            
             if success == false{
-                for (index, items) in secondPickerData.enumerated(){
+                for items in secondPickerData{
                     if items.effect?.effectName == selectedEffect{
-                        position[1] = index
-                        print("Gott y'a at: \(position)")
+                        secondPickerSpecialData.append(items)
                         success = true
-                        
-                        // If successful, firstPicker set to Duration item.
-                        if mealCell?.firstCategory != nil{
-                            for (number, item) in firstPickerData.enumerated(){
-                                if item.effect?.effectName == "Duration"{
-                                    position[0] = number
-                                    break
-                                }
+                    }
+                }
+                
+                if success == true {
+                    if mealCell?.firstCategory != nil{
+                        for items in firstPickerData{
+                            if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
+                                firstPickerSpecialData.append(items)
                             }
                         }
-                        break
                     }
+                    
                 }
             }
         }
-        
-        return position
     }
-
 }

@@ -8,15 +8,26 @@
 
 import UIKit
 
-class ElixirViewController: UITableViewController {
+class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
     var elixirs:[Elixir] = elixirData
     var sortedFirstLetters: [String] = []
     var sections: [[Elixir]] = [[]]
     
+    var filteredResults = [Elixir]()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
+        
         // Creating alphabetical sections.
         let firstLetters = elixirs.map { $0.titleFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))
@@ -28,14 +39,13 @@ class ElixirViewController: UITableViewController {
                 .sorted { $0.name < $1.name }
         }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        setupSearchVC()
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchController.isActive {
+            return ""
+        }
         return sortedFirstLetters[section]
     }
     
@@ -44,6 +54,9 @@ class ElixirViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if searchController.isActive {
+            return 1
+        }
         return sections.count
     }
     
@@ -53,6 +66,9 @@ class ElixirViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive {
+            return filteredResults.count
+        }
         return sections[section].count
     }
     
@@ -70,8 +86,9 @@ class ElixirViewController: UITableViewController {
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
    
-        let elixir = sections[indexPath.section][indexPath.row]
-
+//        let elixir = sections[indexPath.section][indexPath.row]
+        let elixir: Elixir = getCorrectCellItem(path: indexPath)
+        
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
             nameLabel.text = elixir.name
         }
@@ -96,6 +113,11 @@ class ElixirViewController: UITableViewController {
         let number = indexPath.row
         print(number)
         self.performSegue(withIdentifier: "showElixirDetail", sender: indexPath);
+       
+        // Prevent horrible bug.
+        self.searchController.searchBar.endEditing(true)
+        self.searchController.isActive = false
+
         
     }
     
@@ -103,7 +125,10 @@ class ElixirViewController: UITableViewController {
         if segue.identifier == "showElixirDetail" {
             let destinatenViewController = segue.destination as! ElixirDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
+
+            let selectedCell = getCorrectCellItem(path: indexPath!)
+
+//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             destinatenViewController.elixirCell = selectedCell
             
             // Hiding tab bar, when in DetailViewController.
@@ -112,49 +137,48 @@ class ElixirViewController: UITableViewController {
         
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // MARK: SearchController.
+    func filterContentForSearchText(_ searchText: String)
+    {
+        filteredResults = elixirs.filter { elixir in
+            return elixir.name.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func setupSearchVC()
+    {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    public func updateSearchResults(for searchController: UISearchController)
+    {
+        let searchBar = searchController.searchBar
+        
+        // Set light statusbar theme.
+        setNeedsStatusBarAppearanceUpdate()
+        
+        print("*updateSearchResults - \(String(describing: searchBar.text))")
+        filterContentForSearchText(searchController.searchBar.text!)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func getCorrectCellItem(path: IndexPath) -> Elixir
+    {
+        let elixir: Elixir
+        if searchController.isActive {
+            elixir = filteredResults[path.row]
+        } else {
+            elixir = sections[path.section][path.row]
+        }
+        return elixir
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
-    */
-
 }

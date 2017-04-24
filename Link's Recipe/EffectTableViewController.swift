@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EffectTableViewController: UITableViewController {
+class EffectTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
     var effectCell: Effect?
     
@@ -19,11 +19,21 @@ class EffectTableViewController: UITableViewController {
     var sortedFirstLetters: [String] = []
     var sections: [[Meal]] = [[]]
     
+    var filteredResults = [Meal]()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = effectCell?.effectName
-
+        
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
         
         findEffectInMeals()
         
@@ -36,6 +46,7 @@ class EffectTableViewController: UITableViewController {
                 .filter { $0.titleFirstLetter == firstLetter }
                 .sorted { $0.name < $1.name }
         }
+        setupSearchVC()
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,6 +57,9 @@ class EffectTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchController.isActive {
+            return ""
+        }
         return sortedFirstLetters[section]
     }
     
@@ -54,10 +68,16 @@ class EffectTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if searchController.isActive {
+            return 1
+        }
         return sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive {
+            return filteredResults.count
+        }
         return sections[section].count
     }
     
@@ -75,7 +95,8 @@ class EffectTableViewController: UITableViewController {
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
         
-        let effect = sections[indexPath.section][indexPath.row]
+//        let effect = sections[indexPath.section][indexPath.row]
+        let effect: Meal = getCorrectCellItem(path: indexPath)
         
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
             nameLabel.text = effect.name
@@ -217,13 +238,18 @@ class EffectTableViewController: UITableViewController {
         print(number)
         self.performSegue(withIdentifier: "showMealDetail", sender: indexPath);
         
+        // Prevent horrible bug.
+        self.searchController.searchBar.endEditing(true)
+        self.searchController.isActive = false
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMealDetail" {
             let destinatenViewController = segue.destination as! MealDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
+//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
+            let selectedCell = getCorrectCellItem(path: indexPath!)
             destinatenViewController.mealCell = selectedCell
             destinatenViewController.selectedEffect = effectCell?.effectName
             
@@ -231,5 +257,50 @@ class EffectTableViewController: UITableViewController {
             destinatenViewController.hidesBottomBarWhenPushed = true
         }
         
+    }
+    
+    // MARK: SearchController.
+    func filterContentForSearchText(_ searchText: String)
+    {
+        filteredResults = effect.filter { meal in
+            return meal.name.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
+    
+    func setupSearchVC()
+    {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+    }
+    
+    public func updateSearchResults(for searchController: UISearchController)
+    {
+        let searchBar = searchController.searchBar
+        
+        // Set light statusbar theme.
+        setNeedsStatusBarAppearanceUpdate()
+        
+        print("*updateSearchResults - \(String(describing: searchBar.text))")
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func getCorrectCellItem(path: IndexPath) -> Meal
+    {
+        let meal: Meal
+        if searchController.isActive {
+            meal = filteredResults[path.row]
+        } else {
+            meal = sections[path.section][path.row]
+        }
+        return meal
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
     }
 }
