@@ -21,16 +21,14 @@
 		A9614D801E77F978009CA034 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D7F1E77F978009CA034 /* MealViewController.swift */; };
 		A9614D821E77FA0D009CA034 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D811E77FA0D009CA034 /* Meal.swift */; };
 		A9614D841E77FACA009CA034 /* SampleDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D831E77FACA009CA034 /* SampleDate.swift */; };
-		A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D871E77FF0C009CA034 /* Ingredients.swift */; };
 		A9614D8D1E795104009CA034 /* Elixir.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9614D8C1E795104009CA034 /* Elixir.swift */; };
-		A96FD1361E7BE8C700CE60D6 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FD1351E7BE8C700CE60D6 /* FoodViewController.swift */; };
+		A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */; };
 		A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FD1371E7BE8D900CE60D6 /* Food.swift */; };
 		A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C3387B1E8435E8003A574F /* MonsterPart.swift */; };
 		A9C3387E1E853A52003A574F /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C3387D1E853A51003A574F /* Material.swift */; };
 		A9C338801E8544B0003A574F /* MealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */; };
 		A9C784D11E80819000551990 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C784D01E80819000551990 /* Effect.swift */; };
-		A9D5795B1E86893800E7FFBC /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5795A1E86893700E7FFBC /* FoodDetailViewController.swift */; };
-		A9D5795D1E868B6D00E7FFBC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5795C1E868B6D00E7FFBC /* Category.swift */; };
+		A9D5795B1E86893800E7FFBC /* MaterialDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,16 +48,14 @@
 		A9614D7F1E77F978009CA034 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		A9614D811E77FA0D009CA034 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		A9614D831E77FACA009CA034 /* SampleDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDate.swift; sourceTree = "<group>"; };
-		A9614D871E77FF0C009CA034 /* Ingredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		A9614D8C1E795104009CA034 /* Elixir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elixir.swift; sourceTree = "<group>"; };
-		A96FD1351E7BE8C700CE60D6 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		A96FD1371E7BE8D900CE60D6 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		A9C3387B1E8435E8003A574F /* MonsterPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterPart.swift; sourceTree = "<group>"; };
 		A9C3387D1E853A51003A574F /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
 		A9C784D01E80819000551990 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
-		A9D5795A1E86893700E7FFBC /* FoodDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
-		A9D5795C1E868B6D00E7FFBC /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +105,6 @@
 				A96FD1391E7BE8DE00CE60D6 /* Food */,
 				A9614D891E780E21009CA034 /* Meal */,
 				A9C3387D1E853A51003A574F /* Material.swift */,
-				A9D5795C1E868B6D00E7FFBC /* Category.swift */,
 				5B2CC7E21E9197EF00E02C55 /* Effect */,
 				A9614D901E7956AB009CA034 /* Elixir */,
 				A9614D831E77FACA009CA034 /* SampleDate.swift */,
@@ -145,10 +140,9 @@
 		A96FD1391E7BE8DE00CE60D6 /* Food */ = {
 			isa = PBXGroup;
 			children = (
-				A9D5795A1E86893700E7FFBC /* FoodDetailViewController.swift */,
-				A96FD1351E7BE8C700CE60D6 /* FoodViewController.swift */,
+				A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */,
+				A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */,
 				A96FD1371E7BE8D900CE60D6 /* Food.swift */,
-				A9614D871E77FF0C009CA034 /* Ingredients.swift */,
 			);
 			name = Food;
 			sourceTree = "<group>";
@@ -231,21 +225,19 @@
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
 				5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */,
 				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
-				A9D5795B1E86893800E7FFBC /* FoodDetailViewController.swift in Sources */,
+				A9D5795B1E86893800E7FFBC /* MaterialDetailViewController.swift in Sources */,
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
-				A96FD1361E7BE8C700CE60D6 /* FoodViewController.swift in Sources */,
+				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
 				5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
 				A9C338801E8544B0003A574F /* MealDetailViewController.swift in Sources */,
-				A9D5795D1E868B6D00E7FFBC /* Category.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
 				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
-				A9614D881E77FF0C009CA034 /* Ingredients.swift in Sources */,
 				A9614D841E77FACA009CA034 /* SampleDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

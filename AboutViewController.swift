@@ -16,6 +16,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var followRecipeSlateButton: UIButton!
     @IBOutlet weak var supportText: UILabel!
     @IBOutlet weak var emailAtRecipeSlate: UIButton!
+    @IBOutlet weak var aboutText: UILabel!
     
     // Setting up a twitter URL.
     var twitterURLMartin = URL(string: "https://twitter.com/mrtnlst")
@@ -29,14 +30,10 @@ class AboutViewController: UIViewController {
 
         
         if (self.view.frame.size.width == 320){
-            //iPhone 2G, 3G, 3GS, 4, 4s, 5, 5s, 5c
-//            aboutText.font = UIFont(name: "Futura", size: 18)
-            
-            
+            aboutText.text = "Recipe Slate provides a collection of\nrecipes, elixirs and materials found in\nBreath of the Wild."
         }
         else if (self.view.frame.size.width == 375){
-            //iPhone 6
-//            aboutText.font = UIFont(name: "Futura", size: 20)
+            aboutText.text = "Recipe Slate provides a collection of recipes,\nelixirs and materials found in Breath of the\nWild."
         }
         else if (self.view.frame.size.width == 414){
             //iPhone 6 Plus

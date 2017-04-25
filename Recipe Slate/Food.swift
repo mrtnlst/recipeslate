@@ -12,11 +12,11 @@ import UIKit
 struct Food {
     var name: String
     var hearts: Float
-    var ingredientNames: Ingredients
+    var ingredientNames: [String]
     var firstEffect: Effect?
 
     
-    init(name: String, hearts: Float, effect: String? = nil, duration: String? = nil, ingredientNames: Ingredients, firstEffect: Effect? = nil) {
+    init(name: String, hearts: Float, effect: String? = nil, duration: String? = nil, ingredientNames: [String], firstEffect: Effect? = nil) {
         self.name = name
         self.hearts = hearts
         self.ingredientNames = ingredientNames

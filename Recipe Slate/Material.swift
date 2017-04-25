@@ -21,4 +21,8 @@ struct Material {
         self.effect = effect
         
     }
+    
+    var titleFirstLetter: String {
+        return String(self.materialName[self.materialName.startIndex]).uppercased()
+    }
 }
