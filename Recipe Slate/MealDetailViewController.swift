@@ -499,7 +499,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         effectLabel.text = effectOfPicker.effectName
         effectImageView.image = UIImage(named: effectOfPicker.effectName)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-        
+        effectLabel.textColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0)
+
         var amount = effectOfPicker.amount!
         
         if optionalAmount != nil {
@@ -866,6 +867,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         effectLabel.text = effectOfPicker
         effectImageView.image = UIImage(named: effectOfPicker)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
+        effectLabel.textColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0)
+
         
         let result = durationToString(duration: duration!)
         

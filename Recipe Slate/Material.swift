@@ -13,12 +13,14 @@ struct Material {
     var category: [String]
     var hearts: Float?
     var effect: Effect?
+    var saleValue: Int?
     
-    init(materialName: String, category: [String], hearts: Float? = nil, effect: Effect? = nil) {
+    init(materialName: String, category: [String], hearts: Float? = nil, effect: Effect? = nil, saleValue: Int? = nil) {
         self.materialName = materialName
         self.category = category
         self.hearts = hearts
         self.effect = effect
+        self.saleValue = saleValue
         
     }
     

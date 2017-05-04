@@ -28,6 +28,7 @@ class MaterialDetailViewController: UIViewController {
     @IBOutlet weak var effectImage: UIImageView!
     @IBOutlet weak var durationOrAmountLabel: UILabel!
     @IBOutlet weak var plusLabel: UILabel!
+    @IBOutlet weak var saleValueLabel: UILabel!
     
     
     var materialCell: Material?
@@ -47,7 +48,9 @@ class MaterialDetailViewController: UIViewController {
             }
             checkForRoastedHearts()
             checkForFrozenHearts()
-
+            if materialCell?.saleValue != nil{
+                setSaleValue()
+            }
         }
     }
     
@@ -63,8 +66,9 @@ class MaterialDetailViewController: UIViewController {
         return(fullHearts, decimalHearts)
     }
     
-    func setHearts(label: UILabel, heartsImage: UIImageView){
-        let hearts = calcHeartsImages(heartsValue: (materialCell?.hearts)!)
+    func setHearts(label: UILabel, heartsImage: UIImageView, heartValue: Float){
+//        let hearts = calcHeartsImages(heartsValue: (materialCell?.hearts)!)
+                let hearts = calcHeartsImages(heartsValue: heartValue)
         
         // If full hearts have to be displayed.
         if (hearts.fullHearts > 0) || (hearts.decimalHearts > 0.00){
@@ -74,10 +78,10 @@ class MaterialDetailViewController: UIViewController {
                 label.text = "full "
             } else {
                 if hearts.decimalHearts > 0.00 {
-                    label.text = String(format: "%.2f ", (materialCell?.hearts)!)
+                    label.text = String(format: "%.2f ", heartValue)
                 } else {
                     // Every other case, the label displays the number of restored full hearts.
-                    label.text = String(format: "%d ", (hearts.fullHearts))
+                    label.text = String(format: "%d ", hearts.fullHearts)
                 }
             }
             
@@ -91,25 +95,36 @@ class MaterialDetailViewController: UIViewController {
     
     
     func setRawHearts(){
-        setHearts(label: rawHeartsValue, heartsImage: rawHeartsImage)
+        if materialCell?.materialName == "Wood" || materialCell?.materialName == "Silent Princess"{
+            setNone(label: rawHeartsValue, heartsImage: rawHeartsImage)
+            return
+        }
+        setHearts(label: rawHeartsValue, heartsImage: rawHeartsImage, heartValue: (materialCell?.hearts)!)
     }
     
     func calcCookedHearts(){
         let hearts = calcHeartsImages(heartsValue: (materialCell?.hearts)! * 2.0)
-    
+        print("Hearts: \(hearts)")
         if materialCell?.effect?.effectName == "Temporary Hearts" {
                 cookedHeartsValue.text = "full "
-            } else {
-                if hearts.decimalHearts > 0.00 {
-                    cookedHeartsValue.text = String(format: "%.2f ", (materialCell?.hearts)!)
-                } else {
-                    // Every other case, the label displays the number of restored full hearts.
-                    cookedHeartsValue.text = String(format: "%d ", (hearts.fullHearts))
-                }
             }
-            // Setting the image for fullHeart.
-            cookedHeartsImage.image = UIImage(named: "fullHeart")
+        else {
+            if hearts.decimalHearts > 0.00 {
+                cookedHeartsValue.text = String(format: "%.2f ", hearts.decimalHearts)
+            } else {
+                // Every other case, the label displays the number of restored full hearts.
+                cookedHeartsValue.text = String(format: "%d ", (hearts.fullHearts))
+            }
+        }
+       
+        // Exceptions:
+        if materialCell?.materialName == "Fairy"{
+            cookedHeartsValue.text = "7 "
+        }
         
+        // Setting the image for fullHeart.
+        cookedHeartsImage.image = UIImage(named: "fullHeart")
+    
     }
  
     func checkForRoastedHearts(){
@@ -118,8 +133,9 @@ class MaterialDetailViewController: UIViewController {
         for item in roastedFoodData{
             for ingredient in item.ingredientNames{
                 if materialCell?.materialName == ingredient{
-                    roastedHeartsImage.image = UIImage(named: "fullHeart")
-                    roastedHeartsValue.text = String(format: "%.2f ", item.hearts)
+//                    roastedHeartsImage.image = UIImage(named: "fullHeart")
+//                    roastedHeartsValue.text = String(format: "%.2f ", item.hearts)
+                    setHearts(label: roastedHeartsValue, heartsImage: roastedHeartsImage, heartValue: item.hearts)
                     success = true
                 }
             }
@@ -136,8 +152,10 @@ class MaterialDetailViewController: UIViewController {
         for item in frozenFoodData{
             for ingredient in item.ingredientNames{
                 if materialCell?.materialName == ingredient{
-                    frozenHeartsImage.image = UIImage(named: "fullHeart")
-                    frozenHeartsValue.text = String(format: "%.2f ", item.hearts)
+//                    frozenHeartsImage.image = UIImage(named: "fullHeart")
+//                    frozenHeartsValue.text = String(format: "%.2f ", item.hearts)
+                    setHearts(label: frozenHeartsValue, heartsImage: frozenHeartsImage, heartValue: item.hearts)
+
                     success = true
                 }
             }
@@ -164,6 +182,15 @@ class MaterialDetailViewController: UIViewController {
                 durationOrAmountText = String(format: " %.1f", (materialCell?.effect?.amount)!)
             }
             durationOrAmountLabel.text = durationOrAmountText
+            
+            if materialCell?.materialName == "Monster Extract"{
+                durationOrAmountLabel.text = " 1:00/10:00/30:00 min"
+            }
+        }
+        else {
+            setNone(label: effectNameLabel, heartsImage: effectImage)
+            durationOrAmountLabel.text = ""
+            plusLabel.text = ""
         }
     }
     
@@ -190,5 +217,9 @@ class MaterialDetailViewController: UIViewController {
     func hideFrozenEffect(){
         frozenEffectImage.image = UIImage(named: "empty")
         frozenMinutesValue.isHidden = true
+    }
+    
+    func setSaleValue(){
+        saleValueLabel.text = String(format: "%d Rupees", (materialCell?.saleValue)!)
     }
 }

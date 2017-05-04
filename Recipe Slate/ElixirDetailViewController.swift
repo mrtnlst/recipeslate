@@ -163,11 +163,14 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         // Updating the resultLabel.
         if selectedCritterDuration != nil {
-            let result =
+            var result =
                 selectedCritterDuration! * Double(critterAmountPicker.selectedRow(inComponent: 0) + 1) +
                 Double(monsterAmountPicker.selectedRow(inComponent: 0) + 1) *
                 Double(monsterPartData[monsterNamePicker.selectedRow(inComponent: 0)].duration)
             
+            if result > 1800{
+                result = 1800
+            }
             resultLabel.text = durationToString(duration: result)
         }
         else {
