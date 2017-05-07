@@ -13,6 +13,7 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     var meals:[Meal] = mealData
     var sortedFirstLetters: [String] = []
     var sections: [[Meal]] = [[]]
+    var favorites: [String] = []
     
     var filteredResults = [Meal]()
     let searchController = UISearchController(searchResultsController: nil)
@@ -20,6 +21,12 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup refresh if item was favorites changed.
+         NotificationCenter.default.addObserver(self, selector: #selector(FavoritesViewController.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
+        
+        // Gather the userDefaults of all favorites.
+        fillFavoritesData()
+
         // Set background for space above search bar.
         tableView.backgroundView = UIView()
         searchController.searchBar.backgroundImage = UIImage()
@@ -90,7 +97,19 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         
         // Resetting imageViews.
         if let heartsImage = cell.viewWithTag(101) as? UIImageView{
-            heartsImage.image = .none}
+            heartsImage.image = .none
+        }
+        if let starImage = cell.viewWithTag(102) as? UIImageView{
+            starImage.image = .none
+        }
+        
+        // Show a star next to a favoritted item.
+        if isItemAFavorite(name: meal.name){
+            if let starImage = cell.viewWithTag(102) as? UIImageView{
+                starImage.image = UIImage(named: "Favorite")
+            }
+        }
+        
         
         //Setting the image for fullHeart.
         if let heartsRestoredImage = cell.viewWithTag(101) as? UIImageView{
@@ -245,6 +264,42 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
             meal = sections[path.section][path.row]
         }
         return meal
+    }
+    
+    func isItemAFavorite(name: String) -> Bool{
+        for item in favorites{
+            if item == name{
+                return true
+            }
+        }
+        return false
+    }
+    
+    func refreshTable(_ notification: Notification) {
+        
+        print("Received Notification")
+        
+        fillFavoritesData()
+        
+        // Creating alphabetical sections.
+        let firstLetters = meals.map { $0.titleFirstLetter }
+        let uniqueFirstLetters = Array(Set(firstLetters))
+        
+        sortedFirstLetters = uniqueFirstLetters.sorted()
+        sections = sortedFirstLetters.map { firstLetter in
+            return meals
+                .filter { $0.titleFirstLetter == firstLetter }
+                .sorted { $0.name < $1.name }
+        }
+        tableView.reloadData()
+    }
+    
+    func fillFavoritesData(){
+        
+        let defaults = UserDefaults.standard
+        if let favoritesDefaults = defaults.object(forKey: "favorites"){
+            favorites = favoritesDefaults as! [String]
+        }
     }
     
     override func didReceiveMemoryWarning() {

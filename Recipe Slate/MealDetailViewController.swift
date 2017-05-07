@@ -31,6 +31,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var plusLabel: UILabel!
     
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var resaleValue: UILabel!
     
     var mealCell: Meal?
     var selectedEffect: String?
@@ -51,6 +52,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     var additionalMainIngredient: Material?
     
     var heartsOfMainIngredients: Float = 0.0
+    var mainIngredientsResaleValue: Int = 0
+    var categoryIngredientsResaleValue: Int = 0
+    var numberOfMainIngredients: Int = 0
+    var numberOfCategoryIngredients: Int = 0
  
 
     override func viewDidLoad() {
@@ -81,23 +86,17 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         // Checking if a category ingredient is in the meal, if yes, add to array.
         fillPickerData()
         
-//        var position: [Int] = [0, 0]
-//        if selectedEffect != nil{
-//            position = checkPickerForEarlyEffect()
-//        }
-        
         checkPickerForEarlyEffect()
         
         // Setting the ingredient labels and check if an ingredient has an effect. If so, it gets displayed.
         setIngredientLabels()
+        calcResaleValue()
         
         // Check, if Meal is already a favorite.
         let favoriteBool = checkFavorite()
         setFavorite(isItemFavorite: favoriteBool)
         
         // Default position of picker.
-//        firstNamePicker.selectRow(position[0], inComponent: 0, animated: true)
-//        secondNamePicker.selectRow(position[1], inComponent: 0, animated: true)
 
         firstNamePicker.selectRow(0, inComponent: 0, animated: true)
         secondNamePicker.selectRow(0, inComponent: 0, animated: true)
@@ -106,9 +105,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         fourthNamePicker.selectRow(0, inComponent: 0, animated: true)
         
         checkPickers()
-//        pickerView(firstNamePicker, didSelectRow: 0, inComponent: 0)
         
-        // Do any additional setup after loading the view.
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -222,10 +219,16 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         if firstPickerData.isEmpty == false{
             firstEffect = firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].effect!
+            categoryIngredientsResaleValue = firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].saleValue!
+            numberOfCategoryIngredients = 1
             count = 1
         }
         if secondPickerData.isEmpty == false{
             secondEffect = secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].effect!
+            categoryIngredientsResaleValue = secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].saleValue!
+                                           + firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].saleValue!
+            numberOfCategoryIngredients = 2
+
             count = 2
         }
 //        if thirdPickerData.isEmpty == false{
@@ -242,10 +245,13 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 secondNamePicker.isHidden = true
                 thirdNamePicker.isHidden = true
                 fourthNamePicker.isHidden = true
+                calcResaleValue()
         
         case 2: checkForTwoPicker(firstEffect: firstEffect!, secondEffect: secondEffect!)
                 thirdNamePicker.isHidden = true
                 fourthNamePicker.isHidden = true
+                calcResaleValue()
+
         
 //        case 3: checkForThreePicker(firstEffect: firstEffect!, secondEffect: secondEffect!, thirdEffect: thirdEffect!)
 //                fourthNamePicker.isHidden = true
@@ -375,40 +381,40 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         
     }
     
-    func checkForThreePicker(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect){
-        print("Third Picker")
-        calcHeartsForCategoryIngredients()
-    }
-    
-    func checkForFourPicker(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect){
-        print("Four Picker")
-        calcHeartsForCategoryIngredients()
-        
-        let durationAmount = calcAmountOfDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
-        print ("Duration Amount: \(durationAmount)")
-        
-        switch durationAmount{
-        case 1: compareForOneDuration(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
-        case 2: compareForTwoDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
-        case 3: compareForThreeDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
-        case 4: setNone()
-        default:
-            if firstEffect.effectName == secondEffect.effectName && firstEffect.effectName == thirdEffect.effectName && firstEffect.effectName == fourthEffect.effectName {
-                if firstEffect.duration != nil {
-                    var tempDuration = firstEffect.duration! + secondEffect.duration!
-                    tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
-                    
-                    setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
-                }
-                if firstEffect.amount != nil {
-                    setEffectWithAmount(effectOfPicker: firstEffect, singleAmount: true )
-                }
-            }
-            else {
-                setNone()
-            }
-        }
-    }
+//    func checkForThreePicker(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect){
+//        print("Third Picker")
+//        calcHeartsForCategoryIngredients()
+//    }
+//    
+//    func checkForFourPicker(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect){
+//        print("Four Picker")
+//        calcHeartsForCategoryIngredients()
+//        
+//        let durationAmount = calcAmountOfDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+//        print ("Duration Amount: \(durationAmount)")
+//        
+//        switch durationAmount{
+//        case 1: compareForOneDuration(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+//        case 2: compareForTwoDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+//        case 3: compareForThreeDurations(firstEffect: firstEffect, secondEffect: secondEffect, thirdEffect: thirdEffect, fourthEffect: fourthEffect)
+//        case 4: setNone()
+//        default:
+//            if firstEffect.effectName == secondEffect.effectName && firstEffect.effectName == thirdEffect.effectName && firstEffect.effectName == fourthEffect.effectName {
+//                if firstEffect.duration != nil {
+//                    var tempDuration = firstEffect.duration! + secondEffect.duration!
+//                    tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
+//                    
+//                    setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
+//                }
+//                if firstEffect.amount != nil {
+//                    setEffectWithAmount(effectOfPicker: firstEffect, singleAmount: true )
+//                }
+//            }
+//            else {
+//                setNone()
+//            }
+//        }
+//    }
     
     func compareForOneDuration(firstEffect: Effect, secondEffect: Effect, thirdEffect: Effect, fourthEffect: Effect){
         let effect: [Effect] = [firstEffect, secondEffect, thirdEffect, fourthEffect]
@@ -499,7 +505,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         effectLabel.text = effectOfPicker.effectName
         effectImageView.image = UIImage(named: effectOfPicker.effectName)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-        effectLabel.textColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0)
+        effectLabel.textColor = UIColor(red: 182/255, green: 183/255, blue: 188/255, alpha: 1.0)
 
         var amount = effectOfPicker.amount!
         
@@ -724,18 +730,38 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 
         if mealCell?.firstIngredient != nil {
             checkForMainIngredientEffects(ingredient: (mealCell?.firstIngredient)!)
+            numberOfMainIngredients += 1
+        }
+        else {
+            firstIngredientLabel.removeFromSuperview()
         }
         if mealCell?.secondIngredient != nil {
             checkForMainIngredientEffects(ingredient: (mealCell?.secondIngredient)!)
+            numberOfMainIngredients += 1
+        }
+        else {
+            secondIngredientLabel.removeFromSuperview()
         }
         if mealCell?.thirdIngredient != nil {
             checkForMainIngredientEffects(ingredient: (mealCell?.thirdIngredient)!)
+            numberOfMainIngredients += 1
+        }
+        else {
+            thirdIngredientLabel.removeFromSuperview()
         }
         if mealCell?.fourthIngredient != nil {
             checkForMainIngredientEffects(ingredient: (mealCell?.fourthIngredient)!)
+            numberOfMainIngredients += 1
+        }
+        else {
+            fourthIngredientLabel.removeFromSuperview()
         }
         if mealCell?.fifthIngredient != nil {
             checkForMainIngredientEffects(ingredient: (mealCell?.fifthIngredient)!)
+            numberOfMainIngredients += 1
+        }
+        else {
+            fifthIngredientLabel.removeFromSuperview()
         }
         
         handleMainIngredientEffects()
@@ -796,7 +822,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func checkTwoMainIngredientEffect(){
-//        var amount: Float = 0.0
         var duration: Double = 0
         
         if mainIngredientWithEffect.first?.effect?.effectName == mainIngredientWithEffect.last?.effect?.effectName{
@@ -867,7 +892,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         effectLabel.text = effectOfPicker
         effectImageView.image = UIImage(named: effectOfPicker)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
-        effectLabel.textColor = UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0)
+        effectLabel.textColor = UIColor(red: 182/255, green: 183/255, blue: 188/255, alpha: 1.0)
 
         
         let result = durationToString(duration: duration!)
@@ -881,9 +906,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         for items in materials{
             if ingredient == items.materialName{
                 if items.effect != nil{
-
-                     mainIngredientWithEffect.append(items)
-
+                    mainIngredientWithEffect.append(items)
+                    if items.saleValue != nil{
+                        mainIngredientsResaleValue += items.saleValue!
+                    }
                 }
             }
         }
@@ -1010,5 +1036,33 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 }
             }
         }
+    }
+    
+    func calcResaleValue(){
+        
+        let value:Double = Double(mainIngredientsResaleValue + categoryIngredientsResaleValue)
+        var valueMultiplied: Double = 0.0
+        let numberOfIngredients = numberOfMainIngredients + numberOfCategoryIngredients
+        
+        print("IngredientsValue: \(value)")
+        
+        switch numberOfIngredients{
+        case 1:
+            valueMultiplied = 1.5 * value
+        case 2:
+            valueMultiplied = 1.75 * value
+        case 3:
+            valueMultiplied = 2.05 * value
+        case 4:
+            valueMultiplied = 2.4 * value
+        case 5:
+            valueMultiplied = 2.8 * value
+        default:
+            break
+        }
+        valueMultiplied = floor(valueMultiplied) / 10.0
+        valueMultiplied = ceil(valueMultiplied) * 10
+        print(valueMultiplied)
+        resaleValue.text = String(format: "%.0f Rupees", valueMultiplied)
     }
 }

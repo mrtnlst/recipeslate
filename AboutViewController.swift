@@ -17,6 +17,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var supportText: UILabel!
     @IBOutlet weak var emailAtRecipeSlate: UIButton!
     @IBOutlet weak var aboutText: UILabel!
+    @IBOutlet weak var versionLabel: UILabel!
     
     // Setting up a twitter URL.
     var twitterURLMartin = URL(string: "https://twitter.com/mrtnlst")
@@ -27,7 +28,8 @@ class AboutViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(backAction))
         self.navigationController?.navigationBar.tintColor = UIColor.white
-
+        
+        versionLabel.text = "1.1"
         
         if (self.view.frame.size.width == 320){
             aboutText.text = "Recipe Slate provides a collection of\nrecipes, elixirs and materials found in\nBreath of the Wild."

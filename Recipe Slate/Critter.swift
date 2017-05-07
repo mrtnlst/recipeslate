@@ -14,13 +14,14 @@ struct Critter {
     var effect: String
     var duration: TimeInterval?
     var amount: Float?
+    var potency: Int?
     
-    init(name: String, category: String, effect: String, duration: TimeInterval? = nil, amount: Float? = nil) {
+    init(name: String, category: String, effect: String, duration: TimeInterval? = nil, amount: Float? = nil, potency: Int? = nil) {
         self.name = name
         self.category = category
         self.duration = duration
         self.effect = effect
         self.amount = amount
-        
+        self.potency = potency
     }
 }

@@ -12,11 +12,15 @@ struct Effect {
     var effectName: String
     var amount: Float?
     var duration: TimeInterval?
+    var potencyLevel1: Int?
+    var potencyLevel2: Int?
     
-    init(effectName: String, amount: Float? = nil, duration: TimeInterval? = nil) {
+    init(effectName: String, amount: Float? = nil, duration: TimeInterval? = nil, potencyLevel1: Int? = nil, potencyLevel2: Int? = nil) {
         self.effectName = effectName
         self.amount = amount
         self.duration = duration
+        self.potencyLevel1 = potencyLevel1
+        self.potencyLevel2 = potencyLevel2
    
     }
     var titleFirstLetter: String {

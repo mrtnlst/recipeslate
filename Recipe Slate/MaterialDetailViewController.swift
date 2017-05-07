@@ -29,7 +29,14 @@ class MaterialDetailViewController: UIViewController {
     @IBOutlet weak var durationOrAmountLabel: UILabel!
     @IBOutlet weak var plusLabel: UILabel!
     @IBOutlet weak var saleValueLabel: UILabel!
-    
+    @IBOutlet weak var potencyLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var potencyImage1: UIImageView!
+    @IBOutlet weak var potencyImage2: UIImageView!
+    @IBOutlet weak var potencyImage3: UIImageView!
+    @IBOutlet weak var potencyImage4: UIImageView!
+    @IBOutlet weak var potencyImage5: UIImageView!
+  
     
     var materialCell: Material?
     
@@ -57,6 +64,8 @@ class MaterialDetailViewController: UIViewController {
     func setLabels(){
         nameLabel.text = materialCell?.materialName
         setEffect()
+        setLocationLabel()
+        setPotency()
     }
     
     func calcHeartsImages(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
@@ -207,11 +216,13 @@ class MaterialDetailViewController: UIViewController {
         return formattedDuration!
     }
     
-    func setNone(label: UILabel, heartsImage: UIImageView){
+    func setNone(label: UILabel, heartsImage: UIImageView? = nil){
         label.text = "None"
         label.textColor = .gray
         label.font = UIFont.italicSystemFont(ofSize: 17.0)
-        heartsImage.image = UIImage(named: "empty")
+        if heartsImage != nil{
+            heartsImage?.image = UIImage(named: "empty")
+        }
     }
     
     func hideFrozenEffect(){
@@ -221,5 +232,105 @@ class MaterialDetailViewController: UIViewController {
     
     func setSaleValue(){
         saleValueLabel.text = String(format: "%d Rupees", (materialCell?.saleValue)!)
+    }
+    
+    func setLocationLabel(){
+        if materialCell?.location != nil{
+            locationLabel.text = materialCell?.location
+        }
+    }
+    
+    func setPotency(){
+        if materialCell?.potency != nil{
+            checkIfPotencyUpgradesPossible()
+        }
+        else {
+            setNone(label: potencyLabel)
+            setPotencyImages(levelCode: 0, imageName: "")
+        }
+    }
+
+    func checkIfPotencyUpgradesPossible(){
+        let potency = materialCell?.potency
+        var amountForUpgrade1: Int?
+        var amountForUpgrade2: Int?
+
+        
+        if materialCell?.effect?.potencyLevel1 != nil{
+            
+            for x in 1...5{
+                if x * potency! >= (materialCell?.effect?.potencyLevel1)!{
+                    amountForUpgrade1 = x
+                    break
+                }
+            }
+            if materialCell?.effect?.potencyLevel2 != nil{
+                for y in 1...5{
+                    if y * potency! >= (materialCell?.effect?.potencyLevel2)!{
+                        amountForUpgrade2 = y
+                        break
+                    }
+                }
+            }
+        }
+        
+        if amountForUpgrade1 != nil{
+            if amountForUpgrade2 != nil{
+                if amountForUpgrade1 == amountForUpgrade2{
+                    potencyLabel.text = String(format: "Add %d for potency level 3.", amountForUpgrade2!)
+                    setPotencyImages(levelCode: 3, imageName: (materialCell?.effect?.effectName)!)
+
+                }
+                else{
+                    potencyLabel.text = String(format: "Add %d for potency level 2.\nAdd %d for potency level 3.", amountForUpgrade1!, amountForUpgrade2!)
+                    setPotencyImages(levelCode: 4, imageName: (materialCell?.effect?.effectName)!)
+
+                }
+            }
+            else {
+                potencyLabel.text = String(format: "Add %d for potency level 2.", amountForUpgrade1!)
+                setPotencyImages(levelCode: 2, imageName: (materialCell?.effect?.effectName)!)
+            }
+        }
+        else{
+            potencyLabel.text = String(format: "Maximum potency: level 1.")
+            setPotencyImages(levelCode: 1, imageName: (materialCell?.effect?.effectName)!)
+        }
+    }
+    
+    func setPotencyImages(levelCode: Int, imageName: String){
+        switch levelCode{
+            case 1:
+                    potencyImage1.image = UIImage(named: imageName)
+                    potencyImage2.removeFromSuperview()
+                    potencyImage3.removeFromSuperview()
+                    potencyImage4.removeFromSuperview()
+                    potencyImage5.removeFromSuperview()
+            case 2:
+                    potencyImage1.image = UIImage(named: imageName)
+                    potencyImage2.image = UIImage(named: imageName)
+                    potencyImage3.removeFromSuperview()
+                    potencyImage4.removeFromSuperview()
+                    potencyImage5.removeFromSuperview()
+            case 3:
+                    potencyImage1.removeFromSuperview()
+                    potencyImage2.removeFromSuperview()
+                    potencyImage3.image = UIImage(named: imageName)
+                    potencyImage4.image = UIImage(named: imageName)
+                    potencyImage5.image = UIImage(named: imageName)
+            case 4:
+                    potencyImage1.image = UIImage(named: imageName)
+                    potencyImage2.image = UIImage(named: imageName)
+                    potencyImage3.image = UIImage(named: imageName)
+                    potencyImage4.image = UIImage(named: imageName)
+                    potencyImage5.image = UIImage(named: imageName)
+
+            default:
+                    potencyImage1.removeFromSuperview()
+                    potencyImage2.removeFromSuperview()
+                    potencyImage3.removeFromSuperview()
+                    potencyImage4.removeFromSuperview()
+                    potencyImage5.removeFromSuperview()
+        }
     }
 }
