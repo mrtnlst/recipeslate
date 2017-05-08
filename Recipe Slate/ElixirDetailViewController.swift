@@ -23,12 +23,18 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var durationAmountLabel: UILabel!
     @IBOutlet weak var resultImageView: UIImageView!
     
+    @IBOutlet weak var potencyLabel: UILabel!
+    @IBOutlet weak var potencyImage1: UIImageView!
+    @IBOutlet weak var potencyImage2: UIImageView!
+    @IBOutlet weak var potencyImage3: UIImageView!
+   
     // Chosen item from UITableview list.
     var elixirCell: Elixir?
     
     // Array with generalData.
     var critters:[Critter] = critterData
     var monsterParts:[MonsterPart] = monsterPartData
+    var chosenCritter:[Critter] = []
     
     // Arrays for UIPicker.
     var amount: [String] = ["1", "2", "3", "4"]
@@ -56,6 +62,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             for item in critters{
                 if item.category == elixirCell?.category{
                     critterNames.append(item.name)
+                    chosenCritter.append(item)
                     if item.duration != nil {
                         critterDurationForEffect.append(item.duration!)
                     }
@@ -178,6 +185,9 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
                                         numberSelected: critterAmountPicker.selectedRow(inComponent: 0) + 1)
             resultLabel.text = result
         }
+        
+        setEffectPotency(amount: critterAmountPicker.selectedRow(inComponent: 0) + 1, critter: chosenCritter[critterNamePicker.selectedRow(inComponent: 0)])
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -227,6 +237,71 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         return formattedDuration!
     }
     
+    func setEffectPotency(amount: Int, critter: Critter){
+        if critter.potency != nil{
+            let value = amount * critter.potency!
+            var effectOfCritter: Effect?
+            
+            for effect in effectData{
+                if effect.effectName == critter.effect{
+                    effectOfCritter = effect
+                }
+            }
+            
+            if value >= (effectOfCritter?.potencyLevel1)!{
+                if effectOfCritter?.potencyLevel2 != nil && value >= (effectOfCritter?.potencyLevel2)!{
+                    setPotencyImages(levelCode: 3, imageName: (effectOfCritter?.effectName)!)
+                }
+                else {
+                    setPotencyImages(levelCode: 2, imageName: (effectOfCritter?.effectName)!)
+                }
+            }
+            else{
+                setPotencyImages(levelCode: 1, imageName: (effectOfCritter?.effectName)!)
+            }
+        }
+        else {
+            potencyLabel.text = "None"
+            potencyLabel.textColor = .gray
+            potencyLabel.font = UIFont.italicSystemFont(ofSize: 17.0)
+            potencyImage1.isHidden = true
+            potencyImage2.isHidden = true
+            potencyImage3.isHidden = true
+        }
+        
+    }
+    
+    func setPotencyImages(levelCode: Int, imageName: String){
+        switch levelCode{
+        case 1:
+            potencyImage1.image = UIImage(named: imageName)
+            potencyImage2.isHidden = true
+            potencyImage3.isHidden = true
+            potencyLabel.text = "Level 1"
+
+        case 2:
+            potencyImage1.image = UIImage(named: imageName)
+            potencyImage2.image = UIImage(named: imageName)
+            potencyImage2.isHidden = false
+            potencyImage3.isHidden = true
+            potencyLabel.text = "Level 2"
+  
+        case 3:
+            potencyImage1.image = UIImage(named: imageName)
+            potencyImage2.image = UIImage(named: imageName)
+            potencyImage3.image = UIImage(named: imageName)
+            potencyImage2.isHidden = false
+            potencyImage3.isHidden = false
+            potencyLabel.text = "Level 3"
+            
+        default:
+            potencyImage1.removeFromSuperview()
+            potencyImage2.removeFromSuperview()
+            potencyImage3.removeFromSuperview()
+   
+        }
+    }
+
     /*
     // MARK: - Navigation
 

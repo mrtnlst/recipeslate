@@ -15,6 +15,8 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
     var meals:[Meal] = mealData
     var materials:[Material] = materialData
     var effect:[Meal] = []
+    var favorites: [String] = []
+
     
     var sortedFirstLetters: [String] = []
     var sections: [[Meal]] = [[]]
@@ -26,6 +28,12 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         super.viewDidLoad()
         
         self.navigationItem.title = effectCell?.effectName
+        
+        // Setup refresh if item was favorites changed.
+        NotificationCenter.default.addObserver(self, selector: #selector(EffectTableViewController.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
+        
+        // Gather the userDefaults of all favorites.
+        fillFavoritesData()
         
         // Set background for space above search bar.
         tableView.backgroundView = UIView()
@@ -97,6 +105,18 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         
 //        let effect = sections[indexPath.section][indexPath.row]
         let effect: Meal = getCorrectCellItem(path: indexPath)
+        
+        // Resetting imageView.
+        if let starImage = cell.viewWithTag(102) as? UIImageView{
+            starImage.image = .none
+        }
+        
+        // Show a star next to a favoritted item.
+        if isItemAFavorite(name: effect.name){
+            if let starImage = cell.viewWithTag(102) as? UIImageView{
+                starImage.image = UIImage(named: "Favorite")
+            }
+        }
         
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
             nameLabel.text = effect.name
@@ -303,5 +323,41 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
+    }
+    
+    func isItemAFavorite(name: String) -> Bool{
+        for item in favorites{
+            if item == name{
+                return true
+            }
+        }
+        return false
+    }
+    
+    func refreshTable(_ notification: Notification) {
+        
+        print("Received Notification")
+        
+        fillFavoritesData()
+        
+        // Creating alphabetical sections.
+        let firstLetters = meals.map { $0.titleFirstLetter }
+        let uniqueFirstLetters = Array(Set(firstLetters))
+        
+        sortedFirstLetters = uniqueFirstLetters.sorted()
+        sections = sortedFirstLetters.map { firstLetter in
+            return meals
+                .filter { $0.titleFirstLetter == firstLetter }
+                .sorted { $0.name < $1.name }
+        }
+        tableView.reloadData()
+    }
+    
+    func fillFavoritesData(){
+        
+        let defaults = UserDefaults.standard
+        if let favoritesDefaults = defaults.object(forKey: "favorites"){
+            favorites = favoritesDefaults as! [String]
+        }
     }
 }

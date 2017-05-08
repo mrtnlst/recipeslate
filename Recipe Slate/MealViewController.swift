@@ -22,7 +22,7 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         super.viewDidLoad()
         
         // Setup refresh if item was favorites changed.
-         NotificationCenter.default.addObserver(self, selector: #selector(FavoritesViewController.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(MealViewController.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
         
         // Gather the userDefaults of all favorites.
         fillFavoritesData()
