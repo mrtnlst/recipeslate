@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Recipe Slate/ElixirDetailViewController.swift"
-            timestampString = "515924286.166923"
+            timestampString = "516178582.435194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "setEffectPotency(amount:critter:)"
             landmarkType = "7">
          </BreakpointContent>

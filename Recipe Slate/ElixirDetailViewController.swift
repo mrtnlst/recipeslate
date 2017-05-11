@@ -13,6 +13,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var effectNameLabel: UILabel!
     @IBOutlet weak var effectImageView: UIImageView!
+    @IBOutlet weak var effectDescription: UILabel!
     
     @IBOutlet weak var critterNamePicker: UIPickerView!
     @IBOutlet weak var critterAmountPicker: UIPickerView!
@@ -91,6 +92,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         }
 
         // Do any additional setup after loading the view.
+        
     }
 
     // UIPickerView Delegates
@@ -301,15 +303,5 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
    
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

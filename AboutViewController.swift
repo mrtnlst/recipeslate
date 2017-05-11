@@ -29,7 +29,7 @@ class AboutViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(backAction))
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        versionLabel.text = "1.1"
+        versionLabel.text = "1.1.1"
         
         if (self.view.frame.size.width == 320){
             aboutText.text = "Recipe Slate provides a collection of\nrecipes, elixirs and materials found in\nBreath of the Wild."
@@ -50,19 +50,31 @@ class AboutViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func followMartinPressed(_ sender: Any) {
-        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
-        UIApplication.shared.open(twitterURLMartin!, options: options, completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+             UIApplication.shared.open(twitterURLMartin!, options: options, completionHandler: nil)
+        } else {
+            _ = UIApplication.shared.openURL(twitterURLMartin!)
+        }
     }
     
     @IBAction func followRecipeSlatePressed(_ sender: Any) {
-        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
-        UIApplication.shared.open(twitterURLRecipeSlate!, options: options, completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+            UIApplication.shared.open(twitterURLRecipeSlate!, options: options, completionHandler: nil)
+        } else {
+            _ = UIApplication.shared.openURL(twitterURLRecipeSlate!)
+        }
     }
     
     @IBAction func emailAtRecipeSlatePressed(_ sender: Any) {
         let coded = URL(string:"mailto:recipeslate@gmail.com")
-        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
-        UIApplication.shared.open(coded!, options: options, completionHandler: nil)
+        if #available(iOS 10.0, *) {
+            let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+            UIApplication.shared.open(coded!, options: options, completionHandler: nil)
+        } else {
+            _ = UIApplication.shared.openURL(coded!)
+        }
     }
 
     override func didReceiveMemoryWarning() {

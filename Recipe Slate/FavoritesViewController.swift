@@ -277,6 +277,9 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        self.searchController.searchBar.endEditing(false)
+
+        
     }
     
     public func updateSearchResults(for searchController: UISearchController)
