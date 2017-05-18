@@ -234,6 +234,26 @@ let materialData = [
     // Nuts.
     Material(materialName: "Acorn", category: ["Nut"], hearts: 0.5, effect: Effect(effectName: "Duration", duration: 50), saleValue: 2, location: "Dropped by Squirrels\nFelling trees"),
     Material(materialName: "Chickaloo Tree Nut", category: ["Nut"], hearts: 0.5, effect: Effect(effectName: "Duration", duration: 50), saleValue: 3, location: "Dropped by small birds\nZora's Domain"),
+
+    // Critters.
+    
+    Material(materialName: "Hightail Lizard", category: ["Critter"], effect: Effect(effectName: "Speed Up", duration: 60, potencyLevel1: 5, potencyLevel2: 7), saleValue: 2, location: "Commonly found in Hyrule", potency: 1),
+    Material(materialName: "Hot-Footed Frog", category: ["Critter"], effect: Effect(effectName:"Speed Up", duration: 60, potencyLevel1: 5, potencyLevel2: 7), saleValue: 2, location: "Commonly found near water", potency: 2),
+    Material(materialName: "Warm Darner", category: ["Critter"], effect: Effect(effectName: "Cold Resistance", duration: 150, potencyLevel1: 6), saleValue: 2, location: "Commonly found in Hyrule\nHyrule Field", potency: 2),
+    Material(materialName: "Summerwing Butterfly", category: ["Critter"], effect: Effect(effectName: "Cold Resistance", duration: 150, potencyLevel1: 6), saleValue: 2, location: "Great Plateau", potency: 1),
+    Material(materialName: "Tireless Frog", category: ["Critter"], effect: Effect(effectName: "Overfills Stamina", amount: 0.2), saleValue: 20, location: "Lanayru Great Spring\nHyrule Ridge"),
+    Material(materialName: "Thunderwing Butterfly", category: ["Critter"], effect: Effect(effectName: "Electricity Resistance", duration: 150, potencyLevel1: 4, potencyLevel2: 6),  saleValue: 2, location: "Hyrule Ridge\nBeedle Tabantha Bridge Stable", potency: 1),
+    Material(materialName: "Electric Darner", category: ["Critter"], effect: Effect(effectName: "Electricity Resistance", duration: 150, potencyLevel1: 4, potencyLevel2: 6), saleValue: 2, location: "Hyrule Ridge during rain", potency: 2),
+    Material(materialName: "Sunset Firefly", category: ["Critter"], effect: Effect(effectName: "Increased Stealth", duration: 120, potencyLevel1: 6, potencyLevel2: 9), saleValue: 2, location: "Appears during sunset/sunrise", potency: 1),
+    Material(materialName: "Smootherwing Butterfly", category: ["Critter"], effect: Effect(effectName: "Fire Resistance", duration: 150, potencyLevel1: 7), saleValue: 2, location: "Beedle East Akkala Stable", potency: 2),
+    Material(materialName: "Fireproof Lizard", category: ["Critter"], effect: Effect(effectName: "Fire Resistance", duration: 150, potencyLevel1: 7), saleValue: 5, location: "Commonly in Eldin Mountains\nSouthern Mines", potency: 1),
+    Material(materialName: "Rugged Rhino Beetle", category: ["Critter"], effect: Effect(effectName: "Defense Up", duration: 50, potencyLevel1: 5, potencyLevel2: 7), saleValue: 4, location: "Hyrule Field\nFaron Grasslands",potency: 1),
+    Material(materialName: "Cold Darner", category: ["Critter"], effect: Effect(effectName: "Heat Resistance", duration: 150, potencyLevel1: 6), saleValue: 2, location: "Gerudo Highlands, Tabantha Frontier", potency: 2),
+    Material(materialName: "Winterwing Butterfly", category: ["Critter"], effect: Effect(effectName: "Heat Resistance", duration: 150, potencyLevel1: 6), saleValue: 2, location: "Gerudo Highlands, Tabantha Frontier", potency: 1),
+    Material(materialName: "Hearty Lizard", category: ["Critter"], effect: Effect(effectName: "Temporary Hearts", amount: 0.2), saleValue: 20, location: "Gerudo Desert\nNecluda Sea"),
+    Material(materialName: "Restless Cricket", category: ["Critter"], effect: Effect(effectName: "Restores Stamina", amount: 0.2), saleValue: 2, location: "Commonly found in grass"),
+    Material(materialName: "Energetic Rhino Beetle", category: ["Critter"], effect: Effect(effectName: "Restores Stamina", amount: 1.6), saleValue: 2, location: "Akkala Highlands\nWest Necluda"),
+    Material(materialName: "Bladed Rhino Beetle", category: ["Critter"], effect: Effect(effectName: "Attack Up", duration: 50, potencyLevel1: 5, potencyLevel2: 7), saleValue: 4, location: "West Necluda\nEast Necluda", potency: 1),
 ]
 
 let mealData = [
