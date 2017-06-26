@@ -1,5 +1,6 @@
 //
 //  EffectsViewController.swift
+//  Recipe Slate
 //
 //  Created by martin on 02.04.17.
 //  Copyright © 2017 Martin List. All rights reserved.
