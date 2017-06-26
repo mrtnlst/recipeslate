@@ -1,6 +1,6 @@
 //
 //  ElixirViewController.swift
-//  Link's Recipes
+//  Recipe Slate
 //
 //  Created by Martin List on 15/03/2017.
 //  Copyright © 2017 Martin List. All rights reserved.
