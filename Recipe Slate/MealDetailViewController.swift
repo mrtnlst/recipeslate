@@ -46,7 +46,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     var thirdPickerData: [Material] = []
     var fourthPickerData: [Material] = []
     
-    
     var additionalDurationIncrease: [Material] = []
     var mainIngredientWithEffect: [Material] = []
     var additionalMainIngredient: Material?
@@ -84,7 +83,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         
         // Checking if a category ingredient is in the meal, if yes, add to array.
-        fillPickerData()
+        checkForPickerData()
         
         checkPickerForEarlyEffect()
         
@@ -556,40 +555,56 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var fullRestore: Bool = false
         var hearts: Float
         hearts = 0.00
-        for item in materialData {
-            if item.hearts != nil{
-                if mealCell?.firstIngredient == item.materialName {
-                    hearts += item.hearts!
-                    if item.effect?.effectName == "Temporary Hearts"{
-                        fullRestore = true
-                    }
-                }
-                if mealCell?.secondIngredient == item.materialName {
-                    hearts += item.hearts!
-                    if item.effect?.effectName == "Temporary Hearts"{
-                        fullRestore = true
-                    }
-                }
-                if mealCell?.thirdIngredient == item.materialName {
-                    hearts += item.hearts!
-                    if item.effect?.effectName == "Temporary Hearts"{
-                        fullRestore = true
-                    }
-                }
-                if mealCell?.fourthIngredient == item.materialName {
-                    hearts += item.hearts!
-                    if item.effect?.effectName == "Temporary Hearts"{
-                        fullRestore = true
-                    }
-                }
-                if mealCell?.fifthIngredient == item.materialName {
-                    hearts += item.hearts!
-                    if item.effect?.effectName == "Temporary Hearts"{
-                        fullRestore = true
+        
+        if mealCell?.mainIngredients != nil {
+            for mainIngredientItem in (mealCell?.mainIngredients)!{
+                for materialItem in materialData {
+                    if materialItem.hearts != nil{
+                        if mainIngredientItem == materialItem.materialName {
+                            hearts += materialItem.hearts!
+                            if materialItem.effect?.effectName == "Temporary Hearts"{
+                                fullRestore = true
+                            }
+
+                        }
                     }
                 }
             }
         }
+//        for item in materialData {
+//            if item.hearts != nil{
+//                if mealCell?.firstIngredient == item.materialName {
+//                    hearts += item.hearts!
+//                    if item.effect?.effectName == "Temporary Hearts"{
+//                        fullRestore = true
+//                    }
+//                }
+//                if mealCell?.secondIngredient == item.materialName {
+//                    hearts += item.hearts!
+//                    if item.effect?.effectName == "Temporary Hearts"{
+//                        fullRestore = true
+//                    }
+//                }
+//                if mealCell?.thirdIngredient == item.materialName {
+//                    hearts += item.hearts!
+//                    if item.effect?.effectName == "Temporary Hearts"{
+//                        fullRestore = true
+//                    }
+//                }
+//                if mealCell?.fourthIngredient == item.materialName {
+//                    hearts += item.hearts!
+//                    if item.effect?.effectName == "Temporary Hearts"{
+//                        fullRestore = true
+//                    }
+//                }
+//                if mealCell?.fifthIngredient == item.materialName {
+//                    hearts += item.hearts!
+//                    if item.effect?.effectName == "Temporary Hearts"{
+//                        fullRestore = true
+//                    }
+//                }
+//            }
+//        }
         print("Hearts for main ingredients: \(hearts)")
         heartsOfMainIngredients = hearts
         hearts = hearts * 2
@@ -600,42 +615,81 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var fullRestore: Bool = false
         var categoryHearts: Float = 0.0
         
-        if mealCell?.firstCategory != nil {
-            if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].hearts != nil{
-                categoryHearts += firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].hearts!
+        var pickerData: [[Material]] = [firstPickerData, secondPickerData]
+        var pickers: [UIPickerView] = [firstNamePicker, secondNamePicker]
+        var categoryIngredientsCount = 0
+        
+//        if mealCell?.categoryIngredients != nil {
+//                categoryIngredientsCount = (mealCell?.categoryIngredients?.count)!
+//        }
+        
+        if mealCell?.categoryIngredients != nil {
+            categoryIngredientsCount = (mealCell?.categoryIngredients?.count)!
+                print("categoryIngredientsCount: \(categoryIngredientsCount)")
+            for index in 0..<categoryIngredientsCount{
+                print("index: \(index)")
+                if pickerData[index][pickers[index].selectedRow(inComponent: 0)].hearts != nil {
+                    categoryHearts += pickerData[index][pickers[index].selectedRow(inComponent: 0)].hearts!
                 
-                if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
-                    fullRestore = true
+                    if pickerData[index][pickers[index].selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+                        fullRestore = true
+                    }
                 }
             }
         }
-        if mealCell?.secondCategory != nil {
-            if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts != nil{
-                categoryHearts += secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts!
-                
-                if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
-                    fullRestore = true
-                }
-            }
-        }
-        if mealCell?.thirdCategory != nil {
-            if thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].hearts != nil{
-                categoryHearts += thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].hearts!
-                
-                if thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
-                    fullRestore = true
-                }
-            }
-        }
-        if mealCell?.fourthCategory != nil {
-            if fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].hearts != nil{
-                categoryHearts += fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].hearts!
-                
-                if fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
-                    fullRestore = true
-                }
-            }
-        }
+//        if mealCell?.categoryIngredients?[0]. != nil {
+//                categoryHearts += pickerData[count][firstNamePicker.selectedRow(inComponent: 0)].hearts!
+//                
+//                if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+//                    fullRestore = true
+//                }
+//            }
+//        }
+//        if mealCell?.categoryIngredients?[1] != nil {
+//            if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts != nil{
+//                categoryHearts += secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts!
+//                
+//                if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+//                    fullRestore = true
+//                }
+//            }
+//        }
+//        if mealCell?.firstCategory != nil {
+//            if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].hearts != nil{
+//                categoryHearts += firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].hearts!
+//                
+//                if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+//                    fullRestore = true
+//                }
+//            }
+//        }
+//        if mealCell?.secondCategory != nil {
+//            if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts != nil{
+//                categoryHearts += secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].hearts!
+//                
+//                if secondPickerData[secondNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+//                    fullRestore = true
+//                }
+//            }
+//        }
+//        if mealCell?.thirdCategory != nil {
+//            if thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].hearts != nil{
+//                categoryHearts += thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].hearts!
+//                
+//                if thirdPickerData[thirdNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+//                    fullRestore = true
+//                }
+//            }
+//        }
+//        if mealCell?.fourthCategory != nil {
+//            if fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].hearts != nil{
+//                categoryHearts += fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].hearts!
+//                
+//                if fourthPickerData[fourthNamePicker.selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+//                    fullRestore = true
+//                }
+//            }
+//        }
         
         let result = (heartsOfMainIngredients + categoryHearts) * 2
         print("Hearts for category ingredients: \(categoryHearts)")
@@ -677,92 +731,147 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         return(fullHearts, decimalHearts)
     }
     
-    func fillPickerData(){
-        if mealCell?.firstCategory != nil {
-            for items in materials{
-                for tag in items.category{
-                    if mealCell?.firstCategory == tag{
-                        firstPickerData.append(items)
-                        //            print(items.materialName)
+    func checkForPickerData(){
+        if mealCell?.categoryIngredients != nil {
+            if (mealCell?.categoryIngredients?.indices.contains(0))!{
+                fillPickerData(picker: 1, categoryIngredient: (mealCell?.categoryIngredients?[0])!)
+            }
+            if (mealCell?.categoryIngredients?.indices.contains(1))!{
+                fillPickerData(picker: 2, categoryIngredient: (mealCell?.categoryIngredients?[1])!)
+            }
+        }
+    }
+
+    func fillPickerData(picker: Int, categoryIngredient: String){
+        
+        for materialItem in materials{
+            for tag in materialItem.category{
+                if categoryIngredient == tag{
+                    if picker == 1{
+                        firstPickerData.append(materialItem)
+                        print(materialItem.materialName)
+                    }
+                    if picker == 2{
+                        secondPickerData.append(materialItem)
+                        print(materialItem.materialName)
                     }
                 }
             }
         }
-        if mealCell?.secondCategory != nil {
-            for items in materials{
-                for tag in items.category{
-                    if mealCell?.secondCategory == tag{
-                        secondPickerData.append(items)
-                    }
-                }
-            }
-        }
-        if mealCell?.thirdCategory != nil {
-            for items in materials{
-                for tag in items.category{
-                    if mealCell?.thirdCategory == tag{
-                        thirdPickerData.append(items)
-                    }
-                }
-            }
-        }
-        if mealCell?.fourthCategory != nil {
-            for items in materials{
-                for tag in items.category{
-                    if mealCell?.fourthCategory == tag{
-                        fourthPickerData.append(items)
-                    }
-                }
-            }
-        }
+        
+//        if mealCell?.categoryIngredients != nil{
+//            for categoryItem in (mealCell?.categoryIngredients)!{
+//                for materialItem in materials{
+//                    for tag in materialItem.category{
+//                        if categoryItem == tag{
+//                            firstPickerData.append(materialItem)
+//                            print(materialItem.materialName)
+//
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        if mealCell?.firstCategory != nil {
+//            for items in materials{
+//                for tag in items.category{
+//                    if mealCell?.firstCategory == tag{
+//                        firstPickerData.append(items)
+//                        //            print(items.materialName)
+//                    }
+//                }
+//            }
+//        }
+//        if mealCell?.secondCategory != nil {
+//            for items in materials{
+//                for tag in items.category{
+//                    if mealCell?.secondCategory == tag{
+//                        secondPickerData.append(items)
+//                    }
+//                }
+//            }
+//        }
+//        if mealCell?.thirdCategory != nil {
+//            for items in materials{
+//                for tag in items.category{
+//                    if mealCell?.thirdCategory == tag{
+//                        thirdPickerData.append(items)
+//                    }
+//                }
+//            }
+//        }
+//        if mealCell?.fourthCategory != nil {
+//            for items in materials{
+//                for tag in items.category{
+//                    if mealCell?.fourthCategory == tag{
+//                        fourthPickerData.append(items)
+//                    }
+//                }
+//            }
+//        }
         
     }
     
     func setIngredientLabels(){
+//        
+//        firstIngredientLabel.text = mealCell?.firstIngredient
+//        secondIngredientLabel.text = mealCell?.secondIngredient
+//        thirdIngredientLabel.text = mealCell?.thirdIngredient
+//        fourthIngredientLabel.text = mealCell?.fourthIngredient
+//        fifthIngredientLabel.text = mealCell?.fifthIngredient
         
-        firstIngredientLabel.text = mealCell?.firstIngredient
-        secondIngredientLabel.text = mealCell?.secondIngredient
-        thirdIngredientLabel.text = mealCell?.thirdIngredient
-        fourthIngredientLabel.text = mealCell?.fourthIngredient
-        fifthIngredientLabel.text = mealCell?.fifthIngredient
+        let mainIngredientLabels: [UILabel] = [firstIngredientLabel, secondIngredientLabel, thirdIngredientLabel, fourthIngredientLabel, fifthIngredientLabel]
 
+        var count = 0
+        if mealCell?.mainIngredients != nil{
+            for mainIngredient in (mealCell?.mainIngredients)!{
+                        mainIngredientLabels[count].text = mainIngredient
+                        checkForMainIngredientEffects(ingredient: mainIngredient)
+                        numberOfMainIngredients += 1
+                        count += 1
+            }
+        }
+        
+        for index in numberOfMainIngredients..<mainIngredientLabels.count {
+            mainIngredientLabels[index].removeFromSuperview()
+        }
         setNone()
 
-        if mealCell?.firstIngredient != nil {
-            checkForMainIngredientEffects(ingredient: (mealCell?.firstIngredient)!)
-            numberOfMainIngredients += 1
-        }
-        else {
-            firstIngredientLabel.removeFromSuperview()
-        }
-        if mealCell?.secondIngredient != nil {
-            checkForMainIngredientEffects(ingredient: (mealCell?.secondIngredient)!)
-            numberOfMainIngredients += 1
-        }
-        else {
-            secondIngredientLabel.removeFromSuperview()
-        }
-        if mealCell?.thirdIngredient != nil {
-            checkForMainIngredientEffects(ingredient: (mealCell?.thirdIngredient)!)
-            numberOfMainIngredients += 1
-        }
-        else {
-            thirdIngredientLabel.removeFromSuperview()
-        }
-        if mealCell?.fourthIngredient != nil {
-            checkForMainIngredientEffects(ingredient: (mealCell?.fourthIngredient)!)
-            numberOfMainIngredients += 1
-        }
-        else {
-            fourthIngredientLabel.removeFromSuperview()
-        }
-        if mealCell?.fifthIngredient != nil {
-            checkForMainIngredientEffects(ingredient: (mealCell?.fifthIngredient)!)
-            numberOfMainIngredients += 1
-        }
-        else {
-            fifthIngredientLabel.removeFromSuperview()
-        }
+//        if mealCell?.firstIngredient != nil {
+//            checkForMainIngredientEffects(ingredient: (mealCell?.firstIngredient)!)
+//            numberOfMainIngredients += 1
+//        }
+//        else {
+//            firstIngredientLabel.removeFromSuperview()
+//        }
+//        if mealCell?.secondIngredient != nil {
+//            checkForMainIngredientEffects(ingredient: (mealCell?.secondIngredient)!)
+//            numberOfMainIngredients += 1
+//        }
+//        else {
+//            secondIngredientLabel.removeFromSuperview()
+//        }
+//        if mealCell?.thirdIngredient != nil {
+//            checkForMainIngredientEffects(ingredient: (mealCell?.thirdIngredient)!)
+//            numberOfMainIngredients += 1
+//        }
+//        else {
+//            thirdIngredientLabel.removeFromSuperview()
+//        }
+//        if mealCell?.fourthIngredient != nil {
+//            checkForMainIngredientEffects(ingredient: (mealCell?.fourthIngredient)!)
+//            numberOfMainIngredients += 1
+//        }
+//        else {
+//            fourthIngredientLabel.removeFromSuperview()
+//        }
+//        if mealCell?.fifthIngredient != nil {
+//            checkForMainIngredientEffects(ingredient: (mealCell?.fifthIngredient)!)
+//            numberOfMainIngredients += 1
+//        }
+//        else {
+//            fifthIngredientLabel.removeFromSuperview()
+//        }
         
         handleMainIngredientEffects()
     }
@@ -995,6 +1104,9 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func checkPickerForEarlyEffect(){
         var success = false
         
+//        let isIndexValid = mealCell?.categoryIngredients?.indices.contains(0)
+//        print("Is index valid \(isIndexValid)")
+        
         if selectedEffect != nil{
             
             // First picker.
@@ -1006,7 +1118,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
             
             if success == true {
-                if mealCell?.secondCategory != nil{
+//                if mealCell?.secondCategory != nil{
+                if mealCell?.categoryIngredients?.indices.contains(1) != nil{
                     for items in secondPickerData{
                         if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
                             secondPickerSpecialData.append(items)
@@ -1025,7 +1138,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 }
                 
                 if success == true {
-                    if mealCell?.firstCategory != nil{
+//                    if mealCell?.firstCategory != nil{
+                    if mealCell?.categoryIngredients?.indices.contains(0) != nil{
                         for items in firstPickerData{
                             if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
                                 firstPickerSpecialData.append(items)
