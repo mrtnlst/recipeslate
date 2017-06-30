@@ -38,15 +38,10 @@ class AboutViewController: UIViewController {
             aboutText.text = "Recipe Slate provides a collection of recipes,\nelixirs and materials found in Breath of the\nWild."
         }
         else if (self.view.frame.size.width == 414){
-            //iPhone 6 Plus
-//            aboutText.font = UIFont(name: "Futura", size: 24)
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     func backAction(){
-        //print("Back Button Clicked")
         dismiss(animated: true, completion: nil)
     }
     @IBAction func followMartinPressed(_ sender: Any) {
@@ -79,18 +74,6 @@ class AboutViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

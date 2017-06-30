@@ -114,7 +114,6 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
         
-//        let meal = sections[indexPath.section][indexPath.row]
         let meal: Meal = getCorrectCellItem(path: indexPath)
         
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
@@ -150,10 +149,10 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         if segue.identifier == "showMealDetail" {
             let destinatenViewController = segue.destination as! MealDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             let selectedCell = getCorrectCellItem(path: indexPath!)
             
             destinatenViewController.mealCell = selectedCell
