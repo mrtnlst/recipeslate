@@ -50,7 +50,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CPY-1l-OV3" id="8RJ-xS-7GV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-kn-09u">
@@ -617,7 +617,7 @@ Add 3 for potency 3.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pcr-Qn-wmP">
-                                                        <rect key="frame" x="87.666666666666657" y="0.0" width="24.999999999999986" height="20"/>
+                                                        <rect key="frame" x="87.666666666666657" y="0.33333333333331439" width="24.999999999999986" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="PpR-aV-EuO"/>
                                                             <constraint firstAttribute="width" constant="25" id="yAd-s5-um5"/>
@@ -762,7 +762,7 @@ Add 3 for potency 3.</string>
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MxS-kv-EkI" id="CgI-33-G88">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk9-zg-tzs">
@@ -828,7 +828,7 @@ Add 3 for potency 3.</string>
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vmE-tE-igR" id="ceM-6U-IJJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9if-Nh-xax">
@@ -914,7 +914,7 @@ Add 3 for potency 3.</string>
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y6h-n1-ZdX" id="f26-tH-Ptg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYd-dx-0kx">
@@ -1307,7 +1307,7 @@ write an email at:</string>
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nPj-O5-qUT" id="AUz-R4-9Cc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbJ-hV-PD0">
@@ -1374,7 +1374,7 @@ write an email at:</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dnz-1a-QD5">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="619.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="514.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6V7-Ve-Ost">
                                                 <rect key="frame" x="18" y="20" width="56.333333333333329" height="21.666666666666664"/>
@@ -1520,25 +1520,6 @@ write an email at:</string>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uGV-rJ-n9I">
-                                                <rect key="frame" x="0.0" y="434.33333333333337" width="414" height="100.00000000000011"/>
-                                                <subviews>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0T-it-0aZ" userLabel="thirdName">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="100.00000000000006"/>
-                                                        <color key="backgroundColor" red="0.15686274510000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="9Hh-yp-9gQ"/>
-                                                        </constraints>
-                                                    </pickerView>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51A-1L-0rY" userLabel="fourthName">
-                                                        <rect key="frame" x="207" y="0.0" width="207" height="100.00000000000006"/>
-                                                        <color key="backgroundColor" red="0.15686274510000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="sLz-Kb-CRN"/>
-                                                        </constraints>
-                                                    </pickerView>
-                                                </subviews>
-                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaM-Fk-rGe">
                                                 <rect key="frame" x="366" y="20" width="30" height="25"/>
                                                 <constraints>
@@ -1550,13 +1531,13 @@ write an email at:</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resale value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-jl-4gz">
-                                                <rect key="frame" x="17.999999999999993" y="554.33333333333348" width="105.33333333333331" height="21.666666666666629"/>
+                                                <rect key="frame" x="17.999999999999993" y="449.33333333333326" width="105.33333333333331" height="21.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Rupees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1W-eR-oR8">
-                                                <rect key="frame" x="18" y="580.33333333333337" width="77.666666666666671" height="19.333333333333258"/>
+                                                <rect key="frame" x="18" y="475.33333333333331" width="77.666666666666671" height="19.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1564,12 +1545,10 @@ write an email at:</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.15607225890000001" green="0.19520995020000001" blue="0.21774250270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="uGV-rJ-n9I" firstAttribute="top" secondItem="Z2I-Io-cKK" secondAttribute="bottom" constant="5" id="5j9-Li-5ht"/>
                                             <constraint firstAttribute="trailing" secondItem="Z2I-Io-cKK" secondAttribute="trailing" id="8AV-EU-WTG"/>
                                             <constraint firstItem="Y1W-eR-oR8" firstAttribute="top" secondItem="e3u-jl-4gz" secondAttribute="bottom" constant="5" id="A86-Ya-RYD"/>
                                             <constraint firstItem="LaM-Fk-rGe" firstAttribute="top" secondItem="Dnz-1a-QD5" secondAttribute="top" constant="20" symbolic="YES" id="GjP-49-8HA"/>
                                             <constraint firstItem="6V7-Ve-Ost" firstAttribute="top" secondItem="Dnz-1a-QD5" secondAttribute="top" constant="20" symbolic="YES" id="Gnp-1T-SRT"/>
-                                            <constraint firstItem="e3u-jl-4gz" firstAttribute="top" secondItem="uGV-rJ-n9I" secondAttribute="bottom" constant="20" id="HEF-9X-PHb"/>
                                             <constraint firstItem="nHa-Wp-aAf" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leadingMargin" constant="10" id="JR9-u0-zbn"/>
                                             <constraint firstItem="rUU-XX-kgb" firstAttribute="top" secondItem="S41-So-f3C" secondAttribute="bottom" constant="5" id="NIw-24-vN7"/>
                                             <constraint firstItem="km4-6N-32X" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leadingMargin" constant="10" id="O0W-6O-fW1"/>
@@ -1581,12 +1560,11 @@ write an email at:</string>
                                             <constraint firstAttribute="bottom" secondItem="Y1W-eR-oR8" secondAttribute="bottom" constant="20" symbolic="YES" id="edo-wn-xUB"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="LaM-Fk-rGe" secondAttribute="trailing" constant="10" id="f9n-ox-zkU"/>
                                             <constraint firstItem="e3u-jl-4gz" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leadingMargin" constant="10" id="gRt-YV-3A8"/>
-                                            <constraint firstAttribute="trailing" secondItem="uGV-rJ-n9I" secondAttribute="trailing" id="hZE-i4-zNr"/>
                                             <constraint firstItem="nHa-Wp-aAf" firstAttribute="top" secondItem="mMO-DH-Wfe" secondAttribute="bottom" constant="5" id="kEH-DJ-4LP"/>
                                             <constraint firstItem="b1l-en-4Td" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leadingMargin" constant="10" id="lAE-b1-cnK"/>
                                             <constraint firstItem="S41-So-f3C" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leadingMargin" constant="10" id="oUa-Hy-Xf4"/>
                                             <constraint firstItem="mMO-DH-Wfe" firstAttribute="top" secondItem="rUU-XX-kgb" secondAttribute="bottom" constant="20" id="qR7-bw-aIx"/>
-                                            <constraint firstItem="uGV-rJ-n9I" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leading" id="r42-Mh-wiW"/>
+                                            <constraint firstItem="e3u-jl-4gz" firstAttribute="top" secondItem="Z2I-Io-cKK" secondAttribute="bottom" constant="20" id="rR9-5T-KqR"/>
                                             <constraint firstItem="km4-6N-32X" firstAttribute="top" secondItem="b1l-en-4Td" secondAttribute="bottom" constant="5" id="rlx-gC-PfI"/>
                                             <constraint firstItem="mMO-DH-Wfe" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leadingMargin" constant="10" id="sMx-Ok-lr0"/>
                                             <constraint firstItem="Z2I-Io-cKK" firstAttribute="leading" secondItem="Dnz-1a-QD5" secondAttribute="leading" id="tjX-RO-fk6"/>
@@ -1625,14 +1603,12 @@ write an email at:</string>
                         <outlet property="firstIngredientLabel" destination="jlS-PQ-pmQ" id="HXq-AF-NhX"/>
                         <outlet property="firstNamePicker" destination="MbU-2Z-xCS" id="VNQ-Us-jCn"/>
                         <outlet property="fourthIngredientLabel" destination="dYm-8o-55k" id="cQk-uZ-5WR"/>
-                        <outlet property="fourthNamePicker" destination="51A-1L-0rY" id="JvY-Cf-HWf"/>
                         <outlet property="nameLabel" destination="6V7-Ve-Ost" id="9Uj-jF-41b"/>
                         <outlet property="plusLabel" destination="5Nu-Os-XhJ" id="qga-eH-5Rz"/>
                         <outlet property="resaleValue" destination="Y1W-eR-oR8" id="mNl-Wn-SeE"/>
                         <outlet property="secondIngredientLabel" destination="WNn-nt-h7h" id="ncv-1a-Nce"/>
                         <outlet property="secondNamePicker" destination="c0f-gm-R7V" id="GDA-x4-hbJ"/>
                         <outlet property="thirdIngredientLabel" destination="gDe-ZS-eVJ" id="ECf-qu-2Y7"/>
-                        <outlet property="thirdNamePicker" destination="x0T-it-0aZ" id="Y9u-Kk-vJ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsu-NL-LIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1655,7 +1631,7 @@ write an email at:</string>
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nKE-Zh-OcX" id="Y1j-cY-6zd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbM-bX-Orq">

@@ -153,104 +153,137 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         // First bool for ingredient matched, second for same effect name.
         var status:Int = 0
     
-        for material in materialData{
-            
-            if meal.firstIngredient == material.materialName{
-
-                if material.effect?.effectName == effectCell?.effectName{
-                    effect.append(meal)
-                    status = 1
-                }
-                else if material.effect?.effectName == "Duration"{
-                    status = 2
-                }
-                else {
-                    status = 3
-                }
-            }
-            if meal.secondIngredient == material.materialName{
-                
-                if material.effect?.effectName == effectCell?.effectName{
-                    effect.append(meal)
-                    status = 1
-                }
-                else if material.effect?.effectName == "Duration"{
-                    status = 2
-                }
-                else {
-                    status = 3
-                }
-            }
-            if meal.thirdIngredient == material.materialName{
-                
-                if material.effect?.effectName == effectCell?.effectName{
-                    effect.append(meal)
-                    status = 1
-                }
-                else if material.effect?.effectName == "Duration"{
-                    status = 2
-                }
-                else {
-                    status = 3
-                }
-            }
-            if meal.fourthIngredient == material.materialName{
-                
-                if material.effect?.effectName == effectCell?.effectName{
-                    effect.append(meal)
-                    status = 1
-                }
-                else if material.effect?.effectName == "Duration"{
-                    status = 2
-                }
-                else {
-                    status = 3
-                }
-            }
-            if meal.fifthIngredient == material.materialName{
-                
-                if material.effect?.effectName == effectCell?.effectName{
-                    effect.append(meal)
-                    status = 1
-                }
-                else if material.effect?.effectName == "Duration"{
-                    status = 2
-                }
-                else {
-                    status = 3
+        if meal.mainIngredients != nil {
+            for mainIngredient in meal.mainIngredients! {
+                for material in materialData {
+                    
+                    if mainIngredient == material.materialName {
+                        
+                        if material.effect?.effectName == effectCell?.effectName{
+                            effect.append(meal)
+                            status = 1
+                        }
+                        else if material.effect?.effectName == "Duration"{
+                            status = 2
+                        }
+                        else {
+                            status = 3
+                        }
+                    }
                 }
             }
         }
+//        for material in materialData{
+//            
+//            if meal.firstIngredient == material.materialName{
+//
+//                if material.effect?.effectName == effectCell?.effectName{
+//                    effect.append(meal)
+//                    status = 1
+//                }
+//                else if material.effect?.effectName == "Duration"{
+//                    status = 2
+//                }
+//                else {
+//                    status = 3
+//                }
+//            }
+//            if meal.secondIngredient == material.materialName{
+//                
+//                if material.effect?.effectName == effectCell?.effectName{
+//                    effect.append(meal)
+//                    status = 1
+//                }
+//                else if material.effect?.effectName == "Duration"{
+//                    status = 2
+//                }
+//                else {
+//                    status = 3
+//                }
+//            }
+//            if meal.thirdIngredient == material.materialName{
+//                
+//                if material.effect?.effectName == effectCell?.effectName{
+//                    effect.append(meal)
+//                    status = 1
+//                }
+//                else if material.effect?.effectName == "Duration"{
+//                    status = 2
+//                }
+//                else {
+//                    status = 3
+//                }
+//            }
+//            if meal.fourthIngredient == material.materialName{
+//                
+//                if material.effect?.effectName == effectCell?.effectName{
+//                    effect.append(meal)
+//                    status = 1
+//                }
+//                else if material.effect?.effectName == "Duration"{
+//                    status = 2
+//                }
+//                else {
+//                    status = 3
+//                }
+//            }
+//            if meal.fifthIngredient == material.materialName{
+//                
+//                if material.effect?.effectName == effectCell?.effectName{
+//                    effect.append(meal)
+//                    status = 1
+//                }
+//                else if material.effect?.effectName == "Duration"{
+//                    status = 2
+//                }
+//                else {
+//                    status = 3
+//                }
+//            }
+//        }
         return status
     }
     
     func findEffectInCategoryIngredients(meal: Meal){
         
-        if meal.firstCategory != nil{
-            for items in materialData{
-                for tag in items.category{
-                
-                    if meal.firstCategory == tag && items.effect?.effectName == effectCell?.effectName{
-                        effect.append(meal)
-                        return
-                                            //            print(items.materialName)
+        if meal.categoryIngredients != nil {
+            for categoryIngredient in meal.categoryIngredients!{
+                for material in materialData{
+                    for category in material.category{
+                        if categoryIngredient == category && material.effect?.effectName == effectCell?.effectName{
+                            effect.append(meal)
+                            return
+                        }
                     }
                 }
             }
         }
         
-        if meal.secondCategory != nil{
-            for items in materialData{
-                for tag in items.category{
-                    
-                    if meal.secondCategory == tag && items.effect?.effectName == effectCell?.effectName{
-                        effect.append(meal)
-                        return
-                        //            print(items.materialName)
-                    }
-                }
-            }
-        }
+//        if meal.firstCategory != nil{
+//            for items in materialData{
+//                for tag in items.category{
+//                
+//                    if meal.firstCategory == tag && items.effect?.effectName == effectCell?.effectName{
+//                        effect.append(meal)
+//                        return
+//                                            //            print(items.materialName)
+//                    }
+//                }
+//            }
+//        }
+//        
+//        if meal.secondCategory != nil{
+//            for items in materialData{
+//                for tag in items.category{
+//                    
+//                    if meal.secondCategory == tag && items.effect?.effectName == effectCell?.effectName{
+//                        effect.append(meal)
+//                        return
+//                        //            print(items.materialName)
+//                    }
+//                }
+//            }
+//        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

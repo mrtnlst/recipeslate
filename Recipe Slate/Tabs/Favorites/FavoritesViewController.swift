@@ -202,30 +202,14 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
     func checkMainIngredients(meal: Meal) -> Bool{
         var check = false
         
-        for material in materialData{
-            if meal.firstIngredient == material.materialName{
-                if material.effect?.effectName != "Duration"{
-                    check = true
-                }
-            }
-            if meal.secondIngredient == material.materialName{
-                if material.effect?.effectName != "Duration"{
-                    check = true
-                }
-            }
-            if meal.thirdIngredient == material.materialName{
-                if material.effect?.effectName != "Duration"{
-                    check = true
-                }
-            }
-            if meal.fourthIngredient == material.materialName{
-                if material.effect?.effectName != "Duration"{
-                    check = true
-                }
-            }
-            if meal.fifthIngredient == material.materialName{
-                if material.effect?.effectName != "Duration"{
-                    check = true
+        if meal.mainIngredients != nil {
+            for mainIngredient in meal.mainIngredients! {
+                for material in materialData {
+                    if mainIngredient == material.materialName {
+                        if material.effect?.effectName != "Duration"{
+                            check = true
+                        }
+                    }
                 }
             }
         }
@@ -234,23 +218,14 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
     
     func checkCategoryIngredients(meal: Meal) -> Bool{
         var check = false
-        if meal.firstCategory != nil{
-            for items in materialData{
-                for tag in items.category{
-                    
-                    if meal.firstCategory == tag && items.effect?.effectName != "Duration"{
-                        check = true
-                    }
-                }
-            }
-        }
         
-        if meal.secondCategory != nil{
-            for items in materialData{
-                for tag in items.category{
-                    
-                    if meal.secondCategory == tag && items.effect?.effectName != "Duration"{
-                        check = true
+        if meal.categoryIngredients != nil {
+            for categoryIngredient in meal.categoryIngredients!{
+                for material in materialData{
+                    for category in material.category{
+                        if categoryIngredient == category && material.effect?.effectName != "Duration"{
+                            check = true
+                        }
                     }
                 }
             }
