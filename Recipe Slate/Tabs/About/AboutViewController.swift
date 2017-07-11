@@ -29,7 +29,7 @@ class AboutViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(backAction))
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        versionLabel.text = "1.1.2"
+        versionLabel.text = "1.1.3"
         
         if (self.view.frame.size.width == 320){
             aboutText.text = "Recipe Slate provides a collection of\nrecipes, elixirs and materials found in\nBreath of the Wild."
