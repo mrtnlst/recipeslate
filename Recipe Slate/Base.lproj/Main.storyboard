@@ -382,23 +382,37 @@ Add 3 for potency 3.</string>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pr5-mf-xyN">
-                                                <rect key="frame" x="18" y="475" width="92" height="30"/>
-                                                <state key="normal" title="View Recipes"/>
-                                                <connections>
-                                                    <action selector="viewRecipesButtonPressed:" destination="7A5-pf-hou" eventType="touchUpInside" id="cgO-vg-c1D"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="3yp-JE-9dD">
+                                                <rect key="frame" x="18" y="485" width="114" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Meal Button" translatesAutoresizingMaskIntoConstraints="NO" id="QfE-bL-mtM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="ALa-98-0WH"/>
+                                                            <constraint firstAttribute="height" constant="20" id="Wvn-f4-sHg"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pr5-mf-xyN">
+                                                        <rect key="frame" x="23" y="2" width="91" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                        <state key="normal" title="View Meals">
+                                                            <color key="titleColor" red="0.28627450980392155" green="0.68235294117647061" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="viewRecipesButtonPressed:" destination="7A5-pf-hou" eventType="touchUpInside" id="cgO-vg-c1D"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.15607225890000001" green="0.19520995020000001" blue="0.21774250270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="OGM-tl-9jM" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="0eW-zq-Fox"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="pr5-mf-xyN" secondAttribute="bottom" constant="20" id="22T-hh-xud"/>
                                             <constraint firstItem="Y2F-ke-xmS" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="51p-nS-hrU"/>
                                             <constraint firstItem="zf5-CT-hAP" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="6Lr-oq-BgT"/>
                                             <constraint firstItem="IDm-D3-kid" firstAttribute="top" secondItem="bY3-ue-r3p" secondAttribute="bottom" constant="5" id="8Rw-4H-bs8"/>
                                             <constraint firstItem="SgG-ol-Oef" firstAttribute="top" secondItem="mMz-LF-IJw" secondAttribute="bottom" constant="3" id="902-Oq-RTG"/>
-                                            <constraint firstItem="pr5-mf-xyN" firstAttribute="top" secondItem="8c7-kz-8f1" secondAttribute="bottom" constant="10" id="99K-Rd-Y9Z"/>
                                             <constraint firstAttribute="trailing" secondItem="rWN-F8-vkY" secondAttribute="trailing" constant="150" id="DaU-zT-hbe"/>
                                             <constraint firstItem="A6Q-xW-Ki9" firstAttribute="top" secondItem="zf5-CT-hAP" secondAttribute="bottom" constant="20" id="JNE-Fd-Oqe"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="pZT-tK-CpQ" secondAttribute="trailing" constant="20" id="JY6-4Z-ur8"/>
@@ -421,18 +435,20 @@ Add 3 for potency 3.</string>
                                             <constraint firstItem="ezT-ho-ZNH" firstAttribute="top" secondItem="IDm-D3-kid" secondAttribute="bottom" constant="20" id="cNy-Ok-dme"/>
                                             <constraint firstItem="Y2F-ke-xmS" firstAttribute="top" secondItem="Cw5-nI-28m" secondAttribute="bottom" constant="20" id="dLj-cK-Rq4"/>
                                             <constraint firstItem="pZT-tK-CpQ" firstAttribute="top" secondItem="MbF-XU-Szh" secondAttribute="bottom" constant="3" id="dMz-VA-7kP"/>
+                                            <constraint firstItem="3yp-JE-9dD" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="fSC-g1-Myl"/>
                                             <constraint firstItem="0cV-zn-4dn" firstAttribute="top" secondItem="VLt-8x-iaK" secondAttribute="bottom" constant="3" id="fVD-yC-s95"/>
                                             <constraint firstItem="8c7-kz-8f1" firstAttribute="top" secondItem="A6Q-xW-Ki9" secondAttribute="bottom" constant="5" id="gxn-bn-wfx"/>
                                             <constraint firstItem="mTL-Xk-w4H" firstAttribute="top" secondItem="SgG-ol-Oef" secondAttribute="bottom" constant="3" id="h6V-Pt-4Cz"/>
                                             <constraint firstItem="rWN-F8-vkY" firstAttribute="top" secondItem="Y2F-ke-xmS" secondAttribute="bottom" constant="5" id="hCe-8D-CyF"/>
                                             <constraint firstItem="ezT-ho-ZNH" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="jR9-X6-lOs"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="3yp-JE-9dD" secondAttribute="bottom" constant="20" id="kBG-oo-MMj"/>
                                             <constraint firstItem="mMz-LF-IJw" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="lX0-SA-5q4"/>
                                             <constraint firstItem="A6Q-xW-Ki9" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="nm1-xu-ksd"/>
                                             <constraint firstItem="geq-zz-spx" firstAttribute="top" secondItem="KO6-br-ZXr" secondAttribute="bottom" constant="20" id="qPx-jy-iQA"/>
                                             <constraint firstItem="geq-zz-spx" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="reN-6k-0WR"/>
-                                            <constraint firstItem="pr5-mf-xyN" firstAttribute="leading" secondItem="A7d-Ep-XEL" secondAttribute="leadingMargin" constant="10" id="t6c-nu-sDH"/>
                                             <constraint firstItem="MbF-XU-Szh" firstAttribute="top" secondItem="rWN-F8-vkY" secondAttribute="bottom" constant="3" id="uyE-y9-kqK"/>
                                             <constraint firstItem="OGM-tl-9jM" firstAttribute="top" secondItem="geq-zz-spx" secondAttribute="bottom" constant="5" id="y0w-9G-T3f"/>
+                                            <constraint firstItem="3yp-JE-9dD" firstAttribute="top" secondItem="8c7-kz-8f1" secondAttribute="bottom" constant="20" id="ybt-0q-Bi9"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -484,7 +500,7 @@ Add 3 for potency 3.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFV-QI-i7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168" y="2019"/>
+            <point key="canvasLocation" x="1166.6666666666667" y="2018.4782608695655"/>
         </scene>
         <!--Elixir-->
         <scene sceneID="a9e-Tb-IHM">
@@ -1784,11 +1800,12 @@ write an email at:</string>
         <image name="Heat Resistance" width="18" height="15"/>
         <image name="Increased Stealth" width="31" height="25"/>
         <image name="Mail Button" width="25" height="25"/>
+        <image name="Meal Button" width="25" height="25"/>
         <image name="Meals Tab" width="25" height="25"/>
         <image name="Twitter Button" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y29-WC-6kL"/>
         <segue reference="8Hp-vj-byW"/>
+        <segue reference="Qns-lX-RcM"/>
     </inferredMetricsTieBreakers>
 </document>
