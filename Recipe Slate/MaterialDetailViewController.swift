@@ -36,6 +36,7 @@ class MaterialDetailViewController: UIViewController {
     @IBOutlet weak var potencyImage3: UIImageView!
     @IBOutlet weak var potencyImage4: UIImageView!
     @IBOutlet weak var potencyImage5: UIImageView!
+    @IBOutlet weak var viewRecipesButton: UIButton!
   
     
     var materialCell: Material?
@@ -333,4 +334,19 @@ class MaterialDetailViewController: UIViewController {
                     potencyImage5.removeFromSuperview()
         }
     }
+    @IBAction func viewRecipesButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "showRecipes", sender: viewRecipesButton)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRecipes" {
+            let destinatenViewController = segue.destination as! PossibleMealsTableView
+            destinatenViewController.chosenMaterial = materialCell
+            
+            // Hiding tab bar, when in DetailViewController.
+            destinatenViewController.hidesBottomBarWhenPushed = true
+        }
+        
+    }
+
 }
