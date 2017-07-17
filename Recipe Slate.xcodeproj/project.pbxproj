@@ -40,7 +40,7 @@
 		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
+		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PossibleMealsTableView.swift; path = ../../PossibleMealsTableView.swift; sourceTree = "<group>"; };
 		5BAEEADC1F068937002E307A /* MealData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealData.swift; sourceTree = "<group>"; };
 		5BAEEADE1F080351002E307A /* ElixirData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirData.swift; sourceTree = "<group>"; };
 		5BAEEAE01F080399002E307A /* FoodData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
@@ -55,15 +55,15 @@
 		A9614D741E77F8F0009CA034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9614D771E77F8F0009CA034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9614D791E77F8F0009CA034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9614D7F1E77F978009CA034 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
-		A9614D811E77FA0D009CA034 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		A9614D7F1E77F978009CA034 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealViewController.swift; path = ../../MealViewController.swift; sourceTree = "<group>"; };
+		A9614D811E77FA0D009CA034 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = ../../Meal.swift; sourceTree = "<group>"; };
 		A9614D831E77FACA009CA034 /* MaterialData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialData.swift; sourceTree = "<group>"; };
 		A9614D8C1E795104009CA034 /* Elixir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elixir.swift; sourceTree = "<group>"; };
 		A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		A96FD1371E7BE8D900CE60D6 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		A9C3387B1E8435E8003A574F /* MonsterPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterPart.swift; sourceTree = "<group>"; };
 		A9C3387D1E853A51003A574F /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
-		A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
+		A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealDetailViewController.swift; path = ../../MealDetailViewController.swift; sourceTree = "<group>"; };
 		A9C784D01E80819000551990 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,12 +123,35 @@
 			children = (
 				5B8885C81F010A3500BBEEDF /* About */,
 				5B8885C91F010A4200BBEEDF /* Favorites */,
+				5BD334CE1F1D7B2E00D45ACD /* Material */,
 				A96FD1391E7BE8DE00CE60D6 /* Food */,
-				A9614D891E780E21009CA034 /* Meal */,
+				5BD334D11F1D7C9400D45ACD /* Meal */,
 				5B2CC7E21E9197EF00E02C55 /* Effect */,
 				A9614D901E7956AB009CA034 /* Elixir */,
 			);
 			path = Tabs;
+			sourceTree = "<group>";
+		};
+		5BD334CE1F1D7B2E00D45ACD /* Material */ = {
+			isa = PBXGroup;
+			children = (
+				A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */,
+				A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */,
+				A9C3387D1E853A51003A574F /* Material.swift */,
+			);
+			name = Material;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		5BD334D11F1D7C9400D45ACD /* Meal */ = {
+			isa = PBXGroup;
+			children = (
+				A9614D811E77FA0D009CA034 /* Meal.swift */,
+				5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */,
+				A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */,
+				A9614D7F1E77F978009CA034 /* MealViewController.swift */,
+			);
+			path = Meal;
 			sourceTree = "<group>";
 		};
 		A9614D5F1E77F8F0009CA034 = {
@@ -161,17 +184,6 @@
 			path = "Recipe Slate";
 			sourceTree = "<group>";
 		};
-		A9614D891E780E21009CA034 /* Meal */ = {
-			isa = PBXGroup;
-			children = (
-				A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */,
-				A9614D7F1E77F978009CA034 /* MealViewController.swift */,
-				A9614D811E77FA0D009CA034 /* Meal.swift */,
-			);
-			name = Meal;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		A9614D901E7956AB009CA034 /* Elixir */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,11 +200,7 @@
 		A96FD1391E7BE8DE00CE60D6 /* Food */ = {
 			isa = PBXGroup;
 			children = (
-				A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */,
-				A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */,
 				A96FD1371E7BE8D900CE60D6 /* Food.swift */,
-				5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */,
-				A9C3387D1E853A51003A574F /* Material.swift */,
 			);
 			name = Food;
 			path = ..;

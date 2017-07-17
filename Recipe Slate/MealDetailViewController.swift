@@ -1001,6 +1001,5 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if mealCell?.name == "Fairy Tonic"{
              resaleValue.text = String(format: "2 Rupees")
         }
-        
     }
 }
