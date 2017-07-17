@@ -9,7 +9,7 @@
 import Foundation
 
 let mealData = [
-    
+    Meal(name: "Fairy Tonic", mainIngredients: ["Fairy"]),
     Meal(name: "Sautéed Peppers", mainIngredients: ["Spicy Pepper"]),
     Meal(name: "Crab Risotto", mainIngredients: ["Hylian Rice", "Goat Butter", "Rock Salt"], categoryIngredients: ["Crab"]),
     Meal(name: "Apple Pie", mainIngredients: ["Apple", "Tabantha Wheat", "Cane Sugar", "Goat Butter"]),

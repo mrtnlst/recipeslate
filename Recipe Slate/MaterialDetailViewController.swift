@@ -37,9 +37,11 @@ class MaterialDetailViewController: UIViewController {
     @IBOutlet weak var potencyImage4: UIImageView!
     @IBOutlet weak var potencyImage5: UIImageView!
     @IBOutlet weak var viewRecipesButton: UIButton!
+    @IBOutlet weak var mealImage: UIImageView!
   
     
     var materialCell: Material?
+    var segueKeyWord: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,9 @@ class MaterialDetailViewController: UIViewController {
                 setSaleValue()
             }
         }
+        
+        checkForRecipesButton()
+
     }
     
     func setLabels(){
@@ -335,7 +340,9 @@ class MaterialDetailViewController: UIViewController {
         }
     }
     @IBAction func viewRecipesButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "showRecipes", sender: viewRecipesButton)
+        if segueKeyWord != nil {
+            performSegue(withIdentifier: segueKeyWord!, sender: viewRecipesButton)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -346,7 +353,55 @@ class MaterialDetailViewController: UIViewController {
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true
         }
+        if segue.identifier == "showForCritter" {
+            let destinatenViewController = segue.destination as! ElixirDetailViewController
+            destinatenViewController.elixirCell = getEffectForCritterCategory()
+            
+            // Hiding tab bar, when in DetailViewController.
+            destinatenViewController.hidesBottomBarWhenPushed = true
+        }
+        if segue.identifier == "showForMonsterPart" {
+            let destinatenViewController = segue.destination as! ElixirViewController
+//            destinatenViewController.elixirCell = getEffectForCritterCategory()
+            
+            // Hiding tab bar, when in DetailViewController.
+            destinatenViewController.hidesBottomBarWhenPushed = true
+        }
         
     }
-
+    
+    func getEffectForCritterCategory() -> Elixir {
+        var chosenElixir = Elixir(name: "Chilly Elixir", category: "Chilly", effect: "Heat Resistance")
+        
+        for critter in critterData{
+            if materialCell?.materialName == critter.name{
+                for elixir in elixirData{
+                    if critter.category == elixir.category{
+                        chosenElixir = elixir
+                    }
+                }
+            }
+        }
+        return chosenElixir
+    }
+    
+    func checkForRecipesButton(){
+        for category in (materialCell?.category)!{
+            if category == "Critter"{
+                viewRecipesButton.setTitle("View Elixirs", for: .normal)
+                mealImage.image = UIImage(named: "Elixir Button")
+                segueKeyWord = "showForCritter"
+            }
+            else if category == "Monster Part"{
+                viewRecipesButton.setTitle("View Elixirs", for: .normal)
+                mealImage.image = UIImage(named: "Elixir Button")
+                segueKeyWord = "showForMonsterPart"
+            }
+            else {
+                viewRecipesButton.setTitle("View Meals", for: .normal)
+                mealImage.image = UIImage(named: "Meal Button")
+                segueKeyWord = "showRecipes"
+            }
+        }
+    }
 }

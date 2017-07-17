@@ -538,6 +538,9 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if mealCell?.name == "Herb Sauté"{
             amountOfHeartsLabel.text = String(format: "2")
         }
+        if mealCell?.name == "Fairy Tonic"{
+            amountOfHeartsLabel.text = String(format: "7")
+        }
     }
     
     func splitHeartsValue(heartsValue: Float) -> (fullHearts: Int, decimalHearts: Float){
@@ -994,5 +997,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         valueMultiplied = ceil(valueMultiplied) * 10
         print(valueMultiplied)
         resaleValue.text = String(format: "%.0f Rupees", valueMultiplied)
+        
+        if mealCell?.name == "Fairy Tonic"{
+             resaleValue.text = String(format: "2 Rupees")
+        }
+        
     }
 }

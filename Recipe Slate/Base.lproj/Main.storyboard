@@ -481,6 +481,7 @@ Add 3 for potency 3.</string>
                         <outlet property="frozenHeartsValue" destination="ZxQ-Z8-iWm" id="Y0c-GQ-qDo"/>
                         <outlet property="frozenMinutesValue" destination="Scw-3Q-KSZ" id="M5F-mD-LPk"/>
                         <outlet property="locationLabel" destination="8c7-kz-8f1" id="sde-Bu-RUw"/>
+                        <outlet property="mealImage" destination="QfE-bL-mtM" id="A52-CB-y4X"/>
                         <outlet property="nameLabel" destination="Cw5-nI-28m" id="TIG-Ps-VoG"/>
                         <outlet property="plusLabel" destination="7bO-O1-5CM" id="0a4-YQ-k3z"/>
                         <outlet property="potencyImage1" destination="M5R-AO-3Qb" id="8rB-18-l8e"/>
@@ -496,6 +497,8 @@ Add 3 for potency 3.</string>
                         <outlet property="saleValueLabel" destination="zf5-CT-hAP" id="blB-Bk-WZD"/>
                         <outlet property="viewRecipesButton" destination="pr5-mf-xyN" id="da3-ri-cEg"/>
                         <segue destination="JIy-m7-tvK" kind="show" identifier="showRecipes" id="sW1-rK-ism"/>
+                        <segue destination="VyA-Xb-b4O" kind="show" identifier="showForCritter" id="9K7-uM-4DJ"/>
+                        <segue destination="AgH-GQ-3F5" kind="show" identifier="showForMonsterPart" id="KQj-lL-YhX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFV-QI-i7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1806,6 +1809,8 @@ write an email at:</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8Hp-vj-byW"/>
+        <segue reference="KQj-lL-YhX"/>
+        <segue reference="9K7-uM-4DJ"/>
         <segue reference="Qns-lX-RcM"/>
     </inferredMetricsTieBreakers>
 </document>

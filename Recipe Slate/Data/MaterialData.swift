@@ -22,7 +22,7 @@ let materialData = [
     Material(materialName: "Courser Bee Honey", category: ["Misc"], hearts: 2.0, effect: Effect(effectName: "Restores Stamina", amount: 0.4), saleValue: 10, location: "Hit a bee hive"),
     Material(materialName: "Wood", category: ["Misc"], hearts: 0.125, saleValue: 2, location: "Felling trees"),
     Material(materialName: "Monster Extract", category: ["Misc"], hearts: 1.5, effect: Effect(effectName: "Duration", duration: 1800), saleValue: 3, location: "Kilton's Monster Shop"),
-    Material(materialName: "Fairy", category: ["Misc"], hearts: 5.0, effect: Effect(effectName: "Duration", duration: 30), saleValue: 0, location: "Great Fairy Fountains"),
+    Material(materialName: "Fairy", category: ["Misc"], hearts: 5.0, effect: Effect(effectName: "Duration", duration: 30), saleValue: 2, location: "Great Fairy Fountains"),
     Material(materialName: "Star Fragment", category: ["Misc"], effect: Effect(effectName: "Duration", duration: 30), saleValue: 300, location: "Loot from Silver Lynels\nFalling from sky"),
     
     // Mushroom.

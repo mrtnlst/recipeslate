@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Recipe Slate/MaterialDetailViewController.swift"
-            timestampString = "521919916.478634"
+            timestampString = "522016721.367273"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "checkIfPotencyUpgradesPossible()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Recipe Slate/MaterialDetailViewController.swift"
-            timestampString = "521919916.478634"
+            timestampString = "522016721.367273"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "checkIfPotencyUpgradesPossible()"
             landmarkType = "7">
          </BreakpointContent>
