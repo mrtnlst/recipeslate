@@ -11,6 +11,7 @@
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
+		5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */; };
 		5BAEEADD1F068938002E307A /* MealData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEADC1F068937002E307A /* MealData.swift */; };
 		5BAEEADF1F080351002E307A /* ElixirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEADE1F080351002E307A /* ElixirData.swift */; };
 		5BAEEAE11F080399002E307A /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEAE01F080399002E307A /* FoodData.swift */; };
@@ -40,7 +41,8 @@
 		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PossibleMealsTableView.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
+		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
+		5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5BAEEADC1F068937002E307A /* MealData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealData.swift; sourceTree = "<group>"; };
 		5BAEEADE1F080351002E307A /* ElixirData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirData.swift; sourceTree = "<group>"; };
 		5BAEEAE01F080399002E307A /* FoodData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
@@ -55,15 +57,15 @@
 		A9614D741E77F8F0009CA034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9614D771E77F8F0009CA034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9614D791E77F8F0009CA034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9614D7F1E77F978009CA034 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealViewController.swift; path = MealViewController.swift; sourceTree = "<group>"; };
-		A9614D811E77FA0D009CA034 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = Meal.swift; sourceTree = "<group>"; };
+		A9614D7F1E77F978009CA034 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		A9614D811E77FA0D009CA034 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		A9614D831E77FACA009CA034 /* MaterialData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialData.swift; sourceTree = "<group>"; };
 		A9614D8C1E795104009CA034 /* Elixir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elixir.swift; sourceTree = "<group>"; };
 		A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialViewController.swift; sourceTree = "<group>"; };
 		A96FD1371E7BE8D900CE60D6 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		A9C3387B1E8435E8003A574F /* MonsterPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterPart.swift; sourceTree = "<group>"; };
 		A9C3387D1E853A51003A574F /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
-		A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealDetailViewController.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
+		A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
 		A9C784D01E80819000551990 /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +88,6 @@
 				5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */,
 				5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */,
 			);
-			name = Effect;
 			path = Effect;
 			sourceTree = "<group>";
 		};
@@ -127,9 +128,19 @@
 				5B8885C91F010A4200BBEEDF /* Favorites */,
 				A96FD1391E7BE8DE00CE60D6 /* Food */,
 				5BD334CE1F1D7B2E00D45ACD /* Material */,
+				5BA56EBB1F1FC62E009EFFF2 /* Helper */,
 				5BD334D11F1D7C9400D45ACD /* Meal */,
 			);
 			path = Tabs;
+			sourceTree = "<group>";
+		};
+		5BA56EBB1F1FC62E009EFFF2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */,
+			);
+			name = Helper;
+			path = Meal;
 			sourceTree = "<group>";
 		};
 		5BD334CE1F1D7B2E00D45ACD /* Material */ = {
@@ -139,7 +150,6 @@
 				A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */,
 				A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */,
 			);
-			name = Material;
 			path = Material;
 			sourceTree = "<group>";
 		};
@@ -193,7 +203,6 @@
 				A914A2491E82EA980023C3B9 /* ElixirViewController.swift */,
 				A9C3387B1E8435E8003A574F /* MonsterPart.swift */,
 			);
-			name = Elixir;
 			path = Elixir;
 			sourceTree = "<group>";
 		};
@@ -202,7 +211,6 @@
 			children = (
 				A96FD1371E7BE8D900CE60D6 /* Food.swift */,
 			);
-			name = Food;
 			path = Food;
 			sourceTree = "<group>";
 		};
@@ -289,6 +297,7 @@
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
+				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
 				5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */,

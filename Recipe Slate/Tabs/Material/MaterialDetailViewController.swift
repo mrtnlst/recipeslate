@@ -356,6 +356,7 @@ class MaterialDetailViewController: UIViewController {
         if segue.identifier == "showForCritter" {
             let destinatenViewController = segue.destination as! ElixirDetailViewController
             destinatenViewController.elixirCell = getEffectForCritterCategory()
+            destinatenViewController.selectedCritter = materialCell
             
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true

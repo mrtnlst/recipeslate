@@ -31,6 +31,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
    
     // Chosen item from UITableview list.
     var elixirCell: Elixir?
+    var selectedCritter: Material?
     
     // Array with generalData.
     var critters:[Critter] = critterData
@@ -73,15 +74,17 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
                 }
             }
        
-        // Pre-load UIPicker and execute them.
-        critterNamePicker.selectRow(0, inComponent: 0, animated: true)
-        critterAmountPicker.selectRow(0, inComponent: 0, animated: true)
+        setPickerRows()
         
-        monsterNamePicker.selectRow(0, inComponent: 0, animated: true)
-        monsterAmountPicker.selectRow(0, inComponent: 0, animated: true)
-
-        pickerView(critterNamePicker, didSelectRow: 0, inComponent: 0)
-        pickerView(critterAmountPicker, didSelectRow: 0, inComponent: 0)
+//        // Pre-load UIPicker and execute them.
+//        critterNamePicker.selectRow(0, inComponent: 0, animated: true)
+//        critterAmountPicker.selectRow(0, inComponent: 0, animated: true)
+//        
+//        monsterNamePicker.selectRow(0, inComponent: 0, animated: true)
+//        monsterAmountPicker.selectRow(0, inComponent: 0, animated: true)
+//
+//        pickerView(critterNamePicker, didSelectRow: 0, inComponent: 0)
+//        pickerView(critterAmountPicker, didSelectRow: 0, inComponent: 0)
         
         // Setting the name and effect label.
         if elixirCell != nil{
@@ -303,5 +306,25 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
    
         }
     }
-
+    
+    func setPickerRows(){
+        var index = 0
+        
+        for (i, critter) in chosenCritter.enumerated(){
+            if selectedCritter?.materialName == critter.name{
+                index = i
+                print(index)
+            }
+        }
+        // Pre-load UIPicker and execute them.
+        critterNamePicker.selectRow(index, inComponent: 0, animated: true)
+        critterAmountPicker.selectRow(0, inComponent: 0, animated: true)
+        
+        monsterNamePicker.selectRow(0, inComponent: 0, animated: true)
+        monsterAmountPicker.selectRow(0, inComponent: 0, animated: true)
+        
+        pickerView(critterNamePicker, didSelectRow: index, inComponent: 0)
+        pickerView(critterAmountPicker, didSelectRow: 0, inComponent: 0)
+        
+    }
 }
