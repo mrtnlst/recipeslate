@@ -9,7 +9,7 @@
 import Foundation
 
 class Utility {
-//    static func createAlphabeticalSection<T>(arrayToSort: T){
+//    static func createAlphabeticalSection<T>(arrayToSort: [T]){
 //        
 //        var sortedFirstLetters: [String] = []
 //        var sections: [[T]] = [[]]
@@ -23,6 +23,5 @@ class Utility {
 //                .filter { $0.titleFirstLetter == firstLetter }
 //                .sorted { $0.name < $1.name }
 //        }
-//
 //    }
 }
