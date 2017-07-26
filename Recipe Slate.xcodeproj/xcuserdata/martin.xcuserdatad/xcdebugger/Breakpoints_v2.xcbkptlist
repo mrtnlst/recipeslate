@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Recipe Slate/Tabs/Elixir/ElixirDetailViewController.swift"
-            timestampString = "522178471.834037"
+            timestampString = "522767408.731417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "setPickerRows()"
             landmarkType = "7">
          </BreakpointContent>

@@ -31,7 +31,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
    
     // Chosen item from UITableview list.
     var elixirCell: Elixir?
-    var selectedCritter: Material?
+    var selectedMaterial: Material?
     
     // Array with generalData.
     var critters:[Critter] = critterData
@@ -308,23 +308,30 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     }
     
     func setPickerRows(){
-        var index = 0
+        var critterIndex = 0
+        var monsterPartIndex = 0
         
         for (i, critter) in chosenCritter.enumerated(){
-            if selectedCritter?.materialName == critter.name{
-                index = i
+            if selectedMaterial?.materialName == critter.name{
+                critterIndex = i
                 print(index)
             }
         }
+        for (i, monsterPart) in monsterParts.enumerated(){
+            if selectedMaterial?.materialName == monsterPart.name{
+                monsterPartIndex = i
+                print("It's \(monsterPart.name)")
+            }
+        }
         // Pre-load UIPicker and execute them.
-        critterNamePicker.selectRow(index, inComponent: 0, animated: true)
+        critterNamePicker.selectRow(critterIndex, inComponent: 0, animated: true)
         critterAmountPicker.selectRow(0, inComponent: 0, animated: true)
         
-        monsterNamePicker.selectRow(0, inComponent: 0, animated: true)
+        monsterNamePicker.selectRow(monsterPartIndex, inComponent: 0, animated: true)
         monsterAmountPicker.selectRow(0, inComponent: 0, animated: true)
         
-        pickerView(critterNamePicker, didSelectRow: index, inComponent: 0)
-        pickerView(critterAmountPicker, didSelectRow: 0, inComponent: 0)
+        pickerView(critterNamePicker, didSelectRow: critterIndex, inComponent: 0)
+        pickerView(critterAmountPicker, didSelectRow: monsterPartIndex, inComponent: 0)
         
     }
 }

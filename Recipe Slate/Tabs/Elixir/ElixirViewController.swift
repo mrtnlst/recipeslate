@@ -13,6 +13,7 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
     var elixirs:[Elixir] = elixirData
     var sortedFirstLetters: [String] = []
     var sections: [[Elixir]] = [[]]
+    var selectedMaterial: Material?
     
     var filteredResults = [Elixir]()
     let searchController = UISearchController(searchResultsController: nil)
@@ -130,6 +131,9 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
 
 //            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             destinatenViewController.elixirCell = selectedCell
+            if selectedMaterial != nil {
+                destinatenViewController.selectedMaterial = selectedMaterial
+            }
             
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true
