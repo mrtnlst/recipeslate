@@ -82,7 +82,6 @@ class MaterialDetailViewController: UIViewController {
     }
     
     func setHearts(label: UILabel, heartsImage: UIImageView, heartValue: Float){
-//        let hearts = calcHeartsImages(heartsValue: (materialCell?.hearts)!)
                 let hearts = calcHeartsImages(heartsValue: heartValue)
         
         // If full hearts have to be displayed.
@@ -148,8 +147,6 @@ class MaterialDetailViewController: UIViewController {
         for item in roastedFoodData{
             for ingredient in item.ingredientNames{
                 if materialCell?.materialName == ingredient{
-//                    roastedHeartsImage.image = UIImage(named: "fullHeart")
-//                    roastedHeartsValue.text = String(format: "%.2f ", item.hearts)
                     setHearts(label: roastedHeartsValue, heartsImage: roastedHeartsImage, heartValue: item.hearts)
                     success = true
                 }

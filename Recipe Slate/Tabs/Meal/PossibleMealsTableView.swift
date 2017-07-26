@@ -12,7 +12,7 @@ import UIKit
 class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var chosenMaterial: Material?
-    
+
     var meals:[Meal] = mealData
     var materials:[Material] = materialData
     var favorites: [String] = []
@@ -169,6 +169,7 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
             //            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             let selectedCell = getCorrectCellItem(path: indexPath!)
             destinatenViewController.mealCell = selectedCell
+            destinatenViewController.selectedMaterial = chosenMaterial
             
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true

@@ -33,6 +33,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     var mealCell: Meal?
     var selectedEffect: String?
+    var selectedMaterial: Material?
     
     var materials:[Material] = materialData
     var categoryItems: [String] = []
@@ -87,11 +88,9 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         let favoriteBool = checkFavorite()
         setFavorite(isItemFavorite: favoriteBool)
         
-        // Default position of picker.
+        // Set position of picker.
+        setPickerRows()
 
-        firstNamePicker.selectRow(0, inComponent: 0, animated: true)
-        secondNamePicker.selectRow(0, inComponent: 0, animated: true)
-        
         checkPickers()
         
     }
@@ -577,68 +576,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 }
             }
         }
-        
-//        if mealCell?.categoryIngredients != nil{
-//            for categoryItem in (mealCell?.categoryIngredients)!{
-//                for materialItem in materials{
-//                    for tag in materialItem.category{
-//                        if categoryItem == tag{
-//                            firstPickerData.append(materialItem)
-//                            print(materialItem.materialName)
-//
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        if mealCell?.firstCategory != nil {
-//            for items in materials{
-//                for tag in items.category{
-//                    if mealCell?.firstCategory == tag{
-//                        firstPickerData.append(items)
-//                        //            print(items.materialName)
-//                    }
-//                }
-//            }
-//        }
-//        if mealCell?.secondCategory != nil {
-//            for items in materials{
-//                for tag in items.category{
-//                    if mealCell?.secondCategory == tag{
-//                        secondPickerData.append(items)
-//                    }
-//                }
-//            }
-//        }
-//        if mealCell?.thirdCategory != nil {
-//            for items in materials{
-//                for tag in items.category{
-//                    if mealCell?.thirdCategory == tag{
-//                        thirdPickerData.append(items)
-//                    }
-//                }
-//            }
-//        }
-//        if mealCell?.fourthCategory != nil {
-//            for items in materials{
-//                for tag in items.category{
-//                    if mealCell?.fourthCategory == tag{
-//                        fourthPickerData.append(items)
-//                    }
-//                }
-//            }
-//        }
-        
     }
     
     func setIngredientLabels(){
-//        
-//        firstIngredientLabel.text = mealCell?.firstIngredient
-//        secondIngredientLabel.text = mealCell?.secondIngredient
-//        thirdIngredientLabel.text = mealCell?.thirdIngredient
-//        fourthIngredientLabel.text = mealCell?.fourthIngredient
-//        fifthIngredientLabel.text = mealCell?.fifthIngredient
-        
+
         let mainIngredientLabels: [UILabel] = [firstIngredientLabel, secondIngredientLabel, thirdIngredientLabel, fourthIngredientLabel, fifthIngredientLabel]
 
         var count = 0
@@ -655,43 +596,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             mainIngredientLabels[index].removeFromSuperview()
         }
         setNone()
-
-//        if mealCell?.firstIngredient != nil {
-//            checkForMainIngredientEffects(ingredient: (mealCell?.firstIngredient)!)
-//            numberOfMainIngredients += 1
-//        }
-//        else {
-//            firstIngredientLabel.removeFromSuperview()
-//        }
-//        if mealCell?.secondIngredient != nil {
-//            checkForMainIngredientEffects(ingredient: (mealCell?.secondIngredient)!)
-//            numberOfMainIngredients += 1
-//        }
-//        else {
-//            secondIngredientLabel.removeFromSuperview()
-//        }
-//        if mealCell?.thirdIngredient != nil {
-//            checkForMainIngredientEffects(ingredient: (mealCell?.thirdIngredient)!)
-//            numberOfMainIngredients += 1
-//        }
-//        else {
-//            thirdIngredientLabel.removeFromSuperview()
-//        }
-//        if mealCell?.fourthIngredient != nil {
-//            checkForMainIngredientEffects(ingredient: (mealCell?.fourthIngredient)!)
-//            numberOfMainIngredients += 1
-//        }
-//        else {
-//            fourthIngredientLabel.removeFromSuperview()
-//        }
-//        if mealCell?.fifthIngredient != nil {
-//            checkForMainIngredientEffects(ingredient: (mealCell?.fifthIngredient)!)
-//            numberOfMainIngredients += 1
-//        }
-//        else {
-//            fifthIngredientLabel.removeFromSuperview()
-//        }
-        
         handleMainIngredientEffects()
     }
     
@@ -923,9 +827,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func checkPickerForEarlyEffect(){
         var success = false
         
-//        let isIndexValid = mealCell?.categoryIngredients?.indices.contains(0)
-//        print("Is index valid \(isIndexValid)")
-        
         if selectedEffect != nil{
             
             // First picker.
@@ -937,7 +838,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
             
             if success == true {
-//                if mealCell?.secondCategory != nil{
                 if mealCell?.categoryIngredients?.indices.contains(1) != nil{
                     for items in secondPickerData{
                         if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
@@ -957,7 +857,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 }
                 
                 if success == true {
-//                    if mealCell?.firstCategory != nil{
                     if mealCell?.categoryIngredients?.indices.contains(0) != nil{
                         for items in firstPickerData{
                             if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
@@ -1002,4 +901,26 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
              resaleValue.text = String(format: "2 Rupees")
         }
     }
+    func setPickerRows(){
+        var firstIndex = 0
+        var secondIndex = 0
+        
+        if selectedMaterial != nil{
+            for (i, meal) in firstPickerData.enumerated(){
+                if selectedMaterial?.materialName == meal.materialName{
+                    firstIndex = i
+                    print("It's \(String(describing: selectedMaterial?.materialName))")
+                }
+            }
+            for (i, meal) in secondPickerData.enumerated(){
+                if selectedMaterial?.materialName == meal.materialName{
+                    secondIndex = i
+                    print("It's \(String(describing: selectedMaterial?.materialName))")
+                }
+            }
+        }
+        firstNamePicker.selectRow(firstIndex, inComponent: 0, animated: true)
+        secondNamePicker.selectRow(secondIndex, inComponent: 0, animated: true)
+    }
+
 }
