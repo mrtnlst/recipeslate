@@ -127,8 +127,8 @@
 				A9614D901E7956AB009CA034 /* Elixir */,
 				5B8885C91F010A4200BBEEDF /* Favorites */,
 				A96FD1391E7BE8DE00CE60D6 /* Food */,
-				5BD334CE1F1D7B2E00D45ACD /* Material */,
 				5BA56EBB1F1FC62E009EFFF2 /* Helper */,
+				5BD334CE1F1D7B2E00D45ACD /* Material */,
 				5BD334D11F1D7C9400D45ACD /* Meal */,
 			);
 			path = Tabs;
@@ -140,7 +140,7 @@
 				5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */,
 			);
 			name = Helper;
-			path = Meal;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		5BD334CE1F1D7B2E00D45ACD /* Material */ = {
