@@ -50,7 +50,7 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
         
     }
     
-    func refreshTable(_ notification: Notification) {
+    @objc func refreshTable(_ notification: Notification) {
         
         print("Received Notification")
         

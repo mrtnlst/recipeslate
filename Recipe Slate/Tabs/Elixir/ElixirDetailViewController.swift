@@ -123,7 +123,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         if pickerView == critterNamePicker{
             let pickerLabel = UILabel()
             let titleData = critterNames[row]
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
             pickerLabel.textAlignment = .center
             pickerLabel.attributedText = myTitle
             return pickerLabel
@@ -131,7 +131,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         if pickerView == monsterNamePicker {
             let pickerLabel = UILabel()
             let titleData = monsterPartData[row].name
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
             pickerLabel.textAlignment = .center
             pickerLabel.attributedText = myTitle
             return pickerLabel
@@ -139,7 +139,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         else {
             let pickerLabel = UILabel()
             let titleData = amount[row]
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
             pickerLabel.textAlignment = .center
             pickerLabel.attributedText = myTitle
             return pickerLabel

@@ -128,13 +128,13 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         let pickerLabel = UILabel()
         var titleData = "None"
         var myTitle: NSAttributedString
-        myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.gray])
+        myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.gray])
         
         if pickerView == firstNamePicker {
                 if firstPickerData.isEmpty == false {
 
                     titleData = firstPickerData[row].materialName
-                    myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+                    myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
 
             }
         }
@@ -142,7 +142,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             if secondPickerData.isEmpty == false {
                 
                 titleData = secondPickerData[row].materialName
-                myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+                myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
                 
             }
         }

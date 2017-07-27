@@ -41,7 +41,7 @@ class AboutViewController: UIViewController {
         }
     }
 
-    func backAction(){
+    @objc func backAction(){
         dismiss(animated: true, completion: nil)
     }
     @IBAction func followMartinPressed(_ sender: Any) {
