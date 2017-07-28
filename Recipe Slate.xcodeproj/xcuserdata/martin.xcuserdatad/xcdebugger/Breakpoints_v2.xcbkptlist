@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Recipe Slate/Tabs/Favorites/FavoritesViewController.swift"
-            timestampString = "522936650.398988"
+            timestampString = "522937549.587705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "286"
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Recipe Slate/Tabs/Elixir/ElixirDetailViewController.swift"
-            timestampString = "522936650.399062"
+            timestampString = "522937549.587806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342">
+            startingLineNumber = "343"
+            endingLineNumber = "343">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

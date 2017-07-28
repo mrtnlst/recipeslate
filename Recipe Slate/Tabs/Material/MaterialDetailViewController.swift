@@ -48,6 +48,7 @@ class MaterialDetailViewController: UIViewController {
 
         // Prevent movement below navigation bar.
         edgesForExtendedLayout = []
+        self.navigationItem.title = materialCell?.materialName
 
         if materialCell != nil{
             setLabels()

@@ -59,6 +59,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 
         // Prevent movement below navigation bar.
         edgesForExtendedLayout = []
+        self.navigationItem.title = mealCell?.name
 
         // Delegate and Data Source for UIPicker.
         firstNamePicker.dataSource = self
