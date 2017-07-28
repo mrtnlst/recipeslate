@@ -13,7 +13,6 @@ class Utility {
     static func setLargeTitles(navigationBar: UINavigationBar, navigationItem: UINavigationItem, backButtonTitle: String){
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
-            navigationBar.sizeToFit()
 
             navigationBar.largeTitleTextAttributes = [
                 NSAttributedStringKey.foregroundColor: UIColor.white,
