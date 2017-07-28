@@ -1032,7 +1032,7 @@ Add 3 for potency 3.</string>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KwG-KQ-KEd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" largeTitles="YES" id="KwG-KQ-KEd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1844,9 +1844,9 @@ write an email at:</string>
         <image name="Twitter Button" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8Hp-vj-byW"/>
-        <segue reference="KQj-lL-YhX"/>
         <segue reference="9K7-uM-4DJ"/>
-        <segue reference="Qns-lX-RcM"/>
+        <segue reference="KQj-lL-YhX"/>
+        <segue reference="oBI-aZ-IPY"/>
+        <segue reference="8Hp-vj-byW"/>
     </inferredMetricsTieBreakers>
 </document>

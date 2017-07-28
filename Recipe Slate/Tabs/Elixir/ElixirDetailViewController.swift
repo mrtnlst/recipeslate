@@ -81,17 +81,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             }
        
         setPickerRows()
-        
-//        // Pre-load UIPicker and execute them.
-//        critterNamePicker.selectRow(0, inComponent: 0, animated: true)
-//        critterAmountPicker.selectRow(0, inComponent: 0, animated: true)
-//        
-//        monsterNamePicker.selectRow(0, inComponent: 0, animated: true)
-//        monsterAmountPicker.selectRow(0, inComponent: 0, animated: true)
-//
-//        pickerView(critterNamePicker, didSelectRow: 0, inComponent: 0)
-//        pickerView(critterAmountPicker, didSelectRow: 0, inComponent: 0)
-        
+
         // Setting the name and effect label.
         if elixirCell != nil{
             nameLabel.text = elixirCell?.name
@@ -99,9 +89,6 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             effectImageView.image = UIImage(named: (elixirCell?.effect)!)
             resultImageView.image = UIImage(named: (elixirCell?.effect)!)
         }
-
-        // Do any additional setup after loading the view.
-        
     }
 
     // UIPickerView Delegates
@@ -113,9 +100,6 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         if pickerView == critterNamePicker{
            return critterNames.count
         }
-//        if pickerView == critterAmountPicker {
-//            return amount.count
-//        }
         if pickerView == monsterNamePicker{
             return monsterPartData.count
         }
@@ -152,8 +136,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         // Check wrong UIPicker Position.
         if pickerView == critterAmountPicker {
             if (critterAmountPicker.selectedRow(inComponent: 0) + 1 + monsterAmountPicker.selectedRow(inComponent: 0) + 1) > 5{

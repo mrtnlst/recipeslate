@@ -27,14 +27,6 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         // Gather the userDefaults of all favorites.
         fillFavoritesData()
 
-        // Set background for space above search bar.
-        tableView.backgroundView = UIView()
-        searchController.searchBar.backgroundImage = UIImage()
-        
-        // Move searchbar benath navigationbar.
-//        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-//        self.tableView.setContentOffset(point, animated: true)
-
         // Set new large navigationbar titles
         Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Meals")
         
@@ -49,7 +41,13 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
                 .sorted { $0.name < $1.name }
         }
         
+        //Setting up searchBar.
         setupSearchVC()
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -92,7 +90,6 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         cell.selectedBackgroundView = selectedView
         
         let meal: Meal = getCorrectCellItem(path: indexPath)
-//        let meal = sections[indexPath.section][indexPath.row]
        
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
             nameLabel.text = meal.name
@@ -112,7 +109,6 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
                 starImage.image = UIImage(named: "Favorite")
             }
         }
-        
         
         //Setting the image for fullHeart.
         if let heartsRestoredImage = cell.viewWithTag(101) as? UIImageView{
@@ -134,23 +130,20 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-//        self.searchController.isActive = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMealDetail" {
+            
             let destinatenViewController = segue.destination as! MealDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             let selectedCell = getCorrectCellItem(path: indexPath!)
             
             destinatenViewController.mealCell = selectedCell
 
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true
-            
         }
-        
     }
     
     func checkForMealEffect(meal: Meal) -> Bool{
@@ -203,27 +196,29 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     }
     
     // MARK: SearchController.
-    func filterContentForSearchText(_ searchText: String)
-    {
+    func filterContentForSearchText(_ searchText: String){
         filteredResults = meals.filter { meal in
             return meal.name.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }
     
-    func setupSearchVC()
-    {
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
+    func setupSearchVC(){
         searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        
+        // Set input text to white color in search field.
+        let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
     }
     
-    public func updateSearchResults(for searchController: UISearchController)
-    {
+    public func updateSearchResults(for searchController: UISearchController){
         let searchBar = searchController.searchBar
         
         // Set light statusbar theme.
@@ -233,8 +228,7 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    func getCorrectCellItem(path: IndexPath) -> Meal
-    {
+    func getCorrectCellItem(path: IndexPath) -> Meal{
         let meal: Meal
         if searchController.isActive {
             meal = filteredResults[path.row]
@@ -287,5 +281,15 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
+    }
+}
+
+extension UISearchBar {
+    /// Return text field inside a search bar
+    var textField: UITextField? {
+        let subViews = subviews.flatMap { $0.subviews }
+        guard let textField = (subViews.filter { $0 is UITextField }).first as? UITextField else { return nil
+        }
+        return textField
     }
 }

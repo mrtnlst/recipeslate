@@ -82,7 +82,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         // Checking if a category ingredient is in the meal, if yes, add to array.
         checkForPickerData()
-        
         checkPickerForEarlyEffect()
         
         // Setting the ingredient labels and check if an ingredient has an effect. If so, it gets displayed.

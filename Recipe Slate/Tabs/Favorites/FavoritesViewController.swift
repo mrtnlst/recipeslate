@@ -22,14 +22,7 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(FavoritesViewController.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
-        
-        // Set background for space above search bar.
-        tableView.backgroundView = UIView()
-        searchController.searchBar.backgroundImage = UIImage()
-        
-        // Move searchbar benath navigationbar.
-//        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-//        self.tableView.setContentOffset(point, animated: true)
+    
         // Set new large navigationbar titles
         Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Favorites")
         
@@ -47,8 +40,13 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
                 .sorted { $0.name < $1.name }
         }
         
+        //Setting up searchBar.
         setupSearchVC()
-        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     @objc func refreshTable(_ notification: Notification) {
@@ -134,8 +132,6 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
                 heartsRestoredImage.image = UIImage(named: "fullHeart")
             }
         }
-
-        
         return cell
     }
     
@@ -145,8 +141,6 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-//        self.searchController.isActive = false
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -235,30 +229,29 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
     }
     
     // MARK: SearchController.
-    func filterContentForSearchText(_ searchText: String)
-    {
+    func filterContentForSearchText(_ searchText: String){
         filteredResults = meals.filter { meal in
             return meal.name.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }
     
-    func setupSearchVC()
-    {
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
+    func setupSearchVC(){
         searchController.searchBar.delegate = self
-        definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
-        self.searchController.searchBar.endEditing(false)
-
+        searchController.searchResultsUpdater = self
         
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        
+        // Set input text to white color in search field.
+        let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
     }
     
-    public func updateSearchResults(for searchController: UISearchController)
-    {
+    public func updateSearchResults(for searchController: UISearchController){
         let searchBar = searchController.searchBar
         // Set light statusbar theme.
         setNeedsStatusBarAppearanceUpdate()
@@ -267,8 +260,7 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    func getCorrectCellItem(path: IndexPath) -> Meal
-    {
+    func getCorrectCellItem(path: IndexPath) -> Meal{
         let meal: Meal
         if searchController.isActive {
             meal = filteredResults[path.row]
@@ -281,5 +273,4 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
-
 }
