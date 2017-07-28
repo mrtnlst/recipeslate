@@ -36,11 +36,12 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
         }
 
         //Setting up searchBar.
-        setupSearchVC()
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
-        } else {
-            // Fallback on earlier versions
+            setupSearch()
+        }
+        else {
+            oldSearch()
         }
     }
 
@@ -136,7 +137,7 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
         tableView.reloadData()
     }
     
-    func setupSearchVC(){
+    func setupSearch(){
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         
@@ -149,6 +150,25 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
         // Set input text to white color in search field.
         let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+    }
+    
+    func oldSearch(){
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        self.searchController.searchBar.endEditing(false)
     }
     
     public func updateSearchResults(for searchController: UISearchController){
@@ -169,9 +189,5 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
             elixir = sections[path.section][path.row]
         }
         return elixir
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
     }
 }

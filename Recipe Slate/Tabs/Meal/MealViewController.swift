@@ -42,11 +42,12 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         }
         
         //Setting up searchBar.
-        setupSearchVC()
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
-        } else {
-            // Fallback on earlier versions
+            setupSearch()
+        }
+        else {
+            oldSearch()
         }
     }
 
@@ -203,10 +204,10 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         tableView.reloadData()
     }
     
-    func setupSearchVC(){
+    func setupSearch(){
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-
+        
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -216,6 +217,25 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         // Set input text to white color in search field.
         let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+    }
+    
+    func oldSearch(){
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        self.searchController.searchBar.endEditing(false)
     }
     
     public func updateSearchResults(for searchController: UISearchController){
@@ -277,19 +297,5 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-}
-
-extension UISearchBar {
-    /// Return text field inside a search bar
-    var textField: UITextField? {
-        let subViews = subviews.flatMap { $0.subviews }
-        guard let textField = (subViews.filter { $0 is UITextField }).first as? UITextField else { return nil
-        }
-        return textField
     }
 }
