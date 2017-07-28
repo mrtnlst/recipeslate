@@ -44,7 +44,8 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
 //        self.tableView.setContentOffset(point, animated: true)
         
         // Set new large navigationbar titles
-        Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: effectCell!.effectName)
+        Utility.setDetailViewTitles(navigationItem: navigationItem)
+        navigationItem.backBarButtonItem?.title = effectCell?.effectName
 
         
         findEffectInMeals()

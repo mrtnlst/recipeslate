@@ -53,7 +53,8 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         // Prevent movement below navigation bar.
         edgesForExtendedLayout = []
-        self.navigationItem.title = elixirCell?.name
+        self.navigationItem.title = "Elixir"
+        Utility.setDetailViewTitles(navigationItem: navigationItem)
         
         critterNamePicker.dataSource = self
         critterNamePicker.delegate = self

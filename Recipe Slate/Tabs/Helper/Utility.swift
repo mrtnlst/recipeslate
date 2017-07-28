@@ -30,6 +30,7 @@ class Utility {
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
             navigationBar.sizeToFit()
+
             navigationBar.largeTitleTextAttributes = [
                 NSAttributedStringKey.foregroundColor: UIColor.white,
             ]
@@ -39,7 +40,13 @@ class Utility {
         } else {
             // Fallback on earlier versions
         }
-        
-        
+    }
+    
+    static func setDetailViewTitles(navigationItem: UINavigationItem){
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
