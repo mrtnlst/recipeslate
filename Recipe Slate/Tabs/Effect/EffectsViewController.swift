@@ -20,13 +20,20 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Prevent movement below navigation bar.
+        edgesForExtendedLayout = []
+
         // Set background for space above search bar.
         tableView.backgroundView = UIView()
         searchController.searchBar.backgroundImage = UIImage()
         
         // Move searchbar benath navigationbar.
-        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-        self.tableView.setContentOffset(point, animated: true)
+//        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+//        self.tableView.setContentOffset(point, animated: true)
+        
+        // Set new large navigationbar titles
+        Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Effects")
+
         
         let firstLetters = effects.map { $0.titleFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Utility {
 //    static func createAlphabeticalSection<T>(arrayToSort: [T]){
@@ -24,4 +25,21 @@ class Utility {
 //                .sorted { $0.name < $1.name }
 //        }
 //    }
+
+    static func setLargeTitles(navigationBar: UINavigationBar, navigationItem: UINavigationItem, backButtonTitle: String){
+        if #available(iOS 11.0, *) {
+            navigationBar.prefersLargeTitles = true
+            
+            navigationBar.largeTitleTextAttributes = [
+                NSAttributedStringKey.foregroundColor: UIColor.white
+            ]
+            
+            navigationItem.backBarButtonItem?.title = backButtonTitle
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        
+    }
 }

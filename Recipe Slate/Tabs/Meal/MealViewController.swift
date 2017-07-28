@@ -32,8 +32,11 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         searchController.searchBar.backgroundImage = UIImage()
         
         // Move searchbar benath navigationbar.
-        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-        self.tableView.setContentOffset(point, animated: true)
+//        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+//        self.tableView.setContentOffset(point, animated: true)
+
+        // Set new large navigationbar titles
+        Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Meals")
         
         // Creating alphabetical sections.
         let firstLetters = meals.map { $0.titleFirstLetter }

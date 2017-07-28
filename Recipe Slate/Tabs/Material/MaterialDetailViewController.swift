@@ -45,7 +45,10 @@ class MaterialDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Prevent movement below navigation bar.
+        edgesForExtendedLayout = []
+
         if materialCell != nil{
             setLabels()
             if materialCell?.hearts != nil{

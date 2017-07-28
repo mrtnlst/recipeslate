@@ -25,8 +25,11 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         searchController.searchBar.backgroundImage = UIImage()
         
         // Move searchbar benath navigationbar.
-        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-        self.tableView.setContentOffset(point, animated: true)
+//        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+//        self.tableView.setContentOffset(point, animated: true)
+
+        // Set new large navigationbar titles
+        Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Materials")
 
         // Creating alphabetical sections.
         let firstLetters = materials.map { $0.titleFirstLetter }

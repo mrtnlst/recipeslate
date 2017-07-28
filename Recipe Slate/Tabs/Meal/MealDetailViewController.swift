@@ -56,7 +56,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Prevent movement below navigation bar.
+        edgesForExtendedLayout = []
+
         // Delegate and Data Source for UIPicker.
         firstNamePicker.dataSource = self
         firstNamePicker.delegate = self

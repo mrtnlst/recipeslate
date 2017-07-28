@@ -50,6 +50,11 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Prevent movement below navigation bar.
+        edgesForExtendedLayout = []
+        self.navigationItem.title = elixirCell?.name
+        
         critterNamePicker.dataSource = self
         critterNamePicker.delegate = self
         critterAmountPicker.dataSource = self

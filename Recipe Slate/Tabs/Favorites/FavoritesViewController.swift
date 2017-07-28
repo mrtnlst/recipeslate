@@ -19,7 +19,6 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(FavoritesViewController.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
@@ -29,8 +28,10 @@ class FavoritesViewController: UITableViewController, UISearchResultsUpdating, U
         searchController.searchBar.backgroundImage = UIImage()
         
         // Move searchbar benath navigationbar.
-        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-        self.tableView.setContentOffset(point, animated: true)
+//        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+//        self.tableView.setContentOffset(point, animated: true)
+        // Set new large navigationbar titles
+        Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Favorites")
         
         fillFavoritesData()
         fillMealDataForFavorits()
