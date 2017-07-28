@@ -160,10 +160,15 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
         self.tableView.setContentOffset(point, animated: true)
         
+        // Correct color for cancel button and cursor.
+        searchController.searchBar.tintColor = UIColor.black
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white], for: UIControlState.normal)
+        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
