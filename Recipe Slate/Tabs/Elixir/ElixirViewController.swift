@@ -34,7 +34,12 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
                 .filter { $0.titleFirstLetter == firstLetter }
                 .sorted { $0.name < $1.name }
         }
-
+        
+        // Hide about button, if necessary.
+        if selectedMaterial != nil {
+            navigationItem.rightBarButtonItem = nil
+        }
+        
         //Setting up searchBar.
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
