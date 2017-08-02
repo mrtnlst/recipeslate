@@ -213,10 +213,11 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
         definesPresentationContext = true
         searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
-        
+
         // Set input text to white color in search field.
         let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+
     }
     
     func oldSearch(){
@@ -245,9 +246,6 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     
     public func updateSearchResults(for searchController: UISearchController){
         let searchBar = searchController.searchBar
-        
-        // Set light statusbar theme.
-        setNeedsStatusBarAppearanceUpdate()
         
         print("*updateSearchResults - \(String(describing: searchBar.text))")
         filterContentForSearchText(searchController.searchBar.text!)
@@ -302,5 +300,9 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setPlaceholderColor(textField: UITextField, placeholderText: String) {
+        textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedStringKey.foregroundColor: UIColor.black])
     }
 }
