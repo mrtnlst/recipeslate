@@ -131,7 +131,6 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
         }
         
         return cell
-        
     }
     
     func findPossibleMeals(){
@@ -156,7 +155,6 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
         }
     }
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let number = indexPath.row
         print(number)
@@ -177,7 +175,6 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true
         }
-        
     }
     
     // MARK: SearchController.
@@ -257,7 +254,6 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
     }
     
     @objc func refreshTable(_ notification: Notification) {
-        
         print("Received Notification")
         fillFavoritesData()
         
@@ -275,7 +271,6 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
     }
     
     func fillFavoritesData(){
-        
         let defaults = UserDefaults.standard
         if let favoritesDefaults = defaults.object(forKey: "favorites"){
             favorites = favoritesDefaults as! [String]
