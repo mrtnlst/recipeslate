@@ -34,15 +34,11 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         
         // Gather the userDefaults of all favorites.
         fillFavoritesData()
-        
-        // Set background for space above search bar.
-        tableView.backgroundView = UIView()
-        searchController.searchBar.backgroundImage = UIImage()
-        
-        // Move searchbar benath navigationbar.
-        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-        self.tableView.setContentOffset(point, animated: true)
-        
+
+        // Set new large navigationbar titles
+        Utility.setDetailViewTitles(navigationItem: navigationItem)
+        navigationItem.backBarButtonItem?.title = effectCell?.effectName
+
         findEffectInMeals()
         
         let firstLetters = effect.map { $0.titleFirstLetter }
@@ -54,7 +50,15 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
                 .filter { $0.titleFirstLetter == firstLetter }
                 .sorted { $0.name < $1.name }
         }
-        setupSearchVC()
+        
+        //Setting up searchBar.
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            setupSearch()
+        }
+        else {
+            oldSearch()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,7 +107,6 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
         
-//        let effect = sections[indexPath.section][indexPath.row]
         let effect: Meal = getCorrectCellItem(path: indexPath)
         
         // Resetting imageView.
@@ -123,7 +126,6 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         }
         
         return cell
-        
     }
     
     func findEffectInMeals(){
@@ -200,15 +202,12 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-//        self.searchController.isActive = false
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMealDetail" {
             let destinatenViewController = segue.destination as! MealDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             let selectedCell = getCorrectCellItem(path: indexPath!)
             destinatenViewController.mealCell = selectedCell
             destinatenViewController.selectedEffect = effectCell?.effectName
@@ -220,27 +219,53 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     
     // MARK: SearchController.
-    func filterContentForSearchText(_ searchText: String)
-    {
+    func filterContentForSearchText(_ searchText: String){
         filteredResults = effect.filter { meal in
             return meal.name.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }
     
-    func setupSearchVC()
-    {
+    func setupSearch(){
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        
+        // Set input text to white color in search field.
+        let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+    }
+    
+    func oldSearch(){
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
+        
+        // Correct color for cancel button and cursor.
+        searchController.searchBar.tintColor = UIColor.black
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white], for: UIControlState.normal)
+        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        self.searchController.searchBar.endEditing(false)
     }
     
-    public func updateSearchResults(for searchController: UISearchController)
-    {
+    public func updateSearchResults(for searchController: UISearchController){
         let searchBar = searchController.searchBar
         
         // Set light statusbar theme.
@@ -250,8 +275,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    func getCorrectCellItem(path: IndexPath) -> Meal
-    {
+    func getCorrectCellItem(path: IndexPath) -> Meal{
         let meal: Meal
         if searchController.isActive {
             meal = filteredResults[path.row]
@@ -260,11 +284,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         }
         return meal
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-    
+
     func isItemAFavorite(name: String) -> Bool{
         for item in favorites{
             if item == name{

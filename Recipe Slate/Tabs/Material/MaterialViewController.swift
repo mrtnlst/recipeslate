@@ -20,13 +20,8 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set background for space above search bar.
-        tableView.backgroundView = UIView()
-        searchController.searchBar.backgroundImage = UIImage()
-        
-        // Move searchbar benath navigationbar.
-        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-        self.tableView.setContentOffset(point, animated: true)
+        // Set new large navigationbar titles
+        Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Materials")
 
         // Creating alphabetical sections.
         let firstLetters = materials.map { $0.titleFirstLetter }
@@ -38,7 +33,15 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
                 .filter { $0.titleFirstLetter == firstLetter }
                 .sorted { $0.materialName < $1.materialName }
         }
-        setupSearchVC()
+        
+        //Setting up searchBar.
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            setupSearch()
+        }
+        else {
+            oldSearch()
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -83,7 +86,6 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
         
-//        let material = sections[indexPath.section][indexPath.row]
         let material = getCorrectCellItem(path: indexPath)
         
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
@@ -96,7 +98,6 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         }
         
         // Set effect or hearts image on the right side.
-//        && material.effect?.effectName != "Duration"
         if material.effect != nil && material.effect?.effectName != "Duration"{
             if let effect = cell.viewWithTag(107) as? UIImageView{
                 effect.image = UIImage(named: (material.effect?.effectName)!)
@@ -125,7 +126,6 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
             let destinatenViewController = segue.destination as! MaterialDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow
 
-//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]//foods[(indexPath?.row)!] as Food
             let selectedCell = getCorrectCellItem(path: indexPath!)
             destinatenViewController.materialCell = selectedCell
             
@@ -135,27 +135,52 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
     }
     
     // MARK: SearchController.
-    func filterContentForSearchText(_ searchText: String)
-    {
+    func filterContentForSearchText(_ searchText: String){
         filteredResults = materials.filter { material in
             return material.materialName.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }
     
-    func setupSearchVC()
-    {
+    func setupSearch(){
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        
+        // Set input text to white color in search field.
+        let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+    }
+    func oldSearch(){
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
+        
+        // Correct color for cancel button and cursor.
+        searchController.searchBar.tintColor = UIColor.black
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white], for: UIControlState.normal)
+        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        self.searchController.searchBar.endEditing(false)
     }
     
-    public func updateSearchResults(for searchController: UISearchController)
-    {
+    public func updateSearchResults(for searchController: UISearchController){
         let searchBar = searchController.searchBar
         
         // Set light statusbar theme.
@@ -165,8 +190,7 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    func getCorrectCellItem(path: IndexPath) -> Material
-    {
+    func getCorrectCellItem(path: IndexPath) -> Material{
         let material: Material
         if searchController.isActive {
             material = filteredResults[path.row]
@@ -175,9 +199,4 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         }
         return material
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-    
 }

@@ -20,13 +20,12 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set background for space above search bar.
-        tableView.backgroundView = UIView()
-        searchController.searchBar.backgroundImage = UIImage()
-        
-        // Move searchbar benath navigationbar.
-        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
-        self.tableView.setContentOffset(point, animated: true)
+        // Prevent movement below navigation bar.
+        edgesForExtendedLayout = []
+
+        // Set new large navigationbar titles
+        Utility.setLargeTitles(navigationBar: navigationController!.navigationBar, navigationItem: navigationItem, backButtonTitle: "Effects")
+
         
         let firstLetters = effects.map { $0.titleFirstLetter }
         let uniqueFirstLetters = Array(Set(firstLetters))
@@ -37,7 +36,15 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
                 .filter { $0.titleFirstLetter == firstLetter }
                 .sorted { $0.effectName < $1.effectName}
         }
-        setupSearchVC()
+        
+        //Setting up searchBar.
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            setupSearch()
+        }
+        else {
+            oldSearch()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +93,6 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         selectedView.backgroundColor = UIColor(red: 54/255, green: 68/255, blue:     76/255, alpha: 1.0)
         cell.selectedBackgroundView = selectedView
         
-//        let effect = sections[indexPath.section][indexPath.row]
         let effect = getCorrectCellItem(path: indexPath)
         
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
@@ -96,9 +102,8 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         if let effectImage = cell.viewWithTag(101) as? UIImageView{
             effectImage.image = UIImage(named: effect.effectName)
         }
-        
+
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -108,14 +113,12 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)
-//        self.searchController.isActive = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEffects" {
             let destinatenViewController = segue.destination as! EffectTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-//            let selectedCell = sections[(indexPath?.section)!][(indexPath?.row)!]
             let selectedCell = getCorrectCellItem(path: indexPath!)
             destinatenViewController.effectCell = selectedCell
             
@@ -126,27 +129,53 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
     }
     
     // MARK: SearchController.
-    func filterContentForSearchText(_ searchText: String)
-    {
+    func filterContentForSearchText(_ searchText: String){
         filteredResults = effects.filter { effect in
             return effect.effectName.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }
     
-    func setupSearchVC()
-    {
+    func setupSearch(){
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        
+        // Set input text to white color in search field.
+        let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+    }
+    
+    func oldSearch(){
+        // Set background for space above search bar.
+        tableView.backgroundView = UIView()
+        searchController.searchBar.backgroundImage = UIImage()
+        
+        // Move searchbar benath navigationbar.
+        let point = CGPoint(x: 0, y:(self.navigationController?.navigationBar.frame.size.height)!)
+        self.tableView.setContentOffset(point, animated: true)
+        
+        // Correct color for cancel button and cursor.
+        searchController.searchBar.tintColor = UIColor.black
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white], for: UIControlState.normal)
+        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
+        self.searchController.searchBar.endEditing(false)
     }
     
-    public func updateSearchResults(for searchController: UISearchController)
-    {
+    public func updateSearchResults(for searchController: UISearchController){
         let searchBar = searchController.searchBar
         // Set light statusbar theme.
         setNeedsStatusBarAppearanceUpdate()
@@ -155,8 +184,7 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    func getCorrectCellItem(path: IndexPath) -> Effect
-    {
+    func getCorrectCellItem(path: IndexPath) -> Effect{
         let effect: Effect
         if searchController.isActive {
             effect = filteredResults[path.row]
@@ -165,10 +193,4 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         }
         return effect
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-
-
 }
