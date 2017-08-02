@@ -26,10 +26,19 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.largeTitleTextAttributes = [
+                NSAttributedStringKey.foregroundColor: UIColor.white
+            ]
+        } else {
+            // Fallback on earlier versions
+        }
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(backAction))
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        versionLabel.text = "1.2.1"
+        versionLabel.text = "1.3"
         
         if (self.view.frame.size.width == 320){
             aboutText.text = "Recipe Slate provides a collection of\nrecipes, elixirs and materials found in\nBreath of the Wild."
@@ -41,7 +50,7 @@ class AboutViewController: UIViewController {
         }
     }
 
-    func backAction(){
+    @objc func backAction(){
         dismiss(animated: true, completion: nil)
     }
     @IBAction func followMartinPressed(_ sender: Any) {

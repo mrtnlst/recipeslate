@@ -50,6 +50,12 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Prevent movement below navigation bar.
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "Elixir"
+        Utility.setDetailViewTitles(navigationItem: navigationItem)
+        
         critterNamePicker.dataSource = self
         critterNamePicker.delegate = self
         critterAmountPicker.dataSource = self
@@ -75,17 +81,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             }
        
         setPickerRows()
-        
-//        // Pre-load UIPicker and execute them.
-//        critterNamePicker.selectRow(0, inComponent: 0, animated: true)
-//        critterAmountPicker.selectRow(0, inComponent: 0, animated: true)
-//        
-//        monsterNamePicker.selectRow(0, inComponent: 0, animated: true)
-//        monsterAmountPicker.selectRow(0, inComponent: 0, animated: true)
-//
-//        pickerView(critterNamePicker, didSelectRow: 0, inComponent: 0)
-//        pickerView(critterAmountPicker, didSelectRow: 0, inComponent: 0)
-        
+
         // Setting the name and effect label.
         if elixirCell != nil{
             nameLabel.text = elixirCell?.name
@@ -93,9 +89,6 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             effectImageView.image = UIImage(named: (elixirCell?.effect)!)
             resultImageView.image = UIImage(named: (elixirCell?.effect)!)
         }
-
-        // Do any additional setup after loading the view.
-        
     }
 
     // UIPickerView Delegates
@@ -107,9 +100,6 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         if pickerView == critterNamePicker{
            return critterNames.count
         }
-//        if pickerView == critterAmountPicker {
-//            return amount.count
-//        }
         if pickerView == monsterNamePicker{
             return monsterPartData.count
         }
@@ -123,7 +113,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         if pickerView == critterNamePicker{
             let pickerLabel = UILabel()
             let titleData = critterNames[row]
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
             pickerLabel.textAlignment = .center
             pickerLabel.attributedText = myTitle
             return pickerLabel
@@ -131,7 +121,7 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         if pickerView == monsterNamePicker {
             let pickerLabel = UILabel()
             let titleData = monsterPartData[row].name
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
             pickerLabel.textAlignment = .center
             pickerLabel.attributedText = myTitle
             return pickerLabel
@@ -139,15 +129,14 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         else {
             let pickerLabel = UILabel()
             let titleData = amount[row]
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
             pickerLabel.textAlignment = .center
             pickerLabel.attributedText = myTitle
             return pickerLabel
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         // Check wrong UIPicker Position.
         if pickerView == critterAmountPicker {
             if (critterAmountPicker.selectedRow(inComponent: 0) + 1 + monsterAmountPicker.selectedRow(inComponent: 0) + 1) > 5{

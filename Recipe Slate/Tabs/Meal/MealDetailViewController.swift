@@ -56,7 +56,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Prevent movement below navigation bar.
+        edgesForExtendedLayout = []
+        self.navigationItem.title = "Meal"
+        Utility.setDetailViewTitles(navigationItem: navigationItem)
+
         // Delegate and Data Source for UIPicker.
         firstNamePicker.dataSource = self
         firstNamePicker.delegate = self
@@ -77,7 +82,6 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         // Checking if a category ingredient is in the meal, if yes, add to array.
         checkForPickerData()
-        
         checkPickerForEarlyEffect()
         
         // Setting the ingredient labels and check if an ingredient has an effect. If so, it gets displayed.
@@ -128,13 +132,13 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         let pickerLabel = UILabel()
         var titleData = "None"
         var myTitle: NSAttributedString
-        myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.gray])
+        myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.gray])
         
         if pickerView == firstNamePicker {
                 if firstPickerData.isEmpty == false {
 
                     titleData = firstPickerData[row].materialName
-                    myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+                    myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
 
             }
         }
@@ -142,7 +146,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             if secondPickerData.isEmpty == false {
                 
                 titleData = secondPickerData[row].materialName
-                myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 16.0),NSForegroundColorAttributeName:UIColor.white])
+                myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
                 
             }
         }
