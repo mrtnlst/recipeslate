@@ -274,7 +274,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         return false
     }
     
-    func refreshTable(_ notification: Notification) {
+    @objc func refreshTable(_ notification: Notification) {
         
         print("Received Notification")
         

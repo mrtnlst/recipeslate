@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         setupAppAppearance()
         // I added this line
-        UITabBar.appearance().tintColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
+        UIAppearance.appearance().tintColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
         
         return true
     }
@@ -39,11 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func setupAppAppearance()
     {
-        UISearchBar.appearance().barTintColor = UIColor.headerBlue()
-        UISearchBar.appearance().tintColor = UIColor.white
-        UISearchBar.appearance().backgroundColor = UIColor.backgroundBlue()
+        UIAppearance.appearance().barTintColor = UIColor.headerBlue()
+        UIAppearance.appearance().tintColor = UIColor.white
+        UIAppearance.appearance().backgroundColor = UIColor.backgroundBlue()
         if #available(iOS 9.0, *) {
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.headerBlue()
+            UIAppearance.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.headerBlue()
         } else {
             // Fallback on earlier versions
         }
