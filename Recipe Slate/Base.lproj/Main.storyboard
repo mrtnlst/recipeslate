@@ -14,7 +14,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="Recipe_Slate" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="3rl-go-XLb"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -1094,7 +1094,7 @@ Add 3 for potency 3.</string>
         <scene sceneID="ZME-te-bhs">
             <objects>
                 <navigationController title="Meals Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="vmk-Rz-wvV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Meals" image="Meals Tab" id="Jmg-2R-JbP"/>
+                    <tabBarItem key="tabBarItem" title="Meals" image="Meals Tab" id="Jmg-2R-JbP"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
@@ -1341,7 +1341,7 @@ write an email at:</string>
         <scene sceneID="Aku-K8-yco">
             <objects>
                 <navigationController title="Elixirs Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="QAA-Pp-lCa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Elixirs" image="Elixir Tab" id="G4H-vH-rUZ"/>
+                    <tabBarItem key="tabBarItem" title="Elixirs" image="Elixir Tab" id="G4H-vH-rUZ"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
@@ -1366,7 +1366,7 @@ write an email at:</string>
         <scene sceneID="dFo-Lv-l5q">
             <objects>
                 <navigationController title="Effects Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="kJa-IG-cUK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="Effects" image="Effects Tab" id="aEI-Jq-Xjf"/>
+                    <tabBarItem key="tabBarItem" title="Effects" image="Effects Tab" id="aEI-Jq-Xjf"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
@@ -1391,7 +1391,7 @@ write an email at:</string>
         <scene sceneID="dCu-bG-oTQ">
             <objects>
                 <navigationController title="Material Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="3Po-Ge-HM1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="4" title="Materials" image="Food tab" id="mqL-jS-HVp"/>
+                    <tabBarItem key="tabBarItem" title="Materials" image="Food tab" id="mqL-jS-HVp"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
@@ -1893,7 +1893,7 @@ write an email at:</string>
         <scene sceneID="00U-ML-dgZ">
             <objects>
                 <navigationController title="Upgrades Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="hhQ-Rq-uuU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="5" title="Upgrades" image="Attack Up" id="aKM-pG-LHn"/>
+                    <tabBarItem key="tabBarItem" title="Upgrades" image="Attack Up" id="aKM-pG-LHn"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
