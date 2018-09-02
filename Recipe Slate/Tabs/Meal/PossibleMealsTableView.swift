@@ -196,7 +196,7 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
         searchController.searchBar.keyboardAppearance = UIKeyboardAppearance.dark
         
         // Set input text to white color in search field.
-        let searchBarTextAttributes: [String : AnyObject] = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        let searchBarTextAttributes: [NSAttributedString.Key : AnyObject] = [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white]
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
     }
     
@@ -211,7 +211,7 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
         
         // Correct color for cancel button and cursor.
         searchController.searchBar.tintColor = UIColor.black
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white], for: UIControlState.normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor.white], for: UIControl.State.normal)
         
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self

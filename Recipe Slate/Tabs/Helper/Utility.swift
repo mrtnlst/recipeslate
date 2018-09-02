@@ -15,7 +15,7 @@ class Utility {
             navigationBar.prefersLargeTitles = true
 
             navigationBar.largeTitleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: UIColor.white,
+                NSAttributedString.Key.foregroundColor: UIColor.white,
             ]
             
             navigationItem.backBarButtonItem?.title = backButtonTitle

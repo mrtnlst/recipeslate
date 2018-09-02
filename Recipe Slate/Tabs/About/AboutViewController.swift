@@ -28,7 +28,7 @@ class AboutViewController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationBar.largeTitleTextAttributes = [
-                NSAttributedStringKey.foregroundColor: UIColor.white
+                NSAttributedString.Key.foregroundColor: UIColor.white
             ]
         } else {
             // Fallback on earlier versions
@@ -54,7 +54,7 @@ class AboutViewController: UIViewController {
     }
     @IBAction func followMartinPressed(_ sender: Any) {
         if #available(iOS 10.0, *) {
-            let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+            let options = [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]
              UIApplication.shared.open(twitterURLMartin!, options: options, completionHandler: nil)
         } else {
             _ = UIApplication.shared.openURL(twitterURLMartin!)
@@ -64,7 +64,7 @@ class AboutViewController: UIViewController {
     @IBAction func emailAtRecipeSlatePressed(_ sender: Any) {
         let coded = URL(string:"mailto:recipeslate@gmail.com")
         if #available(iOS 10.0, *) {
-            let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+            let options = [UIApplication.OpenExternalURLOptionsKey.universalLinksOnly : false]
             UIApplication.shared.open(coded!, options: options, completionHandler: nil)
         } else {
             _ = UIApplication.shared.openURL(coded!)

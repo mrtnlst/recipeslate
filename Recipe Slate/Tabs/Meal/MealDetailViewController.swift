@@ -132,13 +132,15 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         let pickerLabel = UILabel()
         var titleData = "None"
         var myTitle: NSAttributedString
-        myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.gray])
+        myTitle = NSAttributedString(string: titleData,
+                                     attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16.0), NSAttributedString.Key.foregroundColor:UIColor.gray])
         
         if pickerView == firstNamePicker {
                 if firstPickerData.isEmpty == false {
 
                     titleData = firstPickerData[row].materialName
-                    myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
+                    myTitle = NSAttributedString(string: titleData,
+                                                 attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16.0), NSAttributedString.Key.foregroundColor:UIColor.white])
 
             }
         }
@@ -146,7 +148,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             if secondPickerData.isEmpty == false {
                 
                 titleData = secondPickerData[row].materialName
-                myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 16.0),NSAttributedStringKey.foregroundColor:UIColor.white])
+                myTitle = NSAttributedString(string: titleData,
+                                             attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16.0), NSAttributedString.Key.foregroundColor:UIColor.white])
                 
             }
         }
@@ -800,10 +803,10 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     func setFavorite(isItemFavorite: Bool){
         if isItemFavorite == true {
-            favoriteButton.setImage(UIImage(named: "Favorite"), for: UIControlState.normal)
+            favoriteButton.setImage(UIImage(named: "Favorite"), for: UIControl.State.normal)
         }
         else {
-            favoriteButton.setImage(UIImage(named: "Unfavorite"), for: UIControlState.normal)
+            favoriteButton.setImage(UIImage(named: "Unfavorite"), for: UIControl.State.normal)
         }
     }
     func removeFavorite(name: String){
