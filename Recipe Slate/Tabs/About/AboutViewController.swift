@@ -13,7 +13,6 @@ class AboutViewController: UIViewController {
 
     @IBOutlet weak var followText: UILabel!
     @IBOutlet weak var followMartinButton: UIButton!
-    @IBOutlet weak var followRecipeSlateButton: UIButton!
     @IBOutlet weak var supportText: UILabel!
     @IBOutlet weak var emailAtRecipeSlate: UIButton!
     @IBOutlet weak var aboutText: UILabel!
@@ -38,7 +37,7 @@ class AboutViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(backAction))
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        versionLabel.text = "1.3"
+        versionLabel.text = "1.3.1"
         
         if (self.view.frame.size.width == 320){
             aboutText.text = "Recipe Slate provides a collection of\nrecipes, elixirs and materials found in\nBreath of the Wild."
@@ -59,15 +58,6 @@ class AboutViewController: UIViewController {
              UIApplication.shared.open(twitterURLMartin!, options: options, completionHandler: nil)
         } else {
             _ = UIApplication.shared.openURL(twitterURLMartin!)
-        }
-    }
-    
-    @IBAction func followRecipeSlatePressed(_ sender: Any) {
-        if #available(iOS 10.0, *) {
-            let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
-            UIApplication.shared.open(twitterURLRecipeSlate!, options: options, completionHandler: nil)
-        } else {
-            _ = UIApplication.shared.openURL(twitterURLRecipeSlate!)
         }
     }
     
