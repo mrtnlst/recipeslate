@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-struct Meal {
+struct Meal: ItemPresentable {
     var name: String
-    var mainIngredients: [String]?
-    var categoryIngredients: [String]?
+    var mainIngredients: [String]
+    var categoryIngredients: [MaterialCategory]
     
-    init(name: String, mainIngredients: [String]? = nil, categoryIngredients: [String]? = nil) {
+    init(name: String, mainIngredients: [String], categoryIngredients: [MaterialCategory]) {
         self.name = name
         self.mainIngredients = mainIngredients
         self.categoryIngredients = categoryIngredients

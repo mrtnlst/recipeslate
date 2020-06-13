@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B224E331EAE0A3A006D47DB /* AboutViewController.swift */; };
+		5B22656B24952B5C00459517 /* ItemPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* ItemPresentable.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
@@ -21,7 +22,12 @@
 		5BD890422494C6450068A36A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890412494C6450068A36A /* TabBarController.swift */; };
 		5BD890442494C75F0068A36A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890432494C75F0068A36A /* NavigationController.swift */; };
 		5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890452494C9A50068A36A /* ElementTableViewCell.swift */; };
-		5BD890482494CCA30068A36A /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890472494CCA30068A36A /* TableView.swift */; };
+		5BD890482494CCA30068A36A /* ListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890472494CCA30068A36A /* ListTableView.swift */; };
+		5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890492494F9670068A36A /* DetailViewController.swift */; };
+		5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8904B2494F9D80068A36A /* DetailTableView.swift */; };
+		5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */; };
+		5BD890512495025B0068A36A /* DetailHeartsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890502495025B0068A36A /* DetailHeartsCell.swift */; };
+		5BD89053249505930068A36A /* HeartsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD89052249505930068A36A /* HeartsHandler.swift */; };
 		A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A2491E82EA980023C3B9 /* ElixirViewController.swift */; };
 		A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */; };
 		A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24D1E82F7130023C3B9 /* Critter.swift */; };
@@ -44,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		5B22656A24952B5C00459517 /* ItemPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPresentable.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
@@ -57,7 +64,12 @@
 		5BD890412494C6450068A36A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = Tabs/Favorites/TabBarController.swift; sourceTree = "<group>"; };
 		5BD890432494C75F0068A36A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5BD890452494C9A50068A36A /* ElementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementTableViewCell.swift; sourceTree = "<group>"; };
-		5BD890472494CCA30068A36A /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableView.swift; path = Tabs/Favorites/TableView.swift; sourceTree = "<group>"; };
+		5BD890472494CCA30068A36A /* ListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListTableView.swift; path = Tabs/Favorites/ListTableView.swift; sourceTree = "<group>"; };
+		5BD890492494F9670068A36A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5BD8904B2494F9D80068A36A /* DetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableView.swift; sourceTree = "<group>"; };
+		5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTitleCell.swift; sourceTree = "<group>"; };
+		5BD890502495025B0068A36A /* DetailHeartsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeartsCell.swift; sourceTree = "<group>"; };
+		5BD89052249505930068A36A /* HeartsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartsHandler.swift; sourceTree = "<group>"; };
 		A914A2491E82EA980023C3B9 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
 		A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirDetailViewController.swift; sourceTree = "<group>"; };
 		A914A24D1E82F7130023C3B9 /* Critter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Critter.swift; sourceTree = "<group>"; };
@@ -94,7 +106,6 @@
 		5B2CC7E21E9197EF00E02C55 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
-				A9C784D01E80819000551990 /* Effect.swift */,
 				5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */,
 				5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */,
 			);
@@ -155,7 +166,6 @@
 		5BD334CE1F1D7B2E00D45ACD /* Material */ = {
 			isa = PBXGroup;
 			children = (
-				A9C3387D1E853A51003A574F /* Material.swift */,
 				A9D5795A1E86893700E7FFBC /* MaterialDetailViewController.swift */,
 				A96FD1351E7BE8C700CE60D6 /* MaterialViewController.swift */,
 			);
@@ -165,12 +175,36 @@
 		5BD334D11F1D7C9400D45ACD /* Meal */ = {
 			isa = PBXGroup;
 			children = (
-				A9614D811E77FA0D009CA034 /* Meal.swift */,
 				A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */,
 				A9614D7F1E77F978009CA034 /* MealViewController.swift */,
 				5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */,
 			);
 			path = Meal;
+			sourceTree = "<group>";
+		};
+		5BD8904D2494F9E10068A36A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5BD8904B2494F9D80068A36A /* DetailTableView.swift */,
+				5BD890492494F9670068A36A /* DetailViewController.swift */,
+				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
+				5BD890502495025B0068A36A /* DetailHeartsCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		5BD89054249518050068A36A /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				5B22656A24952B5C00459517 /* ItemPresentable.swift */,
+				A914A24D1E82F7130023C3B9 /* Critter.swift */,
+				A9614D8C1E795104009CA034 /* Elixir.swift */,
+				A9C784D01E80819000551990 /* Effect.swift */,
+				A96FD1371E7BE8D900CE60D6 /* Food.swift */,
+				A9C3387D1E853A51003A574F /* Material.swift */,
+				A9614D811E77FA0D009CA034 /* Meal.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		A9614D5F1E77F8F0009CA034 = {
@@ -192,10 +226,13 @@
 		A9614D6A1E77F8F0009CA034 /* Recipe Slate */ = {
 			isa = PBXGroup;
 			children = (
-				5BD890472494CCA30068A36A /* TableView.swift */,
+				5BD89052249505930068A36A /* HeartsHandler.swift */,
+				5BD890472494CCA30068A36A /* ListTableView.swift */,
+				5BD8904D2494F9E10068A36A /* Detail */,
 				5BD890412494C6450068A36A /* TabBarController.swift */,
 				5BD890432494C75F0068A36A /* NavigationController.swift */,
 				5BD890452494C9A50068A36A /* ElementTableViewCell.swift */,
+				5BD89054249518050068A36A /* Types */,
 				5B8885CA1F010A5600BBEEDF /* Data */,
 				5B8885CB1F010A6E00BBEEDF /* Tabs */,
 				A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */,
@@ -211,8 +248,6 @@
 		A9614D901E7956AB009CA034 /* Elixir */ = {
 			isa = PBXGroup;
 			children = (
-				A914A24D1E82F7130023C3B9 /* Critter.swift */,
-				A9614D8C1E795104009CA034 /* Elixir.swift */,
 				A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */,
 				A914A2491E82EA980023C3B9 /* ElixirViewController.swift */,
 				A9C3387B1E8435E8003A574F /* MonsterPart.swift */,
@@ -223,7 +258,6 @@
 		A96FD1391E7BE8DE00CE60D6 /* Food */ = {
 			isa = PBXGroup;
 			children = (
-				A96FD1371E7BE8D900CE60D6 /* Food.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -304,24 +338,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */,
-				5BD890482494CCA30068A36A /* TableView.swift in Sources */,
+				5BD890482494CCA30068A36A /* ListTableView.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
+				5B22656B24952B5C00459517 /* ItemPresentable.swift in Sources */,
 				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
 				5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */,
+				5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */,
 				5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */,
+				5BD89053249505930068A36A /* HeartsHandler.swift in Sources */,
 				5BD890442494C75F0068A36A /* NavigationController.swift in Sources */,
 				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
 				A9D5795B1E86893800E7FFBC /* MaterialDetailViewController.swift in Sources */,
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
+				5BD890512495025B0068A36A /* DetailHeartsCell.swift in Sources */,
 				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
+				5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
 				5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */,
+				5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */,
 				5BAEEAE11F080399002E307A /* FoodData.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
 				5BAEEADF1F080351002E307A /* ElixirData.swift in Sources */,

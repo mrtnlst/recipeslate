@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController, UISearchResultsUpdating, UISear
     var filteredResults = [Meal]()
     let searchController = UISearchController(searchResultsController: nil)
     
-    var tableView = TableView()
+    var tableView = ListTableView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -82,22 +82,6 @@ class FavoritesViewController: UIViewController, UISearchResultsUpdating, UISear
         super.didReceiveMemoryWarning()
     }
     
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "showMealDetail" {
-//            let destinatenViewController = segue.destination as! MealDetailViewController
-//            let indexPath = self.tableView.indexPathForSelectedRow
-//            let selectedCell = getCorrectCellItem(path: indexPath!)
-//
-//            destinatenViewController.mealCell = selectedCell
-//
-//            // Hiding tab bar, when in DetailViewController.
-//            destinatenViewController.hidesBottomBarWhenPushed = true
-//        }
-//
-//    }
-    
     func checkForMealEffect(meal: Meal) -> UIImage {
         var check = false
         
@@ -120,37 +104,26 @@ class FavoritesViewController: UIViewController, UISearchResultsUpdating, UISear
     }
     
     func checkMainIngredients(meal: Meal) -> Bool{
-        var check = false
-        
-        if meal.mainIngredients != nil {
-            for mainIngredient in meal.mainIngredients! {
-                for material in materialData {
-                    if mainIngredient == material.materialName {
-                        if material.effect?.effectName != "Duration"{
-                            check = true
-                        }
-                    }
-                }
+        for ingredient in meal.mainIngredients {
+            guard let material = materialData.first(where: { $0.name == ingredient }) else { continue }
+            if material.effect?.type != .duration {
+                return true
             }
         }
-        return check
+        return false
     }
     
     func checkCategoryIngredients(meal: Meal) -> Bool{
-        var check = false
         
-        if meal.categoryIngredients != nil {
-            for categoryIngredient in meal.categoryIngredients!{
-                for material in materialData{
-                    for category in material.category{
-                        if categoryIngredient == category && material.effect?.effectName != "Duration" {
-                            check = true
-                        }
-                    }
-                }
+        for ingredient in meal.categoryIngredients {
+            guard let material = materialData.first(where: { (material) -> Bool in
+                return material.category.first(where: { ingredient == $0 }) != nil && material.effect?.type != .duration
+            }) else { continue }
+            if material.effect?.type != .duration {
+                return true
             }
         }
-        return check
+        return false
     }
     
     // MARK: SearchController.
@@ -185,14 +158,8 @@ class FavoritesViewController: UIViewController, UISearchResultsUpdating, UISear
         filterContentForSearchText(searchController.searchBar.text!)
     }
     
-    func getCorrectCellItem(path: IndexPath) -> Meal{
-        let meal: Meal
-        if searchController.isActive {
-            meal = filteredResults[path.row]
-        } else {
-            meal = sections[path.section][path.row]
-        }
-        return meal
+    func getCorrectCellItem(path: IndexPath) -> ItemPresentable {
+        return searchController.isActive ? filteredResults[path.row] : sections[path.section][path.row]
     }
 }
 
@@ -227,9 +194,11 @@ extension FavoritesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ElementTableViewCell.identifier,
                                                        for: indexPath) as? ElementTableViewCell else { fatalError() }
         
-        let meal: Meal = getCorrectCellItem(path: indexPath)
-        cell.label.text = meal.name
-        cell.icon.image = checkForMealEffect(meal: meal)
+        let item = getCorrectCellItem(path: indexPath)
+        cell.label.text = item.name
+        if let meal = item as? Meal {
+            cell.icon.image = checkForMealEffect(meal: meal)
+        }
         return cell
     }
 }
@@ -244,7 +213,11 @@ extension FavoritesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        self.performSegue(withIdentifier: "showMealDetail", sender: indexPath);
+        
+        let item = getCorrectCellItem(path: indexPath)
+        let detailVC = DetailViewController(item: item)
+        detailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
         
         // Prevent horrible bug.
         self.searchController.searchBar.endEditing(true)

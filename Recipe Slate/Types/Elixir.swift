@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-struct Elixir {
+struct Elixir: ItemPresentable {
     var name: String
-    var category: String
-    var effect: String
+    var category: EffectCategory
+    var effect: EffectType
 
-    
-    init(name: String, category: String, effect: String) {
+    init(name: String, category: EffectCategory, effect: EffectType) {
         self.name = name
         self.category = category
         self.effect = effect

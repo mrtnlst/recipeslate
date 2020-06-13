@@ -16,5 +16,5 @@ extension UIColor {
     static let tableHeaderViewColor = #colorLiteral(red: 0.137254902, green: 0.168627451, blue: 0.1921568627, alpha: 1)
     static let tableViewCellSelectedColor = #colorLiteral(red: 0.2117647059, green: 0.2666666667, blue: 0.2980392157, alpha: 1)
     static let seperatorColor = #colorLiteral(red: 0.2117647059, green: 0.2666666667, blue: 0.2980392157, alpha: 1)
-
+    static let secondaryTextColor = #colorLiteral(red: 0.7233663201, green: 0.7233663201, blue: 0.7233663201, alpha: 1)
 }

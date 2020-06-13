@@ -73,7 +73,7 @@ class MaterialDetailViewController: UIViewController {
     }
     
     func setLabels(){
-        nameLabel.text = materialCell?.materialName
+        nameLabel.text = materialCell?.name
         setEffect()
         setLocationLabel()
         setPotency()
@@ -104,7 +104,7 @@ class MaterialDetailViewController: UIViewController {
                 }
             }
             
-            if materialCell?.materialName == "Acorn" ||  materialCell?.materialName == "Chickaloo Tree Nut"{
+            if materialCell?.name == "Acorn" ||  materialCell?.name == "Chickaloo Tree Nut"{
                 label.text = String(format: "0.25 ")
             }
             // Setting the image for fullHeart.
@@ -114,7 +114,7 @@ class MaterialDetailViewController: UIViewController {
     
     
     func setRawHearts(){
-        if materialCell?.materialName == "Wood" || materialCell?.materialName == "Silent Princess"{
+        if materialCell?.name == "Wood" || materialCell?.name == "Silent Princess"{
             setNone(label: rawHeartsValue, heartsImage: rawHeartsImage)
             return
         }
@@ -124,7 +124,7 @@ class MaterialDetailViewController: UIViewController {
     func calcCookedHearts(){
         let hearts = calcHeartsImages(heartsValue: (materialCell?.hearts)! * 2.0)
         print("Hearts: \(hearts)")
-        if materialCell?.effect?.effectName == "Temporary Hearts" {
+        if materialCell?.effect?.type == .temporaryHearts {
                 cookedHeartsValue.text = "full "
             }
         else {
@@ -137,7 +137,7 @@ class MaterialDetailViewController: UIViewController {
         }
        
         // Exceptions:
-        if materialCell?.materialName == "Fairy"{
+        if materialCell?.name == "Fairy"{
             cookedHeartsValue.text = "7 "
         }
         
@@ -151,7 +151,7 @@ class MaterialDetailViewController: UIViewController {
         
         for item in roastedFoodData{
             for ingredient in item.ingredientNames{
-                if materialCell?.materialName == ingredient{
+                if materialCell?.name == ingredient{
                     setHearts(label: roastedHeartsValue, heartsImage: roastedHeartsImage, heartValue: item.hearts)
                     success = true
                 }
@@ -168,7 +168,7 @@ class MaterialDetailViewController: UIViewController {
         
         for item in frozenFoodData{
             for ingredient in item.ingredientNames{
-                if materialCell?.materialName == ingredient{
+                if materialCell?.name == ingredient{
 //                    frozenHeartsImage.image = UIImage(named: "fullHeart")
 //                    frozenHeartsValue.text = String(format: "%.2f ", item.hearts)
                     setHearts(label: frozenHeartsValue, heartsImage: frozenHeartsImage, heartValue: item.hearts)
@@ -186,8 +186,8 @@ class MaterialDetailViewController: UIViewController {
 
     func setEffect(){
         if materialCell?.effect != nil{
-            effectNameLabel.text = materialCell?.effect?.effectName
-            effectImage.image = UIImage(named: (materialCell?.effect?.effectName)!)
+            effectNameLabel.text = materialCell?.effect?.type.rawValue
+            effectImage.image = UIImage(named: (materialCell?.effect?.type.rawValue)!)
             
             var durationOrAmountText: String = ""
             
@@ -200,7 +200,7 @@ class MaterialDetailViewController: UIViewController {
             }
             durationOrAmountLabel.text = durationOrAmountText
             
-            if materialCell?.materialName == "Monster Extract"{
+            if materialCell?.name == "Monster Extract"{
                 durationOrAmountLabel.text = " 1:00/10:00/30:00 min"
             }
         }
@@ -286,23 +286,23 @@ class MaterialDetailViewController: UIViewController {
             if amountForUpgrade2 != nil{
                 if amountForUpgrade1 == amountForUpgrade2{
                     potencyLabel.text = String(format: "Add %d for potency level 3.", amountForUpgrade2!)
-                    setPotencyImages(levelCode: 3, imageName: (materialCell?.effect?.effectName)!)
+                    setPotencyImages(levelCode: 3, imageName: (materialCell?.effect?.type.rawValue)!)
 
                 }
                 else{
                     potencyLabel.text = String(format: "Add %d for potency level 2.\nAdd %d for potency level 3.", amountForUpgrade1!, amountForUpgrade2!)
-                    setPotencyImages(levelCode: 4, imageName: (materialCell?.effect?.effectName)!)
+                    setPotencyImages(levelCode: 4, imageName: (materialCell?.effect?.type.rawValue)!)
 
                 }
             }
             else {
                 potencyLabel.text = String(format: "Add %d for potency level 2.", amountForUpgrade1!)
-                setPotencyImages(levelCode: 2, imageName: (materialCell?.effect?.effectName)!)
+                setPotencyImages(levelCode: 2, imageName: (materialCell?.effect?.type.rawValue)!)
             }
         }
         else{
             potencyLabel.text = String(format: "Maximum potency: level 1.")
-            setPotencyImages(levelCode: 1, imageName: (materialCell?.effect?.effectName)!)
+            setPotencyImages(levelCode: 1, imageName: (materialCell?.effect?.type.rawValue)!)
         }
     }
     
@@ -374,10 +374,10 @@ class MaterialDetailViewController: UIViewController {
     }
     
     func getEffectForCritterCategory() -> Elixir {
-        var chosenElixir = Elixir(name: "Chilly Elixir", category: "Chilly", effect: "Heat Resistance")
+        var chosenElixir = Elixir(name: "Chilly Elixir", category: .chilly, effect: .heat)
         
         for critter in critterData{
-            if materialCell?.materialName == critter.name{
+            if materialCell?.name == critter.name{
                 for elixir in elixirData{
                     if critter.category == elixir.category{
                         chosenElixir = elixir
@@ -390,12 +390,12 @@ class MaterialDetailViewController: UIViewController {
     
     func checkForRecipesButton(){
         for category in (materialCell?.category)!{
-            if category == "Critter"{
+            if category == .critter {
                 viewRecipesButton.setTitle("View Elixirs", for: .normal)
                 mealImage.image = UIImage(named: "Elixir Button")
                 segueKeyWord = "showForCritter"
             }
-            else if category == "Monster Part"{
+            else if category == .monsterPart{
                 viewRecipesButton.setTitle("View Elixirs", for: .normal)
                 mealImage.image = UIImage(named: "Elixir Button")
                 segueKeyWord = "showForMonsterPart"

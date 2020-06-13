@@ -31,7 +31,7 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         sections = sortedFirstLetters.map { firstLetter in
             return materials
                 .filter { $0.titleFirstLetter == firstLetter }
-                .sorted { $0.materialName < $1.materialName }
+                .sorted { $0.name < $1.name }
         }
         
         //Setting up searchBar.
@@ -89,7 +89,7 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         let material = getCorrectCellItem(path: indexPath)
         
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
-            nameLabel.text = material.materialName
+            nameLabel.text = material.name
         }
         
         // Resetting image views.
@@ -98,9 +98,9 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
         }
         
         // Set effect or hearts image on the right side.
-        if material.effect != nil && material.effect?.effectName != "Duration"{
+        if material.effect != nil && material.effect?.type != .duration{
             if let effect = cell.viewWithTag(107) as? UIImageView{
-                effect.image = UIImage(named: (material.effect?.effectName)!)
+                effect.image = UIImage(named: (material.effect?.type.rawValue)!)
             }
         }
         else if material.hearts != nil {
@@ -137,7 +137,7 @@ class MaterialViewController: UITableViewController, UISearchResultsUpdating, UI
     // MARK: SearchController.
     func filterContentForSearchText(_ searchText: String){
         filteredResults = materials.filter { material in
-            return material.materialName.lowercased().contains(searchText.lowercased())
+            return material.name.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }

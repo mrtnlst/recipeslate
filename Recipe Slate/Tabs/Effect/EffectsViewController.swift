@@ -34,7 +34,7 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         sections = sortedFirstLetters.map { firstLetter in
             return effects
                 .filter { $0.titleFirstLetter == firstLetter }
-                .sorted { $0.effectName < $1.effectName}
+                .sorted { $0.type.rawValue < $1.type.rawValue}
         }
         
         //Setting up searchBar.
@@ -96,11 +96,11 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
         let effect = getCorrectCellItem(path: indexPath)
         
         if let nameLabel = cell.viewWithTag(100) as? UILabel {
-            nameLabel.text = effect.effectName
+            nameLabel.text = effect.type.rawValue
         }
         
         if let effectImage = cell.viewWithTag(101) as? UIImageView{
-            effectImage.image = UIImage(named: effect.effectName)
+            effectImage.image = UIImage(named: effect.type.rawValue)
         }
 
         return cell
@@ -131,7 +131,7 @@ class EffectsViewController: UITableViewController, UISearchResultsUpdating, UIS
     // MARK: SearchController.
     func filterContentForSearchText(_ searchText: String){
         filteredResults = effects.filter { effect in
-            return effect.effectName.lowercased().contains(searchText.lowercased())
+            return effect.type.rawValue.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }

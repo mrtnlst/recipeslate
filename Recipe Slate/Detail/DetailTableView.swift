@@ -1,5 +1,5 @@
 //
-//  ListTableView.swift
+//  DetailTableView.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 13.06.20.
@@ -8,17 +8,16 @@
 
 import UIKit
 
-class ListTableView: UITableView {
+class DetailTableView: UITableView {
 
     init() {
         super.init(frame: .zero, style: .plain)
         backgroundColor = .backgroundBlue
-        separatorColor = .seperatorColor
-        sectionIndexColor = .white
-        keyboardDismissMode = .interactive
+        separatorColor = .clear
         autoresizingMask = .flexibleHeight
         translatesAutoresizingMaskIntoConstraints = false
-        register(ElementTableViewCell.self, forCellReuseIdentifier: ElementTableViewCell.identifier)
+        register(DetailTitleCell.self, forCellReuseIdentifier: DetailTitleCell.identifier)
+        register(DetailHeartsCell.self, forCellReuseIdentifier: DetailHeartsCell.identifier)
     }
     
     required init?(coder: NSCoder) {

@@ -9,15 +9,15 @@
 import Foundation
 
 let effectData = [
-    Effect(effectName: "Attack Up", potencyLevel1: 5, potencyLevel2: 7),
-    Effect(effectName: "Defense Up", potencyLevel1: 5, potencyLevel2: 7),
-    Effect(effectName: "Speed Up", potencyLevel1: 5, potencyLevel2: 7),
-    Effect(effectName: "Increased Stealth", potencyLevel1: 6, potencyLevel2: 9),
-    Effect(effectName: "Heat Resistance", potencyLevel1: 6),
-    Effect(effectName: "Cold Resistance", potencyLevel1: 6),
-    Effect(effectName: "Electricity Resistance", potencyLevel1: 4, potencyLevel2: 6),
-    Effect(effectName: "Fire Resistance", potencyLevel1: 7),
-    Effect(effectName: "Restores Stamina"),
-    Effect(effectName: "Overfills Stamina"),
-    Effect(effectName: "Temporary Hearts"),
+    Effect(type: .attack, potencyLevel1: 5, potencyLevel2: 7),
+    Effect(type: .defense, potencyLevel1: 5, potencyLevel2: 7),
+    Effect(type: .speed, potencyLevel1: 5, potencyLevel2: 7),
+    Effect(type: .stealth, potencyLevel1: 6, potencyLevel2: 9),
+    Effect(type: .heat, potencyLevel1: 6),
+    Effect(type: .cold, potencyLevel1: 6),
+    Effect(type: .electricity, potencyLevel1: 4, potencyLevel2: 6),
+    Effect(type: .fire, potencyLevel1: 7),
+    Effect(type: .restoresStamina),
+    Effect(type: .extendsStamina),
+    Effect(type: .temporaryHearts),
 ]

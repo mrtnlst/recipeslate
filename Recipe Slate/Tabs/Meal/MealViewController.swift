@@ -165,13 +165,11 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     func checkMainIngredients(meal: Meal) -> Bool{
         var check = false
         
-        if meal.mainIngredients != nil {
-            for mainIngredient in meal.mainIngredients! {
-                for material in materialData {
-                    if mainIngredient == material.materialName {
-                        if material.effect?.effectName != "Duration"{
-                            check = true
-                        }
+        for mainIngredient in meal.mainIngredients {
+            for material in materialData {
+                if mainIngredient == material.name {
+                    if material.effect?.type != .duration {
+                        check = true
                     }
                 }
             }
@@ -182,13 +180,11 @@ class MealViewController: UITableViewController, UISearchResultsUpdating, UISear
     func checkCategoryIngredients(meal: Meal) -> Bool{
         var check = false
         
-        if meal.categoryIngredients != nil {
-            for categoryIngredient in meal.categoryIngredients!{
-                for material in materialData{
-                    for category in material.category{
-                        if categoryIngredient == category && material.effect?.effectName != "Duration"{
-                            check = true
-                        }
+        for categoryIngredient in meal.categoryIngredients{
+            for material in materialData{
+                for category in material.category{
+                    if categoryIngredient == category && material.effect?.type != .duration{
+                        check = true
                     }
                 }
             }

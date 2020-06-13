@@ -32,7 +32,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var resaleValue: UILabel!
     
     var mealCell: Meal?
-    var selectedEffect: String?
+    var selectedEffect: EffectType?
     var selectedMaterial: Material?
     
     var materials:[Material] = materialData
@@ -138,7 +138,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if pickerView == firstNamePicker {
                 if firstPickerData.isEmpty == false {
 
-                    titleData = firstPickerData[row].materialName
+                    titleData = firstPickerData[row].name
                     myTitle = NSAttributedString(string: titleData,
                                                  attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16.0), NSAttributedString.Key.foregroundColor:UIColor.white])
 
@@ -147,7 +147,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         if pickerView == secondNamePicker {
             if secondPickerData.isEmpty == false {
                 
-                titleData = secondPickerData[row].materialName
+                titleData = secondPickerData[row].name
                 myTitle = NSAttributedString(string: titleData,
                                              attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 16.0), NSAttributedString.Key.foregroundColor:UIColor.white])
                 
@@ -218,14 +218,14 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var duration: Double = 0
         var singleAmount = true
         // If the picker item has only duration effect, go to else.
-        if firstEffect.effectName != "Duration"{
+        if firstEffect.type != .duration{
 
             // Check if there is a main ingredient with an effect.
             if additionalMainIngredient != nil{
 
                 
                 // Check, if a main Ingredient has the same effect.
-                if firstEffect.effectName == additionalMainIngredient?.effect?.effectName{
+                if firstEffect.type == additionalMainIngredient?.effect?.type {
 
                     if additionalMainIngredient?.effect?.duration != nil{
                         duration = (additionalMainIngredient?.effect?.duration)!
@@ -244,7 +244,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
         
             if firstEffect.duration != nil{
-                setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: firstEffect.duration! + duration)
+                setEffectWithDuration(effectOfPicker: firstEffect.type.rawValue, duration: firstEffect.duration! + duration)
             }
             if firstEffect.amount != nil{
                 setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: amount, singleAmount: singleAmount)
@@ -256,7 +256,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             if additionalMainIngredient != nil {
                 if additionalMainIngredient?.effect?.duration != nil{
 
-                    setEffectWithDuration(effectOfPicker: (additionalMainIngredient?.effect?.effectName)!, duration: firstEffect.duration! + (additionalMainIngredient?.effect?.duration)!)
+                    setEffectWithDuration(effectOfPicker: (additionalMainIngredient?.effect?.type.rawValue)!, duration: firstEffect.duration! + (additionalMainIngredient?.effect?.duration)!)
                 }
                 if additionalMainIngredient?.effect?.amount != nil{
                     
@@ -273,23 +273,23 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         print("Two Picker")
         calcHeartsForCategoryIngredients()
         
-        if firstEffect.effectName == secondEffect.effectName{
-            if firstEffect.effectName == "Duration" && secondEffect.effectName == "Duration"{
+        if firstEffect.type == secondEffect.type {
+            if firstEffect.type == .duration && secondEffect.type == .duration{
                 setNone()
             }
             else if firstEffect.duration != nil {
                 let tempDuration = firstEffect.duration! + secondEffect.duration!
-                setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
+                setEffectWithDuration(effectOfPicker: firstEffect.type.rawValue, duration: tempDuration)
             }
             else if firstEffect.amount != nil{
                 
                 // Amount options for Temporary Hearts and Overfilling Stamina.
-                if firstEffect.effectName == "Temporary Hearts"{
+                if firstEffect.type == .temporaryHearts {
                     setEffectWithAmount(effectOfPicker: firstEffect, optionalAmount: secondEffect.amount!, singleAmount: true )
                 }
-                else if firstEffect.effectName == "Overfills Stamina"{
+                else if firstEffect.type == .extendsStamina {
                     
-                    let tempEffect = Effect(effectName: "Overfills Stamina", amount: 0.4)
+                    let tempEffect = Effect(type: .extendsStamina, amount: 0.4)
                     setEffectWithAmount(effectOfPicker: tempEffect, singleAmount: true )
                 }
                 else{
@@ -298,19 +298,19 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
                 
             }
         }
-        else if firstEffect.effectName == "Duration" && secondEffect.effectName != "Duration"{
+        else if firstEffect.type == .duration && secondEffect.type != .duration{
             if secondEffect.duration != nil{
                 let tempDuration = firstEffect.duration! + secondEffect.duration!
-                setEffectWithDuration(effectOfPicker: secondEffect.effectName, duration: tempDuration)
+                setEffectWithDuration(effectOfPicker: secondEffect.type.rawValue, duration: tempDuration)
             }
             if secondEffect.amount != nil{
                 setEffectWithAmount(effectOfPicker: secondEffect, singleAmount: true)
             }
         }
-        else if (firstEffect.effectName != "Duration" && secondEffect.effectName == "Duration"){
+        else if (firstEffect.type != .duration && secondEffect.type == .duration){
             if firstEffect.duration != nil{
                 let tempDuration = firstEffect.duration! + secondEffect.duration!
-                setEffectWithDuration(effectOfPicker: firstEffect.effectName, duration: tempDuration)
+                setEffectWithDuration(effectOfPicker: firstEffect.type.rawValue, duration: tempDuration)
             }
             if firstEffect.amount != nil{
                 setEffectWithAmount(effectOfPicker: firstEffect, singleAmount: true)
@@ -328,17 +328,17 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var notDuration: [Effect] = []
 
         for items in effect{
-            if items.effectName != "Duration" {
+            if items.type != .duration {
                 notDuration.append(items)
             }
         }
         
-        if (notDuration.first?.effectName == notDuration.last?.effectName) && (notDuration.last?.effectName == notDuration[1].effectName){
+        if (notDuration.first?.type == notDuration.last?.type) && (notDuration.last?.type == notDuration[1].type){
             if notDuration.first?.duration != nil{
                 var tempDuration = firstEffect.duration! + secondEffect.duration!
                 tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
                 
-                setEffectWithDuration(effectOfPicker: (notDuration.first?.effectName)!, duration: tempDuration)
+                setEffectWithDuration(effectOfPicker: (notDuration.first?.type.rawValue)!, duration: tempDuration)
             }
             if notDuration.first?.amount != nil {
                 setEffectWithAmount(effectOfPicker: (notDuration.first)!, singleAmount: true )
@@ -354,17 +354,17 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var notDuration: [Effect] = []
         
         for items in effect{
-            if items.effectName != "Duration" {
+            if items.type != .duration {
                 notDuration.append(items)
             }
         }
         
-        if notDuration.first?.effectName == notDuration.last?.effectName{
+        if notDuration.first?.type == notDuration.last?.type {
             if notDuration.first?.duration != nil{
                 var tempDuration = firstEffect.duration! + secondEffect.duration!
                 tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
                 
-                setEffectWithDuration(effectOfPicker: (notDuration.first?.effectName)!, duration: tempDuration)
+                setEffectWithDuration(effectOfPicker: (notDuration.first?.type.rawValue)!, duration: tempDuration)
             }
             if notDuration.first?.amount != nil {
                 setEffectWithAmount(effectOfPicker: (notDuration.first)!,  singleAmount: true)
@@ -380,12 +380,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         let effect: [Effect] = [firstEffect, secondEffect, thirdEffect, fourthEffect]
         
         for items in effect{
-            if items.effectName != "Duration" {
+            if items.type != .duration {
                 if items.duration != nil {
                     var tempDuration = firstEffect.duration! + secondEffect.duration!
                     tempDuration = tempDuration + thirdEffect.duration! + fourthEffect.duration!
                     
-                    setEffectWithDuration(effectOfPicker: items.effectName, duration: tempDuration)
+                    setEffectWithDuration(effectOfPicker: items.type.rawValue, duration: tempDuration)
                 }
                 if items.amount != nil {
                     setEffectWithAmount(effectOfPicker: items,  singleAmount: true )
@@ -401,7 +401,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var count: Int = 0
         
         for items in effect{
-            if items.effectName == "Duration"{
+            if items.type == .duration{
                 count += 1
             }
         }
@@ -409,8 +409,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func setEffectWithAmount(effectOfPicker: Effect, optionalAmount: Float? = nil, singleAmount: Bool? = nil){
-        effectLabel.text = effectOfPicker.effectName
-        effectImageView.image = UIImage(named: effectOfPicker.effectName)
+        effectLabel.text = effectOfPicker.type.rawValue
+        effectImageView.image = UIImage(named: effectOfPicker.type.rawValue)
         effectLabel.font = UIFont.systemFont(ofSize: 16.0)
         effectLabel.textColor = UIColor(red: 182/255, green: 183/255, blue: 188/255, alpha: 1.0)
 
@@ -421,7 +421,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         
         
-        if effectOfPicker.effectName == "Restores Stamina" && singleAmount == false{
+        if effectOfPicker.type == .restoresStamina && singleAmount == false{
            amount = calculateAmountForRestoreStamina()
         }
         
@@ -434,7 +434,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func calculateAmountForRestoreStamina() -> Float{
         var result: Float = 0.0
         
-        if mealCell?.name == "Glazed Mushrooms"{
+        if mealCell?.name == "Glazed Mushrooms" {
             result = 0.8
         }
         if mealCell?.name == "Fish and Mushroom Skewer"{
@@ -442,7 +442,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         }
         if mealCell?.name == "Glazed Seafood"{
             result = 1.6
-            if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].materialName == "Bright-Eyed Crab" {
+            if firstPickerData[firstNamePicker.selectedRow(inComponent: 0)].name == "Bright-Eyed Crab" {
                 result = 1.0
             }
         }
@@ -468,9 +468,9 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             for mainIngredientItem in (mealCell?.mainIngredients)!{
                 for materialItem in materialData {
                     if materialItem.hearts != nil{
-                        if mainIngredientItem == materialItem.materialName {
+                        if mainIngredientItem == materialItem.name {
                             hearts += materialItem.hearts!
-                            if materialItem.effect?.effectName == "Temporary Hearts"{
+                            if materialItem.effect?.type == .temporaryHearts{
                                 fullRestore = true
                             }
 
@@ -496,14 +496,14 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         
         if mealCell?.categoryIngredients != nil {
-            categoryIngredientsCount = (mealCell?.categoryIngredients?.count)!
+            categoryIngredientsCount = (mealCell?.categoryIngredients.count)!
                 print("categoryIngredientsCount: \(categoryIngredientsCount)")
             for index in 0..<categoryIngredientsCount{
                 print("index: \(index)")
                 if pickerData[index][pickers[index].selectedRow(inComponent: 0)].hearts != nil {
                     categoryHearts += pickerData[index][pickers[index].selectedRow(inComponent: 0)].hearts!
                 
-                    if pickerData[index][pickers[index].selectedRow(inComponent: 0)].effect?.effectName == "Temporary Hearts"{
+                    if pickerData[index][pickers[index].selectedRow(inComponent: 0)].effect?.type == .temporaryHearts {
                         fullRestore = true
                     }
                 }
@@ -557,28 +557,23 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func checkForPickerData(){
-        if mealCell?.categoryIngredients != nil {
-            if (mealCell?.categoryIngredients?.indices.contains(0))!{
-                fillPickerData(picker: 1, categoryIngredient: (mealCell?.categoryIngredients?[0])!)
-            }
-            if (mealCell?.categoryIngredients?.indices.contains(1))!{
-                fillPickerData(picker: 2, categoryIngredient: (mealCell?.categoryIngredients?[1])!)
-            }
+        for (index, ingredient) in (mealCell?.categoryIngredients ?? []).enumerated() {
+            fillPickerData(picker: index + 1, categoryIngredient: ingredient)
         }
     }
 
-    func fillPickerData(picker: Int, categoryIngredient: String){
+    func fillPickerData(picker: Int, categoryIngredient: MaterialCategory){
         
         for materialItem in materials{
             for tag in materialItem.category{
                 if categoryIngredient == tag{
                     if picker == 1{
                         firstPickerData.append(materialItem)
-                        print(materialItem.materialName)
+                        print(materialItem.name)
                     }
                     if picker == 2{
                         secondPickerData.append(materialItem)
-                        print(materialItem.materialName)
+                        print(materialItem.name)
                     }
                 }
             }
@@ -611,7 +606,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var count: Int = 0
         
         for items in mainIngredientWithEffect{
-            if items.effect?.effectName == "Duration"{
+            if items.effect?.type == .duration{
                 additionalDurationIncrease.append(items)
                 count += 1
             }
@@ -644,12 +639,12 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func checkOneMainIngredientEffect(){
         
         for item in mainIngredientWithEffect{
-            if item.effect?.effectName != "Duration"{
+            if item.effect?.type != .duration{
                 if item.effect?.duration != nil{
                     let tempDuration = item.effect?.duration
                     
                     additionalMainIngredient = item
-                    setEffectWithDuration(effectOfPicker: (item.effect?.effectName)!, duration: tempDuration)
+                    setEffectWithDuration(effectOfPicker: (item.effect?.type.rawValue)!, duration: tempDuration)
                 }
                 if item.effect?.amount != nil{
                     setEffectWithAmount(effectOfPicker: (item.effect)!)
@@ -663,18 +658,18 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func checkTwoMainIngredientEffect(){
         var duration: Double = 0
         
-        if mainIngredientWithEffect.first?.effect?.effectName == mainIngredientWithEffect.last?.effect?.effectName{
+        if mainIngredientWithEffect.first?.effect?.type == mainIngredientWithEffect.last?.effect?.type {
             if mainIngredientWithEffect.first?.effect?.duration != nil{
                 
                 duration = (mainIngredientWithEffect.first?.effect?.duration)! + (mainIngredientWithEffect.last?.effect?.duration)!
-                setEffectWithDuration(effectOfPicker: (mainIngredientWithEffect.first?.effect?.effectName)!, duration: duration)
+                setEffectWithDuration(effectOfPicker: (mainIngredientWithEffect.first?.effect?.type.rawValue)!, duration: duration)
                 
-                additionalMainIngredient = Material(materialName: "empty", category: ["empty"], effect: Effect(effectName: (mainIngredientWithEffect.first?.effect?.effectName)!, duration: duration))
+                additionalMainIngredient = Material(materialName: "empty", category: [], effect: Effect(type: (mainIngredientWithEffect.first?.effect?.type)!, duration: duration))
             }
         }
         else{
             print("huhu")
-            additionalMainIngredient = Material(materialName: "empty", category: ["empty"], effect: Effect(effectName: "empty"))
+            additionalMainIngredient = Material(materialName: "empty", category: [], effect: Effect(type: .none))
             
         }
     }
@@ -743,7 +738,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
     func checkForMainIngredientEffects(ingredient: String){
         
         for items in materials{
-            if ingredient == items.materialName{
+            if ingredient == items.name{
                 if items.effect != nil{
                     mainIngredientWithEffect.append(items)
                     if items.saleValue != nil{
@@ -838,16 +833,16 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             
             // First picker.
             for items in firstPickerData{
-                if items.effect?.effectName == selectedEffect{
+                if items.effect?.type == selectedEffect {
                     firstPickerSpecialData.append(items)
                     success = true
                 }
             }
             
             if success == true {
-                if mealCell?.categoryIngredients?.indices.contains(1) != nil{
-                    for items in secondPickerData{
-                        if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
+                if mealCell?.categoryIngredients.indices.contains(1) != nil{
+                    for items in secondPickerData {
+                        if items.effect?.type == .duration || items.effect?.type == selectedEffect{
                             secondPickerSpecialData.append(items)
                         }
                     }
@@ -857,16 +852,16 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             
             if success == false{
                 for items in secondPickerData{
-                    if items.effect?.effectName == selectedEffect{
+                    if items.effect?.type == selectedEffect{
                         secondPickerSpecialData.append(items)
                         success = true
                     }
                 }
                 
                 if success == true {
-                    if mealCell?.categoryIngredients?.indices.contains(0) != nil{
+                    if mealCell?.categoryIngredients.indices.contains(0) != nil{
                         for items in firstPickerData{
-                            if items.effect?.effectName == "Duration" || items.effect?.effectName == selectedEffect{
+                            if items.effect?.type == .duration || items.effect?.type == selectedEffect{
                                 firstPickerSpecialData.append(items)
                             }
                         }
@@ -914,15 +909,15 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         if selectedMaterial != nil{
             for (i, meal) in firstPickerData.enumerated(){
-                if selectedMaterial?.materialName == meal.materialName{
+                if selectedMaterial?.name == meal.name{
                     firstIndex = i
-                    print("It's \(String(describing: selectedMaterial?.materialName))")
+                    print("It's \(String(describing: selectedMaterial?.name))")
                 }
             }
             for (i, meal) in secondPickerData.enumerated(){
-                if selectedMaterial?.materialName == meal.materialName{
+                if selectedMaterial?.name == meal.name{
                     secondIndex = i
-                    print("It's \(String(describing: selectedMaterial?.materialName))")
+                    print("It's \(String(describing: selectedMaterial?.name))")
                 }
             }
         }

@@ -10,13 +10,13 @@ import Foundation
 
 struct Critter {
     var name: String
-    var category: String
-    var effect: String
+    var category: EffectCategory
+    var effect: EffectType
     var duration: TimeInterval?
     var amount: Float?
     var potency: Int?
     
-    init(name: String, category: String, effect: String, duration: TimeInterval? = nil, amount: Float? = nil, potency: Int? = nil) {
+    init(name: String, category: EffectCategory, effect: EffectType, duration: TimeInterval? = nil, amount: Float? = nil, potency: Int? = nil) {
         self.name = name
         self.category = category
         self.duration = duration

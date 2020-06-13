@@ -28,7 +28,7 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = chosenMaterial?.materialName
+        self.navigationItem.title = chosenMaterial?.name
         
         // Setup refresh if item was favorites changed.
         NotificationCenter.default.addObserver(self, selector: #selector(PossibleMealsTableView.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
@@ -136,19 +136,15 @@ class PossibleMealsTableView: UITableViewController, UISearchResultsUpdating, UI
     func findPossibleMeals(){
         
         for meal in mealData{
-            if meal.mainIngredients != nil {
-                for mainIngredient in meal.mainIngredients!{
-                    if mainIngredient == chosenMaterial?.materialName{
-                        possibleMeals.append(meal)
-                    }
+            for mainIngredient in meal.mainIngredients {
+                if mainIngredient == chosenMaterial?.name {
+                    possibleMeals.append(meal)
                 }
             }
-            if meal.categoryIngredients != nil {
-                for categoryIngredient in meal.categoryIngredients!{
-                    for category in (chosenMaterial?.category)! {
-                        if categoryIngredient == category{
-                            possibleMeals.append(meal)
-                        }
+            for categoryIngredient in meal.categoryIngredients {
+                for category in (chosenMaterial?.category)! {
+                    if categoryIngredient == category{
+                        possibleMeals.append(meal)
                     }
                 }
             }

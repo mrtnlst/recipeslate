@@ -26,6 +26,7 @@ class NavigationController: UINavigationController {
             navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             navBarAppearance.backgroundColor = .headerBlue
             navigationBar.standardAppearance = navBarAppearance
+            navigationBar.tintColor = .white
             navigationBar.scrollEdgeAppearance = navBarAppearance
         } else {
             navigationBar.isTranslucent = false

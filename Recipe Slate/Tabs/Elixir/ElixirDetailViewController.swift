@@ -85,9 +85,9 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         // Setting the name and effect label.
         if elixirCell != nil{
             nameLabel.text = elixirCell?.name
-            effectNameLabel.text = elixirCell?.effect
-            effectImageView.image = UIImage(named: (elixirCell?.effect)!)
-            resultImageView.image = UIImage(named: (elixirCell?.effect)!)
+            effectNameLabel.text = elixirCell?.effect.rawValue
+            effectImageView.image = UIImage(named: (elixirCell?.effect.rawValue)!)
+            resultImageView.image = UIImage(named: (elixirCell?.effect.rawValue)!)
         }
     }
 
@@ -240,21 +240,21 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
             var effectOfCritter: Effect?
             
             for effect in effectData{
-                if effect.effectName == critter.effect{
+                if effect.type == critter.effect {
                     effectOfCritter = effect
                 }
             }
             
             if value >= (effectOfCritter?.potencyLevel1)!{
                 if effectOfCritter?.potencyLevel2 != nil && value >= (effectOfCritter?.potencyLevel2)!{
-                    setPotencyImages(levelCode: 3, imageName: (effectOfCritter?.effectName)!)
+                    setPotencyImages(levelCode: 3, imageName: (effectOfCritter?.type.rawValue)!)
                 }
                 else {
-                    setPotencyImages(levelCode: 2, imageName: (effectOfCritter?.effectName)!)
+                    setPotencyImages(levelCode: 2, imageName: (effectOfCritter?.type.rawValue)!)
                 }
             }
             else{
-                setPotencyImages(levelCode: 1, imageName: (effectOfCritter?.effectName)!)
+                setPotencyImages(levelCode: 1, imageName: (effectOfCritter?.type.rawValue)!)
             }
         }
         else {
@@ -304,13 +304,13 @@ class ElixirDetailViewController: UIViewController, UIPickerViewDataSource, UIPi
         var monsterPartIndex = 0
         
         for (i, critter) in chosenCritter.enumerated(){
-            if selectedMaterial?.materialName == critter.name{
+            if selectedMaterial?.name == critter.name{
                 critterIndex = i
                 print(index)
             }
         }
         for (i, monsterPart) in monsterParts.enumerated(){
-            if selectedMaterial?.materialName == monsterPart.name{
+            if selectedMaterial?.name == monsterPart.name{
                 monsterPartIndex = i
                 print("It's \(monsterPart.name)")
             }

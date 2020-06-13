@@ -101,7 +101,7 @@ class ElixirViewController: UITableViewController, UISearchResultsUpdating, UISe
         }
         
         if let effectImage = cell.viewWithTag(101) as? UIImageView{
-            effectImage.image = UIImage(named: elixir.effect)
+            effectImage.image = UIImage(named: elixir.effect.rawValue)
         }
         
         return cell

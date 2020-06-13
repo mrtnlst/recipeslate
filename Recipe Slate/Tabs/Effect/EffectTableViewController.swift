@@ -27,7 +27,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = effectCell?.effectName
+        self.navigationItem.title = effectCell?.type.rawValue
         
         // Setup refresh if item was favorites changed.
         NotificationCenter.default.addObserver(self, selector: #selector(EffectTableViewController.refreshTable(_:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
@@ -37,7 +37,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
 
         // Set new large navigationbar titles
         Utility.setDetailViewTitles(navigationItem: navigationItem)
-        navigationItem.backBarButtonItem?.title = effectCell?.effectName
+        navigationItem.backBarButtonItem?.title = effectCell?.type.rawValue
 
         findEffectInMeals()
         
@@ -155,22 +155,20 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
         // First bool for ingredient matched, second for same effect name.
         var status:Int = 0
     
-        if meal.mainIngredients != nil {
-            for mainIngredient in meal.mainIngredients! {
-                for material in materialData {
+        for mainIngredient in meal.mainIngredients {
+            for material in materialData {
+                
+                if mainIngredient == material.name {
                     
-                    if mainIngredient == material.materialName {
-                        
-                        if material.effect?.effectName == effectCell?.effectName{
-                            effect.append(meal)
-                            status = 1
-                        }
-                        else if material.effect?.effectName == "Duration"{
-                            status = 2
-                        }
-                        else {
-                            status = 3
-                        }
+                    if material.effect?.type == effectCell?.type {
+                        effect.append(meal)
+                        status = 1
+                    }
+                    else if material.effect?.type == .duration{
+                        status = 2
+                    }
+                    else {
+                        status = 3
                     }
                 }
             }
@@ -180,15 +178,12 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     
     func findEffectInCategoryIngredients(meal: Meal){
-        
-        if meal.categoryIngredients != nil {
-            for categoryIngredient in meal.categoryIngredients!{
-                for material in materialData{
-                    for category in material.category{
-                        if categoryIngredient == category && material.effect?.effectName == effectCell?.effectName{
-                            effect.append(meal)
-                            return
-                        }
+        for categoryIngredient in meal.categoryIngredients{
+            for material in materialData{
+                for category in material.category{
+                    if categoryIngredient == category && material.effect?.type == effectCell?.type {
+                        effect.append(meal)
+                        return
                     }
                 }
             }
@@ -210,7 +205,7 @@ class EffectTableViewController: UITableViewController, UISearchResultsUpdating,
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectedCell = getCorrectCellItem(path: indexPath!)
             destinatenViewController.mealCell = selectedCell
-            destinatenViewController.selectedEffect = effectCell?.effectName
+            destinatenViewController.selectedEffect = effectCell?.type
             
             // Hiding tab bar, when in DetailViewController.
             destinatenViewController.hidesBottomBarWhenPushed = true
