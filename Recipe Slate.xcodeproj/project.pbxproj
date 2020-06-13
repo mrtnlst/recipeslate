@@ -17,6 +17,11 @@
 		5BAEEAE11F080399002E307A /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEAE01F080399002E307A /* FoodData.swift */; };
 		5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEAE21F0803C3002E307A /* EffectData.swift */; };
 		5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */; };
+		5BD890402494C5DA0068A36A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8903F2494C5DA0068A36A /* UIColor.swift */; };
+		5BD890422494C6450068A36A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890412494C6450068A36A /* TabBarController.swift */; };
+		5BD890442494C75F0068A36A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890432494C75F0068A36A /* NavigationController.swift */; };
+		5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890452494C9A50068A36A /* ElementTableViewCell.swift */; };
+		5BD890482494CCA30068A36A /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890472494CCA30068A36A /* TableView.swift */; };
 		A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A2491E82EA980023C3B9 /* ElixirViewController.swift */; };
 		A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */; };
 		A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24D1E82F7130023C3B9 /* Critter.swift */; };
@@ -48,6 +53,11 @@
 		5BAEEAE01F080399002E307A /* FoodData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
 		5BAEEAE21F0803C3002E307A /* EffectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectData.swift; sourceTree = "<group>"; };
 		5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectTableViewController.swift; sourceTree = "<group>"; };
+		5BD8903F2494C5DA0068A36A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		5BD890412494C6450068A36A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = Tabs/Favorites/TabBarController.swift; sourceTree = "<group>"; };
+		5BD890432494C75F0068A36A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		5BD890452494C9A50068A36A /* ElementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementTableViewCell.swift; sourceTree = "<group>"; };
+		5BD890472494CCA30068A36A /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TableView.swift; path = Tabs/Favorites/TableView.swift; sourceTree = "<group>"; };
 		A914A2491E82EA980023C3B9 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
 		A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirDetailViewController.swift; sourceTree = "<group>"; };
 		A914A24D1E82F7130023C3B9 /* Critter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Critter.swift; sourceTree = "<group>"; };
@@ -182,9 +192,14 @@
 		A9614D6A1E77F8F0009CA034 /* Recipe Slate */ = {
 			isa = PBXGroup;
 			children = (
+				5BD890472494CCA30068A36A /* TableView.swift */,
+				5BD890412494C6450068A36A /* TabBarController.swift */,
+				5BD890432494C75F0068A36A /* NavigationController.swift */,
+				5BD890452494C9A50068A36A /* ElementTableViewCell.swift */,
 				5B8885CA1F010A5600BBEEDF /* Data */,
 				5B8885CB1F010A6E00BBEEDF /* Tabs */,
 				A9614D6B1E77F8F0009CA034 /* AppDelegate.swift */,
+				5BD8903F2494C5DA0068A36A /* UIColor.swift */,
 				A9614D741E77F8F0009CA034 /* Assets.xcassets */,
 				A9614D791E77F8F0009CA034 /* Info.plist */,
 				A9614D761E77F8F0009CA034 /* LaunchScreen.storyboard */,
@@ -240,13 +255,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Martin List";
 				TargetAttributes = {
 					A9614D671E77F8F0009CA034 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4853CED358;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -256,6 +271,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -288,14 +304,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */,
+				5BD890482494CCA30068A36A /* TableView.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
+				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
+				5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */,
 				5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */,
+				5BD890442494C75F0068A36A /* NavigationController.swift in Sources */,
 				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
 				A9D5795B1E86893800E7FFBC /* MaterialDetailViewController.swift in Sources */,
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
+				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
@@ -343,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -401,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -454,12 +477,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -469,12 +492,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -490,8 +490,8 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
         var fullRestore: Bool = false
         var categoryHearts: Float = 0.0
         
-        var pickerData: [[Material]] = [firstPickerData, secondPickerData]
-        var pickers: [UIPickerView] = [firstNamePicker, secondNamePicker]
+        let pickerData: [[Material]] = [firstPickerData, secondPickerData]
+        let pickers: [UIPickerView] = [firstNamePicker, secondNamePicker]
         var categoryIngredientsCount = 0
         
         
@@ -817,7 +817,7 @@ class MealDetailViewController: UIViewController, UIPickerViewDataSource, UIPick
             favorites = favoritesDefaults as! [String]
         }
         
-        let position = favorites.index(of: (mealCell?.name)!)
+        let position = favorites.firstIndex(of: (mealCell?.name)!)
         favorites.remove(at: position!)
        
         defaults.set(favorites, forKey: "favorites")

@@ -15,10 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        setupAppAppearance()
-        // I added this line
-//        UIAppearance.appearance().tintColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0)
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = TabBarController()
+        self.window = window
+        self.window?.makeKeyAndVisible()
         
         return true
     }
@@ -57,15 +58,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-}
-extension UIColor
-{
-    static func headerBlue() -> UIColor
-    {
-        return UIColor(red: 35/255, green: 43/255, blue: 49/255, alpha: 1.0)    }
-    
-    static func backgroundBlue() -> UIColor
-    {
-        return UIColor(red: 40.0/255.0, green: 50.0/255.0, blue: 56.0/255.0, alpha: 1.0)
-    }
 }
