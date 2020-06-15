@@ -56,8 +56,4 @@ struct Material: ItemPresentable {
         self.location = location
         self.potency = potency
     }
-    
-    var titleFirstLetter: String {
-        return String(self.name[self.name.startIndex]).uppercased()
-    }
 }

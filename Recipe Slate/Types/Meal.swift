@@ -19,8 +19,4 @@ struct Meal: ItemPresentable {
         self.mainIngredients = mainIngredients
         self.categoryIngredients = categoryIngredients
     }
-    
-    var titleFirstLetter: String {
-        return String(self.name[self.name.startIndex]).uppercased()
-    }
 }

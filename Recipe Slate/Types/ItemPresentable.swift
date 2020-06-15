@@ -12,3 +12,12 @@ protocol ItemPresentable {
  
     var name: String { get }
 }
+
+extension ItemPresentable {
+    
+    var titleFirstLetter: String {
+        return String(name[name.startIndex]).uppercased()
+    }
+}
+
+

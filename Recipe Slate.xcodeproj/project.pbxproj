@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B224E331EAE0A3A006D47DB /* AboutViewController.swift */; };
 		5B22656B24952B5C00459517 /* ItemPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* ItemPresentable.swift */; };
+		5B22656D2497CFB000459517 /* FavoritesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoritesDataSource.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
-		5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */; };
+		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
+		5BA40D352497E11700CBD251 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D342497E11700CBD251 /* DataSourceProtocol.swift */; };
+		5BA40D372497E58100CBD251 /* MealsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D362497E58100CBD251 /* MealsDataSource.swift */; };
+		5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D382497E61700CBD251 /* EffectHandler.swift */; };
 		5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */; };
 		5BAEEADD1F068938002E307A /* MealData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEADC1F068937002E307A /* MealData.swift */; };
 		5BAEEADF1F080351002E307A /* ElixirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEADE1F080351002E307A /* ElixirData.swift */; };
@@ -51,9 +55,13 @@
 /* Begin PBXFileReference section */
 		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5B22656A24952B5C00459517 /* ItemPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPresentable.swift; sourceTree = "<group>"; };
+		5B22656C2497CFB000459517 /* FavoritesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDataSource.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
-		5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
+		5BA40D342497E11700CBD251 /* DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
+		5BA40D362497E58100CBD251 /* MealsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsDataSource.swift; sourceTree = "<group>"; };
+		5BA40D382497E61700CBD251 /* EffectHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectHandler.swift; sourceTree = "<group>"; };
 		5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5BAEEADC1F068937002E307A /* MealData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealData.swift; sourceTree = "<group>"; };
 		5BAEEADE1F080351002E307A /* ElixirData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirData.swift; sourceTree = "<group>"; };
@@ -123,7 +131,6 @@
 		5B8885C91F010A4200BBEEDF /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				5B5AE3D91E9E3E16008F5313 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -176,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				A9C3387F1E8544B0003A574F /* MealDetailViewController.swift */,
-				A9614D7F1E77F978009CA034 /* MealViewController.swift */,
 				5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */,
 			);
 			path = Meal;
@@ -227,11 +233,17 @@
 			isa = PBXGroup;
 			children = (
 				5BD89052249505930068A36A /* HeartsHandler.swift */,
+				5BA40D382497E61700CBD251 /* EffectHandler.swift */,
 				5BD890472494CCA30068A36A /* ListTableView.swift */,
 				5BD8904D2494F9E10068A36A /* Detail */,
 				5BD890412494C6450068A36A /* TabBarController.swift */,
 				5BD890432494C75F0068A36A /* NavigationController.swift */,
 				5BD890452494C9A50068A36A /* ElementTableViewCell.swift */,
+				5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */,
+				5B22656C2497CFB000459517 /* FavoritesDataSource.swift */,
+				5BA40D342497E11700CBD251 /* DataSourceProtocol.swift */,
+				5BA40D362497E58100CBD251 /* MealsDataSource.swift */,
+				A9614D7F1E77F978009CA034 /* MealViewController.swift */,
 				5BD89054249518050068A36A /* Types */,
 				5B8885CA1F010A5600BBEEDF /* Data */,
 				5B8885CB1F010A6E00BBEEDF /* Tabs */,
@@ -358,21 +370,25 @@
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
+				5BA40D372497E58100CBD251 /* MealsDataSource.swift in Sources */,
 				5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
-				5B5AE3DA1E9E3E16008F5313 /* FavoritesViewController.swift in Sources */,
+				5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */,
 				5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */,
 				5BAEEAE11F080399002E307A /* FoodData.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
 				5BAEEADF1F080351002E307A /* ElixirData.swift in Sources */,
 				A9C338801E8544B0003A574F /* MealDetailViewController.swift in Sources */,
+				5BA40D352497E11700CBD251 /* DataSourceProtocol.swift in Sources */,
 				5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
+				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,
 				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
 				5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */,
 				5BAEEADD1F068938002E307A /* MealData.swift in Sources */,
 				A9614D841E77FACA009CA034 /* MaterialData.swift in Sources */,
+				5B22656D2497CFB000459517 /* FavoritesDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

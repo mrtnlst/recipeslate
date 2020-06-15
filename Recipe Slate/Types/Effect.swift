@@ -56,7 +56,4 @@ struct Effect: ItemPresentable {
         self.potencyLevel2 = potencyLevel2
    
     }
-    var titleFirstLetter: String {
-        return String(self.type.rawValue[self.type.rawValue.startIndex]).uppercased()
-    }
 }

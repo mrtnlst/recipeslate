@@ -19,8 +19,4 @@ struct Elixir: ItemPresentable {
         self.category = category
         self.effect = effect
     }
-    
-    var titleFirstLetter: String {
-        return String(self.name[self.name.startIndex]).uppercased()
-    }
 }

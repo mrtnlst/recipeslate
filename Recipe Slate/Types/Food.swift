@@ -22,9 +22,5 @@ struct Food {
         self.ingredientNames = ingredientNames
         self.firstEffect = firstEffect
     }
-    
-    var titleFirstLetter: String {
-        return String(self.name[self.name.startIndex]).uppercased()
-    }
 }
 

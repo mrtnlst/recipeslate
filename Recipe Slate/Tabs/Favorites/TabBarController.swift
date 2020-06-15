@@ -23,9 +23,14 @@ class TabBarController: UITabBarController {
     }
     
     func setupViewControllers() {
-        let favoritesVC = FavoritesViewController()
+        let favoritesVC = ListViewController(dataSource: FavoritesDataSource())
+        favoritesVC.title = "Favorites"
         favoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "bar-favorite"), selectedImage: nil)
         
-        viewControllers = [favoritesVC].map { NavigationController(rootViewController: $0) }
+        let mealsVC = ListViewController(dataSource: MealsDataSource())
+        mealsVC.title = "Meals"
+        mealsVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "bar-meal"), selectedImage: nil)
+        
+        viewControllers = [favoritesVC, mealsVC].map { NavigationController(rootViewController: $0) }
     }
 }
