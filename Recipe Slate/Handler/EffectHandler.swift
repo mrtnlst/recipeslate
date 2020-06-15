@@ -9,7 +9,38 @@
 import Foundation
 import UIKit
 
+struct Hearts {
+    var numberOfHearts: Float
+    var fullRestore: Bool
+}
+
 class EffectsHandler: NSObject {
+    
+    
+    static func icon(for material: Material) -> UIImage? {
+        if let effect = material.effect, effect.type != .duration {
+            return UIImage(named: effect.type.rawValue)
+        }
+        if material.hearts != nil {
+            return UIImage(named: "detail-heart-full")
+        }
+        return nil
+    }
+    
+    static func calculateHearts(for meal: Meal) -> Hearts {
+        var fullRestore = false
+        var hearts: Float = 0
+        
+        for ingredient in meal.mainIngredients {
+            guard let material = materialData.first(where: { $0.name == ingredient }) else { continue }
+            guard let materialHearts = material.hearts else { continue }
+            hearts += materialHearts
+            if material.effect?.type == .temporaryHearts {
+                fullRestore = true
+            }
+        }
+        return Hearts(numberOfHearts: hearts * 2, fullRestore: fullRestore)
+    }
     
     static func checkForMealEffect(meal: Meal) -> UIImage {
         var check = false
@@ -27,7 +58,7 @@ class EffectsHandler: NSObject {
         if check {
             return UIImage(named: "Effect") ?? UIImage()
         } else {
-            return UIImage(named: "fullHeart") ?? UIImage()
+            return UIImage(named: "detail-heart-full") ?? UIImage()
             
         }
     }

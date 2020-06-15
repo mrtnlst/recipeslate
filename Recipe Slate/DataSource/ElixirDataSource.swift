@@ -1,5 +1,5 @@
 //
-//  MealsDataSource.swift
+//  ElixirDataSource.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 15.06.20.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class MealsDataSource: NSObject, DataSourceProtocol {
+class ElixirDataSource: NSObject, DataSourceProtocol {
     
     var items: [ItemPresentable] {
-        return mealData
+        return elixirData
     }
     var sortedFirstLetters: [String] = []
     var sections: [[ItemPresentable]] = [[]]
     var filteredResults = [ItemPresentable]()
 }
 
-extension MealsDataSource: UITableViewDataSource {
+extension ElixirDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !filteredResults.isEmpty {
@@ -51,8 +51,8 @@ extension MealsDataSource: UITableViewDataSource {
         
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
-        if let meal = item as? Meal {
-            cell.icon.image = EffectsHandler.checkForMealEffect(meal: meal)
+        if let elixir = item as? Elixir {
+            cell.icon.image = UIImage(named: elixir.effect.rawValue)
         }
         return cell
     }

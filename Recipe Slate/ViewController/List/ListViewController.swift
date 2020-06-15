@@ -78,11 +78,11 @@ extension ListViewController: UISearchResultsUpdating, UISearchBarDelegate {
         
         if #available(iOS 13.0, *) {
             searchController.searchBar.searchTextField.backgroundColor = .white
+            searchController.searchBar.searchTextField.leftView?.tintColor = .gray
             searchController.searchBar.searchTextField.tintColor = .headerBlue
-        } else {
-            let searchBarTextAttributes: [NSAttributedString.Key : AnyObject] = [.backgroundColor: UIColor.white]
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = searchBarTextAttributes
+            
         }
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.gray]
         
         definesPresentationContext = true
         navigationItem.searchController = searchController

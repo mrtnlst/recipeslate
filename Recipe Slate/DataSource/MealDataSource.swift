@@ -1,5 +1,5 @@
 //
-//  FavoritesDataSource.swift
+//  MealDataSource.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 15.06.20.
@@ -8,20 +8,17 @@
 
 import UIKit
 
-class FavoritesDataSource: NSObject, DataSourceProtocol {
+class MealDataSource: NSObject, DataSourceProtocol {
     
-    var favorites: [String] {
-        UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
-    }
     var items: [ItemPresentable] {
-        return mealData.filter({ favorites.contains($0.name) })
+        return mealData
     }
     var sortedFirstLetters: [String] = []
     var sections: [[ItemPresentable]] = [[]]
     var filteredResults = [ItemPresentable]()
 }
 
-extension FavoritesDataSource: UITableViewDataSource {
+extension MealDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !filteredResults.isEmpty {
@@ -60,4 +57,3 @@ extension FavoritesDataSource: UITableViewDataSource {
         return cell
     }
 }
-

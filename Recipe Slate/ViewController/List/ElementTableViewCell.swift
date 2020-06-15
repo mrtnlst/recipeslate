@@ -11,6 +11,7 @@ import UIKit
 class ElementTableViewCell: UITableViewCell {
 
     var icon = UIImageView()
+    var iconContainer = UIView()
     var label = UILabel()
     static let identifier = "Element-Cell"
     
@@ -31,8 +32,12 @@ class ElementTableViewCell: UITableViewCell {
         selectedView.backgroundColor = .tableViewCellSelectedColor
         selectedBackgroundView = selectedView
         
+        iconContainer.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(iconContainer)
+        
         icon.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(icon)
+        icon.contentMode = .scaleAspectFit
+        iconContainer.addSubview(icon)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -52,10 +57,13 @@ class ElementTableViewCell: UITableViewCell {
             label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             
-            icon.heightAnchor.constraint(equalToConstant: 15),
-            icon.widthAnchor.constraint(equalToConstant: 20),
-            icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            icon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            iconContainer.heightAnchor.constraint(equalToConstant: 20),
+            iconContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            icon.topAnchor.constraint(equalTo: iconContainer.topAnchor),
+            icon.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor),
+            icon.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor),
             
         ])
     }

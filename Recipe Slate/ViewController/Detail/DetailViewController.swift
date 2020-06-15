@@ -79,7 +79,7 @@ extension DetailViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartsCell.identifier,
                                                            for: indexPath) as? DetailHeartsCell else { fatalError() }
             if let meal = item as? Meal {
-                cell.setHearts(HeartsHandler.calculateHearts(for: meal))
+                cell.setHearts(EffectsHandler.calculateHearts(for: meal))
             }
             return cell
         default:
