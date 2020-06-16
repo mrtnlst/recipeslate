@@ -1,5 +1,5 @@
 //
-//  DetailHeartsCell.swift
+//  DetailHeartCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 13.06.20.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class DetailHeartsCell: UITableViewCell {
+class DetailHeartCell: UITableViewCell {
 
     static let identifier = "Detail-Hearts-Cell"
     public var valueLabel = UILabel()
     private var icon = UIImageView()
+    private var stackView = UIStackView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,32 +31,33 @@ class DetailHeartsCell: UITableViewCell {
         selectedView.backgroundColor = .tableViewCellSelectedColor
         selectedBackgroundView = selectedView
         
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.image = UIImage(named: "detail-heart-full")
-        icon.contentMode = .scaleAspectFit
-        contentView.addSubview(icon)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 3
+        contentView.addSubview(stackView)
         
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        valueLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        valueLabel.textColor = .white
+        valueLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        valueLabel.textColor = .secondaryTextColor
         valueLabel.textAlignment = .left
         valueLabel.numberOfLines = 1
         valueLabel.lineBreakMode = .byTruncatingTail
-        contentView.addSubview(valueLabel)
+        stackView.addArrangedSubview(valueLabel)
+        
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.image = UIImage(named: "detail-heart-full")
+        icon.contentMode = .scaleAspectFit
+        stackView.addArrangedSubview(icon)
     }
     
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            valueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            
-            icon.heightAnchor.constraint(equalToConstant: 25),
-            icon.widthAnchor.constraint(equalToConstant: 25),
-            icon.centerYAnchor.constraint(equalTo: valueLabel.centerYAnchor),
-            icon.leadingAnchor.constraint(equalTo: valueLabel.trailingAnchor, constant: 0),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            icon.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
     

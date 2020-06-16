@@ -21,6 +21,13 @@ class DetailEffectCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateEffect),
+                                               name: NSNotification.Name(rawValue: "set-effect"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     required init?(coder: NSCoder) {
@@ -40,8 +47,8 @@ class DetailEffectCell: UITableViewCell {
         contentView.addSubview(stackView)
         
         effectName.translatesAutoresizingMaskIntoConstraints = false
-        effectName.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        effectName.textColor = .white
+        effectName.font = UIFont.preferredFont(forTextStyle: .body)
+        effectName.textColor = .secondaryTextColor
         effectName.textAlignment = .left
         effectName.numberOfLines = 1
         effectName.lineBreakMode = .byTruncatingTail
@@ -52,8 +59,8 @@ class DetailEffectCell: UITableViewCell {
         stackView.addArrangedSubview(effectIcon)
         
         effectDuration.translatesAutoresizingMaskIntoConstraints = false
-        effectDuration.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        effectDuration.textColor = .white
+        effectDuration.font = UIFont.preferredFont(forTextStyle: .body)
+        effectDuration.textColor = .secondaryTextColor
         effectDuration.textAlignment = .left
         effectDuration.numberOfLines = 1
         effectDuration.lineBreakMode = .byTruncatingTail
@@ -62,10 +69,31 @@ class DetailEffectCell: UITableViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
         ])
+    }
+    
+    @objc func updateEffect(_ notification: Notification) {
+        setEffect(notification.object as? Effect)
+    }
+    
+    func setEffect(_ effect: Effect?) {
+
+        effectIcon.isHidden = effect?.type == EffectType.none
+        effectDuration.isHidden = effect?.type == EffectType.none
+        effectName.text = effect?.type.rawValue
+        
+        if effect?.type == EffectType.none { return }
+        
+        effectIcon.image = UIImage(named: "\(effect?.type.rawValue ?? "")")
+
+        if let duration = effect?.duration {
+            effectDuration.text = "+ \(duration)s"
+        } else if let amount = effect?.amount {
+            effectDuration.text = "\(amount)"
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

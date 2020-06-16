@@ -17,9 +17,10 @@ class DetailTableView: UITableView {
         autoresizingMask = .flexibleHeight
         translatesAutoresizingMaskIntoConstraints = false
         register(DetailTitleCell.self, forCellReuseIdentifier: DetailTitleCell.identifier)
-        register(DetailHeartsCell.self, forCellReuseIdentifier: DetailHeartsCell.identifier)
+        register(DetailHeartCell.self, forCellReuseIdentifier: DetailHeartCell.identifier)
         register(DetailEffectCell.self, forCellReuseIdentifier: DetailEffectCell.identifier)
         register(DetailMainIngredientCell.self, forCellReuseIdentifier: DetailMainIngredientCell.identifier)
+        register(DetailCategoryIngredientCell.self, forCellReuseIdentifier: DetailCategoryIngredientCell.identifier)
     }
     
     required init?(coder: NSCoder) {

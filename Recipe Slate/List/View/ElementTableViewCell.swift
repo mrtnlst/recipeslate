@@ -52,7 +52,7 @@ class ElementTableViewCell: UITableViewCell {
         addSubview(favoriteIcon)
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .white
         label.textAlignment = .left
         label.numberOfLines = 1

@@ -19,6 +19,7 @@ class DetailTitleCell: UITableViewCell {
     public var button = UIButton(type: .custom)
     public var title = UILabel()
     public var favoriteState: FavoriteState = .none
+    private var stackView = UIStackView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -36,32 +37,34 @@ class DetailTitleCell: UITableViewCell {
         selectedView.backgroundColor = .tableViewCellSelectedColor
         selectedBackgroundView = selectedView
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "detail-unfavorite"), for: .normal)
-        contentView.addSubview(button)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        contentView.addSubview(stackView)
         
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        title.textColor = .white
+        title.font = UIFont.preferredFont(forTextStyle: .body)
+        title.textColor = .secondaryTextColor
         title.textAlignment = .left
         title.numberOfLines = 1
         title.lineBreakMode = .byTruncatingTail
-        contentView.addSubview(title)
+        stackView.addArrangedSubview(title)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "detail-unfavorite"), for: .normal)
+        stackView.addArrangedSubview(button)
     }
     
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            title.topAnchor.constraint(equalTo: contentView.topAnchor),
-            title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             
-            button.heightAnchor.constraint(equalToConstant: 30),
-            button.widthAnchor.constraint(equalToConstant: 30),
-            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            button.heightAnchor.constraint(equalToConstant: 25),
+            button.widthAnchor.constraint(equalToConstant: 25),
         ])
     }
     

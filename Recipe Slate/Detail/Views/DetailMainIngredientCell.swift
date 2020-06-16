@@ -39,7 +39,7 @@ class DetailMainIngredientCell: UITableViewCell {
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
@@ -51,8 +51,8 @@ class DetailMainIngredientCell: UITableViewCell {
             let label = UILabel()
             label.text = ingredient
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-            label.textColor = .white
+            label.font = UIFont.preferredFont(forTextStyle: .body)
+            label.textColor = .secondaryTextColor
             label.textAlignment = .left
             label.numberOfLines = 1
             label.lineBreakMode = .byTruncatingTail

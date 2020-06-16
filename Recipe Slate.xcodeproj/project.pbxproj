@@ -14,6 +14,7 @@
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
 		5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */; };
+		5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */; };
 		5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D342497E11700CBD251 /* ListDataSource.swift */; };
 		5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D362497E58100CBD251 /* MealListDataSource.swift */; };
 		5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D382497E61700CBD251 /* EffectHandler.swift */; };
@@ -36,7 +37,7 @@
 		5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890492494F9670068A36A /* DetailViewController.swift */; };
 		5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8904B2494F9D80068A36A /* DetailTableView.swift */; };
 		5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */; };
-		5BD890512495025B0068A36A /* DetailHeartsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890502495025B0068A36A /* DetailHeartsCell.swift */; };
+		5BD890512495025B0068A36A /* DetailHeartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890502495025B0068A36A /* DetailHeartCell.swift */; };
 		A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A2491E82EA980023C3B9 /* ElixirViewController.swift */; };
 		A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */; };
 		A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24D1E82F7130023C3B9 /* Critter.swift */; };
@@ -65,6 +66,7 @@
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
 		5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMainIngredientCell.swift; sourceTree = "<group>"; };
+		5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryIngredientCell.swift; sourceTree = "<group>"; };
 		5BA40D342497E11700CBD251 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D362497E58100CBD251 /* MealListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D382497E61700CBD251 /* EffectHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectHandler.swift; sourceTree = "<group>"; };
@@ -87,7 +89,7 @@
 		5BD890492494F9670068A36A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5BD8904B2494F9D80068A36A /* DetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableView.swift; sourceTree = "<group>"; };
 		5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTitleCell.swift; sourceTree = "<group>"; };
-		5BD890502495025B0068A36A /* DetailHeartsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeartsCell.swift; sourceTree = "<group>"; };
+		5BD890502495025B0068A36A /* DetailHeartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeartCell.swift; sourceTree = "<group>"; };
 		A914A2491E82EA980023C3B9 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
 		A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirDetailViewController.swift; sourceTree = "<group>"; };
 		A914A24D1E82F7130023C3B9 /* Critter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Critter.swift; sourceTree = "<group>"; };
@@ -206,9 +208,10 @@
 			children = (
 				5BD8904B2494F9D80068A36A /* DetailTableView.swift */,
 				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
-				5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */,
-				5BD890502495025B0068A36A /* DetailHeartsCell.swift */,
+				5BD890502495025B0068A36A /* DetailHeartCell.swift */,
 				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
+				5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */,
+				5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -460,7 +463,7 @@
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
-				5BD890512495025B0068A36A /* DetailHeartsCell.swift in Sources */,
+				5BD890512495025B0068A36A /* DetailHeartCell.swift in Sources */,
 				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
@@ -481,6 +484,7 @@
 				5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
 				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,
+				5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */,
 				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
 				5BAAADB7249925BD0037F685 /* FavoriteProtocol.swift in Sources */,

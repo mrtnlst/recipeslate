@@ -66,20 +66,22 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Name"
+            return "NAME"
         case 1:
-            return "Hearts"
+            return "HEARTS"
         case 2:
-            return "Effects"
+            return "EFFECTS"
         case 3:
-            return "Main Ingredients"
+            return "MAIN INGREDIENTS"
+        case 4:
+            return "CATEGORY INGREDIENTS"
         default:
             return ""
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,47 +91,75 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTitleCell.identifier,
-                                                           for: indexPath) as? DetailTitleCell else { fatalError() }
-            cell.title.text = item.name
-            
-            if let meal = item as? Meal {
-                if favorites.contains(where: { $0 == meal.name }) {
-                    cell.setFavoriteState(.favorite)
-                }
-                cell.button.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
-            }
-            
-            return cell
+            return configureTitleCell(tableView, indexPath: indexPath, with: item)
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartsCell.identifier,
-                                                           for: indexPath) as? DetailHeartsCell else { fatalError() }
-            if let meal = item as? Meal {
-                cell.setHearts(EffectsHandler.calculateHearts(for: meal))
-            }
-            return cell
+            return configureHeartCell(tableView, indexPath: indexPath, with: item)
         case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailEffectCell.identifier,
-                                                           for: indexPath) as? DetailEffectCell else { fatalError() }
-            if let meal = item as? Meal, let effect = EffectsHandler.calculateEffect(for: meal) {
-                cell.effectIcon.image = UIImage(named: effect.name)
-                cell.effectName.text = effect.name
-                cell.effectDuration.text = "\(effect.duration ?? 0)s"
-            }
-            return cell
+            return configureEffectCell(tableView, indexPath: indexPath, with: item)
         case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMainIngredientCell.identifier,
-                                                           for: indexPath) as? DetailMainIngredientCell else { fatalError() }
-            if let meal = item as? Meal {
-                cell.setIngredients(meal.mainIngredients)
-            }
-            return cell
+            return configureMainIngredientCell(tableView, indexPath: indexPath, with: item)
+        case 4:
+            return configureCategoryIngredientCell(tableView, indexPath: indexPath, with: item)
         default:
             fatalError()
         }
     }
     
+    func configureTitleCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailTitleCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTitleCell.identifier,
+                                                       for: indexPath) as? DetailTitleCell else { fatalError() }
+        cell.title.text = item.name
+        
+        if let meal = item as? Meal {
+            if favorites.contains(where: { $0 == meal.name }) {
+                cell.setFavoriteState(.favorite)
+            }
+        }
+        return cell
+    }
+    
+    func configureHeartCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailHeartCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartCell.identifier,
+                                                       for: indexPath) as? DetailHeartCell else { fatalError() }
+        if let meal = item as? Meal {
+            cell.setHearts(EffectsHandler.calculateHearts(for: meal))
+        }
+        return cell
+    }
+    
+    func configureEffectCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailEffectCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailEffectCell.identifier,
+                                                       for: indexPath) as? DetailEffectCell else { fatalError() }
+        if let meal = item as? Meal, let effect = EffectsHandler.calculateEffect(for: meal) {
+            cell.setEffect(effect)
+        }
+        return cell
+    }
+    
+    func configureMainIngredientCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailMainIngredientCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMainIngredientCell.identifier,
+                                                       for: indexPath) as? DetailMainIngredientCell else { fatalError() }
+        if let meal = item as? Meal {
+            cell.setIngredients(meal.mainIngredients)
+        }
+        return cell
+    }
+    
+    func configureCategoryIngredientCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailCategoryIngredientCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailCategoryIngredientCell.identifier,
+                                                       for: indexPath) as? DetailCategoryIngredientCell else { fatalError() }
+        if let meal = item as? Meal {
+            let c1 = materialData.filter({ $0.category.contains(where: { meal.categoryIngredients.first == $0 }) })
+            cell.configurePicker(.first, data: c1)
+            if meal.categoryIngredients.count > 1 {
+                let c2 = materialData.filter({ $0.category.contains(where: { meal.categoryIngredients.last == $0 }) })
+                cell.configurePicker(.second, data: c2)
+            }
+        }
+        return cell
+    }
 }
+
 
 extension DetailViewController: UITableViewDelegate {
     
@@ -137,8 +167,7 @@ extension DetailViewController: UITableViewDelegate {
         view.tintColor = .backgroundBlue
 
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.init(white: 1.0, alpha: 0.6)
-        header.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        header.textLabel?.textColor = .white
     }
     
 }
