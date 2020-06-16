@@ -1,5 +1,5 @@
 //
-//  ItemPresentable.swift
+//  Item.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 13.06.20.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol ItemPresentable {
+protocol Item {
  
     var name: String { get }
 }
 
-extension ItemPresentable {
+extension Item {
     
     var titleFirstLetter: String {
         return String(name[name.startIndex]).uppercased()

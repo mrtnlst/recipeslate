@@ -1,25 +1,24 @@
 //
-//  EffectDataSource.swift
+//  MaterialDataSourcw.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 15.06.20.
 //  Copyright © 2020 Martin List. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class EffectDataSource: NSObject, DataSourceProtocol {
+class MaterialListDataSource: NSObject, ListDataSource {
     
-    var items: [ItemPresentable] {
-        return effectData
+    var items: [Item] {
+        return materialData
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[ItemPresentable]] = [[]]
-    var filteredResults = [ItemPresentable]()
+    var sections: [[Item]] = [[]]
+    var filteredResults = [Item]()
 }
 
-extension EffectDataSource: UITableViewDataSource {
+extension MaterialListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !filteredResults.isEmpty {
@@ -52,8 +51,8 @@ extension EffectDataSource: UITableViewDataSource {
         
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
-        if let effect = item as? Effect {
-            cell.effectIcon.image = UIImage(named: effect.type.rawValue)
+        if let material = item as? Material {
+            cell.effectIcon.image = EffectsHandler.icon(for: material)
         }
         return cell
     }

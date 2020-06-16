@@ -38,7 +38,8 @@ enum MaterialCategory: String {
     case monsterPart = "Monster Part"
 }
 
-struct Material: ItemPresentable {
+struct Material: Item, Hashable {
+    
     var name: String
     var category: [MaterialCategory]
     var hearts: Float?
@@ -55,5 +56,9 @@ struct Material: ItemPresentable {
         self.saleValue = saleValue
         self.location = location
         self.potency = potency
+    }
+    
+    static func == (lhs: Material, rhs: Material) -> Bool {
+        return lhs.name == rhs.name
     }
 }

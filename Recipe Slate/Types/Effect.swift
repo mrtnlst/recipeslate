@@ -38,7 +38,7 @@ enum EffectType: String {
     case none = "none"
 }
 
-struct Effect: ItemPresentable {
+struct Effect: Item, Hashable {
     var type: EffectType
     var name: String {
         return type.rawValue

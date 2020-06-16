@@ -48,9 +48,8 @@ class DetailHeartsCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            valueLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             valueLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             valueLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             
             icon.heightAnchor.constraint(equalToConstant: 25),

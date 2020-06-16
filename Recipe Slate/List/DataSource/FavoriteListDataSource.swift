@@ -1,5 +1,5 @@
 //
-//  FavoriteDataSource.swift
+//  FavoriteListDataSource.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 15.06.20.
@@ -8,20 +8,17 @@
 
 import UIKit
 
-class FavoriteDataSource: NSObject, DataSourceProtocol {
-    
-    var favorites: [String] {
-        UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
-    }
-    var items: [ItemPresentable] {
+class FavoriteListDataSource: NSObject, ListDataSource, FavoriteProtocol {
+
+    var items: [Item] {
         return mealData.filter({ favorites.contains($0.name) })
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[ItemPresentable]] = [[]]
-    var filteredResults = [ItemPresentable]()
+    var sections: [[Item]] = [[]]
+    var filteredResults = [Item]()
 }
 
-extension FavoriteDataSource: UITableViewDataSource {
+extension FavoriteListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !filteredResults.isEmpty {

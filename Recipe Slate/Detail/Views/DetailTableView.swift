@@ -18,6 +18,8 @@ class DetailTableView: UITableView {
         translatesAutoresizingMaskIntoConstraints = false
         register(DetailTitleCell.self, forCellReuseIdentifier: DetailTitleCell.identifier)
         register(DetailHeartsCell.self, forCellReuseIdentifier: DetailHeartsCell.identifier)
+        register(DetailEffectCell.self, forCellReuseIdentifier: DetailEffectCell.identifier)
+        register(DetailMainIngredientCell.self, forCellReuseIdentifier: DetailMainIngredientCell.identifier)
     }
     
     required init?(coder: NSCoder) {

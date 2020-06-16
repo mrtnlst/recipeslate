@@ -8,15 +8,12 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
-    var tableView: DetailTableView = DetailTableView()
-    var item: ItemPresentable
-    var favorites: [String] {
-        UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
-    }
+class DetailViewController: UIViewController, FavoriteProtocol {
     
-    init(item: ItemPresentable) {
+    var item: Item
+    var tableView: DetailTableView = DetailTableView()
+    
+    init(item: Item) {
         self.item = item
         super.init(nibName: nil, bundle: nil)
     }
@@ -72,13 +69,17 @@ extension DetailViewController: UITableViewDataSource {
             return "Name"
         case 1:
             return "Hearts"
+        case 2:
+            return "Effects"
+        case 3:
+            return "Main Ingredients"
         default:
             return ""
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,6 +106,22 @@ extension DetailViewController: UITableViewDataSource {
                                                            for: indexPath) as? DetailHeartsCell else { fatalError() }
             if let meal = item as? Meal {
                 cell.setHearts(EffectsHandler.calculateHearts(for: meal))
+            }
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailEffectCell.identifier,
+                                                           for: indexPath) as? DetailEffectCell else { fatalError() }
+            if let meal = item as? Meal, let effect = EffectsHandler.calculateEffect(for: meal) {
+                cell.effectIcon.image = UIImage(named: effect.name)
+                cell.effectName.text = effect.name
+                cell.effectDuration.text = "\(effect.duration ?? 0)s"
+            }
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMainIngredientCell.identifier,
+                                                           for: indexPath) as? DetailMainIngredientCell else { fatalError() }
+            if let meal = item as? Meal {
+                cell.setIngredients(meal.mainIngredients)
             }
             return cell
         default:

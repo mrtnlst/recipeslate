@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Meal: ItemPresentable {
+struct Meal: Item {
     var name: String
     var mainIngredients: [String]
     var categoryIngredients: [MaterialCategory]

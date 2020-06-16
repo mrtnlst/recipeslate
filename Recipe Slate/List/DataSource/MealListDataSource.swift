@@ -1,5 +1,5 @@
 //
-//  MealDataSource.swift
+//  MealListDataSource.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 15.06.20.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-class MealDataSource: NSObject, DataSourceProtocol {
+class MealListDataSource: NSObject, ListDataSource {
     
-    var items: [ItemPresentable] {
+    var items: [Item] {
         return mealData
     }
     var favorites: [String] {
         UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[ItemPresentable]] = [[]]
-    var filteredResults = [ItemPresentable]()
+    var sections: [[Item]] = [[]]
+    var filteredResults = [Item]()
 }
 
-extension MealDataSource: UITableViewDataSource {
+extension MealListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !filteredResults.isEmpty {

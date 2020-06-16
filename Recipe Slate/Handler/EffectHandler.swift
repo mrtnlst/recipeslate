@@ -16,6 +16,7 @@ struct Hearts {
 
 class EffectsHandler: NSObject {
     
+    // MARK: - Material
     
     static func icon(for material: Material) -> UIImage? {
         if let effect = material.effect, effect.type != .duration {
@@ -26,6 +27,8 @@ class EffectsHandler: NSObject {
         }
         return nil
     }
+    
+    // MARK: - Hearts
     
     static func calculateHearts(for meal: Meal) -> Hearts {
         var fullRestore = false
@@ -42,18 +45,14 @@ class EffectsHandler: NSObject {
         return Hearts(numberOfHearts: hearts * 2, fullRestore: fullRestore)
     }
     
+    // MARK: - Effects
+    
     static func checkForMealEffect(meal: Meal) -> UIImage {
         var check = false
         
-        let mainCheck = checkMainIngredients(meal: meal)
-        if mainCheck == true {
-            check = true
-        }
+        check = checkMainIngredients(meal: meal)
         
-        let categoryCheck = checkCategoryIngredients(meal: meal)
-        if categoryCheck == true {
-            check = true
-        }
+        check = checkCategoryIngredients(meal: meal)
         
         if check {
             return UIImage(named: "Effect") ?? UIImage()
@@ -63,7 +62,7 @@ class EffectsHandler: NSObject {
         }
     }
     
-    static func checkMainIngredients(meal: Meal) -> Bool{
+    static func checkMainIngredients(meal: Meal) -> Bool {
         for ingredient in meal.mainIngredients {
             guard let material = materialData.first(where: { $0.name == ingredient }) else { continue }
             if material.effect?.type != .duration {
@@ -84,5 +83,16 @@ class EffectsHandler: NSObject {
             }
         }
         return false
+    }
+    
+    static func calculateEffect(for meal: Meal) -> Effect? {
+        let mainIngredients = materialData.filter({ meal.mainIngredients.contains($0.name) })
+        
+        let effects = Array(Set(mainIngredients.map({ $0.effect })))
+        
+        if effects.count == 1 {
+            return effects.first ?? nil
+        }
+        return Effect(type: .none)
     }
 }

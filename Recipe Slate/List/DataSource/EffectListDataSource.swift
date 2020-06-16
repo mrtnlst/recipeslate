@@ -1,24 +1,25 @@
 //
-//  ElixirDataSource.swift
+//  EffectListDataSource.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 15.06.20.
 //  Copyright © 2020 Martin List. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class ElixirDataSource: NSObject, DataSourceProtocol {
+class EffectListDataSource: NSObject, ListDataSource {
     
-    var items: [ItemPresentable] {
-        return elixirData
+    var items: [Item] {
+        return effectData
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[ItemPresentable]] = [[]]
-    var filteredResults = [ItemPresentable]()
+    var sections: [[Item]] = [[]]
+    var filteredResults = [Item]()
 }
 
-extension ElixirDataSource: UITableViewDataSource {
+extension EffectListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !filteredResults.isEmpty {
@@ -51,8 +52,8 @@ extension ElixirDataSource: UITableViewDataSource {
         
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
-        if let elixir = item as? Elixir {
-            cell.effectIcon.image = UIImage(named: elixir.effect.rawValue)
+        if let effect = item as? Effect {
+            cell.effectIcon.image = UIImage(named: effect.type.rawValue)
         }
         return cell
     }

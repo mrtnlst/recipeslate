@@ -8,18 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B224E331EAE0A3A006D47DB /* AboutViewController.swift */; };
-		5B22656B24952B5C00459517 /* ItemPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* ItemPresentable.swift */; };
-		5B22656D2497CFB000459517 /* FavoriteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteDataSource.swift */; };
+		5B22656B24952B5C00459517 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Item.swift */; };
+		5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
-		5BA40D352497E11700CBD251 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D342497E11700CBD251 /* DataSourceProtocol.swift */; };
-		5BA40D372497E58100CBD251 /* MealDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D362497E58100CBD251 /* MealDataSource.swift */; };
+		5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */; };
+		5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D342497E11700CBD251 /* ListDataSource.swift */; };
+		5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D362497E58100CBD251 /* MealListDataSource.swift */; };
 		5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D382497E61700CBD251 /* EffectHandler.swift */; };
-		5BA40D3D2498047100CBD251 /* ElixirDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D3C2498047100CBD251 /* ElixirDataSource.swift */; };
-		5BA40D452498123B00CBD251 /* MaterialDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D442498123B00CBD251 /* MaterialDataSource.swift */; };
-		5BA40D47249818F100CBD251 /* EffectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D46249818F100CBD251 /* EffectDataSource.swift */; };
+		5BA40D3D2498047100CBD251 /* ElixirListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D3C2498047100CBD251 /* ElixirListDataSource.swift */; };
+		5BA40D452498123B00CBD251 /* MaterialListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D442498123B00CBD251 /* MaterialListDataSource.swift */; };
+		5BA40D47249818F100CBD251 /* EffectListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D46249818F100CBD251 /* EffectListDataSource.swift */; };
 		5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */; };
+		5BAAADAD249890E80037F685 /* DetailEffectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAADAC249890E80037F685 /* DetailEffectCell.swift */; };
+		5BAAADB7249925BD0037F685 /* FavoriteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAAADB6249925BD0037F685 /* FavoriteProtocol.swift */; };
 		5BAEEADD1F068938002E307A /* MealData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEADC1F068937002E307A /* MealData.swift */; };
 		5BAEEADF1F080351002E307A /* ElixirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEADE1F080351002E307A /* ElixirData.swift */; };
 		5BAEEAE11F080399002E307A /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEAE01F080399002E307A /* FoodData.swift */; };
@@ -56,18 +59,21 @@
 
 /* Begin PBXFileReference section */
 		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		5B22656A24952B5C00459517 /* ItemPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPresentable.swift; sourceTree = "<group>"; };
-		5B22656C2497CFB000459517 /* FavoriteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSource.swift; sourceTree = "<group>"; };
+		5B22656A24952B5C00459517 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListDataSource.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
-		5BA40D342497E11700CBD251 /* DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
-		5BA40D362497E58100CBD251 /* MealDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataSource.swift; sourceTree = "<group>"; };
+		5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMainIngredientCell.swift; sourceTree = "<group>"; };
+		5BA40D342497E11700CBD251 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
+		5BA40D362497E58100CBD251 /* MealListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D382497E61700CBD251 /* EffectHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectHandler.swift; sourceTree = "<group>"; };
-		5BA40D3C2498047100CBD251 /* ElixirDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElixirDataSource.swift; sourceTree = "<group>"; };
-		5BA40D442498123B00CBD251 /* MaterialDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialDataSource.swift; sourceTree = "<group>"; };
-		5BA40D46249818F100CBD251 /* EffectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectDataSource.swift; sourceTree = "<group>"; };
+		5BA40D3C2498047100CBD251 /* ElixirListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElixirListDataSource.swift; sourceTree = "<group>"; };
+		5BA40D442498123B00CBD251 /* MaterialListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialListDataSource.swift; sourceTree = "<group>"; };
+		5BA40D46249818F100CBD251 /* EffectListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectListDataSource.swift; sourceTree = "<group>"; };
 		5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		5BAAADAC249890E80037F685 /* DetailEffectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEffectCell.swift; sourceTree = "<group>"; };
+		5BAAADB6249925BD0037F685 /* FavoriteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProtocol.swift; sourceTree = "<group>"; };
 		5BAEEADC1F068937002E307A /* MealData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealData.swift; sourceTree = "<group>"; };
 		5BAEEADE1F080351002E307A /* ElixirData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirData.swift; sourceTree = "<group>"; };
 		5BAEEAE01F080399002E307A /* FoodData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
@@ -169,12 +175,12 @@
 		5BA40D3E2498116F00CBD251 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				5BA40D342497E11700CBD251 /* DataSourceProtocol.swift */,
-				5B22656C2497CFB000459517 /* FavoriteDataSource.swift */,
-				5BA40D362497E58100CBD251 /* MealDataSource.swift */,
-				5BA40D3C2498047100CBD251 /* ElixirDataSource.swift */,
-				5BA40D442498123B00CBD251 /* MaterialDataSource.swift */,
-				5BA40D46249818F100CBD251 /* EffectDataSource.swift */,
+				5BA40D342497E11700CBD251 /* ListDataSource.swift */,
+				5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */,
+				5BA40D362497E58100CBD251 /* MealListDataSource.swift */,
+				5BA40D3C2498047100CBD251 /* ElixirListDataSource.swift */,
+				5BA40D442498123B00CBD251 /* MaterialListDataSource.swift */,
+				5BA40D46249818F100CBD251 /* EffectListDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -182,9 +188,7 @@
 		5BA40D3F2498119200CBD251 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5BA40D42249811EF00CBD251 /* List */,
-				5BD8904D2494F9E10068A36A /* Detail */,
-				5BD890412494C6450068A36A /* TabBarController.swift */,
+				5BD890492494F9670068A36A /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -200,19 +204,13 @@
 		5BA40D41249811B300CBD251 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5BD890472494CCA30068A36A /* ListTableView.swift */,
-				5BD890432494C75F0068A36A /* NavigationController.swift */,
+				5BD8904B2494F9D80068A36A /* DetailTableView.swift */,
+				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
+				5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */,
+				5BD890502495025B0068A36A /* DetailHeartsCell.swift */,
+				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		5BA40D42249811EF00CBD251 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				5BD890452494C9A50068A36A /* ElementTableViewCell.swift */,
-				5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */,
-			);
-			path = List;
 			sourceTree = "<group>";
 		};
 		5BA40D43249811FF00CBD251 /* Extensions */ = {
@@ -229,6 +227,51 @@
 				5BA56EBE1F1FC6CD009EFFF2 /* Utility.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		5BAAADAE249922CC0037F685 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				5BA40D3E2498116F00CBD251 /* DataSource */,
+				5BAAADAF249923150037F685 /* ViewController */,
+				5BAAADB0249923240037F685 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		5BAAADAF249923150037F685 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5BD890412494C6450068A36A /* TabBarController.swift */,
+				5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5BAAADB0249923240037F685 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5BD890432494C75F0068A36A /* NavigationController.swift */,
+				5BD890472494CCA30068A36A /* ListTableView.swift */,
+				5BD890452494C9A50068A36A /* ElementTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5BAAADB4249924930037F685 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				5BAAADB5249924A00037F685 /* Protocol */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		5BAAADB5249924A00037F685 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5BAAADB6249925BD0037F685 /* FavoriteProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		5BD334CE1F1D7B2E00D45ACD /* Material */ = {
@@ -253,10 +296,8 @@
 		5BD8904D2494F9E10068A36A /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				5BD8904B2494F9D80068A36A /* DetailTableView.swift */,
-				5BD890492494F9670068A36A /* DetailViewController.swift */,
-				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
-				5BD890502495025B0068A36A /* DetailHeartsCell.swift */,
+				5BA40D3F2498119200CBD251 /* ViewController */,
+				5BA40D41249811B300CBD251 /* Views */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -264,7 +305,7 @@
 		5BD89054249518050068A36A /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				5B22656A24952B5C00459517 /* ItemPresentable.swift */,
+				5B22656A24952B5C00459517 /* Item.swift */,
 				A914A24D1E82F7130023C3B9 /* Critter.swift */,
 				A9614D8C1E795104009CA034 /* Elixir.swift */,
 				A9C784D01E80819000551990 /* Effect.swift */,
@@ -294,11 +335,11 @@
 		A9614D6A1E77F8F0009CA034 /* Recipe Slate */ = {
 			isa = PBXGroup;
 			children = (
+				5BAAADB4249924930037F685 /* General */,
+				5BAAADAE249922CC0037F685 /* List */,
+				5BD8904D2494F9E10068A36A /* Detail */,
 				5BD89054249518050068A36A /* Types */,
 				5BA40D40249811A500CBD251 /* Handler */,
-				5BA40D41249811B300CBD251 /* Views */,
-				5BA40D3F2498119200CBD251 /* ViewController */,
-				5BA40D3E2498116F00CBD251 /* DataSource */,
 				5B8885CA1F010A5600BBEEDF /* Data */,
 				5BA40D43249811FF00CBD251 /* Extensions */,
 				5B8885CB1F010A6E00BBEEDF /* Legacy */,
@@ -407,10 +448,11 @@
 				5BD890482494CCA30068A36A /* ListTableView.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
-				5B22656B24952B5C00459517 /* ItemPresentable.swift in Sources */,
+				5B22656B24952B5C00459517 /* Item.swift in Sources */,
 				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
 				5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */,
 				5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */,
+				5BAAADAD249890E80037F685 /* DetailEffectCell.swift in Sources */,
 				5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */,
 				5BD890442494C75F0068A36A /* NavigationController.swift in Sources */,
 				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
@@ -422,29 +464,31 @@
 				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
-				5BA40D47249818F100CBD251 /* EffectDataSource.swift in Sources */,
+				5BA40D47249818F100CBD251 /* EffectListDataSource.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
-				5BA40D372497E58100CBD251 /* MealDataSource.swift in Sources */,
-				5BA40D3D2498047100CBD251 /* ElixirDataSource.swift in Sources */,
+				5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */,
+				5BA40D3D2498047100CBD251 /* ElixirListDataSource.swift in Sources */,
 				5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
-				5BA40D452498123B00CBD251 /* MaterialDataSource.swift in Sources */,
+				5BA40D452498123B00CBD251 /* MaterialListDataSource.swift in Sources */,
 				5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */,
 				5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */,
 				5BAEEAE11F080399002E307A /* FoodData.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
 				5BAEEADF1F080351002E307A /* ElixirData.swift in Sources */,
 				A9C338801E8544B0003A574F /* MealDetailViewController.swift in Sources */,
-				5BA40D352497E11700CBD251 /* DataSourceProtocol.swift in Sources */,
+				5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */,
 				5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
 				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,
 				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
+				5BAAADB7249925BD0037F685 /* FavoriteProtocol.swift in Sources */,
 				5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */,
+				5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */,
 				5BAEEADD1F068938002E307A /* MealData.swift in Sources */,
 				A9614D841E77FACA009CA034 /* MaterialData.swift in Sources */,
-				5B22656D2497CFB000459517 /* FavoriteDataSource.swift in Sources */,
+				5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,10 +631,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -602,10 +648,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;

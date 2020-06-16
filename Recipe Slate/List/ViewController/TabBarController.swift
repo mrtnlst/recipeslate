@@ -23,29 +23,29 @@ class TabBarController: UITabBarController {
     }
     
     func setupViewControllers() {
-        let favoritesVC = ListViewController(dataSource: FavoriteDataSource())
+        let favoritesVC = ListViewController(dataSource: FavoriteListDataSource())
         favoritesVC.title = "Favorites"
         favoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "bar-favorite"), selectedImage: nil)
         NotificationCenter.default.addObserver(favoritesVC,
                                                selector: #selector(favoritesVC.refreshTable),
                                                name: NSNotification.Name(rawValue: "refresh"), object: nil)
         
-        let mealVC = ListViewController(dataSource: MealDataSource())
+        let mealVC = ListViewController(dataSource: MealListDataSource())
         mealVC.title = "Meals"
         mealVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "bar-meal"), selectedImage: nil)
         NotificationCenter.default.addObserver(mealVC,
                                                selector: #selector(mealVC.refreshTable),
                                                name: NSNotification.Name(rawValue: "refresh"), object: nil)
         
-        let elixirVC = ListViewController(dataSource: ElixirDataSource())
+        let elixirVC = ListViewController(dataSource: ElixirListDataSource())
         elixirVC.title = "Elixirs"
         elixirVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "bar-elixir"), selectedImage: nil)
         
-        let effectVC = ListViewController(dataSource: EffectDataSource())
+        let effectVC = ListViewController(dataSource: EffectListDataSource())
         effectVC.title = "Effects"
         effectVC.tabBarItem = UITabBarItem(title: "Effects", image: UIImage(named: "bar-effects"), selectedImage: nil)
         
-        let materialVC = ListViewController(dataSource: MaterialDataSource())
+        let materialVC = ListViewController(dataSource: MaterialListDataSource())
         materialVC.title = "Materials"
         materialVC.tabBarItem = UITabBarItem(title: "Materials", image: UIImage(named: "bar-food"), selectedImage: nil)
         

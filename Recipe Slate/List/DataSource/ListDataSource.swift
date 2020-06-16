@@ -8,18 +8,18 @@
 
 import Foundation
 
-protocol DataSourceProtocol {
+protocol ListDataSource {
     
-    var items: [ItemPresentable] { get }
+    var items: [Item] { get }
     
-    var sections: [[ItemPresentable]] { get set  }
+    var sections: [[Item]] { get set  }
     
     var sortedFirstLetters: [String] { get set }
     
-    var filteredResults: [ItemPresentable] { get set }
+    var filteredResults: [Item] { get set }
 }
 
-extension DataSourceProtocol {
+extension ListDataSource {
     
     mutating func createSections() {
         let firstLetters = items.compactMap { $0.titleFirstLetter }
@@ -33,7 +33,7 @@ extension DataSourceProtocol {
         }
     }
     
-    func getCorrectCellItem(path: IndexPath) -> ItemPresentable {
+    func getCorrectCellItem(path: IndexPath) -> Item {
         return !filteredResults.isEmpty ? filteredResults[path.row] : sections[path.section][path.row]
     }
     

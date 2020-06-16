@@ -10,7 +10,7 @@ import UIKit
 
 class ListViewController: UIViewController {
 
-    typealias DataSource = DataSourceProtocol & UITableViewDataSource
+    typealias DataSource = ListDataSource & UITableViewDataSource
 
     let searchController = UISearchController(searchResultsController: nil)
     var tableView = ListTableView()

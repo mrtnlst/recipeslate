@@ -1,5 +1,5 @@
 //
-//  MaterialDataSourcw.swift
+//  ElixirListDataSource.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 15.06.20.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class MaterialDataSource: NSObject, DataSourceProtocol {
+class ElixirListDataSource: NSObject, ListDataSource {
     
-    var items: [ItemPresentable] {
-        return materialData
+    var items: [Item] {
+        return elixirData
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[ItemPresentable]] = [[]]
-    var filteredResults = [ItemPresentable]()
+    var sections: [[Item]] = [[]]
+    var filteredResults = [Item]()
 }
 
-extension MaterialDataSource: UITableViewDataSource {
+extension ElixirListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !filteredResults.isEmpty {
@@ -51,8 +51,8 @@ extension MaterialDataSource: UITableViewDataSource {
         
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
-        if let material = item as? Material {
-            cell.effectIcon.image = EffectsHandler.icon(for: material)
+        if let elixir = item as? Elixir {
+            cell.effectIcon.image = UIImage(named: elixir.effect.rawValue)
         }
         return cell
     }

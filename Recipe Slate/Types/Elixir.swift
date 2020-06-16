@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Elixir: ItemPresentable {
+struct Elixir: Item {
     var name: String
     var category: EffectCategory
     var effect: EffectType

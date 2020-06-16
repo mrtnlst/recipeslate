@@ -53,7 +53,7 @@ class DetailTitleCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
