@@ -52,7 +52,7 @@ extension ElixirDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let elixir = item as? Elixir {
-            cell.icon.image = UIImage(named: elixir.effect.rawValue)
+            cell.effectIcon.image = UIImage(named: elixir.effect.rawValue)
         }
         return cell
     }

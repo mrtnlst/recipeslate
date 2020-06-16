@@ -12,6 +12,9 @@ class DetailViewController: UIViewController {
 
     var tableView: DetailTableView = DetailTableView()
     var item: ItemPresentable
+    var favorites: [String] {
+        UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
+    }
     
     init(item: ItemPresentable) {
         self.item = item
@@ -44,6 +47,21 @@ class DetailViewController: UIViewController {
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
     }
+    
+    @objc func toggleFavorite() {
+        let cell = tableView.visibleCells.first(where: { $0.reuseIdentifier == DetailTitleCell.identifier }) as? DetailTitleCell
+        var favoriteArray = favorites
+        
+        if favorites.contains(where: { $0 == item.name }) {
+            favoriteArray.removeAll(where: { $0 == item.name })
+            cell?.setFavoriteState(.none)
+        } else {
+            favoriteArray.append(item.name)
+            cell?.setFavoriteState(.favorite)
+        }
+        UserDefaults.standard.set(favoriteArray, forKey: "favorites")
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
+    }
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -73,7 +91,14 @@ extension DetailViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTitleCell.identifier,
                                                            for: indexPath) as? DetailTitleCell else { fatalError() }
             cell.title.text = item.name
-            cell.setFavoriteState(.none)
+            
+            if let meal = item as? Meal {
+                if favorites.contains(where: { $0 == meal.name }) {
+                    cell.setFavoriteState(.favorite)
+                }
+                cell.button.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
+            }
+            
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartsCell.identifier,

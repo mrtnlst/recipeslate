@@ -13,6 +13,9 @@ class MealDataSource: NSObject, DataSourceProtocol {
     var items: [ItemPresentable] {
         return mealData
     }
+    var favorites: [String] {
+        UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
+    }
     var sortedFirstLetters: [String] = []
     var sections: [[ItemPresentable]] = [[]]
     var filteredResults = [ItemPresentable]()
@@ -52,8 +55,9 @@ extension MealDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let meal = item as? Meal {
-            cell.icon.image = EffectsHandler.checkForMealEffect(meal: meal)
+            cell.effectIcon.image = EffectsHandler.checkForMealEffect(meal: meal)
         }
+        cell.isFavorite = favorites.contains(where: { $0 == item.name })
         return cell
     }
 }

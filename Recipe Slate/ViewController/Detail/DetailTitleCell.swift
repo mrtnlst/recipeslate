@@ -70,6 +70,11 @@ class DetailTitleCell: UITableViewCell {
         button.setImage(UIImage(named: "detail-\(state.rawValue)"), for: .normal)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        setFavoriteState(.none)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(false, animated: false)
     }

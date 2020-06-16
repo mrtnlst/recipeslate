@@ -10,9 +10,15 @@ import UIKit
 
 class ElementTableViewCell: UITableViewCell {
 
-    var icon = UIImageView()
+    var effectIcon = UIImageView()
+    var favoriteIcon = UIImageView()
     var iconContainer = UIView()
     var label = UILabel()
+    var isFavorite: Bool = false {
+        didSet {
+            favoriteIcon.isHidden = !isFavorite
+        }
+    }
     static let identifier = "Element-Cell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -35,9 +41,15 @@ class ElementTableViewCell: UITableViewCell {
         iconContainer.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(iconContainer)
         
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.contentMode = .scaleAspectFit
-        iconContainer.addSubview(icon)
+        effectIcon.translatesAutoresizingMaskIntoConstraints = false
+        effectIcon.contentMode = .scaleAspectFit
+        iconContainer.addSubview(effectIcon)
+        
+        favoriteIcon.translatesAutoresizingMaskIntoConstraints = false
+        favoriteIcon.contentMode = .scaleAspectFit
+        favoriteIcon.image = UIImage(named: "detail-favorite")
+        favoriteIcon.isHidden = !isFavorite
+        addSubview(favoriteIcon)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -61,10 +73,22 @@ class ElementTableViewCell: UITableViewCell {
             iconContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            icon.topAnchor.constraint(equalTo: iconContainer.topAnchor),
-            icon.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor),
-            icon.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor),
+            effectIcon.topAnchor.constraint(equalTo: iconContainer.topAnchor),
+            effectIcon.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor),
+            effectIcon.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor),
             
+            favoriteIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            favoriteIcon.heightAnchor.constraint(equalToConstant: 20),
+            favoriteIcon.trailingAnchor.constraint(equalTo: iconContainer.leadingAnchor, constant: -10)
         ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isFavorite = false
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(false, animated: false)
     }
 }

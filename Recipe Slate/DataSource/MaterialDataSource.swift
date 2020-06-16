@@ -52,7 +52,7 @@ extension MaterialDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let material = item as? Material {
-            cell.icon.image = EffectsHandler.icon(for: material)
+            cell.effectIcon.image = EffectsHandler.icon(for: material)
         }
         return cell
     }

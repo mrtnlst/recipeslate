@@ -55,7 +55,7 @@ extension FavoriteDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let meal = item as? Meal {
-            cell.icon.image = EffectsHandler.checkForMealEffect(meal: meal)
+            cell.effectIcon.image = EffectsHandler.checkForMealEffect(meal: meal)
         }
         return cell
     }

@@ -26,10 +26,16 @@ class TabBarController: UITabBarController {
         let favoritesVC = ListViewController(dataSource: FavoriteDataSource())
         favoritesVC.title = "Favorites"
         favoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "bar-favorite"), selectedImage: nil)
+        NotificationCenter.default.addObserver(favoritesVC,
+                                               selector: #selector(favoritesVC.refreshTable),
+                                               name: NSNotification.Name(rawValue: "refresh"), object: nil)
         
         let mealVC = ListViewController(dataSource: MealDataSource())
         mealVC.title = "Meals"
         mealVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "bar-meal"), selectedImage: nil)
+        NotificationCenter.default.addObserver(mealVC,
+                                               selector: #selector(mealVC.refreshTable),
+                                               name: NSNotification.Name(rawValue: "refresh"), object: nil)
         
         let elixirVC = ListViewController(dataSource: ElixirDataSource())
         elixirVC.title = "Elixirs"

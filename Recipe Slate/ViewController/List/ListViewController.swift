@@ -28,10 +28,6 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // FIXME: Only for favorites
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(ListViewController.refreshTable(_:)),
-                                               name: NSNotification.Name(rawValue: "refresh"), object: nil)
         setupViews()
         setupConstraints()
         setupSearch()
@@ -54,7 +50,7 @@ class ListViewController: UIViewController {
         ])
     }
     
-    @objc func refreshTable(_ notification: Notification) {
+    @objc func refreshTable() {
         dataSource.createSections()
         tableView.reloadData()
     }
