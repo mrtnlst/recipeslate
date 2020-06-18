@@ -118,6 +118,7 @@ extension DetailViewController: UITableViewDataSource {
             if favorites.contains(where: { $0 == meal.name }) {
                 cell.setFavoriteState(.favorite)
             }
+            cell.button.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
         }
         return cell
     }

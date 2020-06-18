@@ -1812,8 +1812,8 @@ write an email at:</string>
         <image name="Favorite" width="25" height="25"/>
         <image name="Favorites Tab" width="25" height="25"/>
         <image name="Food tab" width="25" height="25"/>
-        <image name="Heat Resistance" width="18.666666030883789" height="15"/>
-        <image name="Increased Stealth" width="31.333333969116211" height="25"/>
+        <image name="Heat Resistance" width="1280" height="1024"/>
+        <image name="Increased Stealth" width="1280" height="1024"/>
         <image name="Mail Button" width="25" height="25"/>
         <image name="Meal Button" width="25" height="25"/>
         <image name="Meals Tab" width="25" height="25"/>

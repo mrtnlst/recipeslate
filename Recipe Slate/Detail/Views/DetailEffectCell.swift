@@ -41,19 +41,11 @@ class DetailEffectCell: UITableViewCell {
         selectedView.backgroundColor = .tableViewCellSelectedColor
         selectedBackgroundView = selectedView
         
-        stackView.axis = .horizontal
-        stackView.spacing = 5
-        stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 3
         contentView.addSubview(stackView)
-        
-        effectName.translatesAutoresizingMaskIntoConstraints = false
-        effectName.font = UIFont.preferredFont(forTextStyle: .body)
-        effectName.textColor = .secondaryTextColor
-        effectName.textAlignment = .left
-        effectName.numberOfLines = 1
-        effectName.lineBreakMode = .byTruncatingTail
-        stackView.addArrangedSubview(effectName)
         
         effectIcon.translatesAutoresizingMaskIntoConstraints = false
         effectIcon.contentMode = .scaleAspectFit
@@ -66,13 +58,24 @@ class DetailEffectCell: UITableViewCell {
         effectDuration.numberOfLines = 1
         effectDuration.lineBreakMode = .byTruncatingTail
         stackView.addArrangedSubview(effectDuration)
+        
+        effectName.translatesAutoresizingMaskIntoConstraints = false
+        effectName.font = UIFont.preferredFont(forTextStyle: .body)
+        effectName.textColor = .secondaryTextColor
+        effectName.textAlignment = .left
+        effectName.numberOfLines = 1
+        effectName.lineBreakMode = .byTruncatingTail
+        stackView.addArrangedSubview(effectName)
     }
     
     func setupConstraints() {
+        
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            effectIcon.heightAnchor.constraint(equalToConstant: 20),
+            effectIcon.widthAnchor.constraint(equalTo: heightAnchor)
         ])
     }
     
@@ -92,14 +95,13 @@ class DetailEffectCell: UITableViewCell {
     
     func configureEffectLabels(_ effect: Effect?) {
 
-        effectIcon.isHidden = effect?.type == EffectType.none
+        effectIcon.image = UIImage(named: "\(effect?.type.rawValue ?? "Effect")")
+        effectIcon.alpha = effect?.type == EffectType.none ? 0.6 : 1.0
         effectDuration.isHidden = effect?.type == EffectType.none
         effectName.text = effect?.type.rawValue
         
         if effect?.type == EffectType.none { return }
         
-        effectIcon.image = UIImage(named: "\(effect?.type.rawValue ?? "")")
-
         let amountEffects: [EffectType] = [.restoresStamina, .extendsStamina, .temporaryHearts]
         if amountEffects.contains(where: { $0 == effect?.type}) {
             effectDuration.text = "\(effect?.amount ?? 0)"

@@ -35,7 +35,7 @@ enum EffectType: String {
     case extendsStamina = "Overfills Stamina"
     case temporaryHearts = "Temporary Hearts"
     case duration = "Duration"
-    case none = "none"
+    case none = "No effect"
 }
 
 struct Effect: Item, Hashable {

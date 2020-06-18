@@ -44,6 +44,11 @@ class DetailHeartCell: UITableViewCell {
         stackView.spacing = 3
         contentView.addSubview(stackView)
         
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.image = UIImage(named: "detail-heart-full")
+        icon.contentMode = .scaleAspectFit
+        stackView.addArrangedSubview(icon)
+        
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.font = UIFont.preferredFont(forTextStyle: .body)
         valueLabel.textColor = .secondaryTextColor
@@ -51,11 +56,6 @@ class DetailHeartCell: UITableViewCell {
         valueLabel.numberOfLines = 1
         valueLabel.lineBreakMode = .byTruncatingTail
         stackView.addArrangedSubview(valueLabel)
-        
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.image = UIImage(named: "detail-heart-full")
-        icon.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(icon)
     }
     
     func setupConstraints() {
@@ -64,7 +64,8 @@ class DetailHeartCell: UITableViewCell {
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            icon.heightAnchor.constraint(equalToConstant: 25)
+            icon.heightAnchor.constraint(equalToConstant: 20),
+            icon.widthAnchor.constraint(equalTo: heightAnchor)
         ])
     }
     
