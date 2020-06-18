@@ -68,6 +68,8 @@ class DetailCategoryIngredientCell: UITableViewCell {
             picker1.reloadAllComponents()
             NotificationCenter.default.post(name: Notification.Name(rawValue: "set-effect"),
                                             object: picker1Data.first, userInfo: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-hearts"),
+                                            object: picker1Data.first, userInfo: nil)
         } else {
             picker2Data = data
             picker2.dataSource = self
@@ -115,6 +117,8 @@ extension DetailCategoryIngredientCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == picker1 {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "set-effect"),
+                                            object: picker1Data[row], userInfo: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-hearts"),
                                             object: picker1Data[row], userInfo: nil)
         }
     }

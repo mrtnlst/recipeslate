@@ -9,22 +9,29 @@
 import UIKit
 
 class DetailHeartCell: UITableViewCell {
-
+    
     static let identifier = "Detail-Hearts-Cell"
     public var valueLabel = UILabel()
     private var icon = UIImageView()
     private var stackView = UIStackView()
+    private var item: Item!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateHearts),
+                                               name: NSNotification.Name(rawValue: "set-hearts"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setupViews() {
         backgroundColor = .backgroundBlue
         let selectedView = UIView()
@@ -61,7 +68,19 @@ class DetailHeartCell: UITableViewCell {
         ])
     }
     
-    func setHearts(_ hearts: Hearts) {
+    @objc func updateHearts(_ notification: Notification) {
+        guard let material = notification.object as? Material else { return }
+        configureHeartsLabels(EffectsHandler.calculateHearts(for: (item as? Meal)?.mainIngredients ?? [], and: [material]))
+    }
+    
+    func setItem(_ item: Item) {
+        self.item = item
+        if let meal = item as? Meal {
+            configureHeartsLabels(EffectsHandler.calculateHearts(for: meal.mainIngredients, and: []))
+        }
+    }
+    
+    private func configureHeartsLabels(_ hearts: Hearts) {
         valueLabel.text = hearts.fullRestore == true ? "full" : "\(hearts.numberOfHearts)"
     }
     

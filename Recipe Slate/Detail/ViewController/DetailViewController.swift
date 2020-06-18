@@ -120,10 +120,10 @@ extension DetailViewController: UITableViewDataSource {
     
     func configureHeartCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailHeartCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartCell.identifier,
+            
                                                        for: indexPath) as? DetailHeartCell else { fatalError() }
-        if let meal = item as? Meal {
-            cell.setHearts(EffectsHandler.calculateHearts(for: meal))
-        }
+        cell.setItem(item)
+
         return cell
     }
     

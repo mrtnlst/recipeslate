@@ -30,18 +30,13 @@ class EffectsHandler: NSObject {
     
     // MARK: - Hearts
     
-    static func calculateHearts(for meal: Meal) -> Hearts {
-        var fullRestore = false
-        var hearts: Float = 0
+    static func calculateHearts(for mainIngredients: [String], and categories: [Material]) -> Hearts {
+        var ingredients = materialData.filter({ mainIngredients.contains($0.name) })
+        ingredients.append(contentsOf: categories)
         
-        for ingredient in meal.mainIngredients {
-            guard let material = materialData.first(where: { $0.name == ingredient }) else { continue }
-            guard let materialHearts = material.hearts else { continue }
-            hearts += materialHearts
-            if material.effect?.type == .temporaryHearts {
-                fullRestore = true
-            }
-        }
+        let fullRestore = ingredients.contains(where: { $0.effect?.type == .temporaryHearts })
+        let hearts = ingredients.compactMap({ $0.hearts }).reduce(0, +)
+        
         return Hearts(numberOfHearts: hearts * 2, fullRestore: fullRestore)
     }
     
