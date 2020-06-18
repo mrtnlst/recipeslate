@@ -47,13 +47,16 @@ class DetailCategoryIngredientCell: UITableViewCell {
     }
     
     func setupConstraints() {
+        // Fixes auto layout error in debugger where encapsulated height is slightly higher than 90
+        let heightAnchorConstraint = stackView.heightAnchor.constraint(equalToConstant: 90)
+        heightAnchorConstraint.priority = .defaultHigh
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            stackView.heightAnchor.constraint(equalToConstant: 80)
+            heightAnchorConstraint
         ])
     }
     
