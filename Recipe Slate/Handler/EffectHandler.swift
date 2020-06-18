@@ -84,10 +84,18 @@ class EffectsHandler: NSObject {
         // Check whether all effects, besides duration are the same.
         let allEffectsHaveEqualType = effectsExceptDuration.allSatisfy({ $0.type == effectsExceptDuration.first?.type })
 
-        // If all effects have the same type, or there's less than 1 effect, finish calculations.
+        // If all effects have the same type or there's less than 1 effect.
         if effectsExceptDuration.count < 2 || allEffectsHaveEqualType {
+            
+            // If remaining effect is just duration, display no effect.
+            guard let effect = effectsExceptDuration.first, effect.type != .duration else {
+                return Effect(type: .none)
+            }
+            
+            // Finish calculations.
             duration += effectsExceptDuration.compactMap({ $0.duration }).reduce(0, +)
             let amount = effectsExceptDuration.compactMap({ $0.amount }).reduce(0, +)
+            
             return Effect(type: effectsExceptDuration.first?.type ?? .duration, amount: amount,
                           duration: duration, potencyLevel1: nil, potencyLevel2: nil)
         }
