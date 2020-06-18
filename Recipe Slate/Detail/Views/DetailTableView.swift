@@ -21,6 +21,7 @@ class DetailTableView: UITableView {
         register(DetailEffectCell.self, forCellReuseIdentifier: DetailEffectCell.identifier)
         register(DetailMainIngredientCell.self, forCellReuseIdentifier: DetailMainIngredientCell.identifier)
         register(DetailCategoryIngredientCell.self, forCellReuseIdentifier: DetailCategoryIngredientCell.identifier)
+        register(DetailResaleCell.self, forCellReuseIdentifier: DetailResaleCell.identifier)
     }
     
     required init?(coder: NSCoder) {

@@ -15,6 +15,8 @@
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
 		5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */; };
 		5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */; };
+		5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */; };
+		5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */; };
 		5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D342497E11700CBD251 /* ListDataSource.swift */; };
 		5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D362497E58100CBD251 /* MealListDataSource.swift */; };
 		5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D382497E61700CBD251 /* EffectHandler.swift */; };
@@ -67,6 +69,8 @@
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
 		5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMainIngredientCell.swift; sourceTree = "<group>"; };
 		5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryIngredientCell.swift; sourceTree = "<group>"; };
+		5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResaleCell.swift; sourceTree = "<group>"; };
+		5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResaleHandler.swift; sourceTree = "<group>"; };
 		5BA40D342497E11700CBD251 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D362497E58100CBD251 /* MealListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D382497E61700CBD251 /* EffectHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectHandler.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				5BA40D382497E61700CBD251 /* EffectHandler.swift */,
+				5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
 				5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */,
 				5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */,
+				5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,9 +457,11 @@
 				5BD890482494CCA30068A36A /* ListTableView.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
+				5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */,
 				5B22656B24952B5C00459517 /* Item.swift in Sources */,
 				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
 				5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */,
+				5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */,
 				5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */,
 				5BAAADAD249890E80037F685 /* DetailEffectCell.swift in Sources */,
 				5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */,

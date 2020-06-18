@@ -70,6 +70,8 @@ class DetailCategoryIngredientCell: UITableViewCell {
                                             object: picker1Data.first, userInfo: nil)
             NotificationCenter.default.post(name: Notification.Name(rawValue: "set-hearts"),
                                             object: picker1Data.first, userInfo: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-resale"),
+                                            object: picker1Data.first, userInfo: nil)
         } else {
             picker2Data = data
             picker2.dataSource = self
@@ -119,6 +121,8 @@ extension DetailCategoryIngredientCell: UIPickerViewDelegate {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "set-effect"),
                                             object: picker1Data[row], userInfo: nil)
             NotificationCenter.default.post(name: Notification.Name(rawValue: "set-hearts"),
+                                            object: picker1Data[row], userInfo: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-resale"),
                                             object: picker1Data[row], userInfo: nil)
         }
     }

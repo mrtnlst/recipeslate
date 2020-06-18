@@ -72,8 +72,10 @@ extension DetailViewController: UITableViewDataSource {
         case 2:
             return "EFFECTS"
         case 3:
-            return "MAIN INGREDIENTS"
+            return "RESALE VALUE"
         case 4:
+            return "MAIN INGREDIENTS"
+        case 5:
             return "CATEGORY INGREDIENTS"
         default:
             return ""
@@ -81,7 +83,7 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,8 +99,10 @@ extension DetailViewController: UITableViewDataSource {
         case 2:
             return configureEffectCell(tableView, indexPath: indexPath, with: item)
         case 3:
-            return configureMainIngredientCell(tableView, indexPath: indexPath, with: item)
+            return configureResaleCell(tableView, indexPath: indexPath, with: item)
         case 4:
+            return configureMainIngredientCell(tableView, indexPath: indexPath, with: item)
+        case 5:
             return configureCategoryIngredientCell(tableView, indexPath: indexPath, with: item)
         default:
             fatalError()
@@ -154,6 +158,13 @@ extension DetailViewController: UITableViewDataSource {
                 cell.configurePicker(.second, data: c2)
             }
         }
+        return cell
+    }
+    
+    func configureResaleCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailResaleCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailResaleCell.identifier,
+                                                       for: indexPath) as? DetailResaleCell else { fatalError() }
+        cell.setItem(item)
         return cell
     }
 }
