@@ -30,6 +30,11 @@ class EffectsHandler: NSObject {
     
     // MARK: - Hearts
     
+    /// Calculates hearts for main and category ingredients
+    /// - Parameters:
+    ///   - mainIngredients: main ingredients as an array of String
+    ///   - categories: category ingredients as an array of Material
+    /// - Returns: Hearts object
     static func calculateHearts(for mainIngredients: [String], and categories: [Material]) -> Hearts {
         var ingredients = materialData.filter({ mainIngredients.contains($0.name) })
         ingredients.append(contentsOf: categories)
@@ -60,7 +65,7 @@ class EffectsHandler: NSObject {
     /// Calculates effect for given main and category ingredients.
     /// - Parameters:
     ///   - mainIngredients: main ingredients as an array of String
-    ///   - categories: category ingredients as an Array of Material
+    ///   - categories: category ingredients as an array of Material
     /// - Returns: Effect object
     static func calculateEffect(for mainIngredients: [String], and categories: [Material]) -> Effect {
         
