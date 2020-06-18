@@ -47,52 +47,55 @@ class EffectsHandler: NSObject {
     
     // MARK: - Effects
     
+    /// Checks whether meal ingredients can produce an effect besides duration and temporary hearts.
+    /// - Parameter meal: object of type Meal to check
+    /// - Returns: UIImage with effect or heart icon
     static func checkForMealEffect(meal: Meal) -> UIImage {
-        var check = false
+        var materials = meal.categoryIngredients.map({ obtainMaterials(for: $0) }).reduce([], +)
+        materials.append(contentsOf: materialData.filter({ meal.mainIngredients.contains($0.name) }))
         
-        check = checkMainIngredients(meal: meal)
-        
-        check = checkCategoryIngredients(meal: meal)
-        
-        if check {
-            return UIImage(named: "Effect") ?? UIImage()
-        } else {
+        let heartEffects: [EffectType] = [.none, .duration, .temporaryHearts]
+        let haveHeartSupportingEffect = materials.allSatisfy({ heartEffects.contains($0.effect?.type ?? .none) })
+        if haveHeartSupportingEffect {
             return UIImage(named: "detail-heart-full") ?? UIImage()
-            
         }
+        return UIImage(named: "Effect") ?? UIImage()
     }
     
-    static func checkMainIngredients(meal: Meal) -> Bool {
-        for ingredient in meal.mainIngredients {
-            guard let material = materialData.first(where: { $0.name == ingredient }) else { continue }
-            if material.effect?.type != .duration {
-                return true
-            }
-        }
-        return false
-    }
-    
-    static func checkCategoryIngredients(meal: Meal) -> Bool{
+    /// Calculates effect for given main and category ingredients.
+    /// - Parameters:
+    ///   - mainIngredients: main ingredients as an array of String
+    ///   - categories: category ingredients as an Array of Material
+    /// - Returns: Effect object
+    static func calculateEffect(for mainIngredients: [String], and categories: [Material]) -> Effect {
         
-        for ingredient in meal.categoryIngredients {
-            guard let material = materialData.first(where: { (material) -> Bool in
-                return material.category.first(where: { ingredient == $0 }) != nil && material.effect?.type != .duration
-            }) else { continue }
-            if material.effect?.type != .duration {
-                return true
-            }
-        }
-        return false
-    }
-    
-    static func calculateEffect(for meal: Meal) -> Effect? {
-        let mainIngredients = materialData.filter({ meal.mainIngredients.contains($0.name) })
+        // Create joined array of type Material
+        var ingredients = materialData.filter({ mainIngredients.contains($0.name) })
+        ingredients.append(contentsOf: categories)
+
+        // Create effects array and split it by type.
+        let effects = ingredients.compactMap({ $0.effect })
+        let effectsOfTypeDuration = effects.filter({ $0.type == EffectType.duration })
+        let effectsExceptDuration = effects.filter({ !effectsOfTypeDuration.contains($0) })
         
-        let effects = Array(Set(mainIngredients.map({ $0.effect })))
+        // Calculate duration of all effects of the same type.
+        var duration = effectsOfTypeDuration.compactMap({ $0.duration }).reduce(0, +)
         
-        if effects.count == 1 {
-            return effects.first ?? nil
+        // Check whether all effects, besides duration are the same.
+        let allEffectsHaveEqualType = effectsExceptDuration.allSatisfy({ $0.type == effectsExceptDuration.first?.type })
+
+        // If all effects have the same type, or there's less than 1 effect, finish calculations.
+        if effectsExceptDuration.count < 2 || allEffectsHaveEqualType {
+            duration += effectsExceptDuration.compactMap({ $0.duration }).reduce(0, +)
+            let amount = effectsExceptDuration.compactMap({ $0.amount }).reduce(0, +)
+            return Effect(type: effectsExceptDuration.first?.type ?? .duration, amount: amount,
+                          duration: duration, potencyLevel1: nil, potencyLevel2: nil)
         }
+        // If effects cancel each other one out, return effect type .none
         return Effect(type: .none)
+    }
+    
+    static func obtainMaterials(for materialCategory: MaterialCategory?) -> [Material] {
+        return materialData.filter({ $0.category.contains(where: { materialCategory == $0 }) })
     }
 }

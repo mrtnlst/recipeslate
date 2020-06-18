@@ -16,6 +16,7 @@ class DetailEffectCell: UITableViewCell {
     var effectName = UILabel()
     var effectDuration = UILabel()
     var effectIcon = UIImageView()
+    var item: Item!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -75,11 +76,21 @@ class DetailEffectCell: UITableViewCell {
         ])
     }
     
+    // MARK: - Effect
+    
     @objc func updateEffect(_ notification: Notification) {
-        setEffect(notification.object as? Effect)
+        guard let material = notification.object as? Material else { return }
+        configureEffectLabels(EffectsHandler.calculateEffect(for: (item as? Meal)?.mainIngredients ?? [], and: [material]))
     }
     
-    func setEffect(_ effect: Effect?) {
+    func setItem(_ item: Item) {
+        self.item = item
+        if let meal = item as? Meal {
+            configureEffectLabels(EffectsHandler.calculateEffect(for: meal.mainIngredients, and: []))
+        }
+    }
+    
+    func configureEffectLabels(_ effect: Effect?) {
 
         effectIcon.isHidden = effect?.type == EffectType.none
         effectDuration.isHidden = effect?.type == EffectType.none
@@ -89,10 +100,11 @@ class DetailEffectCell: UITableViewCell {
         
         effectIcon.image = UIImage(named: "\(effect?.type.rawValue ?? "")")
 
-        if let duration = effect?.duration {
-            effectDuration.text = "+ \(duration)s"
-        } else if let amount = effect?.amount {
-            effectDuration.text = "\(amount)"
+        let amountEffects: [EffectType] = [.restoresStamina, .extendsStamina, .temporaryHearts]
+        if amountEffects.contains(where: { $0 == effect?.type}) {
+            effectDuration.text = "\(effect?.amount ?? 0)"
+        } else {
+            effectDuration.text = "+\(effect?.duration ?? 0)s"
         }
     }
 

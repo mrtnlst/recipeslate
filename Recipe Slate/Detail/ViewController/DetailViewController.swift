@@ -130,9 +130,7 @@ extension DetailViewController: UITableViewDataSource {
     func configureEffectCell(_ tableView: UITableView, indexPath: IndexPath, with item: Item) -> DetailEffectCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailEffectCell.identifier,
                                                        for: indexPath) as? DetailEffectCell else { fatalError() }
-        if let meal = item as? Meal, let effect = EffectsHandler.calculateEffect(for: meal) {
-            cell.setEffect(effect)
-        }
+        cell.setItem(item)
         return cell
     }
     
