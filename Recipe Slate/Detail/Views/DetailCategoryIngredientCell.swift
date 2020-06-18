@@ -53,7 +53,13 @@ class DetailCategoryIngredientCell: UITableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            stackView.heightAnchor.constraint(equalToConstant: 80)
         ])
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        notifyMaterialSelection()
     }
     
     func configurePicker(_ picker: CategoryPicker, data: [Material] = []) {
@@ -66,12 +72,7 @@ class DetailCategoryIngredientCell: UITableViewCell {
                 stackView.addArrangedSubview(picker1)
             }
             picker1.reloadAllComponents()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-effect"),
-                                            object: picker1Data.first, userInfo: nil)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-hearts"),
-                                            object: picker1Data.first, userInfo: nil)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-resale"),
-                                            object: picker1Data.first, userInfo: nil)
+            NotificationHandler.post(.RecipeSlateCategoryItemDidChange, object: picker1Data.first)
         } else {
             picker2Data = data
             picker2.dataSource = self
@@ -86,6 +87,7 @@ class DetailCategoryIngredientCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(false, animated: false)
+        notifyMaterialSelection()
     }
 }
 
@@ -117,13 +119,17 @@ extension DetailCategoryIngredientCell: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == picker1 {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-effect"),
-                                            object: picker1Data[row], userInfo: nil)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-hearts"),
-                                            object: picker1Data[row], userInfo: nil)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "set-resale"),
-                                            object: picker1Data[row], userInfo: nil)
+        notifyMaterialSelection()
+    }
+    
+    private func notifyMaterialSelection() {
+        var selectedMaterials: [Material] = []
+        if let item1 = picker1Data.item(at: picker1.selectedRow(inComponent: 0)) {
+            selectedMaterials.append(item1)
         }
+        if let item2 = picker2Data.item(at: picker2.selectedRow(inComponent: 0)) {
+           selectedMaterials.append(item2)
+        }
+        NotificationHandler.post(.RecipeSlateCategoryItemDidChange, object: selectedMaterials)
     }
 }

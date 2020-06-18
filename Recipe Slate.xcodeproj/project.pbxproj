@@ -17,6 +17,9 @@
 		5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */; };
 		5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */; };
 		5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */; };
+		5B8CAEED249BF44100C18B85 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */; };
+		5B8CAEEF249BFC8900C18B85 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEE249BFC8900C18B85 /* Array.swift */; };
+		5B8CAEF1249BFCA800C18B85 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEF0249BFCA800C18B85 /* Notification.swift */; };
 		5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D342497E11700CBD251 /* ListDataSource.swift */; };
 		5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D362497E58100CBD251 /* MealListDataSource.swift */; };
 		5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D382497E61700CBD251 /* EffectHandler.swift */; };
@@ -71,6 +74,9 @@
 		5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryIngredientCell.swift; sourceTree = "<group>"; };
 		5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResaleCell.swift; sourceTree = "<group>"; };
 		5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResaleHandler.swift; sourceTree = "<group>"; };
+		5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = SOURCE_ROOT; };
+		5B8CAEEE249BFC8900C18B85 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		5B8CAEF0249BFCA800C18B85 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = "Recipe Slate/Handler/Notification.swift"; sourceTree = SOURCE_ROOT; };
 		5BA40D342497E11700CBD251 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D362497E58100CBD251 /* MealListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D382497E61700CBD251 /* EffectHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectHandler.swift; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 		5BA40D40249811A500CBD251 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
+				5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */,
 				5BA40D382497E61700CBD251 /* EffectHandler.swift */,
 				5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */,
 			);
@@ -225,6 +232,8 @@
 		5BA40D43249811FF00CBD251 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5B8CAEF0249BFCA800C18B85 /* Notification.swift */,
+				5B8CAEEE249BFC8900C18B85 /* Array.swift */,
 				5BD8903F2494C5DA0068A36A /* UIColor.swift */,
 			);
 			path = Extensions;
@@ -474,6 +483,7 @@
 				5BD890512495025B0068A36A /* DetailHeartCell.swift in Sources */,
 				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
+				5B8CAEEF249BFC8900C18B85 /* Array.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
 				5BA40D47249818F100CBD251 /* EffectListDataSource.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
@@ -483,6 +493,7 @@
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
 				5BA40D452498123B00CBD251 /* MaterialListDataSource.swift in Sources */,
 				5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */,
+				5B8CAEED249BF44100C18B85 /* NotificationHandler.swift in Sources */,
 				5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */,
 				5BAEEAE11F080399002E307A /* FoodData.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
@@ -501,6 +512,7 @@
 				5BAEEADD1F068938002E307A /* MealData.swift in Sources */,
 				A9614D841E77FACA009CA034 /* MaterialData.swift in Sources */,
 				5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */,
+				5B8CAEF1249BFCA800C18B85 /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

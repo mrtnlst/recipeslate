@@ -24,7 +24,7 @@ class DetailEffectCell: UITableViewCell {
         setupConstraints()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateEffect),
-                                               name: NSNotification.Name(rawValue: "set-effect"), object: nil)
+                                               name: .RecipeSlateCategoryItemDidChange, object: nil)
     }
     
     deinit {
@@ -79,8 +79,8 @@ class DetailEffectCell: UITableViewCell {
     // MARK: - Effect
     
     @objc func updateEffect(_ notification: Notification) {
-        guard let material = notification.object as? Material else { return }
-        configureEffectLabels(EffectsHandler.calculateEffect(for: (item as? Meal)?.mainIngredients ?? [], and: [material]))
+        guard let materials = notification.object as? [Material] else { return }
+        configureEffectLabels(EffectsHandler.calculateEffect(for: (item as? Meal)?.mainIngredients ?? [], and: materials))
     }
     
     func setItem(_ item: Item) {

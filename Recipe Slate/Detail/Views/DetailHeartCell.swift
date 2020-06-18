@@ -21,7 +21,7 @@ class DetailHeartCell: UITableViewCell {
         setupViews()
         setupConstraints()
         NotificationCenter.default.addObserver(self, selector: #selector(updateHearts),
-                                               name: NSNotification.Name(rawValue: "set-hearts"), object: nil)
+                                               name: .RecipeSlateCategoryItemDidChange, object: nil)
     }
     
     deinit {
@@ -69,8 +69,8 @@ class DetailHeartCell: UITableViewCell {
     }
     
     @objc func updateHearts(_ notification: Notification) {
-        guard let material = notification.object as? Material else { return }
-        configureHeartsLabels(EffectsHandler.calculateHearts(for: (item as? Meal)?.mainIngredients ?? [], and: [material]))
+        guard let materials = notification.object as? [Material] else { return }
+        configureHeartsLabels(EffectsHandler.calculateHearts(for: (item as? Meal)?.mainIngredients ?? [], and: materials))
     }
     
     func setItem(_ item: Item) {

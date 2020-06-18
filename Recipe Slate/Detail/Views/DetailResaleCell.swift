@@ -20,7 +20,7 @@ class DetailResaleCell: UITableViewCell {
         setupViews()
         setupConstraints()
         NotificationCenter.default.addObserver(self, selector: #selector(updateResaleLabel),
-                                               name: NSNotification.Name(rawValue: "set-resale"), object: nil)
+                                               name: .RecipeSlateCategoryItemDidChange, object: nil)
     }
     
     deinit {
@@ -62,9 +62,9 @@ class DetailResaleCell: UITableViewCell {
     }
     
     @objc func updateResaleLabel(_ notification: Notification) {
-        guard let material = notification.object as? Material else { return }
+        guard let materials = notification.object as? [Material] else { return }
         if let meal = item as? Meal {
-            configureResaleLabel(ResaleHandler.resaleValue(for: meal, and: [material]))
+            configureResaleLabel(ResaleHandler.resaleValue(for: meal, and: materials))
         }
     }
     
