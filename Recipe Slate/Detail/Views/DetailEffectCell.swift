@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailEffectCell: UITableViewCell {
-
+    
     static let identifier = "Detail-Effect-Cell"
     
     var stackView = UIStackView()
@@ -34,7 +34,7 @@ class DetailEffectCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setupViews() {
         backgroundColor = .backgroundBlue
         let selectedView = UIView()
@@ -94,22 +94,29 @@ class DetailEffectCell: UITableViewCell {
     }
     
     func configureEffectLabels(_ effect: Effect?) {
-
-        effectIcon.image = UIImage(named: "\(effect?.type.rawValue ?? "Effect")")
-        effectIcon.alpha = effect?.type == EffectType.none ? 0.6 : 1.0
-        effectDuration.isHidden = effect?.type == EffectType.none
-        effectName.text = effect?.type.rawValue
         
-        if effect?.type == EffectType.none { return }
+        let newEffectName = effect?.type.rawValue
+        let newEffectImage = UIImage(named: "\(effect?.type.rawValue ?? "Effect")")
+        
+        var newEffectDuration: String
         
         let amountEffects: [EffectType] = [.restoresStamina, .extendsStamina, .temporaryHearts]
         if amountEffects.contains(where: { $0 == effect?.type}) {
-            effectDuration.text = "\(effect?.amount ?? 0)"
+            newEffectDuration = "\(effect?.amount ?? 0)"
         } else {
-            effectDuration.text = "+\(effect?.duration ?? 0)s"
+            newEffectDuration = "+\(effect?.duration ?? 0)s"
+        }
+        
+        if effectName.text != newEffectName || effectDuration.text != newEffectDuration {
+            effectIcon.addBounceAnimation()
+            effectIcon.alpha = effect?.type == EffectType.none ? 0.6 : 1.0
+            effectDuration.isHidden = effect?.type == EffectType.none
+            effectName.text = newEffectName
+            effectDuration.text = newEffectDuration
+            effectIcon.image = newEffectImage
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(false, animated: false)
     }

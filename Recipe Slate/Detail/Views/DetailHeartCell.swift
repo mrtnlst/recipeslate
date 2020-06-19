@@ -82,7 +82,12 @@ class DetailHeartCell: UITableViewCell {
     }
     
     private func configureHeartsLabels(_ hearts: Hearts) {
-        valueLabel.text = hearts.fullRestore == true ? "full" : "\(hearts.numberOfHearts)"
+        let newValueText = hearts.fullRestore == true ? "full" : "\(hearts.numberOfHearts)"
+        
+        if newValueText != valueLabel.text {
+            valueLabel.text = newValueText
+            icon.addBounceAnimation()
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

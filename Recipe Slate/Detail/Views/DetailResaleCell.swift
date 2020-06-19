@@ -84,8 +84,13 @@ class DetailResaleCell: UITableViewCell {
     }
     
     private func configureResaleLabel(_ value: Int) {
-        resaleLabel.text = "\(value) Rupees"
+        let newLabelText = "\(value) Rupees"
+        guard newLabelText != resaleLabel.text else { return }
+        
         icon.alpha = 1.0
+        icon.addBounceAnimation()
+        resaleLabel.text = newLabelText
+        
         switch value {
         case 1...4:
             icon.tintColor = .rupeeGreen
