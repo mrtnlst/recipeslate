@@ -11,12 +11,12 @@ import UIKit
 
 class EffectListDataSource: NSObject, ListDataSource {
     
-    var items: [Item] {
+    var items: [Listable] {
         return effectData
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[Item]] = [[]]
-    var filteredResults = [Item]()
+    var sections: [[Listable]] = [[]]
+    var filteredResults = [Listable]()
 }
 
 extension EffectListDataSource: UITableViewDataSource {

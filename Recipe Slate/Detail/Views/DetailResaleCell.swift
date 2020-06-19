@@ -14,7 +14,7 @@ class DetailResaleCell: UITableViewCell {
     private var icon = UIImageView()
     public var resaleLabel = UILabel()
     private var stackView = UIStackView()
-    private var item: Item!
+    private var item: Listable!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -76,7 +76,7 @@ class DetailResaleCell: UITableViewCell {
         }
     }
     
-    func setItem(_ item: Item) {
+    func setItem(_ item: Listable) {
         self.item = item
         if let meal = item as? Meal {
             configureResaleLabel(ResaleHandler.resaleValue(for: meal, and: []))

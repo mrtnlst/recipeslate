@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B224E331EAE0A3A006D47DB /* AboutViewController.swift */; };
-		5B22656B24952B5C00459517 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Item.swift */; };
+		5B22656B24952B5C00459517 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Listable.swift */; };
 		5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
@@ -20,6 +20,7 @@
 		5B8CAEED249BF44100C18B85 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */; };
 		5B8CAEEF249BFC8900C18B85 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEE249BFC8900C18B85 /* Array.swift */; };
 		5B8CAEF1249BFCA800C18B85 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEF0249BFCA800C18B85 /* Notification.swift */; };
+		5B8CAEF3249CB0E800C18B85 /* Sectionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEF2249CB0E800C18B85 /* Sectionable.swift */; };
 		5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D342497E11700CBD251 /* ListDataSource.swift */; };
 		5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D362497E58100CBD251 /* MealListDataSource.swift */; };
 		5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA40D382497E61700CBD251 /* EffectHandler.swift */; };
@@ -65,7 +66,7 @@
 
 /* Begin PBXFileReference section */
 		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		5B22656A24952B5C00459517 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5B22656A24952B5C00459517 /* Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
 		5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListDataSource.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = SOURCE_ROOT; };
 		5B8CAEEE249BFC8900C18B85 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		5B8CAEF0249BFCA800C18B85 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = "Recipe Slate/Handler/Notification.swift"; sourceTree = SOURCE_ROOT; };
+		5B8CAEF2249CB0E800C18B85 /* Sectionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sectionable.swift; path = "Recipe Slate/Types/Sectionable.swift"; sourceTree = SOURCE_ROOT; };
 		5BA40D342497E11700CBD251 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D362497E58100CBD251 /* MealListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D382497E61700CBD251 /* EffectHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectHandler.swift; sourceTree = "<group>"; };
@@ -287,6 +289,8 @@
 		5BAAADB5249924A00037F685 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				5B22656A24952B5C00459517 /* Listable.swift */,
+				5B8CAEF2249CB0E800C18B85 /* Sectionable.swift */,
 				5BAAADB6249925BD0037F685 /* FavoriteProtocol.swift */,
 			);
 			path = Protocol;
@@ -323,7 +327,6 @@
 		5BD89054249518050068A36A /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				5B22656A24952B5C00459517 /* Item.swift */,
 				A914A24D1E82F7130023C3B9 /* Critter.swift */,
 				A9614D8C1E795104009CA034 /* Elixir.swift */,
 				A9C784D01E80819000551990 /* Effect.swift */,
@@ -467,7 +470,7 @@
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
 				5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */,
-				5B22656B24952B5C00459517 /* Item.swift in Sources */,
+				5B22656B24952B5C00459517 /* Listable.swift in Sources */,
 				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
 				5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */,
 				5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */,
@@ -503,6 +506,7 @@
 				5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
 				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,
+				5B8CAEF3249CB0E800C18B85 /* Sectionable.swift in Sources */,
 				5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */,
 				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,

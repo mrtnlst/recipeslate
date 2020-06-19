@@ -8,6 +8,15 @@
 
 import UIKit
 
+enum DetailTableViewSections: String {
+    case title = "NAME"
+    case heart = "HEARTS"
+    case effect = "EFFECTS"
+    case resaleValue = "RESALE VALUE"
+    case mainIngredient = "MAIN INGREDIENTS"
+    case categoryIngredient = "CATEGORY INGREDIENTS"
+}
+
 class DetailTableView: UITableView {
 
     init() {

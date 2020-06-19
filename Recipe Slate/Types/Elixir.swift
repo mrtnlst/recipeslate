@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Elixir: Item {
+struct Elixir: Listable {
     var name: String
     var category: EffectCategory
     var effect: EffectType

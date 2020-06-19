@@ -10,13 +10,13 @@ import Foundation
 
 protocol ListDataSource {
     
-    var items: [Item] { get }
+    var items: [Listable] { get }
     
-    var sections: [[Item]] { get set  }
+    var sections: [[Listable]] { get set  }
     
     var sortedFirstLetters: [String] { get set }
     
-    var filteredResults: [Item] { get set }
+    var filteredResults: [Listable] { get set }
 }
 
 extension ListDataSource {
@@ -33,7 +33,7 @@ extension ListDataSource {
         }
     }
     
-    func getCorrectCellItem(path: IndexPath) -> Item {
+    func getCorrectCellItem(path: IndexPath) -> Listable {
         return !filteredResults.isEmpty ? filteredResults[path.row] : sections[path.section][path.row]
     }
     

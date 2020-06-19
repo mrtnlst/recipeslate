@@ -10,12 +10,12 @@ import UIKit
 
 class FavoriteListDataSource: NSObject, ListDataSource, FavoriteProtocol {
 
-    var items: [Item] {
+    var items: [Listable] {
         return mealData.filter({ favorites.contains($0.name) })
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[Item]] = [[]]
-    var filteredResults = [Item]()
+    var sections: [[Listable]] = [[]]
+    var filteredResults = [Listable]()
 }
 
 extension FavoriteListDataSource: UITableViewDataSource {

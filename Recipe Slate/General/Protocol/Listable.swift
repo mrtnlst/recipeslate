@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  Listable.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 13.06.20.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol Item {
+protocol Listable {
  
     var name: String { get }
 }
 
-extension Item {
+extension Listable {
     
     var titleFirstLetter: String {
         return String(name[name.startIndex]).uppercased()

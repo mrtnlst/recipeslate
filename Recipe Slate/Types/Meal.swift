@@ -9,10 +9,21 @@
 import Foundation
 import UIKit
 
-struct Meal: Item {
+struct Meal: Listable, Sectionable {
     var name: String
     var mainIngredients: [String]
     var categoryIngredients: [MaterialCategory]
+    var sections: [DetailTableViewSections] {
+        var sections: [DetailTableViewSections] = [.title, .heart, .effect, .resaleValue]
+        
+        if !mainIngredients.isEmpty {
+            sections.append(.mainIngredient)
+        }
+        if !categoryIngredients.isEmpty {
+            sections.append(.categoryIngredient)
+        }
+        return sections
+    }
     
     init(name: String, mainIngredients: [String], categoryIngredients: [MaterialCategory]) {
         self.name = name

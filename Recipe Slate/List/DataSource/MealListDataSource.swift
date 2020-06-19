@@ -10,15 +10,15 @@ import UIKit
 
 class MealListDataSource: NSObject, ListDataSource {
     
-    var items: [Item] {
+    var items: [Listable] {
         return mealData
     }
     var favorites: [String] {
         UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[Item]] = [[]]
-    var filteredResults = [Item]()
+    var sections: [[Listable]] = [[]]
+    var filteredResults = [Listable]()
 }
 
 extension MealListDataSource: UITableViewDataSource {

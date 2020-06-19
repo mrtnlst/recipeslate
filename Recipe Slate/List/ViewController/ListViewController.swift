@@ -107,7 +107,7 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         let item = dataSource.getCorrectCellItem(path: indexPath)
-        let detailVC = DetailViewController(item: item)
+        let detailVC = DetailViewController(item: item, sections: (item as? Sectionable)?.sections ?? [])
         detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }

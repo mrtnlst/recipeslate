@@ -38,7 +38,7 @@ enum MaterialCategory: String {
     case monsterPart = "Monster Part"
 }
 
-struct Material: Item, Hashable {
+struct Material: Listable, Hashable {
     
     var name: String
     var category: [MaterialCategory]

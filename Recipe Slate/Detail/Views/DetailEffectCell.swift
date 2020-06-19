@@ -16,7 +16,7 @@ class DetailEffectCell: UITableViewCell {
     var effectName = UILabel()
     var effectDuration = UILabel()
     var effectIcon = UIImageView()
-    var item: Item!
+    var item: Listable!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -86,7 +86,7 @@ class DetailEffectCell: UITableViewCell {
         configureEffectLabels(EffectsHandler.calculateEffect(for: (item as? Meal)?.mainIngredients ?? [], and: materials))
     }
     
-    func setItem(_ item: Item) {
+    func setItem(_ item: Listable) {
         self.item = item
         if let meal = item as? Meal {
             configureEffectLabels(EffectsHandler.calculateEffect(for: meal.mainIngredients, and: []))

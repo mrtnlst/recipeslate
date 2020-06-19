@@ -14,7 +14,7 @@ class DetailHeartCell: UITableViewCell {
     public var valueLabel = UILabel()
     private var icon = UIImageView()
     private var stackView = UIStackView()
-    private var item: Item!
+    private var item: Listable!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -74,7 +74,7 @@ class DetailHeartCell: UITableViewCell {
         configureHeartsLabels(EffectsHandler.calculateHearts(for: (item as? Meal)?.mainIngredients ?? [], and: materials))
     }
     
-    func setItem(_ item: Item) {
+    func setItem(_ item: Listable) {
         self.item = item
         if let meal = item as? Meal {
             configureHeartsLabels(EffectsHandler.calculateHearts(for: meal.mainIngredients, and: []))

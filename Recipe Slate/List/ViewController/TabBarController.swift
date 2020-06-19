@@ -39,7 +39,7 @@ class TabBarController: UITabBarController {
         
         let elixirVC = ListViewController(dataSource: ElixirListDataSource())
         elixirVC.title = "Elixirs"
-        elixirVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "bar-elixir"), selectedImage: nil)
+        elixirVC.tabBarItem = UITabBarItem(title: "Elixirs", image: UIImage(named: "bar-elixir"), selectedImage: nil)
         
         let effectVC = ListViewController(dataSource: EffectListDataSource())
         effectVC.title = "Effects"

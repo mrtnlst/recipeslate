@@ -10,12 +10,12 @@ import UIKit
 
 class ElixirListDataSource: NSObject, ListDataSource {
     
-    var items: [Item] {
+    var items: [Listable] {
         return elixirData
     }
     var sortedFirstLetters: [String] = []
-    var sections: [[Item]] = [[]]
-    var filteredResults = [Item]()
+    var sections: [[Listable]] = [[]]
+    var filteredResults = [Listable]()
 }
 
 extension ElixirListDataSource: UITableViewDataSource {
