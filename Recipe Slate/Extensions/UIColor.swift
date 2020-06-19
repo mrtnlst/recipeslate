@@ -17,4 +17,12 @@ extension UIColor {
     static let tableViewCellSelectedColor = #colorLiteral(red: 0.2117647059, green: 0.2666666667, blue: 0.2980392157, alpha: 1)
     static let seperatorColor = #colorLiteral(red: 0.2117647059, green: 0.2666666667, blue: 0.2980392157, alpha: 1)
     static let secondaryTextColor = #colorLiteral(red: 0.7233663201, green: 0.7233663201, blue: 0.7233663201, alpha: 1)
+    
+    static let rupeeGreen = #colorLiteral(red: 0.6274509804, green: 0.768627451, blue: 0.3568627451, alpha: 1)
+    static let rupeeBlue = #colorLiteral(red: 0.3058823529, green: 0.6078431373, blue: 0.9176470588, alpha: 1)
+    static let rupeeRed = #colorLiteral(red: 0.9176470588, green: 0.3058823529, blue: 0.2745098039, alpha: 1)
+    static let rupeePurple = #colorLiteral(red: 0.8392156863, green: 0.2862745098, blue: 0.8666666667, alpha: 1)
+    static let rupeeGold = #colorLiteral(red: 0.9333333333, green: 0.8352941176, blue: 0.3333333333, alpha: 1)
+    static let rupeeSilver = #colorLiteral(red: 0.8431372549, green: 0.8431372549, blue: 0.8431372549, alpha: 1)
+    
 }

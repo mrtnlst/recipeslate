@@ -10,9 +10,9 @@ import UIKit
 
 class ResaleHandler: NSObject {
 
-    static func resaleValue(for meal: Meal, and categories: [Material]) -> String {
+    static func resaleValue(for meal: Meal, and categories: [Material]) -> Int {
         
-        if meal.name == "Fairy Tonic" { return "2 Rupees" }
+        if meal.name == "Fairy Tonic" { return 2 }
         
         var ingredients = materialData.filter({ meal.mainIngredients.contains($0.name) })
         ingredients.append(contentsOf: categories)
@@ -34,6 +34,6 @@ class ResaleHandler: NSObject {
             break
         }
         value = ceil(floor(value) / 10.0) * 10
-        return "\(Int(value)) Rupees"
+        return Int(value)
     }
 }

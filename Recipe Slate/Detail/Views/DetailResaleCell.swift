@@ -11,6 +11,7 @@ import UIKit
 class DetailResaleCell: UITableViewCell {
     
     static let identifier = "Detail-Resale-Cell"
+    private var icon = UIImageView()
     public var resaleLabel = UILabel()
     private var stackView = UIStackView()
     private var item: Item!
@@ -42,6 +43,11 @@ class DetailResaleCell: UITableViewCell {
         stackView.alignment = .center
         contentView.addSubview(stackView)
         
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.image = UIImage(named: "detail-rupee")
+        icon.contentMode = .scaleAspectFit
+        stackView.addArrangedSubview(icon)
+        
         resaleLabel.translatesAutoresizingMaskIntoConstraints = false
         resaleLabel.font = UIFont.preferredFont(forTextStyle: .body)
         resaleLabel.textColor = .secondaryTextColor
@@ -58,6 +64,8 @@ class DetailResaleCell: UITableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            icon.heightAnchor.constraint(equalToConstant: 20),
+            icon.widthAnchor.constraint(equalTo: heightAnchor)
         ])
     }
     
@@ -75,8 +83,26 @@ class DetailResaleCell: UITableViewCell {
         }
     }
     
-    private func configureResaleLabel(_ text: String) {
-        resaleLabel.text = text
+    private func configureResaleLabel(_ value: Int) {
+        resaleLabel.text = "\(value) Rupees"
+        icon.alpha = 1.0
+        switch value {
+        case 1...4:
+            icon.tintColor = .rupeeGreen
+        case 5...19:
+            icon.tintColor = .rupeeBlue
+        case 20...49:
+            icon.tintColor = .rupeeRed
+        case 50...99:
+            icon.tintColor = .rupeePurple
+        case 100...299:
+            icon.tintColor = .rupeeSilver
+        case 299...:
+            icon.tintColor = .rupeeGold
+        default:
+            icon.tintColor = .rupeeSilver
+            icon.alpha = 0.6
+        }
     }
     
     override func prepareForReuse() {
