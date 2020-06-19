@@ -28,14 +28,14 @@ class TabBarController: UITabBarController {
         favoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "bar-favorite"), selectedImage: nil)
         NotificationCenter.default.addObserver(favoritesVC,
                                                selector: #selector(favoritesVC.refreshTable),
-                                               name: NSNotification.Name(rawValue: "refresh"), object: nil)
+                                               name: .RecipeSlateFavoriteDidChange, object: nil)
         
         let mealVC = ListViewController(dataSource: MealListDataSource())
         mealVC.title = "Meals"
         mealVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "bar-meal"), selectedImage: nil)
         NotificationCenter.default.addObserver(mealVC,
                                                selector: #selector(mealVC.refreshTable),
-                                               name: NSNotification.Name(rawValue: "refresh"), object: nil)
+                                               name: .RecipeSlateFavoriteDidChange, object: nil)
         
         let elixirVC = ListViewController(dataSource: ElixirListDataSource())
         elixirVC.title = "Elixirs"
@@ -48,6 +48,9 @@ class TabBarController: UITabBarController {
         let materialVC = ListViewController(dataSource: MaterialListDataSource())
         materialVC.title = "Materials"
         materialVC.tabBarItem = UITabBarItem(title: "Materials", image: UIImage(named: "bar-food"), selectedImage: nil)
+        NotificationCenter.default.addObserver(materialVC,
+                                               selector: #selector(materialVC.refreshTable),
+                                               name: .RecipeSlateFavoriteDidChange, object: nil)
         
         viewControllers = [favoritesVC, mealVC, elixirVC, effectVC, materialVC].map { NavigationController(rootViewController: $0) }
     }

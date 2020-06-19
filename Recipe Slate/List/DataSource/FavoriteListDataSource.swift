@@ -11,7 +11,9 @@ import UIKit
 class FavoriteListDataSource: NSObject, ListDataSource, FavoriteProtocol {
 
     var items: [Listable] {
-        return mealData.filter({ favorites.contains($0.name) })
+        var items: [Listable] = mealData.filter({ favorites.contains($0.name) })
+        items.append(contentsOf: materialData.filter({ favorites.contains($0.name) }))
+        return items
     }
     var sortedFirstLetters: [String] = []
     var sections: [[Listable]] = [[]]
@@ -53,6 +55,9 @@ extension FavoriteListDataSource: UITableViewDataSource {
         cell.label.text = item.name
         if let meal = item as? Meal {
             cell.effectIcon.image = EffectsHandler.checkForMealEffect(meal: meal)
+        }
+        if let material = item as? Material {
+            cell.effectIcon.image = UIImage(named: material.effect?.type.rawValue ?? "")
         }
         return cell
     }

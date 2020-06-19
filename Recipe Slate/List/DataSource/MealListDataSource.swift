@@ -8,13 +8,10 @@
 
 import UIKit
 
-class MealListDataSource: NSObject, ListDataSource {
+class MealListDataSource: NSObject, ListDataSource, FavoriteProtocol {
     
     var items: [Listable] {
         return mealData
-    }
-    var favorites: [String] {
-        UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
     }
     var sortedFirstLetters: [String] = []
     var sections: [[Listable]] = [[]]

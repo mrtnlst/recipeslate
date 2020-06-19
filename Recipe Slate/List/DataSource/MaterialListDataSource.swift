@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MaterialListDataSource: NSObject, ListDataSource {
+class MaterialListDataSource: NSObject, ListDataSource, FavoriteProtocol {
     
     var items: [Listable] {
         return materialData
@@ -54,6 +54,7 @@ extension MaterialListDataSource: UITableViewDataSource {
         if let material = item as? Material {
             cell.effectIcon.image = EffectsHandler.icon(for: material)
         }
+        cell.isFavorite = favorites.contains(where: { $0 == item.name })
         return cell
     }
 }

@@ -38,7 +38,7 @@ enum MaterialCategory: String {
     case monsterPart = "Monster Part"
 }
 
-struct Material: Listable, Hashable {
+struct Material: Listable, Sectionable, Hashable {
     
     var name: String
     var category: [MaterialCategory]
@@ -47,6 +47,9 @@ struct Material: Listable, Hashable {
     var saleValue: Int?
     var location: String?
     var potency: Int?
+    var sections: [DetailTableViewSections] {
+        return [.title, .effect, .resaleValue]
+    }
     
     init(materialName: String, category: [MaterialCategory], hearts: Float? = nil, effect: Effect? = nil, saleValue: Int? = nil, location: String? = nil, potency: Int? = nil) {
         self.name = materialName

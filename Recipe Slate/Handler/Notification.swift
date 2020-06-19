@@ -10,5 +10,6 @@ import Foundation
 
 extension Notification.Name {
 
-    static let RecipeSlateCategoryItemDidChange = Notification.Name("category-item-dig-change")
+    static let RecipeSlateCategoryItemDidChange = Notification.Name("category-item-did-change")
+    static let RecipeSlateFavoriteDidChange = Notification.Name("favorite-did-change")
 }

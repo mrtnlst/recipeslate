@@ -81,6 +81,9 @@ class DetailResaleCell: UITableViewCell {
         if let meal = item as? Meal {
             configureResaleLabel(ResaleHandler.resaleValue(for: meal, and: []))
         }
+        if let material = item as? Material {
+            configureResaleLabel(material.saleValue ?? 0)
+        }
     }
     
     private func configureResaleLabel(_ value: Int) {

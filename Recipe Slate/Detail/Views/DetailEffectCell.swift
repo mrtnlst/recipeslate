@@ -91,6 +91,9 @@ class DetailEffectCell: UITableViewCell {
         if let meal = item as? Meal {
             configureEffectLabels(EffectsHandler.calculateEffect(for: meal.mainIngredients, and: []))
         }
+        if let material = item as? Material {
+            configureEffectLabels(material.effect)
+        }
     }
     
     func configureEffectLabels(_ effect: Effect?) {

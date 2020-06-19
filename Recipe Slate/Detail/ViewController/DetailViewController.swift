@@ -59,7 +59,7 @@ class DetailViewController: UIViewController, FavoriteProtocol {
             cell?.setFavoriteState(.favorite)
         }
         UserDefaults.standard.set(favoriteArray, forKey: "favorites")
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "refresh"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: .RecipeSlateFavoriteDidChange, object: nil, userInfo: nil)
     }
 }
 
@@ -99,12 +99,11 @@ extension DetailViewController: UITableViewDataSource {
                                                        for: indexPath) as? DetailTitleCell else { fatalError() }
         cell.title.text = item.name
         
-        if let meal = item as? Meal {
-            if favorites.contains(where: { $0 == meal.name }) {
-                cell.setFavoriteState(.favorite)
-            }
-            cell.button.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
+        
+        if favorites.contains(where: { $0 == item.name }) {
+            cell.setFavoriteState(.favorite)
         }
+        cell.button.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
         return cell
     }
     
