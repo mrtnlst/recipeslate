@@ -11,6 +11,9 @@
 		5B22656B24952B5C00459517 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Listable.swift */; };
 		5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
+		5B40173D249D13F000E64294 /* DetailPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173C249D13F000E64294 /* DetailPotencyCell.swift */; };
+		5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173E249D141D00E64294 /* DetailLocationCell.swift */; };
+		5B401741249D16A100E64294 /* Potency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401740249D16A100E64294 /* Potency.swift */; };
 		5B472206249CB566006C44A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B472205249CB566006C44A5 /* UIImageView.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
@@ -70,6 +73,9 @@
 		5B22656A24952B5C00459517 /* Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
 		5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListDataSource.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
+		5B40173C249D13F000E64294 /* DetailPotencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailPotencyCell.swift; path = "Recipe Slate/Extensions/DetailPotencyCell.swift"; sourceTree = SOURCE_ROOT; };
+		5B40173E249D141D00E64294 /* DetailLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocationCell.swift; sourceTree = "<group>"; };
+		5B401740249D16A100E64294 /* Potency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Potency.swift; sourceTree = "<group>"; };
 		5B472205249CB566006C44A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = "Recipe Slate/General/Protocol/UIImageView.swift"; sourceTree = SOURCE_ROOT; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
@@ -229,6 +235,8 @@
 				5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */,
 				5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */,
 				5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */,
+				5B40173C249D13F000E64294 /* DetailPotencyCell.swift */,
+				5B40173E249D141D00E64294 /* DetailLocationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +344,7 @@
 				A96FD1371E7BE8D900CE60D6 /* Food.swift */,
 				A9C3387D1E853A51003A574F /* Material.swift */,
 				A9614D811E77FA0D009CA034 /* Meal.swift */,
+				5B401740249D16A100E64294 /* Potency.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -509,6 +518,7 @@
 				5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */,
 				5B472206249CB566006C44A5 /* UIImageView.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
+				5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */,
 				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,
 				5B8CAEF3249CB0E800C18B85 /* Sectionable.swift in Sources */,
 				5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */,
@@ -517,7 +527,9 @@
 				5BAAADB7249925BD0037F685 /* FavoriteProtocol.swift in Sources */,
 				5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */,
 				5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */,
+				5B401741249D16A100E64294 /* Potency.swift in Sources */,
 				5BAEEADD1F068938002E307A /* MealData.swift in Sources */,
+				5B40173D249D13F000E64294 /* DetailPotencyCell.swift in Sources */,
 				A9614D841E77FACA009CA034 /* MaterialData.swift in Sources */,
 				5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */,
 				5B8CAEF1249BFCA800C18B85 /* Notification.swift in Sources */,

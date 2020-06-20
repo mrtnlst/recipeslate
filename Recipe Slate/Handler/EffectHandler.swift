@@ -106,4 +106,32 @@ class EffectsHandler: NSObject {
     static func obtainMaterials(for materialCategory: MaterialCategory?) -> [Material] {
         return materialData.filter({ $0.category.contains(where: { materialCategory == $0 }) })
     }
+    
+    // MARK: - Potency
+    
+    static func calculatePotency(for material: Material) -> [Potency] {
+        guard let materialPotency = material.potency,
+              let effectPotencyLv1 = material.effect?.potencyLevel1,
+              materialPotency > 1 else {
+            return [Potency(amount: 0, type: material.effect?.type ?? .none, level: 1)]
+        }
+        
+        var potencies: [Potency] = []
+        
+        for amount in 1...5 {
+            if amount * materialPotency >= effectPotencyLv1 {
+                potencies.append(Potency(amount: amount, type: material.effect?.type ?? .none, level: 2))
+                break
+            }
+        }
+        
+        guard let effectPotencyLv2 = material.effect?.potencyLevel2 else { return potencies }
+        for amount in 1...5 {
+            if amount * materialPotency >= effectPotencyLv2 {
+                potencies.append(Potency(amount: amount, type: material.effect?.type ?? .none, level: 3))
+                break
+            }
+        }
+        return potencies
+    }
 }

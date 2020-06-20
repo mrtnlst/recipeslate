@@ -35,7 +35,7 @@ class DetailResaleCell: UITableViewCell {
     func setupViews() {
         backgroundColor = .backgroundBlue
         let selectedView = UIView()
-        selectedView.backgroundColor = .tableViewCellSelectedColor
+        selectedView.backgroundColor = .backgroundBlue
         selectedBackgroundView = selectedView
         
         stackView.translatesAutoresizingMaskIntoConstraints = false

@@ -91,6 +91,8 @@ extension DetailViewController: UITableViewDataSource {
             return configureMainIngredientCell(tableView, indexPath: indexPath, with: item)
         case .categoryIngredient:
             return configureCategoryIngredientCell(tableView, indexPath: indexPath, with: item)
+        case .potency:
+            return configurePotencyCell(tableView, indexPath: indexPath, with: item)
         }
     }
     
@@ -150,6 +152,16 @@ extension DetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailResaleCell.identifier,
                                                        for: indexPath) as? DetailResaleCell else { fatalError() }
         cell.setItem(item)
+        return cell
+    }
+    
+    func configurePotencyCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailPotencyCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailPotencyCell.identifier,
+                                                       for: indexPath) as? DetailPotencyCell else { fatalError() }
+        if let material = item as? Material {
+            cell.setPotency(EffectsHandler.calculatePotency(for: material))
+        }
+        
         return cell
     }
 }

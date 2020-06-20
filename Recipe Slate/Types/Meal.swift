@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct Meal: Listable, Sectionable {
     var name: String

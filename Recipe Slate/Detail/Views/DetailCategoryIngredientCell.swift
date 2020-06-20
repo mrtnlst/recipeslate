@@ -35,7 +35,7 @@ class DetailCategoryIngredientCell: UITableViewCell {
     func setupViews() {
         backgroundColor = .backgroundBlue
         let selectedView = UIView()
-        selectedView.backgroundColor = .tableViewCellSelectedColor
+        selectedView.backgroundColor = .backgroundBlue
         selectedBackgroundView = selectedView
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +70,7 @@ class DetailCategoryIngredientCell: UITableViewCell {
             picker1Data = data
             picker1.dataSource = self
             picker1.delegate = self
+            picker1.translatesAutoresizingMaskIntoConstraints = false
             
             if !stackView.subviews.contains(picker1) {
                 stackView.addArrangedSubview(picker1)
@@ -80,6 +81,7 @@ class DetailCategoryIngredientCell: UITableViewCell {
             picker2Data = data
             picker2.dataSource = self
             picker2.delegate = self
+            picker2.translatesAutoresizingMaskIntoConstraints = false
             
             if !stackView.subviews.contains(picker2) {
                 stackView.addArrangedSubview(picker2)
