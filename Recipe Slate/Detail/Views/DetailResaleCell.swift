@@ -13,7 +13,7 @@ class DetailResaleCell: UITableViewCell {
     static let identifier = "Detail-Resale-Cell"
     private var icon = UIImageView()
     public var resaleLabel = UILabel()
-    private var stackView = UIStackView()
+//    private var stackView = UIStackView()
     private var item: Listable!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,16 +37,11 @@ class DetailResaleCell: UITableViewCell {
         let selectedView = UIView()
         selectedView.backgroundColor = .backgroundBlue
         selectedBackgroundView = selectedView
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        contentView.addSubview(stackView)
-        
+
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.image = UIImage(named: "detail-rupee")
         icon.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(icon)
+        contentView.addSubview(icon)
         
         resaleLabel.translatesAutoresizingMaskIntoConstraints = false
         resaleLabel.font = UIFont.preferredFont(forTextStyle: .body)
@@ -54,18 +49,28 @@ class DetailResaleCell: UITableViewCell {
         resaleLabel.textAlignment = .left
         resaleLabel.numberOfLines = 1
         resaleLabel.lineBreakMode = .byTruncatingTail
-        stackView.addArrangedSubview(resaleLabel)
+        contentView.addSubview(resaleLabel)
     }
     
     func setupConstraints() {
+        let margins = contentView.layoutMarginsGuide
+        let container = UILayoutGuide()
+        contentView.addLayoutGuide(container)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             icon.heightAnchor.constraint(equalToConstant: 20),
-            icon.widthAnchor.constraint(equalTo: heightAnchor)
+            icon.widthAnchor.constraint(equalTo: icon.heightAnchor),
+            icon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            icon.centerYAnchor.constraint(equalTo: resaleLabel.centerYAnchor),
+            
+            resaleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
+            resaleLabel.topAnchor.constraint(equalTo: container.topAnchor),
+            resaleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            
+            container.topAnchor.constraint(equalTo: margins.topAnchor),
+            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
     }
     

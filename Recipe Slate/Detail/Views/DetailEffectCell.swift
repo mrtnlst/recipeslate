@@ -12,11 +12,12 @@ class DetailEffectCell: UITableViewCell {
     
     static let identifier = "Detail-Effect-Cell"
     
-    var stackView = UIStackView()
     var effectName = UILabel()
     var effectDuration = UILabel()
     var effectIcon = UIImageView()
     var item: Listable!
+    var effectNoneConstraint: NSLayoutConstraint!
+    var effectAvailableConstraint: NSLayoutConstraint!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,15 +42,9 @@ class DetailEffectCell: UITableViewCell {
         selectedView.backgroundColor = .backgroundBlue
         selectedBackgroundView = selectedView
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 3
-        contentView.addSubview(stackView)
-        
         effectIcon.translatesAutoresizingMaskIntoConstraints = false
         effectIcon.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(effectIcon)
+        contentView.addSubview(effectIcon)
         
         effectDuration.translatesAutoresizingMaskIntoConstraints = false
         effectDuration.font = UIFont.preferredFont(forTextStyle: .body)
@@ -57,7 +52,7 @@ class DetailEffectCell: UITableViewCell {
         effectDuration.textAlignment = .left
         effectDuration.numberOfLines = 1
         effectDuration.lineBreakMode = .byTruncatingTail
-        stackView.addArrangedSubview(effectDuration)
+        contentView.addSubview(effectDuration)
         
         effectName.translatesAutoresizingMaskIntoConstraints = false
         effectName.font = UIFont.preferredFont(forTextStyle: .body)
@@ -65,18 +60,36 @@ class DetailEffectCell: UITableViewCell {
         effectName.textAlignment = .left
         effectName.numberOfLines = 1
         effectName.lineBreakMode = .byTruncatingTail
-        stackView.addArrangedSubview(effectName)
+        contentView.addSubview(effectName)
     }
     
     func setupConstraints() {
+        let margins = contentView.layoutMarginsGuide
+        let container = UILayoutGuide()
+        contentView.addLayoutGuide(container)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             effectIcon.heightAnchor.constraint(equalToConstant: 20),
-            effectIcon.widthAnchor.constraint(equalTo: heightAnchor)
+            effectIcon.widthAnchor.constraint(equalTo: effectIcon.heightAnchor),
+            effectIcon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            effectIcon.centerYAnchor.constraint(equalTo: effectDuration.centerYAnchor),
+            
+            effectDuration.leadingAnchor.constraint(equalTo: effectIcon.trailingAnchor, constant: 5),
+            effectDuration.topAnchor.constraint(equalTo: container.topAnchor),
+            effectDuration.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            
+            effectName.topAnchor.constraint(equalTo: container.topAnchor),
+            effectName.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            
+            container.topAnchor.constraint(equalTo: margins.topAnchor),
+            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
+        
+        // Adds possibility to move effectNameLabel when it displays .none
+        effectNoneConstraint = effectName.leadingAnchor.constraint(equalTo: effectIcon.trailingAnchor, constant: 5)
+        effectAvailableConstraint = effectName.leadingAnchor.constraint(equalTo: effectDuration.trailingAnchor, constant: 5)
     }
     
     // MARK: - Effect
@@ -117,6 +130,14 @@ class DetailEffectCell: UITableViewCell {
             effectName.text = newEffectName
             effectDuration.text = newEffectDuration
             effectIcon.image = newEffectImage
+        }
+        
+        if effect?.type == EffectType.none {
+            NSLayoutConstraint.deactivate([effectAvailableConstraint])
+            NSLayoutConstraint.activate([effectNoneConstraint])
+        } else {
+            NSLayoutConstraint.deactivate([effectNoneConstraint])
+            NSLayoutConstraint.activate([effectAvailableConstraint])
         }
     }
     

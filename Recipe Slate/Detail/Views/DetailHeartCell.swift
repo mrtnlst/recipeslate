@@ -13,7 +13,6 @@ class DetailHeartCell: UITableViewCell {
     static let identifier = "Detail-Hearts-Cell"
     public var valueLabel = UILabel()
     private var icon = UIImageView()
-    private var stackView = UIStackView()
     private var item: Listable!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,17 +36,11 @@ class DetailHeartCell: UITableViewCell {
         let selectedView = UIView()
         selectedView.backgroundColor = .backgroundBlue
         selectedBackgroundView = selectedView
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 3
-        contentView.addSubview(stackView)
-        
+   
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.image = UIImage(named: "detail-heart-full")
         icon.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(icon)
+        contentView.addSubview(icon)
         
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         valueLabel.font = UIFont.preferredFont(forTextStyle: .body)
@@ -55,17 +48,28 @@ class DetailHeartCell: UITableViewCell {
         valueLabel.textAlignment = .left
         valueLabel.numberOfLines = 1
         valueLabel.lineBreakMode = .byTruncatingTail
-        stackView.addArrangedSubview(valueLabel)
+        contentView.addSubview(valueLabel)
     }
     
     func setupConstraints() {
+        let margins = contentView.layoutMarginsGuide
+        let container = UILayoutGuide()
+        contentView.addLayoutGuide(container)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             icon.heightAnchor.constraint(equalToConstant: 20),
-            icon.widthAnchor.constraint(equalTo: heightAnchor)
+            icon.widthAnchor.constraint(equalTo: icon.heightAnchor),
+            icon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            icon.centerYAnchor.constraint(equalTo: valueLabel.centerYAnchor),
+            
+            valueLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
+            valueLabel.topAnchor.constraint(equalTo: container.topAnchor),
+            valueLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            
+            container.topAnchor.constraint(equalTo: margins.topAnchor),
+            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
     }
     
