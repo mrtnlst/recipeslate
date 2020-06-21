@@ -16,7 +16,7 @@ enum CategoryPicker {
 class DetailCategoryIngredientCell: UITableViewCell {
     
     static let identifier = "Detail-Category-Ingredient-Cell"
-    private var stackView = UIStackView()
+    private var container = UILayoutGuide()
     var picker1 = UIPickerView()
     var picker2 = UIPickerView()
     var picker1Data: [Material] = []
@@ -37,26 +37,17 @@ class DetailCategoryIngredientCell: UITableViewCell {
         let selectedView = UIView()
         selectedView.backgroundColor = .backgroundBlue
         selectedBackgroundView = selectedView
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .center
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.spacing = 4
-        contentView.addSubview(stackView)
     }
     
     func setupConstraints() {
-        // Fixes auto layout error in debugger where encapsulated height is slightly higher than 90
-        let heightAnchorConstraint = stackView.heightAnchor.constraint(equalToConstant: 90)
-        heightAnchorConstraint.priority = .defaultHigh
+        let margins = contentView.layoutMarginsGuide
+        contentView.addLayoutGuide(container)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            heightAnchorConstraint
+            container.topAnchor.constraint(equalTo: margins.topAnchor),
+            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
     }
     
@@ -68,24 +59,35 @@ class DetailCategoryIngredientCell: UITableViewCell {
     func configurePicker(_ picker: CategoryPicker, data: [Material] = []) {
         if picker == .first {
             picker1Data = data
+            picker1.subviews[1].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
+            picker1.subviews[2].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
             picker1.dataSource = self
             picker1.delegate = self
             picker1.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(picker1)
             
-            if !stackView.subviews.contains(picker1) {
-                stackView.addArrangedSubview(picker1)
-            }
+            NSLayoutConstraint.activate([
+                picker1.topAnchor.constraint(equalTo: container.topAnchor),
+                picker1.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+                picker1.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+                picker1.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            ])
             picker1.reloadAllComponents()
-            NotificationHandler.post(.RecipeSlateCategoryItemDidChange, object: picker1Data.first)
         } else {
             picker2Data = data
             picker2.dataSource = self
             picker2.delegate = self
             picker2.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(picker2)
             
-            if !stackView.subviews.contains(picker2) {
-                stackView.addArrangedSubview(picker2)
-            }
+            NSLayoutConstraint.activate([
+                picker1.trailingAnchor.constraint(equalTo: container.centerXAnchor),
+                
+                picker2.topAnchor.constraint(equalTo: container.topAnchor),
+                picker2.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+                picker2.leadingAnchor.constraint(equalTo: container.centerXAnchor),
+                picker2.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            ])
             picker2.reloadAllComponents()
         }
     }
