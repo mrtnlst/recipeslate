@@ -17,8 +17,8 @@ class DetailCategoryIngredientCell: UITableViewCell {
     
     static let identifier = "Detail-Category-Ingredient-Cell"
     private var container = UILayoutGuide()
-    var picker1 = UIPickerView()
-    var picker2 = UIPickerView()
+    var picker1 = DetailPickerView()
+    var picker2 = DetailPickerView()
     var picker1Data: [Material] = []
     var picker2Data: [Material] = []
     
@@ -59,11 +59,8 @@ class DetailCategoryIngredientCell: UITableViewCell {
     func configurePicker(_ picker: CategoryPicker, data: [Material] = []) {
         if picker == .first {
             picker1Data = data
-            picker1.subviews[1].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
-            picker1.subviews[2].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
             picker1.dataSource = self
             picker1.delegate = self
-            picker1.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(picker1)
             
             NSLayoutConstraint.activate([
@@ -77,7 +74,6 @@ class DetailCategoryIngredientCell: UITableViewCell {
             picker2Data = data
             picker2.dataSource = self
             picker2.delegate = self
-            picker2.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(picker2)
             
             NSLayoutConstraint.activate([

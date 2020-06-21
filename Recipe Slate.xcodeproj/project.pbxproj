@@ -14,6 +14,7 @@
 		5B40173D249D13F000E64294 /* DetailPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173C249D13F000E64294 /* DetailPotencyCell.swift */; };
 		5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173E249D141D00E64294 /* DetailLocationCell.swift */; };
 		5B401741249D16A100E64294 /* Potency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401740249D16A100E64294 /* Potency.swift */; };
+		5B401745249F9FD400E64294 /* DetailPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401744249F9FD400E64294 /* DetailPickerView.swift */; };
 		5B472206249CB566006C44A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B472205249CB566006C44A5 /* UIImageView.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
@@ -76,6 +77,7 @@
 		5B40173C249D13F000E64294 /* DetailPotencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailPotencyCell.swift; path = "Recipe Slate/Extensions/DetailPotencyCell.swift"; sourceTree = SOURCE_ROOT; };
 		5B40173E249D141D00E64294 /* DetailLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocationCell.swift; sourceTree = "<group>"; };
 		5B401740249D16A100E64294 /* Potency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Potency.swift; sourceTree = "<group>"; };
+		5B401744249F9FD400E64294 /* DetailPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPickerView.swift; sourceTree = "<group>"; };
 		5B472205249CB566006C44A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = "Recipe Slate/General/Protocol/UIImageView.swift"; sourceTree = SOURCE_ROOT; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
 				5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */,
 				5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */,
+				5B401744249F9FD400E64294 /* DetailPickerView.swift */,
 				5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */,
 				5B40173C249D13F000E64294 /* DetailPotencyCell.swift */,
 				5B40173E249D141D00E64294 /* DetailLocationCell.swift */,
@@ -484,6 +487,7 @@
 				5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */,
 				5B22656B24952B5C00459517 /* Listable.swift in Sources */,
 				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
+				5B401745249F9FD400E64294 /* DetailPickerView.swift in Sources */,
 				5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */,
 				5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */,
 				5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */,
