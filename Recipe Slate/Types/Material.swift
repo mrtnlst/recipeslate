@@ -48,7 +48,7 @@ struct Material: Listable, Sectionable, Hashable {
     var location: String?
     var potency: Int?
     var sections: [DetailTableViewSections] {
-        return [.title, .effect, .potency, .resaleValue]
+        return [.title, .effect, .potency, .resaleValue, .location]
     }
     
     init(materialName: String, category: [MaterialCategory], hearts: Float? = nil, effect: Effect? = nil, saleValue: Int? = nil, location: String? = nil, potency: Int? = nil) {

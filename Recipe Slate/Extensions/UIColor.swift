@@ -24,5 +24,6 @@ extension UIColor {
     static let rupeePurple = #colorLiteral(red: 0.8392156863, green: 0.2862745098, blue: 0.8666666667, alpha: 1)
     static let rupeeGold = #colorLiteral(red: 0.9333333333, green: 0.8352941176, blue: 0.3333333333, alpha: 1)
     static let rupeeSilver = #colorLiteral(red: 0.8431372549, green: 0.8431372549, blue: 0.8431372549, alpha: 1)
-    
+
+    static let cream = #colorLiteral(red: 0.8914693594, green: 0.8615709543, blue: 0.7523322105, alpha: 1)
 }

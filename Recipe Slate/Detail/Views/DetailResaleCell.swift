@@ -13,7 +13,6 @@ class DetailResaleCell: UITableViewCell {
     static let identifier = "Detail-Resale-Cell"
     private var icon = UIImageView()
     public var resaleLabel = UILabel()
-//    private var stackView = UIStackView()
     private var item: Listable!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

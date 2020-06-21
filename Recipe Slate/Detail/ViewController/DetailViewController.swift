@@ -80,23 +80,25 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section] {
         case .title:
-            return configureTitleCell(tableView, indexPath: indexPath, with: item)
+            return configureTitleCell(tableView, indexPath: indexPath)
         case .heart:
-            return configureHeartCell(tableView, indexPath: indexPath, with: item)
+            return configureHeartCell(tableView, indexPath: indexPath)
         case .effect:
-            return configureEffectCell(tableView, indexPath: indexPath, with: item)
+            return configureEffectCell(tableView, indexPath: indexPath)
         case .resaleValue:
-            return configureResaleCell(tableView, indexPath: indexPath, with: item)
+            return configureResaleCell(tableView, indexPath: indexPath)
         case .mainIngredient:
-            return configureMainIngredientCell(tableView, indexPath: indexPath, with: item)
+            return configureMainIngredientCell(tableView, indexPath: indexPath)
         case .categoryIngredient:
-            return configureCategoryIngredientCell(tableView, indexPath: indexPath, with: item)
+            return configureCategoryIngredientCell(tableView, indexPath: indexPath)
         case .potency:
-            return configurePotencyCell(tableView, indexPath: indexPath, with: item)
+            return configurePotencyCell(tableView, indexPath: indexPath)
+        case .location:
+            return configureLocationCell(tableView, indexPath: indexPath)
         }
     }
     
-    func configureTitleCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailTitleCell {
+    func configureTitleCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailTitleCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTitleCell.identifier,
                                                        for: indexPath) as? DetailTitleCell else { fatalError() }
         cell.title.text = item.name
@@ -109,7 +111,7 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureHeartCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailHeartCell {
+    func configureHeartCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailHeartCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartCell.identifier,
             
                                                        for: indexPath) as? DetailHeartCell else { fatalError() }
@@ -118,14 +120,14 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureEffectCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailEffectCell {
+    func configureEffectCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailEffectCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailEffectCell.identifier,
                                                        for: indexPath) as? DetailEffectCell else { fatalError() }
         cell.setItem(item)
         return cell
     }
     
-    func configureMainIngredientCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailMainIngredientCell {
+    func configureMainIngredientCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMainIngredientCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMainIngredientCell.identifier,
                                                        for: indexPath) as? DetailMainIngredientCell else { fatalError() }
         if let meal = item as? Meal {
@@ -134,7 +136,7 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureCategoryIngredientCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailCategoryIngredientCell {
+    func configureCategoryIngredientCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailCategoryIngredientCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailCategoryIngredientCell.identifier,
                                                        for: indexPath) as? DetailCategoryIngredientCell else { fatalError() }
         if let meal = item as? Meal {
@@ -148,20 +150,27 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureResaleCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailResaleCell {
+    func configureResaleCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailResaleCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailResaleCell.identifier,
                                                        for: indexPath) as? DetailResaleCell else { fatalError() }
         cell.setItem(item)
         return cell
     }
     
-    func configurePotencyCell(_ tableView: UITableView, indexPath: IndexPath, with item: Listable) -> DetailPotencyCell {
+    func configurePotencyCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailPotencyCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailPotencyCell.identifier,
                                                        for: indexPath) as? DetailPotencyCell else { fatalError() }
         if let material = item as? Material {
             cell.setPotency(EffectsHandler.calculatePotency(for: material))
         }
         
+        return cell
+    }
+    
+    func configureLocationCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailLocationCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailLocationCell.identifier,
+                                                       for: indexPath) as? DetailLocationCell else { fatalError() }
+        cell.setItem(item)
         return cell
     }
 }
