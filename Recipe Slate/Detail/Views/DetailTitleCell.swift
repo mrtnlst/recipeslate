@@ -8,17 +8,10 @@
 
 import UIKit
 
-enum FavoriteState: String {
-    case favorite = "favorite"
-    case none = "unfavorite"
-}
-
 class DetailTitleCell: UITableViewCell {
 
     static let identifier = "Detail-Title-Cell"
-    public var button = UIButton(type: .custom)
     public var title = UILabel()
-    public var favoriteState: FavoriteState = .none
     private var stackView = UIStackView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -49,10 +42,6 @@ class DetailTitleCell: UITableViewCell {
         title.numberOfLines = 1
         title.lineBreakMode = .byTruncatingTail
         stackView.addArrangedSubview(title)
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "detail-unfavorite"), for: .normal)
-        stackView.addArrangedSubview(button)
     }
     
     func setupConstraints() {
@@ -62,20 +51,11 @@ class DetailTitleCell: UITableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            
-            button.heightAnchor.constraint(equalToConstant: 25),
-            button.widthAnchor.constraint(equalToConstant: 25),
         ])
-    }
-    
-    public func setFavoriteState(_ state: FavoriteState) {
-        favoriteState = state
-        button.setImage(UIImage(named: "detail-\(state.rawValue)"), for: .normal)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        setFavoriteState(.none)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

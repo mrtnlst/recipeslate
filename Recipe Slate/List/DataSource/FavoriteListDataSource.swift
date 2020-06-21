@@ -9,7 +9,6 @@
 import UIKit
 
 class FavoriteListDataSource: NSObject, ListDataSource, FavoriteProtocol {
-
     var items: [Listable] {
         var items: [Listable] = mealData.filter({ favorites.contains($0.name) })
         items.append(contentsOf: materialData.filter({ favorites.contains($0.name) }))

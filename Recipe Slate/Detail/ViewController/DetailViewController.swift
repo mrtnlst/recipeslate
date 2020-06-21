@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, FavoriteProtocol {
     
+    var favoriteButton: UIButton!
     var item: Listable
     var tableView: DetailTableView = DetailTableView()
     var sections: [DetailTableViewSections] = []
@@ -36,6 +37,8 @@ class DetailViewController: UIViewController, FavoriteProtocol {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+        
+        setupFavoriteButton()
     }
     
     func setupConstraints() {
@@ -47,17 +50,37 @@ class DetailViewController: UIViewController, FavoriteProtocol {
         ])
     }
     
+    func setupFavoriteButton() {
+        let image = favorites.contains(where: { $0 == item.name })
+            ? UIImage(named: "detail-favorite")
+            : UIImage(named: "detail-unfavorite")
+       
+        favoriteButton = UIButton(type: .system)
+        favoriteButton.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.setImage(image, for: .normal)
+        
+        let barButton = UIBarButtonItem(customView: favoriteButton)
+        
+        NSLayoutConstraint.activate([
+            favoriteButton.heightAnchor.constraint(equalToConstant: 32),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 32),
+        ])
+        
+        navigationItem.rightBarButtonItem = barButton
+    }
+    
     @objc func toggleFavorite() {
-        let cell = tableView.visibleCells.first(where: { $0.reuseIdentifier == DetailTitleCell.identifier }) as? DetailTitleCell
         var favoriteArray = favorites
         
         if favorites.contains(where: { $0 == item.name }) {
             favoriteArray.removeAll(where: { $0 == item.name })
-            cell?.setFavoriteState(.none)
+            favoriteButton.setImage(UIImage(named: "detail-unfavorite"), for: .normal)
         } else {
             favoriteArray.append(item.name)
-            cell?.setFavoriteState(.favorite)
+            favoriteButton.setImage(UIImage(named: "detail-favorite"), for: .normal)
         }
+        favoriteButton.imageView?.addBounceAnimation()
         UserDefaults.standard.set(favoriteArray, forKey: "favorites")
         NotificationCenter.default.post(name: .RecipeSlateFavoriteDidChange, object: nil, userInfo: nil)
     }
@@ -102,12 +125,7 @@ extension DetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTitleCell.identifier,
                                                        for: indexPath) as? DetailTitleCell else { fatalError() }
         cell.title.text = item.name
-        
-        
-        if favorites.contains(where: { $0 == item.name }) {
-            cell.setFavoriteState(.favorite)
-        }
-        cell.button.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
+    
         return cell
     }
     

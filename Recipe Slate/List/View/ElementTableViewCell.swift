@@ -48,6 +48,7 @@ class ElementTableViewCell: UITableViewCell {
         favoriteIcon.translatesAutoresizingMaskIntoConstraints = false
         favoriteIcon.contentMode = .scaleAspectFit
         favoriteIcon.image = UIImage(named: "detail-favorite")
+        favoriteIcon.tintColor = .listFavorite
         favoriteIcon.isHidden = !isFavorite
         addSubview(favoriteIcon)
         
@@ -79,7 +80,8 @@ class ElementTableViewCell: UITableViewCell {
             
             favoriteIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             favoriteIcon.heightAnchor.constraint(equalToConstant: 20),
-            favoriteIcon.trailingAnchor.constraint(equalTo: iconContainer.leadingAnchor, constant: -10)
+            favoriteIcon.widthAnchor.constraint(equalToConstant: 20),
+            favoriteIcon.trailingAnchor.constraint(equalTo: iconContainer.leadingAnchor, constant: -20)
         ])
     }
     
