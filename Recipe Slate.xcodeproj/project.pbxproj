@@ -15,6 +15,7 @@
 		5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173E249D141D00E64294 /* DetailLocationCell.swift */; };
 		5B401741249D16A100E64294 /* Potency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401740249D16A100E64294 /* Potency.swift */; };
 		5B401745249F9FD400E64294 /* DetailPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401744249F9FD400E64294 /* DetailPickerView.swift */; };
+		5B40174924A0A32900E64294 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174824A0A32900E64294 /* TimeInterval.swift */; };
 		5B472206249CB566006C44A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B472205249CB566006C44A5 /* UIImageView.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
@@ -78,6 +79,7 @@
 		5B40173E249D141D00E64294 /* DetailLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocationCell.swift; sourceTree = "<group>"; };
 		5B401740249D16A100E64294 /* Potency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Potency.swift; sourceTree = "<group>"; };
 		5B401744249F9FD400E64294 /* DetailPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPickerView.swift; sourceTree = "<group>"; };
+		5B40174824A0A32900E64294 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		5B472205249CB566006C44A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = "Recipe Slate/General/Protocol/UIImageView.swift"; sourceTree = SOURCE_ROOT; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				5B472205249CB566006C44A5 /* UIImageView.swift */,
+				5B40174824A0A32900E64294 /* TimeInterval.swift */,
 				5B8CAEF0249BFCA800C18B85 /* Notification.swift */,
 				5B8CAEEE249BFC8900C18B85 /* Array.swift */,
 				5BD8903F2494C5DA0068A36A /* UIColor.swift */,
@@ -527,6 +530,7 @@
 				5B8CAEF3249CB0E800C18B85 /* Sectionable.swift in Sources */,
 				5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */,
 				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
+				5B40174924A0A32900E64294 /* TimeInterval.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
 				5BAAADB7249925BD0037F685 /* FavoriteProtocol.swift in Sources */,
 				5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */,

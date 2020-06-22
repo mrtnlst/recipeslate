@@ -120,7 +120,7 @@ class DetailEffectCell: UITableViewCell {
         if amountEffects.contains(where: { $0 == effect?.type}) {
             newEffectDuration = "\(effect?.amount ?? 0)"
         } else {
-            newEffectDuration = "+\(effect?.duration ?? 0)s"
+            newEffectDuration = (effect?.duration ?? 0).durationToString()
         }
         
         if effectName.text != newEffectName || effectDuration.text != newEffectDuration {
