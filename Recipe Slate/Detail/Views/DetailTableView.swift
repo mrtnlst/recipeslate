@@ -17,6 +17,7 @@ enum DetailTableViewSections: String {
     case categoryIngredient = "CATEGORY INGREDIENTS"
     case potency = "POTENCY"
     case location = "LOCATION"
+    case dishes = "POSSIBLE DISHES"
 }
 
 class DetailTableView: UITableView {
@@ -35,6 +36,7 @@ class DetailTableView: UITableView {
         register(DetailResaleCell.self, forCellReuseIdentifier: DetailResaleCell.identifier)
         register(DetailPotencyCell.self, forCellReuseIdentifier: DetailPotencyCell.identifier)
         register(DetailLocationCell.self, forCellReuseIdentifier: DetailLocationCell.identifier)
+        register(DetailDishesCell.self, forCellReuseIdentifier: DetailDishesCell.identifier)
     }
     
     required init?(coder: NSCoder) {

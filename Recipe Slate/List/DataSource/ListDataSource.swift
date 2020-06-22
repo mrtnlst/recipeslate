@@ -6,7 +6,9 @@
 //  Copyright © 2020 Martin List. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+typealias DataSource = ListDataSource & UITableViewDataSource
 
 protocol ListDataSource {
     

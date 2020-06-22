@@ -48,7 +48,13 @@ struct Material: Listable, Sectionable, Hashable {
     var location: String?
     var potency: Int?
     var sections: [DetailTableViewSections] {
-        return [.title, .effect, .potency, .resaleValue, .location]
+        return [.title, .effect, .potency, .resaleValue, .location, .dishes]
+    }
+    var isElixirIngredient: Bool {
+        return category.contains(.critter) || category.contains(.monsterPart)
+    }
+    var hasDurationEffect: Bool {
+        return effect?.type == .duration
     }
     
     init(materialName: String, category: [MaterialCategory], hearts: Float? = nil, effect: Effect? = nil, saleValue: Int? = nil, location: String? = nil, potency: Int? = nil) {

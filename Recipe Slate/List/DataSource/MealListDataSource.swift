@@ -11,11 +11,28 @@ import UIKit
 class MealListDataSource: NSObject, ListDataSource, FavoriteProtocol {
     
     var items: [Listable] {
+        if let filter = filterMaterial {
+            return mealData.filter { (meal) -> Bool in
+                if meal.mainIngredients.contains(filter.name) {
+                    return true
+                }
+                if meal.categoryIngredients.contains(where: { filter.category.contains($0) }) {
+                    return true
+                }
+                return false
+            }
+        }
         return mealData
     }
     var sortedFirstLetters: [String] = []
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
+    var filterMaterial: Material?
+    
+    init(with filter: Material? = nil) {
+        super.init()
+        filterMaterial = filter
+    }
 }
 
 extension MealListDataSource: UITableViewDataSource {

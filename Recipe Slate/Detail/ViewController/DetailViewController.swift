@@ -118,6 +118,8 @@ extension DetailViewController: UITableViewDataSource {
             return configurePotencyCell(tableView, indexPath: indexPath)
         case .location:
             return configureLocationCell(tableView, indexPath: indexPath)
+        case .dishes:
+            return configureDishesCell(tableView, indexPath: indexPath)
         }
     }
     
@@ -191,6 +193,13 @@ extension DetailViewController: UITableViewDataSource {
         cell.setItem(item)
         return cell
     }
+    
+    func configureDishesCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailDishesCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailDishesCell.identifier,
+                                                       for: indexPath) as? DetailDishesCell else { fatalError() }
+        cell.setItem(item)
+        return cell
+    }
 }
 
 
@@ -210,4 +219,23 @@ extension DetailViewController: UITableViewDelegate {
         header.textLabel?.textColor = .white
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if sections[indexPath.section] == .dishes {
+            guard let material = item as? Material else { return }
+            var viewController: UIViewController
+            
+            if material.isElixirIngredient && material.hasDurationEffect {
+                // TODO: - Find elixir for material
+                viewController = DetailViewController(item: item, sections: material.sections)
+            } else {
+                let dataSource: DataSource = material.isElixirIngredient
+                    ? ElixirListDataSource()
+                    : MealListDataSource(with: material)
+                viewController = ListViewController(dataSource: dataSource)
+                viewController.title = material.isElixirIngredient ? "Possible Elixirs" : "Possible Meals"
+            }
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
