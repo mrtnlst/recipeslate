@@ -5,18 +5,21 @@
       "scale" : "1x"
     },
     {
+      "filename" : "bar-favorite-2x.png",
       "idiom" : "universal",
-      "filename" : "Favorites Tab 2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "bar-favorite-3x.png",
       "idiom" : "universal",
-      "filename" : "Favorites Tab.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }
