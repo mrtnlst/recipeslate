@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B17A92724A2A45B00983643 /* DetailCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B17A92624A2A45B00983643 /* DetailCellStyle.swift */; };
 		5B224E341EAE0A3A006D47DB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B224E331EAE0A3A006D47DB /* AboutViewController.swift */; };
 		5B22656B24952B5C00459517 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Listable.swift */; };
 		5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */; };
@@ -17,7 +18,9 @@
 		5B40174924A0A32900E64294 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174824A0A32900E64294 /* TimeInterval.swift */; };
 		5B40174E24A0E3D300E64294 /* DetailPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174C24A0E3D300E64294 /* DetailPotencyCell.swift */; };
 		5B40174F24A0E3D300E64294 /* DetailDishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */; };
-		5B472206249CB566006C44A5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B472205249CB566006C44A5 /* UIImageView.swift */; };
+		5B4E149B24A2A13F00FE95C5 /* Guidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E149A24A2A13F00FE95C5 /* Guidable.swift */; };
+		5B4E149D24A2A16700FE95C5 /* Itemize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E149C24A2A16700FE95C5 /* Itemize.swift */; };
+		5B4E14A324A2A1B800FE95C5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E14A224A2A1B800FE95C5 /* UIImageView.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
 		5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */; };
@@ -72,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B17A92624A2A45B00983643 /* DetailCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellStyle.swift; sourceTree = "<group>"; };
 		5B224E331EAE0A3A006D47DB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5B22656A24952B5C00459517 /* Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
 		5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListDataSource.swift; sourceTree = "<group>"; };
@@ -82,7 +86,9 @@
 		5B40174824A0A32900E64294 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		5B40174C24A0E3D300E64294 /* DetailPotencyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPotencyCell.swift; sourceTree = "<group>"; };
 		5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDishesCell.swift; sourceTree = "<group>"; };
-		5B472205249CB566006C44A5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = "Recipe Slate/General/Protocol/UIImageView.swift"; sourceTree = SOURCE_ROOT; };
+		5B4E149A24A2A13F00FE95C5 /* Guidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guidable.swift; sourceTree = "<group>"; };
+		5B4E149C24A2A16700FE95C5 /* Itemize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itemize.swift; sourceTree = "<group>"; };
+		5B4E14A224A2A1B800FE95C5 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
 		5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMainIngredientCell.swift; sourceTree = "<group>"; };
@@ -91,7 +97,7 @@
 		5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResaleHandler.swift; sourceTree = "<group>"; };
 		5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = SOURCE_ROOT; };
 		5B8CAEEE249BFC8900C18B85 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		5B8CAEF0249BFCA800C18B85 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = "Recipe Slate/Handler/Notification.swift"; sourceTree = SOURCE_ROOT; };
+		5B8CAEF0249BFCA800C18B85 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = "Recipe Slate/Extensions/Notification.swift"; sourceTree = SOURCE_ROOT; };
 		5B8CAEF2249CB0E800C18B85 /* Sectionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sectionable.swift; path = "Recipe Slate/Types/Sectionable.swift"; sourceTree = SOURCE_ROOT; };
 		5BA40D342497E11700CBD251 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		5BA40D362497E58100CBD251 /* MealListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListDataSource.swift; sourceTree = "<group>"; };
@@ -149,6 +155,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B17A92524A2A44800983643 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5B17A92624A2A45B00983643 /* DetailCellStyle.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		5B2CC7E21E9197EF00E02C55 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +266,7 @@
 		5BA40D43249811FF00CBD251 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5B472205249CB566006C44A5 /* UIImageView.swift */,
+				5B4E14A224A2A1B800FE95C5 /* UIImageView.swift */,
 				5B40174824A0A32900E64294 /* TimeInterval.swift */,
 				5B8CAEF0249BFCA800C18B85 /* Notification.swift */,
 				5B8CAEEE249BFC8900C18B85 /* Array.swift */,
@@ -309,6 +323,8 @@
 		5BAAADB5249924A00037F685 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				5B4E149C24A2A16700FE95C5 /* Itemize.swift */,
+				5B4E149A24A2A13F00FE95C5 /* Guidable.swift */,
 				5B22656A24952B5C00459517 /* Listable.swift */,
 				5B8CAEF2249CB0E800C18B85 /* Sectionable.swift */,
 				5BAAADB6249925BD0037F685 /* FavoriteProtocol.swift */,
@@ -338,6 +354,7 @@
 		5BD8904D2494F9E10068A36A /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				5B17A92524A2A44800983643 /* Protocol */,
 				5BA40D3F2498119200CBD251 /* ViewController */,
 				5BA40D41249811B300CBD251 /* Views */,
 			);
@@ -451,10 +468,9 @@
 			};
 			buildConfigurationList = A9614D631E77F8F0009CA034 /* Build configuration list for PBXProject "Recipe Slate" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -488,6 +504,7 @@
 			files = (
 				A9614D6C1E77F8F0009CA034 /* AppDelegate.swift in Sources */,
 				5BD890482494CCA30068A36A /* ListTableView.swift in Sources */,
+				5B4E149D24A2A16700FE95C5 /* Itemize.swift in Sources */,
 				A9614D821E77FA0D009CA034 /* Meal.swift in Sources */,
 				A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */,
 				5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */,
@@ -505,6 +522,7 @@
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
 				5B40174E24A0E3D300E64294 /* DetailPotencyCell.swift in Sources */,
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
+				5B17A92724A2A45B00983643 /* DetailCellStyle.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
 				5BD890512495025B0068A36A /* DetailHeartCell.swift in Sources */,
 				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
@@ -512,6 +530,7 @@
 				5B8CAEEF249BFC8900C18B85 /* Array.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
 				5BA40D47249818F100CBD251 /* EffectListDataSource.swift in Sources */,
+				5B4E149B24A2A13F00FE95C5 /* Guidable.swift in Sources */,
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
 				5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */,
 				5BA40D3D2498047100CBD251 /* ElixirListDataSource.swift in Sources */,
@@ -520,6 +539,7 @@
 				5BA40D452498123B00CBD251 /* MaterialListDataSource.swift in Sources */,
 				5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */,
 				5B8CAEED249BF44100C18B85 /* NotificationHandler.swift in Sources */,
+				5B4E14A324A2A1B800FE95C5 /* UIImageView.swift in Sources */,
 				5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */,
 				5BAEEAE11F080399002E307A /* FoodData.swift in Sources */,
 				A9614D8D1E795104009CA034 /* Elixir.swift in Sources */,
@@ -527,7 +547,6 @@
 				A9C338801E8544B0003A574F /* MealDetailViewController.swift in Sources */,
 				5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */,
 				5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */,
-				5B472206249CB566006C44A5 /* UIImageView.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
 				5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */,
 				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,

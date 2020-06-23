@@ -13,7 +13,7 @@ struct Meal: Listable, Sectionable {
     var mainIngredients: [String]
     var categoryIngredients: [MaterialCategory]
     var sections: [DetailTableViewSections] {
-        var sections: [DetailTableViewSections] = [.title, .heart, .effect, .resaleValue]
+        var sections: [DetailTableViewSections] = [.heart, .effect, .resaleValue]
         
         if !mainIngredients.isEmpty {
             sections.append(.mainIngredient)

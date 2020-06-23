@@ -13,10 +13,10 @@ enum CategoryPicker {
     case second
 }
 
-class DetailCategoryIngredientCell: UITableViewCell {
+class DetailCategoryIngredientCell: UITableViewCell, DetailCellStyle, Guidable {
     
     static let identifier = "Detail-Category-Ingredient-Cell"
-    private var container = UILayoutGuide()
+    internal var container = UILayoutGuide()
     var picker1 = DetailPickerView()
     var picker2 = DetailPickerView()
     var picker1Data: [Material] = []
@@ -24,33 +24,14 @@ class DetailCategoryIngredientCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-        setupConstraints()
+        applyCellStyle()
+        setupContainer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupViews() {
-        backgroundColor = .backgroundBlue
-        let selectedView = UIView()
-        selectedView.backgroundColor = .backgroundBlue
-        selectedBackgroundView = selectedView
-    }
-    
-    func setupConstraints() {
-        let margins = contentView.layoutMarginsGuide
-        contentView.addLayoutGuide(container)
-        
-        NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: margins.topAnchor),
-            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
-        ])
-    }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         notifyMaterialSelection()

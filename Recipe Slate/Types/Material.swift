@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 enum MaterialCategory: String {
     case misc = "Misc"
     case mushroom = "Mushroom"
-    case seafood = "Seafood"
+    case seafood = "fish"
     case fish = "Fish"
     case porgy = "Porgy"
     case seafoodCurry = "Seafood Curry"
@@ -36,6 +37,33 @@ enum MaterialCategory: String {
     case nut = "Nut"
     case critter = "Critter"
     case monsterPart = "Monster Part"
+    
+    func icon() -> UIImage? {
+        switch self {
+        case .fish, .seafood, .seafoodCurry, .porgy, .exceptPoryOrSalmon:
+            return UIImage(named: "category-fish")
+        case .misc:
+            return UIImage(named: "category-misc")
+        case .snail:
+            return UIImage(named: "category-snail")
+        case .crab, .crabOrSnail:
+            return UIImage(named: "category-crab")
+        case .vegetables, .carrot, .exceptPumpkin, .carrotOrPumpkin, .exceptCarrotOrPumpkin, .flowersAndHerbs, .radish:
+            return UIImage(named: "category-vegetables")
+        case .fruit, .appleAndWildberry, .besidesApple, .besidesAppleAndWildberry:
+            return UIImage(named: "category-fruit")
+        case .nut:
+            return UIImage(named: "category-nut")
+        case .critter:
+            return UIImage(named: "category-critter")
+        case .monsterPart:
+            return UIImage(named: "category-monsterpart")
+        case .meat, .mammal, .poultry:
+            return UIImage(named: "category-meat")
+        case .mushroom:
+            return UIImage(named: "category-mushroom")
+        }
+    }
 }
 
 struct Material: Listable, Sectionable, Hashable {
@@ -48,7 +76,7 @@ struct Material: Listable, Sectionable, Hashable {
     var location: String?
     var potency: Int?
     var sections: [DetailTableViewSections] {
-        return [.title, .effect, .potency, .resaleValue, .location, .dishes]
+        return [.effect, .potency, .resaleValue, .location, .dishes]
     }
     var isElixirIngredient: Bool {
         return category.contains(.critter) || category.contains(.monsterPart)

@@ -8,20 +8,21 @@
 
 import UIKit
 
-class DetailEffectCell: UITableViewCell {
+class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
     
     static let identifier = "Detail-Effect-Cell"
-    
     var effectName = UILabel()
     var effectDuration = UILabel()
     var effectIcon = UIImageView()
     var item: Listable!
     var effectNoneConstraint: NSLayoutConstraint!
     var effectAvailableConstraint: NSLayoutConstraint!
+    internal var container = UILayoutGuide()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        setupContainer()
         setupConstraints()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateEffect),
@@ -37,40 +38,20 @@ class DetailEffectCell: UITableViewCell {
     }
     
     func setupViews() {
-        backgroundColor = .backgroundBlue
-        let selectedView = UIView()
-        selectedView.backgroundColor = .backgroundBlue
-        selectedBackgroundView = selectedView
+        applyCellStyle()
         
-        effectIcon.translatesAutoresizingMaskIntoConstraints = false
-        effectIcon.contentMode = .scaleAspectFit
+        effectIcon = defaultIcon()
         contentView.addSubview(effectIcon)
         
-        effectDuration.translatesAutoresizingMaskIntoConstraints = false
-        effectDuration.font = UIFont.preferredFont(forTextStyle: .body)
-        effectDuration.textColor = .secondaryTextColor
-        effectDuration.textAlignment = .left
-        effectDuration.numberOfLines = 1
-        effectDuration.lineBreakMode = .byTruncatingTail
+        effectDuration = defaultLabel()
         contentView.addSubview(effectDuration)
         
-        effectName.translatesAutoresizingMaskIntoConstraints = false
-        effectName.font = UIFont.preferredFont(forTextStyle: .body)
-        effectName.textColor = .secondaryTextColor
-        effectName.textAlignment = .left
-        effectName.numberOfLines = 1
-        effectName.lineBreakMode = .byTruncatingTail
+        effectName = defaultLabel()
         contentView.addSubview(effectName)
     }
     
     func setupConstraints() {
-        let margins = contentView.layoutMarginsGuide
-        let container = UILayoutGuide()
-        contentView.addLayoutGuide(container)
-        
         NSLayoutConstraint.activate([
-            effectIcon.heightAnchor.constraint(equalToConstant: 20),
-            effectIcon.widthAnchor.constraint(equalTo: effectIcon.heightAnchor),
             effectIcon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             effectIcon.centerYAnchor.constraint(equalTo: effectDuration.centerYAnchor),
             
@@ -80,11 +61,6 @@ class DetailEffectCell: UITableViewCell {
             
             effectName.topAnchor.constraint(equalTo: container.topAnchor),
             effectName.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            
-            container.topAnchor.constraint(equalTo: margins.topAnchor),
-            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
         
         // Adds possibility to move effectNameLabel when it displays .none

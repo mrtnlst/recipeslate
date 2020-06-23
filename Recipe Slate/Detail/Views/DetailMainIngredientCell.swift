@@ -8,55 +8,60 @@
 
 import UIKit
 
-class DetailMainIngredientCell: UITableViewCell {
+class DetailMainIngredientCell: UITableViewCell, DetailCellStyle, Itemize {
     
     static let identifier = "Detail-Main-Ingredient-Cell"
-    public var stackView = UIStackView()
+    var container = UILayoutGuide()
+    var rowContainers = [UILayoutGuide]()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-        setupConstraints()
+        applyCellStyle()
+        setupContainer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
-        backgroundColor = .backgroundBlue
-        let selectedView = UIView()
-        selectedView.backgroundColor = .backgroundBlue
-        selectedBackgroundView = selectedView
+    /// Creates row of label and icons based on UILayoutGuide containers.
+    /// - Parameters:
+    ///   - label: label that begins the row
+    ///   - icons: array of UIImageViews
+    ///   - last: indicates whether row is the last
+    func setupConstraints(for label: UILabel, and icon: UIImageView, last: Bool) {
+        let rowContainer = setupRowContainer()
+        rowContainers.append(rowContainer)
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .leading
-        stackView.axis = .vertical
-        stackView.spacing = 4
-        contentView.addSubview(stackView)
-    }
-    
-    func setupConstraints() {
+        if last {
+            NSLayoutConstraint.activate([
+                rowContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            ])
+        }
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            icon.leadingAnchor.constraint(equalTo: rowContainer.leadingAnchor),
+            icon.widthAnchor.constraint(equalTo: icon.heightAnchor),
+            icon.centerYAnchor.constraint(equalTo: label.centerYAnchor),
+            
+            label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
+            label.topAnchor.constraint(equalTo: rowContainer.topAnchor),
+            label.bottomAnchor.constraint(equalTo: rowContainer.bottomAnchor),
         ])
     }
     
     func setIngredients(_ ingredients: [String]) {
-        for ingredient in ingredients {
-            let label = UILabel()
+        for (index, ingredient) in ingredients.enumerated() {
+            let label = defaultLabel()
             label.text = ingredient
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.font = UIFont.preferredFont(forTextStyle: .body)
-            label.textColor = .secondaryTextColor
-            label.textAlignment = .left
-            label.numberOfLines = 1
-            label.lineBreakMode = .byTruncatingTail
-            stackView.addArrangedSubview(label)
+            contentView.addSubview(label)
+            
+            let icon = defaultIcon()
+            icon.image = EffectsHandler.obtainImage(for: ingredient)
+            icon.tintColor = .secondaryTextColor
+            contentView.addSubview(icon)
+            
+            setupConstraints(for: label, and: icon, last: index == ingredients.count - 1)
         }
     }
     

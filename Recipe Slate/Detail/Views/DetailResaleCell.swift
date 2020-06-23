@@ -8,16 +8,18 @@
 
 import UIKit
 
-class DetailResaleCell: UITableViewCell {
+class DetailResaleCell: UITableViewCell, DetailCellStyle, Guidable {
     
     static let identifier = "Detail-Resale-Cell"
     private var icon = UIImageView()
     public var resaleLabel = UILabel()
     private var item: Listable!
+    internal var container = UILayoutGuide()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        setupContainer()
         setupConstraints()
         NotificationCenter.default.addObserver(self, selector: #selector(updateResaleLabel),
                                                name: .RecipeSlateCategoryItemDidChange, object: nil)
@@ -32,44 +34,24 @@ class DetailResaleCell: UITableViewCell {
     }
     
     func setupViews() {
-        backgroundColor = .backgroundBlue
-        let selectedView = UIView()
-        selectedView.backgroundColor = .backgroundBlue
-        selectedBackgroundView = selectedView
+        applyCellStyle()
 
-        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon = defaultIcon()
         icon.image = UIImage(named: "detail-rupee")
-        icon.contentMode = .scaleAspectFit
         contentView.addSubview(icon)
         
-        resaleLabel.translatesAutoresizingMaskIntoConstraints = false
-        resaleLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        resaleLabel.textColor = .secondaryTextColor
-        resaleLabel.textAlignment = .left
-        resaleLabel.numberOfLines = 1
-        resaleLabel.lineBreakMode = .byTruncatingTail
+        resaleLabel = defaultLabel()
         contentView.addSubview(resaleLabel)
     }
     
     func setupConstraints() {
-        let margins = contentView.layoutMarginsGuide
-        let container = UILayoutGuide()
-        contentView.addLayoutGuide(container)
-        
         NSLayoutConstraint.activate([
-            icon.heightAnchor.constraint(equalToConstant: 20),
-            icon.widthAnchor.constraint(equalTo: icon.heightAnchor),
             icon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             icon.centerYAnchor.constraint(equalTo: resaleLabel.centerYAnchor),
             
             resaleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
             resaleLabel.topAnchor.constraint(equalTo: container.topAnchor),
             resaleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            
-            container.topAnchor.constraint(equalTo: margins.topAnchor),
-            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
     }
     

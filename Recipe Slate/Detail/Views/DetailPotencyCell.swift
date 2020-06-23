@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailPotencyCell: UITableViewCell {
+class DetailPotencyCell: UITableViewCell, DetailCellStyle, Itemize {
     
     static let identifier = "Detail-Potency-Cell"
     
@@ -17,31 +17,12 @@ class DetailPotencyCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-        setupConstraints()
+        applyCellStyle()
+        setupContainer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupViews() {
-        backgroundColor = .backgroundBlue
-        let selectedView = UIView()
-        selectedView.backgroundColor = .backgroundBlue
-        selectedBackgroundView = selectedView
-    }
-    
-    func setupConstraints() {
-        let margins = contentView.layoutMarginsGuide
-        contentView.addLayoutGuide(container)
-        
-        NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: margins.topAnchor),
-            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
-        ])
     }
     
     /// Creates row of label and icons based on UILayoutGuide containers.
@@ -50,21 +31,10 @@ class DetailPotencyCell: UITableViewCell {
     ///   - icons: array of UIImageViews
     ///   - last: indicates whether row is the last
     func setupConstraints(for label: UILabel, and icons: [UIImageView], last: Bool) {
-        let rowContainer = UILayoutGuide()
+        let rowContainer = setupRowContainer()
         let iconContainer = UILayoutGuide()
         contentView.addLayoutGuide(iconContainer)
-        contentView.addLayoutGuide(rowContainer)
-        
-        if let formerContainer = rowContainers.last {
-            NSLayoutConstraint.activate([
-                rowContainer.topAnchor.constraint(equalTo: formerContainer.bottomAnchor),
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                rowContainer.topAnchor.constraint(equalTo: container.topAnchor),
-            ])
-        }
-        
+
         if last {
             NSLayoutConstraint.activate([
                 rowContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor),
@@ -80,9 +50,6 @@ class DetailPotencyCell: UITableViewCell {
             iconContainer.trailingAnchor.constraint(equalTo: rowContainer.trailingAnchor),
             iconContainer.bottomAnchor.constraint(equalTo: rowContainer.bottomAnchor),
             iconContainer.topAnchor.constraint(equalTo: rowContainer.topAnchor),
-            
-            rowContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            rowContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
         ])
         
         rowContainers.append(rowContainer)
@@ -109,23 +76,14 @@ class DetailPotencyCell: UITableViewCell {
     func setPotency(_ potencies: [Potency]) {
         
         for (index, potency) in potencies.enumerated() {
-            let label = UILabel()
+            let label = defaultLabel()
             label.text = potency.potencyDescription
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.font = UIFont.preferredFont(forTextStyle: .body)
-            label.textColor = .secondaryTextColor
-            label.textAlignment = .left
-            label.numberOfLines = 1
-            label.lineBreakMode = .byTruncatingTail
             contentView.addSubview(label)
             
             var icons = [UIImageView]()
             for _ in 0..<potency.level {
-                let icon = UIImageView(image: potency.potencyIcon)
-                icon.translatesAutoresizingMaskIntoConstraints = false
-                icon.contentMode = .scaleAspectFit
-                icon.heightAnchor.constraint(equalToConstant: 20).isActive = true
-                icon.widthAnchor.constraint(equalTo: icon.heightAnchor).isActive = true
+                let icon = defaultIcon()
+                icon.image = potency.potencyIcon
                 contentView.addSubview(icon)
                 icons.append(icon)
             }

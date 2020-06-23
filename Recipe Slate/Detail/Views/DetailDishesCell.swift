@@ -8,16 +8,18 @@
 
 import UIKit
 
-class DetailDishesCell: UITableViewCell {
+class DetailDishesCell: UITableViewCell, DetailCellStyle, Guidable {
 
     static let identifier = "Detail-Meal-Cell"
     private var icon = UIImageView()
-    public var label = UILabel()
+    private var label = UILabel()
     private var item: Listable!
+    internal var container = UILayoutGuide()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        setupContainer()
         setupConstraints()
     }
     
@@ -30,10 +32,7 @@ class DetailDishesCell: UITableViewCell {
     }
     
     func setupViews() {
-        backgroundColor = .backgroundBlue
-        let selectedView = UIView()
-        selectedView.backgroundColor = .tableViewCellSelectedColor
-        selectedBackgroundView = selectedView
+        applyCellStyle()
         
         if #available(iOS 13.0, *) {
             let accessoryIcon = UIImageView(image: UIImage(systemName: "chevron.right"))
@@ -41,40 +40,31 @@ class DetailDishesCell: UITableViewCell {
             accessoryView = accessoryIcon
         }
 
-        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon = defaultIcon()
         icon.tintColor = .gray
-        icon.contentMode = .scaleAspectFit
         contentView.addSubview(icon)
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.textColor = .secondaryTextColor
-        label.textAlignment = .left
-        label.numberOfLines = 1
-        label.lineBreakMode = .byTruncatingTail
+        label = defaultLabel()
         contentView.addSubview(label)
     }
     
     func setupConstraints() {
-        let margins = contentView.layoutMarginsGuide
-        let container = UILayoutGuide()
-        contentView.addLayoutGuide(container)
         
         NSLayoutConstraint.activate([
-            icon.heightAnchor.constraint(equalToConstant: 20),
-            icon.widthAnchor.constraint(equalTo: icon.heightAnchor),
             icon.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             icon.centerYAnchor.constraint(equalTo: label.centerYAnchor),
             
             label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
             label.topAnchor.constraint(equalTo: container.topAnchor),
             label.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            
-            container.topAnchor.constraint(equalTo: margins.topAnchor),
-            container.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
         ])
+    }
+    
+    func applyCellStyle() {
+        backgroundColor = .backgroundBlue
+        let selectedView = UIView()
+        selectedView.backgroundColor = .tableViewCellSelectedColor
+        selectedBackgroundView = selectedView
     }
         
     func setItem(_ item: Listable) {

@@ -107,6 +107,11 @@ class EffectsHandler: NSObject {
         return materialData.filter({ $0.category.contains(where: { materialCategory == $0 }) })
     }
     
+    static func obtainImage(for materialName: String) -> UIImage {
+        let material = materialData.filter({ $0.name == materialName }).first
+        return material?.category.first?.icon() ?? UIImage()
+    }
+    
     // MARK: - Potency
     
     static func calculatePotency(for material: Material) -> [Potency] {

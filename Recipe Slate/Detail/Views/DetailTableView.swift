@@ -28,6 +28,7 @@ class DetailTableView: UITableView {
         separatorColor = .clear
         autoresizingMask = .flexibleHeight
         translatesAutoresizingMaskIntoConstraints = false
+        contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         register(DetailTitleCell.self, forCellReuseIdentifier: DetailTitleCell.identifier)
         register(DetailHeartCell.self, forCellReuseIdentifier: DetailHeartCell.identifier)
         register(DetailEffectCell.self, forCellReuseIdentifier: DetailEffectCell.identifier)
