@@ -23,7 +23,11 @@ class DetailPickerView: UIPickerView {
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
-        subviews[1].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
-        subviews[2].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
+        if #available(iOS 14.0, *) {
+            
+        } else {
+            subviews[1].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
+            subviews[2].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
+        }
     }
 }
