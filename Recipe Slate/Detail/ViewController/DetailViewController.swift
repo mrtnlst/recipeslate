@@ -111,9 +111,9 @@ extension DetailViewController: UITableViewDataSource {
         case .resaleValue:
             return configureResaleCell(tableView, indexPath: indexPath)
         case .mainIngredient:
-            return configureMainIngredientCell(tableView, indexPath: indexPath)
+            return configureIconTextListCell(tableView, indexPath: indexPath)
         case .categoryIngredient:
-            return configureCategoryIngredientCell(tableView, indexPath: indexPath)
+            return configureMultiPickerCell(tableView, indexPath: indexPath)
         case .potency:
             return configurePotencyCell(tableView, indexPath: indexPath)
         case .location:
@@ -147,18 +147,16 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureMainIngredientCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMainIngredientCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMainIngredientCell.identifier,
-                                                       for: indexPath) as? DetailMainIngredientCell else { fatalError() }
-        if let meal = item as? Meal {
-            cell.setIngredients(meal.mainIngredients)
-        }
+    func configureIconTextListCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailIconTextListCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailIconTextListCell.identifier,
+                                                       for: indexPath) as? DetailIconTextListCell else { fatalError() }
+        cell.setItem(item)
         return cell
     }
     
-    func configureCategoryIngredientCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailCategoryIngredientCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailCategoryIngredientCell.identifier,
-                                                       for: indexPath) as? DetailCategoryIngredientCell else { fatalError() }
+    func configureMultiPickerCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMultiPickerCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMultiPickerCell.identifier,
+                                                       for: indexPath) as? DetailMultiPickerCell else { fatalError() }
         cell.setItem(item: item)
         return cell
     }

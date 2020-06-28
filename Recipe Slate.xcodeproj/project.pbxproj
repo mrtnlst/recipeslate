@@ -23,8 +23,8 @@
 		5B4E14A324A2A1B800FE95C5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E14A224A2A1B800FE95C5 /* UIImageView.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
-		5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */; };
-		5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */; };
+		5B8CAEE324992EB200C18B85 /* DetailIconTextListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailIconTextListCell.swift */; };
+		5B8CAEE52499360200C18B85 /* DetailMultiPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE42499360200C18B85 /* DetailMultiPickerCell.swift */; };
 		5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */; };
 		5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */; };
 		5B8CAEED249BF44100C18B85 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */; };
@@ -91,8 +91,8 @@
 		5B4E14A224A2A1B800FE95C5 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
-		5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMainIngredientCell.swift; sourceTree = "<group>"; };
-		5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryIngredientCell.swift; sourceTree = "<group>"; };
+		5B8CAEE224992EB200C18B85 /* DetailIconTextListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailIconTextListCell.swift; sourceTree = "<group>"; };
+		5B8CAEE42499360200C18B85 /* DetailMultiPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMultiPickerCell.swift; sourceTree = "<group>"; };
 		5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResaleCell.swift; sourceTree = "<group>"; };
 		5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResaleHandler.swift; sourceTree = "<group>"; };
 		5B8CAEEC249BF44100C18B85 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = SOURCE_ROOT; };
@@ -252,8 +252,8 @@
 				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
 				5BD890502495025B0068A36A /* DetailHeartCell.swift */,
 				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
-				5B8CAEE224992EB200C18B85 /* DetailMainIngredientCell.swift */,
-				5B8CAEE42499360200C18B85 /* DetailCategoryIngredientCell.swift */,
+				5B8CAEE224992EB200C18B85 /* DetailIconTextListCell.swift */,
+				5B8CAEE42499360200C18B85 /* DetailMultiPickerCell.swift */,
 				5B401744249F9FD400E64294 /* DetailPickerView.swift */,
 				5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */,
 				5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */,
@@ -551,13 +551,13 @@
 				5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */,
 				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,
 				5B8CAEF3249CB0E800C18B85 /* Sectionable.swift in Sources */,
-				5B8CAEE52499360200C18B85 /* DetailCategoryIngredientCell.swift in Sources */,
+				5B8CAEE52499360200C18B85 /* DetailMultiPickerCell.swift in Sources */,
 				A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */,
 				5B40174924A0A32900E64294 /* TimeInterval.swift in Sources */,
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
 				5BAAADB7249925BD0037F685 /* FavoriteProtocol.swift in Sources */,
 				5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */,
-				5B8CAEE324992EB200C18B85 /* DetailMainIngredientCell.swift in Sources */,
+				5B8CAEE324992EB200C18B85 /* DetailIconTextListCell.swift in Sources */,
 				5B40174F24A0E3D300E64294 /* DetailDishesCell.swift in Sources */,
 				5B401741249D16A100E64294 /* Potency.swift in Sources */,
 				5BAEEADD1F068938002E307A /* MealData.swift in Sources */,

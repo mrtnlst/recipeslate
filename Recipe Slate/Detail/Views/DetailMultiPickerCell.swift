@@ -1,5 +1,5 @@
 //
-//  DetailCategoryIngredientCell.swift
+//  DetailMultiPickerCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 16.06.20.
@@ -13,9 +13,9 @@ enum CategoryPicker {
     case second
 }
 
-class DetailCategoryIngredientCell: UITableViewCell, DetailCellStyle, Guidable {
+class DetailMultiPickerCell: UITableViewCell, DetailCellStyle, Guidable {
     
-    static let identifier = "Detail-Category-Ingredient-Cell"
+    static let identifier = "Detail-Multi-Picker-Cell"
     internal var container = UILayoutGuide()
     var item: Listable!
     var picker1 = DetailPickerView()
@@ -87,7 +87,7 @@ class DetailCategoryIngredientCell: UITableViewCell, DetailCellStyle, Guidable {
 
 // MARK: - UIPickerViewDataSource
 
-extension DetailCategoryIngredientCell: UIPickerViewDataSource {
+extension DetailMultiPickerCell: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -100,7 +100,7 @@ extension DetailCategoryIngredientCell: UIPickerViewDataSource {
 
 // MARK: - UIPickerViewDelegate
 
-extension DetailCategoryIngredientCell: UIPickerViewDelegate {
+extension DetailMultiPickerCell: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()

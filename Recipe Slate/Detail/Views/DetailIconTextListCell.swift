@@ -1,5 +1,5 @@
 //
-//  DetailMainIngredientCell.swift
+//  DetailIconTextListCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 16.06.20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DetailMainIngredientCell: UITableViewCell, DetailCellStyle, Itemize {
+class DetailIconTextListCell: UITableViewCell, DetailCellStyle, Itemize {
     
-    static let identifier = "Detail-Main-Ingredient-Cell"
+    static let identifier = "Detail-Icon-Text-List-Cell"
     var container = UILayoutGuide()
     var rowContainers = [UILayoutGuide]()
     
@@ -50,18 +50,20 @@ class DetailMainIngredientCell: UITableViewCell, DetailCellStyle, Itemize {
         ])
     }
     
-    func setIngredients(_ ingredients: [String]) {
-        for (index, ingredient) in ingredients.enumerated() {
-            let label = defaultLabel()
-            label.text = ingredient
-            contentView.addSubview(label)
-            
-            let icon = defaultIcon()
-            icon.image = EffectsHandler.obtainImage(for: ingredient)
-            icon.tintColor = .secondaryTextColor
-            contentView.addSubview(icon)
-            
-            setupConstraints(for: label, and: icon, last: index == ingredients.count - 1)
+    func setItem(_ item: Listable) {
+        if let meal = item as? Meal {
+            for (index, ingredient) in meal.mainIngredients.enumerated() {
+                let label = defaultLabel()
+                label.text = ingredient
+                contentView.addSubview(label)
+                
+                let icon = defaultIcon()
+                icon.image = EffectsHandler.obtainImage(for: ingredient)
+                icon.tintColor = .secondaryTextColor
+                contentView.addSubview(icon)
+                
+                setupConstraints(for: label, and: icon, last: index == meal.mainIngredients.count - 1)
+            }
         }
     }
     
