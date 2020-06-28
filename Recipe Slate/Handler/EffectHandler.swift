@@ -108,8 +108,11 @@ class EffectsHandler: NSObject {
     }
     
     static func obtainImage(for materialName: String) -> UIImage {
-        let material = materialData.filter({ $0.name == materialName }).first
-        return material?.category.first?.icon() ?? UIImage()
+        if let image = UIImage(named: materialName) {
+            return image
+        }
+        let materialCategory = materialData.filter({ $0.name == materialName }).first?.category.first
+        return materialCategory?.icon() ?? UIImage()
     }
     
     // MARK: - Potency
