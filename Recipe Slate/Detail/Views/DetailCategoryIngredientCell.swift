@@ -17,6 +17,7 @@ class DetailCategoryIngredientCell: UITableViewCell, DetailCellStyle, Guidable {
     
     static let identifier = "Detail-Category-Ingredient-Cell"
     internal var container = UILayoutGuide()
+    var item: Listable!
     var picker1 = DetailPickerView()
     var picker2 = DetailPickerView()
     var picker1Data: [Material] = []
@@ -37,36 +38,45 @@ class DetailCategoryIngredientCell: UITableViewCell, DetailCellStyle, Guidable {
         notifyMaterialSelection()
     }
     
-    func configurePicker(_ picker: CategoryPicker, data: [Material] = []) {
-        if picker == .first {
-            picker1Data = data
-            picker1.dataSource = self
-            picker1.delegate = self
-            contentView.addSubview(picker1)
+    func setItem(item: Listable) {
+        self.item = item
+        if let meal = item as? Meal {
+            picker1Data = materialData.filter({ $0.category.contains(where: { meal.categoryIngredients.first == $0 }) })
             
-            NSLayoutConstraint.activate([
-                picker1.topAnchor.constraint(equalTo: container.topAnchor),
-                picker1.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-                picker1.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-                picker1.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-            ])
-            picker1.reloadAllComponents()
-        } else {
-            picker2Data = data
-            picker2.dataSource = self
-            picker2.delegate = self
-            contentView.addSubview(picker2)
-            
-            NSLayoutConstraint.activate([
-                picker1.trailingAnchor.constraint(equalTo: container.centerXAnchor),
-                
-                picker2.topAnchor.constraint(equalTo: container.topAnchor),
-                picker2.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-                picker2.leadingAnchor.constraint(equalTo: container.centerXAnchor),
-                picker2.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            ])
-            picker2.reloadAllComponents()
+            if meal.categoryIngredients.count > 1 {
+                picker2Data = materialData.filter({ $0.category.contains(where: { meal.categoryIngredients.last == $0 }) })
+                configurePicker(picker1)
+                configurePicker(picker2)
+            } else {
+                configurePicker(picker1, single: true)
+            }
         }
+    }
+    
+    func configurePicker(_ picker: UIPickerView, single: Bool? = false) {
+        picker.dataSource = self
+        picker.delegate = self
+        contentView.addSubview(picker)
+        
+        var constraints = [NSLayoutConstraint]()
+        
+        if single ?? false {
+            constraints.append(picker.trailingAnchor.constraint(equalTo: container.trailingAnchor))
+        }
+        constraints.append(picker.topAnchor.constraint(equalTo: container.topAnchor))
+        constraints.append(picker.bottomAnchor.constraint(equalTo: container.bottomAnchor))
+        
+        if picker == picker1 {
+            constraints.append(picker.leadingAnchor.constraint(equalTo: container.leadingAnchor))
+            constraints.append(picker.centerYAnchor.constraint(equalTo: container.centerYAnchor))
+        } else {
+                constraints.append(picker1.trailingAnchor.constraint(equalTo: container.centerXAnchor))
+                constraints.append(picker.leadingAnchor.constraint(equalTo: container.centerXAnchor))
+                constraints.append(picker.trailingAnchor.constraint(equalTo: container.trailingAnchor))
+        }
+        NSLayoutConstraint.activate(constraints)
+        
+        picker.reloadAllComponents()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -74,6 +84,8 @@ class DetailCategoryIngredientCell: UITableViewCell, DetailCellStyle, Guidable {
         notifyMaterialSelection()
     }
 }
+
+// MARK: - UIPickerViewDataSource
 
 extension DetailCategoryIngredientCell: UIPickerViewDataSource {
     
@@ -85,6 +97,8 @@ extension DetailCategoryIngredientCell: UIPickerViewDataSource {
         return pickerView == picker1 ? picker1Data.count : picker2Data.count
     }
 }
+
+// MARK: - UIPickerViewDelegate
 
 extension DetailCategoryIngredientCell: UIPickerViewDelegate {
     

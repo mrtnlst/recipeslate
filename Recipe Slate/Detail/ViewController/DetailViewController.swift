@@ -159,14 +159,7 @@ extension DetailViewController: UITableViewDataSource {
     func configureCategoryIngredientCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailCategoryIngredientCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailCategoryIngredientCell.identifier,
                                                        for: indexPath) as? DetailCategoryIngredientCell else { fatalError() }
-        if let meal = item as? Meal {
-            let c1 = materialData.filter({ $0.category.contains(where: { meal.categoryIngredients.first == $0 }) })
-            cell.configurePicker(.first, data: c1)
-            if meal.categoryIngredients.count > 1 {
-                let c2 = materialData.filter({ $0.category.contains(where: { meal.categoryIngredients.last == $0 }) })
-                cell.configurePicker(.second, data: c2)
-            }
-        }
+        cell.setItem(item: item)
         return cell
     }
     
