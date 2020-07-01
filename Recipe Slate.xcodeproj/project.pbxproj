@@ -12,6 +12,8 @@
 		5B22656B24952B5C00459517 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Listable.swift */; };
 		5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
+		5B2FF1DA24AC580A00DFD5FC /* DetailHeartListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF1D924AC580A00DFD5FC /* DetailHeartListCell.swift */; };
+		5B2FF1DC24AD352400DFD5FC /* Hearts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF1DB24AD352400DFD5FC /* Hearts.swift */; };
 		5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173E249D141D00E64294 /* DetailLocationCell.swift */; };
 		5B401741249D16A100E64294 /* Potency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401740249D16A100E64294 /* Potency.swift */; };
 		5B401745249F9FD400E64294 /* DetailPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401744249F9FD400E64294 /* DetailPickerView.swift */; };
@@ -80,6 +82,8 @@
 		5B22656A24952B5C00459517 /* Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
 		5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListDataSource.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
+		5B2FF1D924AC580A00DFD5FC /* DetailHeartListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeartListCell.swift; sourceTree = "<group>"; };
+		5B2FF1DB24AD352400DFD5FC /* Hearts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hearts.swift; sourceTree = "<group>"; };
 		5B40173E249D141D00E64294 /* DetailLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocationCell.swift; sourceTree = "<group>"; };
 		5B401740249D16A100E64294 /* Potency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Potency.swift; sourceTree = "<group>"; };
 		5B401744249F9FD400E64294 /* DetailPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPickerView.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 			children = (
 				5BD8904B2494F9D80068A36A /* DetailTableView.swift */,
 				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
+				5B2FF1D924AC580A00DFD5FC /* DetailHeartListCell.swift */,
 				5BD890502495025B0068A36A /* DetailHeartCell.swift */,
 				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
 				5B8CAEE224992EB200C18B85 /* DetailIconTextListCell.swift */,
@@ -370,6 +375,7 @@
 				A96FD1371E7BE8D900CE60D6 /* Food.swift */,
 				A9C3387D1E853A51003A574F /* Material.swift */,
 				A9614D811E77FA0D009CA034 /* Meal.swift */,
+				5B2FF1DB24AD352400DFD5FC /* Hearts.swift */,
 				5B401740249D16A100E64294 /* Potency.swift */,
 			);
 			path = Types;
@@ -519,6 +525,7 @@
 				5BD890442494C75F0068A36A /* NavigationController.swift in Sources */,
 				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
 				A9D5795B1E86893800E7FFBC /* MaterialDetailViewController.swift in Sources */,
+				5B2FF1DA24AC580A00DFD5FC /* DetailHeartListCell.swift in Sources */,
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
 				5B40174E24A0E3D300E64294 /* DetailPotencyCell.swift in Sources */,
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
@@ -527,6 +534,7 @@
 				5BD890512495025B0068A36A /* DetailHeartCell.swift in Sources */,
 				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
+				5B2FF1DC24AD352400DFD5FC /* Hearts.swift in Sources */,
 				5B8CAEEF249BFC8900C18B85 /* Array.swift in Sources */,
 				5BA56EBF1F1FC6CD009EFFF2 /* Utility.swift in Sources */,
 				5BA40D47249818F100CBD251 /* EffectListDataSource.swift in Sources */,

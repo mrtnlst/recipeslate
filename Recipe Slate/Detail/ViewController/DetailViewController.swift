@@ -120,6 +120,8 @@ extension DetailViewController: UITableViewDataSource {
             return configureLocationCell(tableView, indexPath: indexPath)
         case .dishes:
             return configureDishesCell(tableView, indexPath: indexPath)
+        case .heartList:
+            return configureHeartListCell(tableView, indexPath: indexPath)
         }
     }
     
@@ -188,6 +190,12 @@ extension DetailViewController: UITableViewDataSource {
     func configureDishesCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailDishesCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailDishesCell.identifier,
                                                        for: indexPath) as? DetailDishesCell else { fatalError() }
+        cell.setItem(item)
+        return cell
+    }
+    func configureHeartListCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailHeartListCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartListCell.identifier,
+                                                       for: indexPath) as? DetailHeartListCell else { fatalError() }
         cell.setItem(item)
         return cell
     }

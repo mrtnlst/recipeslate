@@ -76,13 +76,34 @@ struct Material: Listable, Sectionable, Hashable {
     var location: String?
     var potency: Int?
     var sections: [DetailTableViewSections] {
-        return [.effect, .potency, .resaleValue, .location, .dishes]
+        return [.heartList, .effect, .potency, .resaleValue, .location, .dishes]
     }
     var isElixirIngredient: Bool {
         return category.contains(.critter) || category.contains(.monsterPart)
     }
     var hasDurationEffect: Bool {
         return effect?.type == .duration
+    }
+    var heartCategories: [Hearts] {
+        guard let hearts = hearts else { return [] }
+        let fullRestore = effect?.type == EffectType.temporaryHearts
+        var categories: [Hearts] = []
+        
+        if name != "Wood" && name != "Silent Princess" {
+            categories.append(Hearts(numberOfHearts: hearts, fullRestore: false, type: .raw))
+        }
+        if let roastedItem = roastedFoodData.first(where: { $0.ingredientNames.contains(name) }) {
+            categories.append(Hearts(numberOfHearts: roastedItem.hearts, fullRestore: false, type: .roasted))
+        }
+        if let frozenItem = frozenFoodData.first(where: { $0.ingredientNames.contains(name) }) {
+            categories.append(Hearts(numberOfHearts: frozenItem.hearts, fullRestore: false, type: .frozen))
+        }
+        
+        categories.append(Hearts(numberOfHearts: name == "Fairy" ? 7 : hearts * 2,
+                                 fullRestore: fullRestore, type: .cooked))
+        
+        
+        return categories
     }
     
     init(materialName: String, category: [MaterialCategory], hearts: Float? = nil, effect: Effect? = nil, saleValue: Int? = nil, location: String? = nil, potency: Int? = nil) {

@@ -27,4 +27,9 @@ extension UIColor {
 
     static let cream = #colorLiteral(red: 0.8914693594, green: 0.8615709543, blue: 0.7523322105, alpha: 1)
     static let listFavorite = #colorLiteral(red: 1, green: 0.8285928965, blue: 0.358022213, alpha: 1)
+    
+    static let raw = #colorLiteral(red: 0.8875828385, green: 0.1409120858, blue: 0.1922748089, alpha: 1)
+    static let cooked = #colorLiteral(red: 0.9923481345, green: 0.7908546329, blue: 0.7353751063, alpha: 1)
+    static let frozen = #colorLiteral(red: 0.6704457402, green: 0.9631159902, blue: 1, alpha: 1)
+    static let roasted = #colorLiteral(red: 0.491933167, green: 0.2530207634, blue: 0.2546983659, alpha: 1)
 }

@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-struct Hearts {
-    var numberOfHearts: Float
-    var fullRestore: Bool
-}
-
 class EffectsHandler: NSObject {
     
     // MARK: - Material
@@ -42,7 +37,7 @@ class EffectsHandler: NSObject {
         let fullRestore = ingredients.contains(where: { $0.effect?.type == .temporaryHearts })
         let hearts = ingredients.compactMap({ $0.hearts }).reduce(0, +)
         
-        return Hearts(numberOfHearts: hearts * 2, fullRestore: fullRestore)
+        return Hearts(numberOfHearts: hearts * 2, fullRestore: fullRestore, type: .raw)
     }
     
     // MARK: - Effects
