@@ -15,7 +15,7 @@ class EffectsHandler: NSObject {
     
     static func icon(for material: Material) -> UIImage? {
         if let effect = material.effect, effect.type != .duration {
-            return UIImage(named: effect.type.rawValue)
+            return effect.type.icon
         }
         if material.hearts != nil {
             return UIImage(named: "detail-heart-full")
@@ -108,6 +108,21 @@ class EffectsHandler: NSObject {
         }
         let materialCategory = materialData.filter({ $0.name == materialName }).first?.category.first
         return materialCategory?.icon() ?? UIImage()
+    }
+    
+    /// Calculates effect for elixir materials.
+    /// - Parameter materials: array of materials
+    /// - Returns: Effect object 
+    static func calculateEffect(for materials: [Material]) -> Effect {
+        guard let mainMaterial = materials.filter({ $0.effect?.type != .duration }).first else { return Effect(type: .none) }
+        let amount = materials.compactMap({ $0.effect?.amount }).reduce(0, +)
+        
+        if amount > 0 {
+            return Effect(type: mainMaterial.effect?.type ?? .none, amount: amount, duration: nil, potencyLevel1: nil, potencyLevel2: nil)
+        }
+        
+        let duration = materials.compactMap({ $0.effect?.duration }).reduce(0, +)
+        return Effect(type: mainMaterial.effect?.type ?? .none, amount: nil, duration: duration, potencyLevel1: nil, potencyLevel2: nil)
     }
     
     // MARK: - Potency

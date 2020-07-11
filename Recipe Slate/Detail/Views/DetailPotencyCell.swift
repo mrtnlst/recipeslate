@@ -12,8 +12,8 @@ class DetailPotencyCell: UITableViewCell, DetailCellStyle, Itemize {
     
     static let identifier = "Detail-Potency-Cell"
     
-    var container = UILayoutGuide()
-    var rowContainers = [UILayoutGuide]()
+    internal var container = UILayoutGuide()
+    internal var rowContainers = [UILayoutGuide]()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

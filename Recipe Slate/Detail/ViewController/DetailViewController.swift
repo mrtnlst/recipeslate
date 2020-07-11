@@ -124,6 +124,8 @@ extension DetailViewController: UITableViewDataSource {
             return configureHeartListCell(tableView, indexPath: indexPath)
         case .elixirIngredients:
             return configureElixirEffectCell(tableView, indexPath: indexPath)
+        case .elixirPotency:
+            return configureElixirPotencyCell(tableView, indexPath: indexPath)
         }
     }
     
@@ -201,6 +203,13 @@ extension DetailViewController: UITableViewDataSource {
     func configureElixirEffectCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailElixirPickerCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailElixirPickerCell.identifier,
                                                        for: indexPath) as? DetailElixirPickerCell else { fatalError() }
+        cell.setItem(item)
+        return cell
+    }
+    
+    func configureElixirPotencyCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailElixirPotencyCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailElixirPotencyCell.identifier,
+                                                       for: indexPath) as? DetailElixirPotencyCell else { fatalError() }
         cell.setItem(item)
         return cell
     }

@@ -12,13 +12,13 @@ class DetailElixirPickerCell: UITableViewCell, DetailCellStyle, Guidable {
     
     static let identifier = "Detail-Elixir-Picker-Cell"
     internal var container = UILayoutGuide()
-    var item: Listable!
+    var item: Elixir!
     var amountPicker1 = DetailPickerView()
     var amountPicker2 = DetailPickerView()
     var critterPicker = DetailPickerView()
     var monsterPicker = DetailPickerView()
-    var critterPickerData: [Critter] = []
-    var monsterPickerData: [MonsterPart] = monsterPartData
+    var critterPickerData: [Material] = []
+    var monsterPickerData: [Material] = []
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,10 +31,12 @@ class DetailElixirPickerCell: UITableViewCell, DetailCellStyle, Guidable {
     }
     
     func setItem(_ item: Listable) {
-        self.item = item
         guard let elixir = item as? Elixir else { return }
-    
-        critterPickerData = critterData.filter({ $0.category == elixir.category })
+        self.item = elixir
+        critterPickerData = materialData.filter({ $0.effect?.type == elixir.effect })
+        critterPickerData.removeAll(where: { !$0.category.contains(.critter) })
+        monsterPickerData = materialData.filter({ $0.category.contains(.monsterPart) })
+        
         configurePickers()
     }
     
@@ -90,7 +92,7 @@ class DetailElixirPickerCell: UITableViewCell, DetailCellStyle, Guidable {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(false, animated: false)
-//        notifyMaterialSelection()
+        notifyElixirSelection()
     }
 }
 
@@ -131,18 +133,22 @@ extension DetailElixirPickerCell: UIPickerViewDelegate {
         return label
     }
 
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        notifyElixirSelection()
-//    }
-//
-//    private func notifySelection() {
-//        var selectedMaterials: [Elixir] = []
-//        if let item1 = picker1Data.item(at: picker1.selectedRow(inComponent: 0)) {
-//            selectedMaterials.append(item1)
-//        }
-//        if let item2 = picker2Data.item(at: picker2.selectedRow(inComponent: 0)) {
-//           selectedMaterials.append(item2)
-//        }
-//        NotificationHandler.post(.RecipeSlateCategoryItemDidChange, object: selectedMaterials)
-//    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        notifyElixirSelection()
+    }
+
+    private func notifyElixirSelection() {
+        guard !critterPickerData.isEmpty, !monsterPickerData.isEmpty else { return }
+        var selectedMaterials: [Material] = []
+        let critter = critterPickerData[critterPicker.selectedRow(inComponent: 0)]
+        let monsterPart = monsterPickerData[monsterPicker.selectedRow(inComponent: 0)]
+        
+        for _ in 0 ... amountPicker1.selectedRow(inComponent: 0) {
+            selectedMaterials.append(critter)
+        }
+        for _ in 0 ... amountPicker2.selectedRow(inComponent: 0) {
+            selectedMaterials.append(monsterPart)
+        }
+        NotificationHandler.post(.RecipeSlateCategoryItemDidChange, object: selectedMaterials)
+    }
 }

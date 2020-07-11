@@ -6,7 +6,7 @@
 //  Copyright © 2017 Martin List. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum EffectCategory: String {
     case spicy = "Spicy"
@@ -36,6 +36,12 @@ enum EffectType: String {
     case temporaryHearts = "Temporary Hearts"
     case duration = "Duration"
     case none = "No effect"
+}
+
+extension EffectType {
+    var icon: UIImage {
+        UIImage(named: self.rawValue) ?? UIImage()
+    }
 }
 
 struct Effect: Listable, Hashable {

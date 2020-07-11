@@ -72,7 +72,12 @@ class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
     
     @objc func updateEffect(_ notification: Notification) {
         guard let materials = notification.object as? [Material] else { return }
-        configureEffectLabels(EffectsHandler.calculateEffect(for: (item as? Meal)?.mainIngredients ?? [], and: materials))
+        if let meal = item as? Meal {
+            configureEffectLabels(EffectsHandler.calculateEffect(for: meal.mainIngredients, and: materials))
+        }
+        if (item as? Elixir) != nil {
+            configureEffectLabels(EffectsHandler.calculateEffect(for: materials))
+        }
     }
     
     func setItem(_ item: Listable) {

@@ -48,6 +48,7 @@
 		5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEAE21F0803C3002E307A /* EffectData.swift */; };
 		5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */; };
 		5BCCD50E24B9D52F00280BA2 /* DetailElixirPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCD50D24B9D52F00280BA2 /* DetailElixirPickerCell.swift */; };
+		5BCCD51024B9F8AC00280BA2 /* DetailElixirPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCD50F24B9F8AC00280BA2 /* DetailElixirPotencyCell.swift */; };
 		5BD890402494C5DA0068A36A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8903F2494C5DA0068A36A /* UIColor.swift */; };
 		5BD890422494C6450068A36A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890412494C6450068A36A /* TabBarController.swift */; };
 		5BD890442494C75F0068A36A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890432494C75F0068A36A /* NavigationController.swift */; };
@@ -119,6 +120,7 @@
 		5BAEEAE21F0803C3002E307A /* EffectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectData.swift; sourceTree = "<group>"; };
 		5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectTableViewController.swift; sourceTree = "<group>"; };
 		5BCCD50D24B9D52F00280BA2 /* DetailElixirPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailElixirPickerCell.swift; sourceTree = SOURCE_ROOT; };
+		5BCCD50F24B9F8AC00280BA2 /* DetailElixirPotencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailElixirPotencyCell.swift; sourceTree = SOURCE_ROOT; };
 		5BD8903F2494C5DA0068A36A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BD890412494C6450068A36A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5BD890432494C75F0068A36A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */,
 				5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */,
 				5B40174C24A0E3D300E64294 /* DetailPotencyCell.swift */,
+				5BCCD50F24B9F8AC00280BA2 /* DetailElixirPotencyCell.swift */,
 				5B40173E249D141D00E64294 /* DetailLocationCell.swift */,
 			);
 			path = Views;
@@ -545,6 +548,7 @@
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
 				5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */,
 				5BA40D3D2498047100CBD251 /* ElixirListDataSource.swift in Sources */,
+				5BCCD51024B9F8AC00280BA2 /* DetailElixirPotencyCell.swift in Sources */,
 				5BCCD50E24B9D52F00280BA2 /* DetailElixirPickerCell.swift in Sources */,
 				5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,

@@ -52,7 +52,7 @@ class DetailHeartListCell: UITableViewCell, DetailCellStyle, Guidable, Itemize {
         
         if hasEffect {
             let frozenIcon = defaultIcon()
-            frozenIcon.image = UIImage(named: EffectType.heat.rawValue)
+            frozenIcon.image = EffectType.heat.icon
             contentView.addSubview(frozenIcon)
             
             NSLayoutConstraint.activate([
