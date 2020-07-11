@@ -40,7 +40,7 @@ class DetailElixirPickerCell: UITableViewCell, DetailCellStyle, Guidable {
         configurePickers()
     }
     
-    func configurePickers() {
+    private func configurePickers() {
         let pickers = [amountPicker1, amountPicker2, critterPicker, monsterPicker]
         
         pickers.forEach({
@@ -110,7 +110,7 @@ extension DetailElixirPickerCell: UIPickerViewDataSource {
         } else if pickerView == monsterPicker {
             return monsterPickerData.count
         }
-        return 5
+        return 4
     }
 }
 
@@ -134,7 +134,26 @@ extension DetailElixirPickerCell: UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard isAmountValid(for: pickerView, selectedRow: row + 1) else { return }
         notifyElixirSelection()
+    }
+    
+    /// Validates whether the sum of both amounts is less or equal than 5.
+    private func isAmountValid(for picker: UIPickerView, selectedRow: Int) -> Bool {
+        if picker == amountPicker1 {
+            let selectedRow2 = amountPicker2.selectedRow(inComponent: 0) + 1
+            if selectedRow + selectedRow2 > 5 {
+                amountPicker1.selectRow(4 - selectedRow2, inComponent: 0, animated: true)
+                return false
+            }
+        } else if picker == amountPicker2 {
+            let selectedRow2 = amountPicker1.selectedRow(inComponent: 0) + 1
+            if selectedRow + selectedRow2 > 5 {
+                amountPicker2.selectRow(4 - selectedRow2, inComponent: 0, animated: true)
+                return false
+            }
+        }
+        return true
     }
 
     private func notifyElixirSelection() {

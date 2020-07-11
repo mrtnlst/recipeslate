@@ -121,7 +121,12 @@ class EffectsHandler: NSObject {
             return Effect(type: mainMaterial.effect?.type ?? .none, amount: amount, duration: nil, potencyLevel1: nil, potencyLevel2: nil)
         }
         
-        let duration = materials.compactMap({ $0.effect?.duration }).reduce(0, +)
+        var duration = materials.compactMap({ $0.effect?.duration }).reduce(0, +)
+        
+        if duration > 1800 {
+            duration = 1800
+        }
+        
         return Effect(type: mainMaterial.effect?.type ?? .none, amount: nil, duration: duration, potencyLevel1: nil, potencyLevel2: nil)
     }
     
