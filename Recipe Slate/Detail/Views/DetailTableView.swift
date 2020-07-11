@@ -19,6 +19,8 @@ enum DetailTableViewSections: String {
     case location = "LOCATION"
     case dishes = "POSSIBLE DISHES"
     case heartList = "HEART VALUES"
+    case elixirIngredientInfo = "COOKING INFO"
+    case elixirIngredients = "POSSIBLE INGREDIENTS"
 }
 
 class DetailTableView: UITableView {
@@ -34,12 +36,13 @@ class DetailTableView: UITableView {
         register(DetailHeartCell.self, forCellReuseIdentifier: DetailHeartCell.identifier)
         register(DetailEffectCell.self, forCellReuseIdentifier: DetailEffectCell.identifier)
         register(DetailIconTextListCell.self, forCellReuseIdentifier: DetailIconTextListCell.identifier)
-        register(DetailMultiPickerCell.self, forCellReuseIdentifier: DetailMultiPickerCell.identifier)
+        register(DetailMealPickerCell.self, forCellReuseIdentifier: DetailMealPickerCell.identifier)
         register(DetailResaleCell.self, forCellReuseIdentifier: DetailResaleCell.identifier)
         register(DetailPotencyCell.self, forCellReuseIdentifier: DetailPotencyCell.identifier)
         register(DetailLocationCell.self, forCellReuseIdentifier: DetailLocationCell.identifier)
         register(DetailDishesCell.self, forCellReuseIdentifier: DetailDishesCell.identifier)
         register(DetailHeartListCell.self, forCellReuseIdentifier: DetailHeartListCell.identifier)
+        register(DetailElixirPickerCell.self, forCellReuseIdentifier: DetailElixirPickerCell.identifier)   
     }
     
     required init?(coder: NSCoder) {

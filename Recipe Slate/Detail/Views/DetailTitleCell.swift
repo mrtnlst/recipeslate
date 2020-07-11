@@ -39,8 +39,8 @@ class DetailTitleCell: UITableViewCell {
         title.font = UIFont.preferredFont(forTextStyle: .body)
         title.textColor = .secondaryTextColor
         title.textAlignment = .left
-        title.numberOfLines = 1
-        title.lineBreakMode = .byTruncatingTail
+        title.numberOfLines = 0
+        title.lineBreakMode = .byWordWrapping
         stackView.addArrangedSubview(title)
     }
     
@@ -52,6 +52,14 @@ class DetailTitleCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
         ])
+    }
+    
+    func setItem(item: Listable) {
+        if let elixir = item as? Elixir {
+            title.text = elixir.effectDescription
+        } else {
+            title.text = item.name
+        }
     }
     
     override func prepareForReuse() {

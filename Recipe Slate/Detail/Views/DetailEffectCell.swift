@@ -83,6 +83,9 @@ class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
         if let material = item as? Material {
             configureEffectLabels(material.effect)
         }
+        if let elixir = item as? Elixir {
+            configureEffectLabels(for: elixir)
+        }
     }
     
     func configureEffectLabels(_ effect: Effect?) {
@@ -115,6 +118,14 @@ class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
             NSLayoutConstraint.deactivate([effectNoneConstraint])
             NSLayoutConstraint.activate([effectAvailableConstraint])
         }
+    }
+    
+    func configureEffectLabels(for elixir: Elixir) {
+        effectIcon.image = UIImage(named: elixir.effect.rawValue)
+        effectName.text = elixir.effect.rawValue
+        effectDuration.text = " "
+        NSLayoutConstraint.deactivate([effectAvailableConstraint])
+        NSLayoutConstraint.activate([effectNoneConstraint])
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

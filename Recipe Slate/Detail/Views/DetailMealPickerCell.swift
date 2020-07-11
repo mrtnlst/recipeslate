@@ -1,5 +1,5 @@
 //
-//  DetailMultiPickerCell.swift
+//  DetailMealPickerCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 16.06.20.
@@ -13,9 +13,9 @@ enum CategoryPicker {
     case second
 }
 
-class DetailMultiPickerCell: UITableViewCell, DetailCellStyle, Guidable {
+class DetailMealPickerCell: UITableViewCell, DetailCellStyle, Guidable {
     
-    static let identifier = "Detail-Multi-Picker-Cell"
+    static let identifier = "Detail-Meal-Picker-Cell"
     internal var container = UILayoutGuide()
     var item: Listable!
     var picker1 = DetailPickerView()
@@ -38,7 +38,7 @@ class DetailMultiPickerCell: UITableViewCell, DetailCellStyle, Guidable {
         notifyMaterialSelection()
     }
     
-    func setItem(item: Listable) {
+    func setItem(_ item: Listable) {
         self.item = item
         if let meal = item as? Meal {
             picker1Data = materialData.filter({ $0.category.contains(where: { meal.categoryIngredients.first == $0 }) })
@@ -70,8 +70,8 @@ class DetailMultiPickerCell: UITableViewCell, DetailCellStyle, Guidable {
             constraints.append(picker.leadingAnchor.constraint(equalTo: container.leadingAnchor))
             constraints.append(picker.centerYAnchor.constraint(equalTo: container.centerYAnchor))
         } else {
-                constraints.append(picker1.trailingAnchor.constraint(equalTo: container.centerXAnchor))
-                constraints.append(picker.leadingAnchor.constraint(equalTo: container.centerXAnchor))
+                constraints.append(picker1.trailingAnchor.constraint(equalTo: container.centerXAnchor, constant: -3))
+                constraints.append(picker.leadingAnchor.constraint(equalTo: container.centerXAnchor, constant: 2))
                 constraints.append(picker.trailingAnchor.constraint(equalTo: container.trailingAnchor))
         }
         NSLayoutConstraint.activate(constraints)
@@ -87,7 +87,7 @@ class DetailMultiPickerCell: UITableViewCell, DetailCellStyle, Guidable {
 
 // MARK: - UIPickerViewDataSource
 
-extension DetailMultiPickerCell: UIPickerViewDataSource {
+extension DetailMealPickerCell: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -100,7 +100,7 @@ extension DetailMultiPickerCell: UIPickerViewDataSource {
 
 // MARK: - UIPickerViewDelegate
 
-extension DetailMultiPickerCell: UIPickerViewDelegate {
+extension DetailMealPickerCell: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()

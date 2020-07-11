@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-struct Elixir: Listable {
+struct Elixir: Listable, Sectionable {
+    
     var name: String
     var category: EffectCategory
     var effect: EffectType
-
-    init(name: String, category: EffectCategory, effect: EffectType) {
-        self.name = name
-        self.category = category
-        self.effect = effect
+    var sections: [DetailTableViewSections] {
+        return [.effect, .elixirIngredientInfo, .elixirIngredients, .potency]
     }
+    var effectDescription: String = "Use at least one critter and one monster part. Multiple parts increase the duration. You can combine 5 ingredients at most."
+    
 }

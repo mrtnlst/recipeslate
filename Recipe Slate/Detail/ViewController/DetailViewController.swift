@@ -102,7 +102,7 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section] {
-        case .title:
+        case .title, .elixirIngredientInfo:
             return configureTitleCell(tableView, indexPath: indexPath)
         case .heart:
             return configureHeartCell(tableView, indexPath: indexPath)
@@ -122,14 +122,15 @@ extension DetailViewController: UITableViewDataSource {
             return configureDishesCell(tableView, indexPath: indexPath)
         case .heartList:
             return configureHeartListCell(tableView, indexPath: indexPath)
+        case .elixirIngredients:
+            return configureElixirEffectCell(tableView, indexPath: indexPath)
         }
     }
     
     func configureTitleCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailTitleCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTitleCell.identifier,
                                                        for: indexPath) as? DetailTitleCell else { fatalError() }
-        cell.title.text = item.name
-    
+        cell.setItem(item: item)
         return cell
     }
     
@@ -138,7 +139,6 @@ extension DetailViewController: UITableViewDataSource {
             
                                                        for: indexPath) as? DetailHeartCell else { fatalError() }
         cell.setItem(item)
-
         return cell
     }
     
@@ -156,10 +156,10 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureMultiPickerCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMultiPickerCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMultiPickerCell.identifier,
-                                                       for: indexPath) as? DetailMultiPickerCell else { fatalError() }
-        cell.setItem(item: item)
+    func configureMultiPickerCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMealPickerCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMealPickerCell.identifier,
+                                                       for: indexPath) as? DetailMealPickerCell else { fatalError() }
+        cell.setItem(item)
         return cell
     }
     
@@ -176,7 +176,6 @@ extension DetailViewController: UITableViewDataSource {
         if let material = item as? Material {
             cell.setPotency(EffectsHandler.calculatePotency(for: material))
         }
-        
         return cell
     }
     
@@ -199,14 +198,24 @@ extension DetailViewController: UITableViewDataSource {
         cell.setItem(item)
         return cell
     }
+    func configureElixirEffectCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailElixirPickerCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailElixirPickerCell.identifier,
+                                                       for: indexPath) as? DetailElixirPickerCell else { fatalError() }
+        cell.setItem(item)
+        return cell
+    }
 }
 
 
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if sections[indexPath.section] == .categoryIngredient {
+        let section = sections[indexPath.section]
+        
+        if section == .categoryIngredient {
             return 100
+        } else if section == .elixirIngredients {
+           return 250
         }
         return UITableView.automaticDimension
     }
