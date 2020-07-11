@@ -76,7 +76,12 @@ struct Material: Listable, Sectionable, Hashable {
     var location: String?
     var potency: Int?
     var sections: [DetailTableViewSections] {
-        return [.heartList, .effect, .potency, .resaleValue, .location, .dishes]
+        var sections: [DetailTableViewSections] = [.effect, .potency, .resaleValue, .location, .dishes]
+        
+        if hearts != nil {
+            sections.insert(.heartList, at: 0)
+        }
+        return sections
     }
     var isElixirIngredient: Bool {
         return category.contains(.critter) || category.contains(.monsterPart)
