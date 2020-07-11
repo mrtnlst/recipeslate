@@ -176,7 +176,7 @@ extension DetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailPotencyCell.identifier,
                                                        for: indexPath) as? DetailPotencyCell else { fatalError() }
         if let material = item as? Material {
-            cell.setPotency(EffectsHandler.calculatePotency(for: material))
+            cell.setPotency(EffectsHandler.calculatePossiblePotencies(for: material))
         }
         return cell
     }

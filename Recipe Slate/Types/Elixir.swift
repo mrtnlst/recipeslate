@@ -15,7 +15,12 @@ struct Elixir: Listable, Sectionable {
     var category: EffectCategory
     var effect: EffectType
     var sections: [DetailTableViewSections] {
-        return [.effect, .elixirPotency, .elixirIngredientInfo, .elixirIngredients]
+        var sections: [DetailTableViewSections] = [.effect, .elixirPotency, .elixirIngredientInfo, .elixirIngredients]
+        
+        if [.temporaryHearts, .extendsStamina, .restoresStamina].contains(effect) {
+            sections.removeAll(where: { $0 == .elixirPotency })
+        }
+        return sections
     }
     var effectDescription: String = "Use at least one critter and one monster part. Multiple parts increase the duration. You can combine 5 ingredients at most."
     

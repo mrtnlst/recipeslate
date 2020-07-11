@@ -13,7 +13,7 @@ class DetailElixirPotencyCell: UITableViewCell, DetailCellStyle, Guidable {
     static let identifier = "Detail-Elxir-Potency-Cell"
     
     internal var container = UILayoutGuide()
-    private var item: Potency?
+    private var item: Elixir?
     private var levelLabel = UILabel()
     private var icon = UIImageView()
 
@@ -58,26 +58,21 @@ class DetailElixirPotencyCell: UITableViewCell, DetailCellStyle, Guidable {
     
     @objc func updatePotency(_ notification: Notification) {
         guard let materials = notification.object as? [Material] else { return }
-        guard let mainMaterial = materials.filter({ $0.effect?.type != .duration }).first else { return }
-        setPotency(EffectsHandler.calculatePotency(for: mainMaterial))
+        setPotency(EffectsHandler.calculatePotencyLevel(for: materials))
     }
     
     func setItem(_ item: Listable) {
-        if let material = item as? Material {
-            setPotency(EffectsHandler.calculatePotency(for: material))
-        }
+        self.item = item as? Elixir
     }
     
-    func setPotency(_ potencies: [Potency]) {
-        guard let potency = potencies.last else { return }
+    func setPotency(_ level: Int) {
+        let text = "Level \(level)"
+        icon.image = item?.effect.icon
         
-        levelLabel.text = "Level \(potency.level)"
-        icon.image = potency.potencyIcon
-        
-        if let item = item, item.level != potency.level {
+        if text != levelLabel.text {
+            levelLabel.text = "Level \(level)"
             icon.addBounceAnimation()
         }
-        item = potency
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

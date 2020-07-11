@@ -132,7 +132,22 @@ class EffectsHandler: NSObject {
     
     // MARK: - Potency
     
-    static func calculatePotency(for material: Material) -> [Potency] {
+    static func calculatePotencyLevel(for materials: [Material]) -> Int {
+        guard let mainMaterial = materials.filter({ $0.effect?.type != .duration }).first,
+              let effect = mainMaterial.effect else { return 1 }
+
+        let potency = materials.compactMap({ $0.potency }).reduce(0, +)
+        
+        if let level2 = effect.potencyLevel2, potency >= level2 {
+            return 3
+        }
+        if let level1 = effect.potencyLevel1, potency >= level1 {
+            return 2
+        }
+        return 1
+    }
+    
+    static func calculatePossiblePotencies(for material: Material) -> [Potency] {
         guard let materialPotency = material.potency,
               let effectPotencyLv1 = material.effect?.potencyLevel1,
               materialPotency > 1 else {
