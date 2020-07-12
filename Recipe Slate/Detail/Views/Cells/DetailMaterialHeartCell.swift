@@ -1,5 +1,5 @@
 //
-//  DetailHeartListCell.swift
+//  DetailMaterialHeartCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 01.07.20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DetailHeartListCell: UITableViewCell, DetailCellStyle, Guidable, Itemize {
+class DetailMaterialHeartCell: UITableViewCell, DetailCellStyle, Guidable, Itemize {
     
-    static let identifier = "Detail-Heart-List-Cell"
+    static let identifier = "Detail-Material-Heart-Cell"
     var container = UILayoutGuide()
     var rowContainers = [UILayoutGuide]()
     

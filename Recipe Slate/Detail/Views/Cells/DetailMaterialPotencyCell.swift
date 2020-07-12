@@ -1,5 +1,5 @@
 //
-//  DetailPotencyCell.swift
+//  DetailMaterialPotencyCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 19.06.20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailPotencyCell: UITableViewCell, DetailCellStyle, Itemize {
+class DetailMaterialPotencyCell: UITableViewCell, DetailCellStyle, Itemize {
     
     static let identifier = "Detail-Potency-Cell"
     

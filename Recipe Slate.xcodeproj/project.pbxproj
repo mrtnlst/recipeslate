@@ -12,20 +12,20 @@
 		5B22656B24952B5C00459517 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Listable.swift */; };
 		5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */; };
 		5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */; };
-		5B2FF1DA24AC580A00DFD5FC /* DetailHeartListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF1D924AC580A00DFD5FC /* DetailHeartListCell.swift */; };
+		5B2FF1DA24AC580A00DFD5FC /* DetailMaterialHeartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF1D924AC580A00DFD5FC /* DetailMaterialHeartCell.swift */; };
 		5B2FF1DC24AD352400DFD5FC /* Hearts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF1DB24AD352400DFD5FC /* Hearts.swift */; };
-		5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173E249D141D00E64294 /* DetailLocationCell.swift */; };
+		5B40173F249D141D00E64294 /* DetailMaterialLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173E249D141D00E64294 /* DetailMaterialLocationCell.swift */; };
 		5B401741249D16A100E64294 /* Potency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401740249D16A100E64294 /* Potency.swift */; };
 		5B401745249F9FD400E64294 /* DetailPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B401744249F9FD400E64294 /* DetailPickerView.swift */; };
 		5B40174924A0A32900E64294 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174824A0A32900E64294 /* TimeInterval.swift */; };
-		5B40174E24A0E3D300E64294 /* DetailPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174C24A0E3D300E64294 /* DetailPotencyCell.swift */; };
+		5B40174E24A0E3D300E64294 /* DetailMaterialPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174C24A0E3D300E64294 /* DetailMaterialPotencyCell.swift */; };
 		5B40174F24A0E3D300E64294 /* DetailDishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */; };
 		5B4E149B24A2A13F00FE95C5 /* Guidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E149A24A2A13F00FE95C5 /* Guidable.swift */; };
 		5B4E149D24A2A16700FE95C5 /* Itemize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E149C24A2A16700FE95C5 /* Itemize.swift */; };
 		5B4E14A324A2A1B800FE95C5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E14A224A2A1B800FE95C5 /* UIImageView.swift */; };
 		5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */; };
 		5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */; };
-		5B8CAEE324992EB200C18B85 /* DetailIconTextListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailIconTextListCell.swift */; };
+		5B8CAEE324992EB200C18B85 /* DetailMealMainIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailMealMainIngredientCell.swift */; };
 		5B8CAEE52499360200C18B85 /* DetailMealPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE42499360200C18B85 /* DetailMealPickerCell.swift */; };
 		5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */; };
 		5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */; };
@@ -47,8 +47,8 @@
 		5BAEEAE11F080399002E307A /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEAE01F080399002E307A /* FoodData.swift */; };
 		5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAEEAE21F0803C3002E307A /* EffectData.swift */; };
 		5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */; };
-		5BCCD50E24B9D52F00280BA2 /* DetailElixirPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCD50D24B9D52F00280BA2 /* DetailElixirPickerCell.swift */; };
-		5BCCD51024B9F8AC00280BA2 /* DetailElixirPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCD50F24B9F8AC00280BA2 /* DetailElixirPotencyCell.swift */; };
+		5BCCD51324BAE4CF00280BA2 /* DetailElixirPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCD51224BAE4CF00280BA2 /* DetailElixirPickerCell.swift */; };
+		5BCCD51524BAE4D700280BA2 /* DetailElixirPotencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCCD51424BAE4D700280BA2 /* DetailElixirPotencyCell.swift */; };
 		5BD890402494C5DA0068A36A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8903F2494C5DA0068A36A /* UIColor.swift */; };
 		5BD890422494C6450068A36A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890412494C6450068A36A /* TabBarController.swift */; };
 		5BD890442494C75F0068A36A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890432494C75F0068A36A /* NavigationController.swift */; };
@@ -57,7 +57,7 @@
 		5BD8904A2494F9670068A36A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890492494F9670068A36A /* DetailViewController.swift */; };
 		5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8904B2494F9D80068A36A /* DetailTableView.swift */; };
 		5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */; };
-		5BD890512495025B0068A36A /* DetailHeartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890502495025B0068A36A /* DetailHeartCell.swift */; };
+		5BD890512495025B0068A36A /* DetailMealHeartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD890502495025B0068A36A /* DetailMealHeartCell.swift */; };
 		A914A24A1E82EA980023C3B9 /* ElixirViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A2491E82EA980023C3B9 /* ElixirViewController.swift */; };
 		A914A24C1E82EAB30023C3B9 /* ElixirDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */; };
 		A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914A24D1E82F7130023C3B9 /* Critter.swift */; };
@@ -84,20 +84,20 @@
 		5B22656A24952B5C00459517 /* Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
 		5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListDataSource.swift; sourceTree = "<group>"; };
 		5B2CC7E01E91979400E02C55 /* EffectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectsViewController.swift; sourceTree = "<group>"; };
-		5B2FF1D924AC580A00DFD5FC /* DetailHeartListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeartListCell.swift; sourceTree = "<group>"; };
+		5B2FF1D924AC580A00DFD5FC /* DetailMaterialHeartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMaterialHeartCell.swift; sourceTree = "<group>"; };
 		5B2FF1DB24AD352400DFD5FC /* Hearts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hearts.swift; sourceTree = "<group>"; };
-		5B40173E249D141D00E64294 /* DetailLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLocationCell.swift; sourceTree = "<group>"; };
+		5B40173E249D141D00E64294 /* DetailMaterialLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMaterialLocationCell.swift; sourceTree = "<group>"; };
 		5B401740249D16A100E64294 /* Potency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Potency.swift; sourceTree = "<group>"; };
 		5B401744249F9FD400E64294 /* DetailPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPickerView.swift; sourceTree = "<group>"; };
 		5B40174824A0A32900E64294 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
-		5B40174C24A0E3D300E64294 /* DetailPotencyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPotencyCell.swift; sourceTree = "<group>"; };
+		5B40174C24A0E3D300E64294 /* DetailMaterialPotencyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMaterialPotencyCell.swift; sourceTree = "<group>"; };
 		5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDishesCell.swift; sourceTree = "<group>"; };
 		5B4E149A24A2A13F00FE95C5 /* Guidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guidable.swift; sourceTree = "<group>"; };
 		5B4E149C24A2A16700FE95C5 /* Itemize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itemize.swift; sourceTree = "<group>"; };
 		5B4E14A224A2A1B800FE95C5 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		5B5AE3D91E9E3E16008F5313 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5B60C1CC1F1BD6770026954B /* PossibleMealsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleMealsTableView.swift; sourceTree = "<group>"; };
-		5B8CAEE224992EB200C18B85 /* DetailIconTextListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailIconTextListCell.swift; sourceTree = "<group>"; };
+		5B8CAEE224992EB200C18B85 /* DetailMealMainIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMealMainIngredientCell.swift; sourceTree = "<group>"; };
 		5B8CAEE42499360200C18B85 /* DetailMealPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMealPickerCell.swift; sourceTree = "<group>"; };
 		5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResaleCell.swift; sourceTree = "<group>"; };
 		5B8CAEEA249BAA2200C18B85 /* ResaleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResaleHandler.swift; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 		5BAEEAE01F080399002E307A /* FoodData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
 		5BAEEAE21F0803C3002E307A /* EffectData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectData.swift; sourceTree = "<group>"; };
 		5BB290E41EA74CB900378CDB /* EffectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectTableViewController.swift; sourceTree = "<group>"; };
-		5BCCD50D24B9D52F00280BA2 /* DetailElixirPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailElixirPickerCell.swift; sourceTree = SOURCE_ROOT; };
-		5BCCD50F24B9F8AC00280BA2 /* DetailElixirPotencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailElixirPotencyCell.swift; sourceTree = SOURCE_ROOT; };
+		5BCCD51224BAE4CF00280BA2 /* DetailElixirPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailElixirPickerCell.swift; sourceTree = "<group>"; };
+		5BCCD51424BAE4D700280BA2 /* DetailElixirPotencyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailElixirPotencyCell.swift; sourceTree = "<group>"; };
 		5BD8903F2494C5DA0068A36A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BD890412494C6450068A36A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5BD890432494C75F0068A36A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		5BD890492494F9670068A36A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5BD8904B2494F9D80068A36A /* DetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableView.swift; sourceTree = "<group>"; };
 		5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTitleCell.swift; sourceTree = "<group>"; };
-		5BD890502495025B0068A36A /* DetailHeartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeartCell.swift; sourceTree = "<group>"; };
+		5BD890502495025B0068A36A /* DetailMealHeartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMealHeartCell.swift; sourceTree = "<group>"; };
 		A914A2491E82EA980023C3B9 /* ElixirViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirViewController.swift; sourceTree = "<group>"; };
 		A914A24B1E82EAB30023C3B9 /* ElixirDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElixirDetailViewController.swift; sourceTree = "<group>"; };
 		A914A24D1E82F7130023C3B9 /* Critter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Critter.swift; sourceTree = "<group>"; };
@@ -257,19 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				5BD8904B2494F9D80068A36A /* DetailTableView.swift */,
-				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
-				5B2FF1D924AC580A00DFD5FC /* DetailHeartListCell.swift */,
-				5BD890502495025B0068A36A /* DetailHeartCell.swift */,
-				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
-				5B8CAEE224992EB200C18B85 /* DetailIconTextListCell.swift */,
-				5B8CAEE42499360200C18B85 /* DetailMealPickerCell.swift */,
-				5BCCD50D24B9D52F00280BA2 /* DetailElixirPickerCell.swift */,
+				5BCCD51124BAE4AE00280BA2 /* Cells */,
 				5B401744249F9FD400E64294 /* DetailPickerView.swift */,
-				5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */,
-				5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */,
-				5B40174C24A0E3D300E64294 /* DetailPotencyCell.swift */,
-				5BCCD50F24B9F8AC00280BA2 /* DetailElixirPotencyCell.swift */,
-				5B40173E249D141D00E64294 /* DetailLocationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,6 +330,25 @@
 				5BAAADB6249925BD0037F685 /* FavoriteProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5BCCD51124BAE4AE00280BA2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5BD8904E2494FBCC0068A36A /* DetailTitleCell.swift */,
+				5BAAADAC249890E80037F685 /* DetailEffectCell.swift */,
+				5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */,
+				5B40174D24A0E3D300E64294 /* DetailDishesCell.swift */,
+				5BD890502495025B0068A36A /* DetailMealHeartCell.swift */,
+				5B8CAEE224992EB200C18B85 /* DetailMealMainIngredientCell.swift */,
+				5B8CAEE42499360200C18B85 /* DetailMealPickerCell.swift */,
+				5BCCD51424BAE4D700280BA2 /* DetailElixirPotencyCell.swift */,
+				5BCCD51224BAE4CF00280BA2 /* DetailElixirPickerCell.swift */,
+				5B2FF1D924AC580A00DFD5FC /* DetailMaterialHeartCell.swift */,
+				5B40174C24A0E3D300E64294 /* DetailMaterialPotencyCell.swift */,
+				5B40173E249D141D00E64294 /* DetailMaterialLocationCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		5BD334CE1F1D7B2E00D45ACD /* Material */ = {
@@ -467,7 +475,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Martin List";
 				TargetAttributes = {
 					A9614D671E77F8F0009CA034 = {
@@ -523,6 +531,7 @@
 				5B22656B24952B5C00459517 /* Listable.swift in Sources */,
 				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
 				5B401745249F9FD400E64294 /* DetailPickerView.swift in Sources */,
+				5BCCD51324BAE4CF00280BA2 /* DetailElixirPickerCell.swift in Sources */,
 				5BD890462494C9A50068A36A /* ElementTableViewCell.swift in Sources */,
 				5B8CAEEB249BAA2200C18B85 /* ResaleHandler.swift in Sources */,
 				5BD8904C2494F9D80068A36A /* DetailTableView.swift in Sources */,
@@ -531,13 +540,14 @@
 				5BD890442494C75F0068A36A /* NavigationController.swift in Sources */,
 				A914A24E1E82F7130023C3B9 /* Critter.swift in Sources */,
 				A9D5795B1E86893800E7FFBC /* MaterialDetailViewController.swift in Sources */,
-				5B2FF1DA24AC580A00DFD5FC /* DetailHeartListCell.swift in Sources */,
+				5B2FF1DA24AC580A00DFD5FC /* DetailMaterialHeartCell.swift in Sources */,
 				5B2CC7E11E91979400E02C55 /* EffectsViewController.swift in Sources */,
-				5B40174E24A0E3D300E64294 /* DetailPotencyCell.swift in Sources */,
+				5B40174E24A0E3D300E64294 /* DetailMaterialPotencyCell.swift in Sources */,
 				5BB290E51EA74CB900378CDB /* EffectTableViewController.swift in Sources */,
+				5BCCD51524BAE4D700280BA2 /* DetailElixirPotencyCell.swift in Sources */,
 				5B17A92724A2A45B00983643 /* DetailCellStyle.swift in Sources */,
 				A9614D801E77F978009CA034 /* MealViewController.swift in Sources */,
-				5BD890512495025B0068A36A /* DetailHeartCell.swift in Sources */,
+				5BD890512495025B0068A36A /* DetailMealHeartCell.swift in Sources */,
 				5BD890402494C5DA0068A36A /* UIColor.swift in Sources */,
 				A9C3387C1E8435E8003A574F /* MonsterPart.swift in Sources */,
 				5B2FF1DC24AD352400DFD5FC /* Hearts.swift in Sources */,
@@ -548,8 +558,6 @@
 				A96FD1361E7BE8C700CE60D6 /* MaterialViewController.swift in Sources */,
 				5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */,
 				5BA40D3D2498047100CBD251 /* ElixirListDataSource.swift in Sources */,
-				5BCCD51024B9F8AC00280BA2 /* DetailElixirPotencyCell.swift in Sources */,
-				5BCCD50E24B9D52F00280BA2 /* DetailElixirPickerCell.swift in Sources */,
 				5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
 				5BA40D452498123B00CBD251 /* MaterialListDataSource.swift in Sources */,
@@ -564,7 +572,7 @@
 				5BA40D352497E11700CBD251 /* ListDataSource.swift in Sources */,
 				5BAEEAE31F0803C3002E307A /* EffectData.swift in Sources */,
 				A9C3387E1E853A52003A574F /* Material.swift in Sources */,
-				5B40173F249D141D00E64294 /* DetailLocationCell.swift in Sources */,
+				5B40173F249D141D00E64294 /* DetailMaterialLocationCell.swift in Sources */,
 				5BA40D392497E61700CBD251 /* EffectHandler.swift in Sources */,
 				5B8CAEF3249CB0E800C18B85 /* Sectionable.swift in Sources */,
 				5B8CAEE52499360200C18B85 /* DetailMealPickerCell.swift in Sources */,
@@ -573,7 +581,7 @@
 				A96FD1381E7BE8D900CE60D6 /* Food.swift in Sources */,
 				5BAAADB7249925BD0037F685 /* FavoriteProtocol.swift in Sources */,
 				5B60C1CD1F1BD6770026954B /* PossibleMealsTableView.swift in Sources */,
-				5B8CAEE324992EB200C18B85 /* DetailIconTextListCell.swift in Sources */,
+				5B8CAEE324992EB200C18B85 /* DetailMealMainIngredientCell.swift in Sources */,
 				5B40174F24A0E3D300E64294 /* DetailDishesCell.swift in Sources */,
 				5B401741249D16A100E64294 /* Potency.swift in Sources */,
 				5BAEEADD1F068938002E307A /* MealData.swift in Sources */,
@@ -632,6 +640,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -656,7 +665,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -691,6 +700,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -709,7 +719,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -725,7 +735,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;
@@ -742,7 +752,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlist.recipeslate;

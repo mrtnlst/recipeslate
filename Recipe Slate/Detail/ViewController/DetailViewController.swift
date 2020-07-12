@@ -105,23 +105,23 @@ extension DetailViewController: UITableViewDataSource {
         case .title, .elixirIngredientInfo:
             return configureTitleCell(tableView, indexPath: indexPath)
         case .heart:
-            return configureHeartCell(tableView, indexPath: indexPath)
+            return configureMealHeartCell(tableView, indexPath: indexPath)
         case .effect:
             return configureEffectCell(tableView, indexPath: indexPath)
         case .resaleValue:
             return configureResaleCell(tableView, indexPath: indexPath)
         case .mainIngredient:
-            return configureIconTextListCell(tableView, indexPath: indexPath)
+            return configureMealMainIngredientCell(tableView, indexPath: indexPath)
         case .categoryIngredient:
-            return configureMultiPickerCell(tableView, indexPath: indexPath)
+            return configureMealPickerCell(tableView, indexPath: indexPath)
         case .potency:
-            return configurePotencyCell(tableView, indexPath: indexPath)
+            return configureMaterialPotencyCell(tableView, indexPath: indexPath)
         case .location:
             return configureLocationCell(tableView, indexPath: indexPath)
         case .dishes:
             return configureDishesCell(tableView, indexPath: indexPath)
         case .heartList:
-            return configureHeartListCell(tableView, indexPath: indexPath)
+            return configureMaterialHeartCell(tableView, indexPath: indexPath)
         case .elixirIngredients:
             return configureElixirEffectCell(tableView, indexPath: indexPath)
         case .elixirPotency:
@@ -136,10 +136,10 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureHeartCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailHeartCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartCell.identifier,
+    func configureMealHeartCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMealHeartCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMealHeartCell.identifier,
             
-                                                       for: indexPath) as? DetailHeartCell else { fatalError() }
+                                                       for: indexPath) as? DetailMealHeartCell else { fatalError() }
         cell.setItem(item)
         return cell
     }
@@ -151,14 +151,14 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configureIconTextListCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailIconTextListCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailIconTextListCell.identifier,
-                                                       for: indexPath) as? DetailIconTextListCell else { fatalError() }
+    func configureMealMainIngredientCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMealMainIngredientCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMealMainIngredientCell.identifier,
+                                                       for: indexPath) as? DetailMealMainIngredientCell else { fatalError() }
         cell.setItem(item)
         return cell
     }
     
-    func configureMultiPickerCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMealPickerCell {
+    func configureMealPickerCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMealPickerCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMealPickerCell.identifier,
                                                        for: indexPath) as? DetailMealPickerCell else { fatalError() }
         cell.setItem(item)
@@ -172,18 +172,18 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func configurePotencyCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailPotencyCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailPotencyCell.identifier,
-                                                       for: indexPath) as? DetailPotencyCell else { fatalError() }
+    func configureMaterialPotencyCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMaterialPotencyCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMaterialPotencyCell.identifier,
+                                                       for: indexPath) as? DetailMaterialPotencyCell else { fatalError() }
         if let material = item as? Material {
             cell.setPotency(EffectsHandler.calculatePossiblePotencies(for: material))
         }
         return cell
     }
     
-    func configureLocationCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailLocationCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailLocationCell.identifier,
-                                                       for: indexPath) as? DetailLocationCell else { fatalError() }
+    func configureLocationCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMaterialLocationCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMaterialLocationCell.identifier,
+                                                       for: indexPath) as? DetailMaterialLocationCell else { fatalError() }
         cell.setItem(item)
         return cell
     }
@@ -194,9 +194,9 @@ extension DetailViewController: UITableViewDataSource {
         cell.setItem(item)
         return cell
     }
-    func configureHeartListCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailHeartListCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailHeartListCell.identifier,
-                                                       for: indexPath) as? DetailHeartListCell else { fatalError() }
+    func configureMaterialHeartCell(_ tableView: UITableView, indexPath: IndexPath) -> DetailMaterialHeartCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMaterialHeartCell.identifier,
+                                                       for: indexPath) as? DetailMaterialHeartCell else { fatalError() }
         cell.setItem(item)
         return cell
     }

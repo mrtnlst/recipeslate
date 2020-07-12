@@ -1,5 +1,5 @@
 //
-//  DetailHeartCell.swift
+//  DetailMealHeartCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 13.06.20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DetailHeartCell: UITableViewCell, DetailCellStyle, Guidable {
+class DetailMealHeartCell: UITableViewCell, DetailCellStyle, Guidable {
     
-    static let identifier = "Detail-Hearts-Cell"
+    static let identifier = "Detail-Meal-Hearts-Cell"
     public var valueLabel = UILabel()
     private var icon = UIImageView()
     private var item: Listable!

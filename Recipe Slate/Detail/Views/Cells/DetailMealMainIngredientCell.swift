@@ -1,5 +1,5 @@
 //
-//  DetailIconTextListCell.swift
+//  DetailMealMainIngredientCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 16.06.20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DetailIconTextListCell: UITableViewCell, DetailCellStyle, Itemize {
+class DetailMealMainIngredientCell: UITableViewCell, DetailCellStyle, Itemize {
     
-    static let identifier = "Detail-Icon-Text-List-Cell"
+    static let identifier = "Detail-Meal-Main-Ingredient-Cell"
     var container = UILayoutGuide()
     var rowContainers = [UILayoutGuide]()
     

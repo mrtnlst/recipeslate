@@ -1,5 +1,5 @@
 //
-//  DetailLocationCell.swift
+//  DetailMaterialLocationCell.swift
 //  Recipe Slate
 //
 //  Created by Martin List on 19.06.20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DetailLocationCell: UITableViewCell, DetailCellStyle, Guidable {
+class DetailMaterialLocationCell: UITableViewCell, DetailCellStyle, Guidable {
     
-    static let identifier = "Detail-Location-Cell"
+    static let identifier = "Detail-Material-Location-Cell"
     private var icon = UIImageView()
     public var locationLabel = UILabel()
     internal var container = UILayoutGuide()

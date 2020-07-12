@@ -60,6 +60,9 @@ class DetailResaleCell: UITableViewCell, DetailCellStyle, Guidable {
         if let meal = item as? Meal {
             configureResaleLabel(ResaleHandler.resaleValue(for: meal, and: materials))
         }
+        if let _ = item as? Elixir {
+            configureResaleLabel(ResaleHandler.resaleValue(for: materials))
+        }
     }
     
     func setItem(_ item: Listable) {
@@ -70,6 +73,7 @@ class DetailResaleCell: UITableViewCell, DetailCellStyle, Guidable {
         if let material = item as? Material {
             configureResaleLabel(material.saleValue ?? 0)
         }
+        configureResaleLabel(ResaleHandler.resaleValue(for: []))
     }
     
     private func configureResaleLabel(_ value: Int) {

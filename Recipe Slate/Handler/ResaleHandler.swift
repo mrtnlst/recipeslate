@@ -17,9 +17,13 @@ class ResaleHandler: NSObject {
         var ingredients = materialData.filter({ meal.mainIngredients.contains($0.name) })
         ingredients.append(contentsOf: categories)
         
-        var value = Double(ingredients.compactMap({ $0.saleValue }).reduce(0, +))
+        return resaleValue(for: ingredients)
+    }
     
-        switch ingredients.count {
+    static func resaleValue(for materials: [Material]) -> Int {
+        var value = Double(materials.compactMap({ $0.saleValue }).reduce(0, +))
+    
+        switch materials.count {
         case 1:
             value = 1.5 * value
         case 2:

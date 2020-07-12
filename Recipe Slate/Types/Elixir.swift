@@ -15,7 +15,7 @@ struct Elixir: Listable, Sectionable {
     var category: EffectCategory
     var effect: EffectType
     var sections: [DetailTableViewSections] {
-        var sections: [DetailTableViewSections] = [.effect, .elixirPotency, .elixirIngredientInfo, .elixirIngredients]
+        var sections: [DetailTableViewSections] = [.effect, .elixirPotency, .resaleValue, .elixirIngredientInfo, .elixirIngredients]
         
         if [.temporaryHearts, .extendsStamina, .restoresStamina].contains(effect) {
             sections.removeAll(where: { $0 == .elixirPotency })
