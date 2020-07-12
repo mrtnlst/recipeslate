@@ -12,6 +12,7 @@ class FavoriteListDataSource: NSObject, ListDataSource, FavoriteProtocol {
     var items: [Listable] {
         var items: [Listable] = mealData.filter({ favorites.contains($0.name) })
         items.append(contentsOf: materialData.filter({ favorites.contains($0.name) }))
+        items.append(contentsOf: elixirData.filter({ favorites.contains($0.name )}))
         return items
     }
     var sortedFirstLetters: [String] = []
@@ -57,6 +58,9 @@ extension FavoriteListDataSource: UITableViewDataSource {
         }
         if let material = item as? Material {
             cell.effectIcon.image = UIImage(named: material.effect?.type.rawValue ?? "")
+        }
+        if let elixir = item as? Elixir {
+            cell.effectIcon.image = elixir.effect.icon
         }
         return cell
     }
