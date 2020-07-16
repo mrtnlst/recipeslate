@@ -51,23 +51,10 @@ class DetailViewController: UIViewController, FavoriteProtocol {
     }
     
     func setupFavoriteButton() {
-        let image = favorites.contains(where: { $0 == item.name })
-            ? UIImage(named: "detail-favorite")
-            : UIImage(named: "detail-unfavorite")
-       
-        favoriteButton = UIButton(type: .system)
-        favoriteButton.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
-        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-        favoriteButton.setImage(image, for: .normal)
-        
-        let barButton = UIBarButtonItem(customView: favoriteButton)
-        
-        NSLayoutConstraint.activate([
-            favoriteButton.heightAnchor.constraint(equalToConstant: 32),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 32),
-        ])
-        
+        let buttonImage = favorites.contains(where: { $0 == item.name }) ? "detail-favorite" : "detail-unfavorite"
+        let barButton = UIBarButtonItem.barButton(with: buttonImage, target: self, selector: #selector(toggleFavorite))
         navigationItem.rightBarButtonItem = barButton
+        favoriteButton = barButton.customView as? UIButton
     }
     
     @objc func toggleFavorite() {

@@ -19,23 +19,14 @@ class NavigationController: UINavigationController {
     private func configureViews() {
         navigationBar.prefersLargeTitles = true
         
-        if #available(iOS 13.0, *) {
-            let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.backgroundColor = .headerBlue
-            navigationBar.standardAppearance = navBarAppearance
-            navigationBar.tintColor = .white
-            navigationBar.scrollEdgeAppearance = navBarAppearance
-        } else {
-            navigationBar.isTranslucent = false
-            navigationBar.barTintColor = .headerBlue
-            navigationBar.tintColor = .white
-            navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-            view.backgroundColor = .headerBlue
-            view.tintColor = .white
-        }
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = .headerBlue
+        navigationBar.standardAppearance = navBarAppearance
+        navigationBar.tintColor = .white
+        navigationBar.scrollEdgeAppearance = navBarAppearance
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

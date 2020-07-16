@@ -95,7 +95,8 @@ struct Material: Listable, Sectionable, Hashable {
         var categories: [Hearts] = []
         
         if name != "Wood" && name != "Silent Princess" {
-            categories.append(Hearts(numberOfHearts: hearts, fullRestore: false, type: .raw))
+            let heartsException: Float? = ["Acorn", "Chickaloo Tree Nut"].contains(name) ? 0.25 : nil
+            categories.append(Hearts(numberOfHearts: heartsException ?? hearts, fullRestore: false, type: .raw))
         }
         if let roastedItem = roastedFoodData.first(where: { $0.ingredientNames.contains(name) }) {
             categories.append(Hearts(numberOfHearts: roastedItem.hearts, fullRestore: false, type: .roasted))

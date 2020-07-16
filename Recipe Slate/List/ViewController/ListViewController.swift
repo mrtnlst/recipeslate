@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ListViewController: UIViewController {
 
     let searchController = UISearchController(searchResultsController: nil)
     var tableView = ListTableView()
     var dataSource: DataSource
+    lazy var aboutViewController: UIHostingController = {
+        UIHostingController(rootView: AboutView(store: AboutStore()))
+    }()
     
     init(dataSource: DataSource) {
         self.dataSource = dataSource
@@ -29,14 +33,19 @@ class ListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupSearch()
+        setupNotifications()
     }
+    
+    // MARK: - User Interface
     
     func setupViews() {        
         dataSource.createSections()
-        
         tableView.delegate = self
         tableView.dataSource = dataSource   
         view.addSubview(tableView)
+        
+        let barButton = UIBarButtonItem.barButton(with: "bar-about", target: self, selector: #selector(openAbout))
+        navigationItem.rightBarButtonItem = barButton
     }
     
     func setupConstraints() {
@@ -46,6 +55,25 @@ class ListViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
+    }
+    
+    // MARK: - Actions
+    
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(dismissAbout),
+                                               name: .RecipeSlateDismissAboutPressed, object: nil)
+        
+    }
+    
+    @objc func openAbout() {
+        let barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissAbout))
+        aboutViewController.navigationItem.rightBarButtonItem = barButton
+        navigationController?.present(NavigationController(rootViewController: aboutViewController), animated: true, completion: nil)
+    }
+    
+    @objc func dismissAbout() {
+        aboutViewController.dismiss(animated: true, completion: nil)
     }
     
     @objc func refreshTable() {
@@ -70,12 +98,11 @@ extension ListViewController: UISearchResultsUpdating, UISearchBarDelegate {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.keyboardAppearance = .dark
         
-        if #available(iOS 13.0, *) {
-            searchController.searchBar.searchTextField.backgroundColor = .white
-            searchController.searchBar.searchTextField.leftView?.tintColor = .gray
-            searchController.searchBar.searchTextField.tintColor = .headerBlue
-            
-        }
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.searchTextField.leftView?.tintColor = .gray
+        searchController.searchBar.searchTextField.tintColor = .headerBlue
+        
+
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.gray]
         
         definesPresentationContext = true

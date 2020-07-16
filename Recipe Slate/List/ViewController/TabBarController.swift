@@ -40,11 +40,7 @@ class TabBarController: UITabBarController {
         let elixirVC = ListViewController(dataSource: ElixirListDataSource())
         elixirVC.title = "Elixirs"
         elixirVC.tabBarItem = UITabBarItem(title: "Elixirs", image: UIImage(named: "bar-elixir"), selectedImage: nil)
-        
-        let effectVC = ListViewController(dataSource: EffectListDataSource())
-        effectVC.title = "Effects"
-        effectVC.tabBarItem = UITabBarItem(title: "Effects", image: UIImage(named: "bar-effects"), selectedImage: nil)
-        
+
         let materialVC = ListViewController(dataSource: MaterialListDataSource())
         materialVC.title = "Materials"
         materialVC.tabBarItem = UITabBarItem(title: "Materials", image: UIImage(named: "bar-food"), selectedImage: nil)
@@ -52,6 +48,6 @@ class TabBarController: UITabBarController {
                                                selector: #selector(materialVC.refreshTable),
                                                name: .RecipeSlateFavoriteDidChange, object: nil)
         
-        viewControllers = [favoritesVC, mealVC, elixirVC, effectVC, materialVC].map { NavigationController(rootViewController: $0) }
+        viewControllers = [favoritesVC, mealVC, elixirVC, materialVC].map { NavigationController(rootViewController: $0) }
     }
 }

@@ -103,7 +103,10 @@ class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
         let amountEffects: [EffectType] = [.restoresStamina, .extendsStamina, .temporaryHearts]
         if amountEffects.contains(where: { $0 == effect?.type}) {
             newEffectDuration = "\(effect?.amount ?? 0)"
-        } else {
+        } else if item.name == "Monster Extract" {
+            newEffectDuration = "1:00/10:00/30:00 min"
+        }
+        else {
             newEffectDuration = (effect?.duration ?? 0).durationToString()
         }
         

@@ -115,19 +115,55 @@ class EffectsHandler: NSObject {
     /// - Returns: Effect object 
     static func calculateEffect(for materials: [Material]) -> Effect {
         guard let mainMaterial = materials.filter({ $0.effect?.type != .duration }).first else { return Effect(type: .none) }
-        let amount = materials.compactMap({ $0.effect?.amount }).reduce(0, +)
+        let amount = calculateEffectAmount(of: materials)
         
         if amount > 0 {
             return Effect(type: mainMaterial.effect?.type ?? .none, amount: amount, duration: nil, potencyLevel1: nil, potencyLevel2: nil)
         }
         
+        let duration = calculateEffectDuration(for: materials)
+        
+        return Effect(type: mainMaterial.effect?.type ?? .none, amount: nil, duration: duration, potencyLevel1: nil, potencyLevel2: nil)
+    }
+    
+    static func calculateEffectAmount(of materials: [Material]) -> Float {
+        let critter = materials.first(where: { $0.category.contains(.critter) })
+        let occurences = materials.filter({ $0 == critter }).count
+        if critter?.name == "Energetic Rhino Beetle" {
+            switch occurences {
+            case 1:
+                return 1.6
+            case 2, 3, 4:
+                return 3
+            default:
+                return 0
+            }
+        }
+        else if critter?.name == "Restless Cricket" {
+            switch occurences {
+            case 1:
+                return 0.2
+            case 2:
+                return 0.4
+            case 3:
+                return 0.8
+            case 4:
+                return 1.0
+            default:
+                return 0
+            }
+        } else {
+            return materials.compactMap({ $0.effect?.amount }).reduce(0, +)
+        }
+    }
+    
+    static func calculateEffectDuration(for materials: [Material]) -> Double {
         var duration = materials.compactMap({ $0.effect?.duration }).reduce(0, +)
         
         if duration > 1800 {
             duration = 1800
         }
-        
-        return Effect(type: mainMaterial.effect?.type ?? .none, amount: nil, duration: duration, potencyLevel1: nil, potencyLevel2: nil)
+        return duration
     }
     
     // MARK: - Potency

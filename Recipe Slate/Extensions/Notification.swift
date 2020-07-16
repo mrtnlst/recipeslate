@@ -12,4 +12,5 @@ extension Notification.Name {
 
     static let RecipeSlateCategoryItemDidChange = Notification.Name("category-item-did-change")
     static let RecipeSlateFavoriteDidChange = Notification.Name("favorite-did-change")
+    static let RecipeSlateDismissAboutPressed = Notification.Name("about-dimissed")
 }

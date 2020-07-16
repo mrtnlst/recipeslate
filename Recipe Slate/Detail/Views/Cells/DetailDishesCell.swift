@@ -34,11 +34,9 @@ class DetailDishesCell: UITableViewCell, DetailCellStyle, Guidable {
     func setupViews() {
         applyCellStyle()
         
-        if #available(iOS 13.0, *) {
-            let accessoryIcon = UIImageView(image: UIImage(systemName: "chevron.right"))
-            accessoryIcon.tintColor = .secondaryTextColor
-            accessoryView = accessoryIcon
-        }
+        let accessoryIcon = UIImageView(image: UIImage(systemName: "chevron.right"))
+        accessoryIcon.tintColor = .secondaryTextColor
+        accessoryView = accessoryIcon
 
         icon = defaultIcon()
         icon.tintColor = .gray
