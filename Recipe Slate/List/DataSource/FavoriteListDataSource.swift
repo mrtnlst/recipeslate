@@ -15,7 +15,7 @@ class FavoriteListDataSource: NSObject, ListDataSource, FavoriteProtocol {
         items.append(contentsOf: elixirData.filter({ favorites.contains($0.name )}))
         return items
     }
-    var sortedFirstLetters: [String] = []
+    var sectionIndexTitles: [String] = []
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
 }
@@ -26,11 +26,11 @@ extension FavoriteListDataSource: UITableViewDataSource {
         if !filteredResults.isEmpty {
             return ""
         }
-        return sortedFirstLetters[section]
+        return sectionIndexTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sortedFirstLetters
+        return sectionIndexTitles.map({ String($0.prefix(1)) })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,10 +54,10 @@ extension FavoriteListDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let meal = item as? Meal {
-            cell.effectIcon.image = EffectsHandler.checkForMealEffect(meal: meal)
+            cell.effectIcon.image = EffectsHandler.mealListItemImage(meal: meal)
         }
         if let material = item as? Material {
-            cell.effectIcon.image = UIImage(named: material.effect?.type.rawValue ?? "")
+            cell.effectIcon.image = material.effect?.type.icon
         }
         if let elixir = item as? Elixir {
             cell.effectIcon.image = elixir.effect.icon

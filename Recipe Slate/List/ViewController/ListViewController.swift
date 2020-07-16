@@ -14,6 +14,7 @@ class ListViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     var tableView = ListTableView()
     var dataSource: DataSource
+    var segmentedControl = SegmentedControl()
     lazy var aboutViewController: UIHostingController = {
         UIHostingController(rootView: AboutView(store: AboutStore()))
     }()
@@ -36,12 +37,19 @@ class ListViewController: UIViewController {
         setupNotifications()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.updateHeaderView()
+     }
+    
     // MARK: - User Interface
     
     func setupViews() {        
-        dataSource.createSections()
+        dataSource.createSections(by: .alphabetically)
         tableView.delegate = self
-        tableView.dataSource = dataSource   
+        tableView.dataSource = dataSource
+        tableView.setTableHeaderView(headerView: segmentedControl)
+        segmentedControl.addTarget(self, action: #selector(refreshTable) , for: UIControl.Event.valueChanged)
         view.addSubview(tableView)
         
         let barButton = UIBarButtonItem.barButton(with: "bar-about", target: self, selector: #selector(openAbout))
@@ -63,7 +71,6 @@ class ListViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(dismissAbout),
                                                name: .RecipeSlateDismissAboutPressed, object: nil)
-        
     }
     
     @objc func openAbout() {
@@ -77,7 +84,7 @@ class ListViewController: UIViewController {
     }
     
     @objc func refreshTable() {
-        dataSource.createSections()
+        dataSource.createSections(by: SortType(rawValue: segmentedControl.selectedSegmentIndex)!)
         tableView.reloadData()
     }
     
@@ -88,31 +95,33 @@ class ListViewController: UIViewController {
 
 // MARK: - SearchController
 
-extension ListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension ListViewController: UISearchBarDelegate {
     
     func setupSearch() {
         searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
         
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.keyboardAppearance = .dark
         
-        searchController.searchBar.searchTextField.backgroundColor = .white
-        searchController.searchBar.searchTextField.leftView?.tintColor = .gray
-        searchController.searchBar.searchTextField.tintColor = .headerBlue
-        
-
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        searchController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 0.01713882573, green: 0.3089093566, blue: 0.4661796689, alpha: 1)
+        searchController.searchBar.searchTextField.tintColor = .white
         
         definesPresentationContext = true
         navigationItem.searchController = searchController
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        dataSource.filterContentForSearchText(text)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dataSource.filterContentForSearchText(searchText)
         tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        tableView.tableHeaderView = nil
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        tableView.updateHeaderView()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -126,7 +135,7 @@ extension ListViewController: UITableViewDelegate {
         view.tintColor = .tableHeaderViewColor
         
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = .white
+        header.textLabel?.textColor = .secondaryTextColor
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

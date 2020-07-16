@@ -70,6 +70,9 @@ struct Material: Listable, Sectionable, Hashable {
     
     var name: String
     var category: [MaterialCategory]
+    var effectName: String {
+        return effect?.type.rawValue ?? EffectType.none.rawValue
+    }
     var hearts: Float?
     var effect: Effect?
     var saleValue: Int?

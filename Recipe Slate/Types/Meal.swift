@@ -11,6 +11,12 @@ import Foundation
 struct Meal: Listable, Sectionable {
     var name: String
     var mainIngredients: [String]
+    var effectName: String {
+        if EffectsHandler.checkForMealEffect(meal: self) {
+            return EffectType.none.rawValue
+        }
+        return EffectType.someEffect.rawValue
+    }
     var categoryIngredients: [MaterialCategory]
     var sections: [DetailTableViewSections] {
         var sections: [DetailTableViewSections] = [.heart, .effect, .resaleValue]

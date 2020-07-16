@@ -13,6 +13,9 @@ struct Elixir: Listable, Sectionable {
     
     var name: String
     var category: EffectCategory
+    var effectName: String {
+        return effect.rawValue
+    }
     var effect: EffectType
     var sections: [DetailTableViewSections] {
         var sections: [DetailTableViewSections] = [.effect, .elixirPotency, .resaleValue, .elixirIngredientInfo, .elixirIngredients]

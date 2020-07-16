@@ -13,7 +13,7 @@ class MaterialListDataSource: NSObject, ListDataSource, FavoriteProtocol {
     var items: [Listable] {
         return materialData
     }
-    var sortedFirstLetters: [String] = []
+    var sectionIndexTitles: [String] = []
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
 }
@@ -24,11 +24,11 @@ extension MaterialListDataSource: UITableViewDataSource {
         if !filteredResults.isEmpty {
             return ""
         }
-        return sortedFirstLetters[section]
+        return sectionIndexTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sortedFirstLetters
+        return sectionIndexTitles.map({ String($0.prefix(1)) })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

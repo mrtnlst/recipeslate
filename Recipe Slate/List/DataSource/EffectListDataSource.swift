@@ -14,7 +14,7 @@ class EffectListDataSource: NSObject, ListDataSource {
     var items: [Listable] {
         return effectData
     }
-    var sortedFirstLetters: [String] = []
+    var sectionIndexTitles: [String] = []
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
 }
@@ -25,11 +25,11 @@ extension EffectListDataSource: UITableViewDataSource {
         if !filteredResults.isEmpty {
             return ""
         }
-        return sortedFirstLetters[section]
+        return sectionIndexTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sortedFirstLetters
+        return sectionIndexTitles.map({ String($0.prefix(1)) })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -14,7 +14,7 @@ class EffectsHandler: NSObject {
     // MARK: - Material
     
     static func icon(for material: Material) -> UIImage? {
-        if let effect = material.effect, effect.type != .duration {
+        if let effect = material.effect {
             return effect.type.icon
         }
         if material.hearts != nil {
@@ -45,16 +45,19 @@ class EffectsHandler: NSObject {
     /// Checks whether meal ingredients can produce an effect besides duration and temporary hearts.
     /// - Parameter meal: object of type Meal to check
     /// - Returns: UIImage with effect or heart icon
-    static func checkForMealEffect(meal: Meal) -> UIImage {
+    static func checkForMealEffect(meal: Meal) -> Bool {
         var materials = meal.categoryIngredients.map({ obtainMaterials(for: $0) }).reduce([], +)
         materials.append(contentsOf: materialData.filter({ meal.mainIngredients.contains($0.name) }))
         
         let heartEffects: [EffectType] = [.none, .duration, .temporaryHearts]
-        let haveHeartSupportingEffect = materials.allSatisfy({ heartEffects.contains($0.effect?.type ?? .none) })
-        if haveHeartSupportingEffect {
-            return UIImage(named: "detail-heart-full") ?? UIImage()
+        return materials.allSatisfy({ heartEffects.contains($0.effect?.type ?? .none) })
+    }
+    
+    static func mealListItemImage(meal: Meal) -> UIImage? {
+        if checkForMealEffect(meal: meal) {
+            return UIImage(named: "detail-heart-full")
         }
-        return UIImage(named: "Effect") ?? UIImage()
+        return UIImage(named: "effect")
     }
     
     /// Calculates effect for given main and category ingredients.

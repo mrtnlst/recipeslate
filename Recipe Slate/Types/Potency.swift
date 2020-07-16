@@ -22,7 +22,7 @@ struct Potency {
         return "Add \(amount) for potency level \(level)."
     }
     var potencyIcon: UIImage {
-        return UIImage(named: type.rawValue) ?? UIImage()
+        return type.icon ?? UIImage()
     }
     
     init(amount: Int, type: EffectType, level: Int) {

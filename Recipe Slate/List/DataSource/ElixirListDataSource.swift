@@ -13,7 +13,7 @@ class ElixirListDataSource: NSObject, ListDataSource {
     var items: [Listable] {
         return elixirData
     }
-    var sortedFirstLetters: [String] = []
+    var sectionIndexTitles: [String] = []
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
 }
@@ -24,11 +24,11 @@ extension ElixirListDataSource: UITableViewDataSource {
         if !filteredResults.isEmpty {
             return ""
         }
-        return sortedFirstLetters[section]
+        return sectionIndexTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sortedFirstLetters
+        return sectionIndexTitles.map({ String($0.prefix(1)) })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +52,7 @@ extension ElixirListDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let elixir = item as? Elixir {
-            cell.effectIcon.image = UIImage(named: elixir.effect.rawValue)
+            cell.effectIcon.image = elixir.effect.icon
         }
         return cell
     }

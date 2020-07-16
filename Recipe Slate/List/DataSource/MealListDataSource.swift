@@ -24,7 +24,7 @@ class MealListDataSource: NSObject, ListDataSource, FavoriteProtocol {
         }
         return mealData
     }
-    var sortedFirstLetters: [String] = []
+    var sectionIndexTitles: [String] = []
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
     var filterMaterial: Material?
@@ -41,11 +41,11 @@ extension MealListDataSource: UITableViewDataSource {
         if !filteredResults.isEmpty {
             return ""
         }
-        return sortedFirstLetters[section]
+        return sectionIndexTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sortedFirstLetters
+        return sectionIndexTitles.map({ String($0.prefix(1)) })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,7 +69,7 @@ extension MealListDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let meal = item as? Meal {
-            cell.effectIcon.image = EffectsHandler.checkForMealEffect(meal: meal)
+            cell.effectIcon.image = EffectsHandler.mealListItemImage(meal: meal)
         }
         cell.isFavorite = favorites.contains(where: { $0 == item.name })
         return cell

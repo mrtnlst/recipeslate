@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum SortType: Int {
+    case alphabetically = 0
+    case effect
+}
+
 typealias DataSource = ListDataSource & UITableViewDataSource
 
 protocol ListDataSource {
@@ -16,23 +21,34 @@ protocol ListDataSource {
     
     var sections: [[Listable]] { get set  }
     
-    var sortedFirstLetters: [String] { get set }
-    
     var filteredResults: [Listable] { get set }
+    
+    var sectionIndexTitles: [String] { get set }
 }
 
 extension ListDataSource {
     
-    mutating func createSections() {
-        let firstLetters = items.compactMap { $0.titleFirstLetter }
-        let uniqueFirstLetters = Array(Set(firstLetters))
-        
-        sortedFirstLetters = uniqueFirstLetters.sorted()
-        sections = sortedFirstLetters.map { firstLetter in
-            return items
-                .filter { $0.titleFirstLetter == firstLetter }
-                .sorted { $0.name < $1.name }
+    mutating func createSections(by sortType: SortType) {
+        let itemsForSections = filteredResults.isEmpty ? items : filteredResults
+        switch sortType {
+        case .alphabetically:
+            sectionIndexTitles = Array(Set(itemsForSections.compactMap { $0.titleFirstLetter }))
+            sectionIndexTitles.sort()
+            sections = sectionIndexTitles.map { firstLetter in
+                return itemsForSections
+                    .filter { $0.titleFirstLetter == firstLetter }
+                    .sorted { $0.name < $1.name }
+            }
+        case .effect:
+            sectionIndexTitles = Array(Set(itemsForSections.compactMap { $0.effectName.uppercased() }))
+            sectionIndexTitles.sort()
+            sections = sectionIndexTitles.map { firstLetter in
+                return itemsForSections
+                    .filter { $0.effectName.uppercased() == firstLetter }
+                    .sorted { $0.name < $1.name }
+            }
         }
+        
     }
     
     func getCorrectCellItem(path: IndexPath) -> Listable {
@@ -40,8 +56,6 @@ extension ListDataSource {
     }
     
     mutating func filterContentForSearchText(_ searchText: String) {
-        filteredResults = items.filter { meal in
-            return meal.name.lowercased().contains(searchText.lowercased())
-        }
+        return filteredResults = items.filter({  $0.name.lowercased().contains(searchText.lowercased()) })
     }
 }

@@ -34,19 +34,50 @@ enum EffectType: String {
     case restoresStamina = "Restores Stamina"
     case extendsStamina = "Overfills Stamina"
     case temporaryHearts = "Temporary Hearts"
-    case duration = "Duration"
-    case none = "No effect"
+    case duration = "Duration Increase"
+    case none = "No Effect"
+    case someEffect = "Effect"
 }
 
 extension EffectType {
-    var icon: UIImage {
-        UIImage(named: self.rawValue) ?? UIImage()
+    var icon: UIImage? {
+        switch self {
+        case .attack:
+            return UIImage(named: "attack-up")
+        case .defense:
+            return UIImage(named: "defense-up")
+        case .speed:
+            return UIImage(named: "speed-up")
+        case .stealth:
+            return UIImage(named: "increased-stealth")
+        case .heat:
+            return UIImage(named: "heat-resistance")
+        case .cold:
+            return UIImage(named: "cold-resistance")
+        case .electricity:
+            return UIImage(named: "electricity-resistance")
+        case .fire:
+            return UIImage(named: "fire-proof")
+        case .restoresStamina:
+            return UIImage(named: "restores-stamina")
+        case .extendsStamina:
+            return UIImage(named: "extends-stamina")
+        case .temporaryHearts:
+            return UIImage(named: "heart-temporary")
+        case .duration:
+            return UIImage(named: "duration-up")
+        case .none, .someEffect:
+            return UIImage(named: "effect")
+        }
     }
 }
 
 struct Effect: Listable, Hashable {
     var type: EffectType
     var name: String {
+        return type.rawValue
+    }
+    var effectName: String {
         return type.rawValue
     }
     var amount: Float?
