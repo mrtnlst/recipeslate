@@ -229,9 +229,9 @@ extension DetailViewController: UITableViewDelegate {
             guard let material = item as? Material else { return }
             var viewController: UIViewController
             
-            if material.isElixirIngredient && material.hasDurationEffect {
-                // TODO: - Find elixir for material
-                viewController = DetailViewController(item: item, sections: material.sections)
+            if material.isElixirIngredient && !material.hasDurationEffect {
+                guard let elixir = elixirData.first(where: { $0.effect == material.effect?.type}) else { return }
+                viewController = DetailViewController(item: elixir, sections: elixir.sections)
             } else {
                 let dataSource: DataSource = material.isElixirIngredient
                     ? ElixirListDataSource()
