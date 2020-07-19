@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 class ListViewController: UIViewController {
-
+    
     let searchController = SearchController()
     var tableView = ListTableView()
     var dataSource: DataSource
@@ -42,7 +42,7 @@ class ListViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.updateHeaderView()
-     }
+    }
     
     // MARK: - User Interface
     
@@ -128,7 +128,7 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = .tableHeaderViewColor
-        
+        view.backgroundColor = .tableHeaderViewColor
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = .secondaryTextColor
     }

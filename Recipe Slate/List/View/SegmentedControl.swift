@@ -27,8 +27,8 @@ class SegmentedControl: UISegmentedControl {
         insertSegment(withTitle: "ABC", at: 0, animated: false)
         insertSegment(withTitle: "Effect", at: 1, animated: false)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .backgroundBlue
-        selectedSegmentTintColor = .tableViewCellSelectedColor
+        backgroundColor = .defaultBackground
+        selectedSegmentTintColor = .segmentedControlViewColor
         selectedSegmentIndex = 0
         
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .normal)

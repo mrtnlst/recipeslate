@@ -12,7 +12,7 @@ class ListTableView: UITableView {
 
     init() {
         super.init(frame: .zero, style: .plain)
-        backgroundColor = .backgroundBlue
+        backgroundColor = .defaultBackground
         separatorColor = .seperatorColor
         sectionIndexColor = .white
         keyboardDismissMode = .interactive

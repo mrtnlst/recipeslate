@@ -25,9 +25,9 @@ class DetailTitleCell: UITableViewCell {
     }
 
     func setupViews() {
-        backgroundColor = .backgroundBlue
+        backgroundColor = .defaultBackground
         let selectedView = UIView()
-        selectedView.backgroundColor = .backgroundBlue
+        selectedView.backgroundColor = .defaultBackground
         selectedBackgroundView = selectedView
         
         stackView.translatesAutoresizingMaskIntoConstraints = false

@@ -26,6 +26,8 @@ final class AboutStore {
                                      sectionTitle: "Website",
                                      icon: "safari.fill")
     
-    let about = "Recipe Slate provides a collection of recipes, elixirs and materials found in Breath of the Wild."
+    let about = """
+                Recipe Slate provides a collection of recipes, elixirs and materials found in Breath of the Wild. Send me any improvements or feature suggestions via Twitter (link below). 
+                """
     let version = "Version 2.0"
 }

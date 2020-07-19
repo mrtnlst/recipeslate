@@ -16,9 +16,9 @@ protocol DetailCellStyle {
 extension DetailCellStyle where Self: UITableViewCell {
     
     func applyCellStyle() {
-        backgroundColor = .backgroundBlue
+        backgroundColor = .defaultBackground
         let selectedView = UIView()
-        selectedView.backgroundColor = .backgroundBlue
+        selectedView.backgroundColor = .defaultBackground
         selectedBackgroundView = selectedView
     }
     

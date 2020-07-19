@@ -26,7 +26,7 @@ class SearchController: UISearchController {
         searchBar.keyboardAppearance = .dark
         searchBar.searchTextField.leftView?.tintColor = .white
         searchBar.barStyle = .black
-        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 0.01713882573, green: 0.3089093566, blue: 0.4661796689, alpha: 1)
+        searchBar.searchTextField.backgroundColor = .searchBarBackgroundColor
         searchBar.searchTextField.tintColor = .white
         
         let clear = UIImage(systemName: "xmark.circle.fill")

@@ -59,7 +59,7 @@ class DetailDishesCell: UITableViewCell, DetailCellStyle, Guidable {
     }
     
     func applyCellStyle() {
-        backgroundColor = .backgroundBlue
+        backgroundColor = .defaultBackground
         let selectedView = UIView()
         selectedView.backgroundColor = .tableViewCellSelectedColor
         selectedBackgroundView = selectedView

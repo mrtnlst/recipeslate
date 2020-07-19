@@ -19,23 +19,28 @@ struct AboutView: View {
     }
     
     var body: some View {
-        List {
-            AboutTextCell(text: store.about)
-            AboutLinkCell(content: store.twitter)
-            AboutLinkCell(content: store.homepage)
-            AboutFooterCell(text: store.version)
+        ScrollView {
+            VStack(alignment: .leading) {
+                AboutTextCell(text: store.about)
+                    .padding(.bottom, 10)
+                AboutLinkCell(content: store.twitter)
+                AboutLinkCell(content: store.homepage)
+                AboutFooterCell(text: store.version)
+            }
+            
         }
-        .background(Color(.backgroundBlue))
+        .padding()
+        .background(Color(.defaultBackground))
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle("About")
         .listStyle(PlainListStyle())
         .navigationBarItems(trailing:
-            HStack {
-                Button("Done") {
-                    NotificationHandler.post(.RecipeSlateDismissAboutPressed, object: nil)
-                }
-                .foregroundColor(.white)
-            }
+                                HStack {
+                                    Button("Done") {
+                                        NotificationHandler.post(.RecipeSlateDismissAboutPressed, object: nil)
+                                    }
+                                    .foregroundColor(.white)
+                                }
         )
     }
 }
@@ -53,7 +58,7 @@ struct AboutTextCell: View {
     
     var body: some View {
         Text(text)
-            .listRowBackground(Color(.backgroundBlue))
+            .listRowBackground(Color(.defaultBackground))
             .foregroundColor(Color(.secondaryTextColor))
     }
 }
@@ -68,7 +73,7 @@ struct AboutFooterCell: View {
                 .foregroundColor(Color(.secondaryTextColor))
             Spacer()
         }
-        .listRowBackground(Color(.backgroundBlue))
+        .listRowBackground(Color(.defaultBackground))
     }
 }
 
@@ -81,13 +86,13 @@ struct AboutLinkCell: View {
                 .font(.headline)
             HStack(alignment: .firstTextBaseline) {
                 Image(systemName: content.icon)
-                    .foregroundColor(Color(.headerBlue))
+                    .foregroundColor(Color(.primary))
                 Button(content.title) {
-                    UIApplication.shared.open(content.url)
+                    UIApplication.shared.open(self.content.url)
                 }
             }
         }
-        .listRowBackground(Color(.backgroundBlue))
-        .foregroundColor(Color(.headerBlue))
+        .listRowBackground(Color(.defaultBackground))
+        .foregroundColor(Color(.primary))
     }
 }

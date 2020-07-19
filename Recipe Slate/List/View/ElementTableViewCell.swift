@@ -33,7 +33,7 @@ class ElementTableViewCell: UITableViewCell {
     
 
     func setupViews() {
-        backgroundColor = .backgroundBlue
+        backgroundColor = .defaultBackground
         let selectedView = UIView()
         selectedView.backgroundColor = .tableViewCellSelectedColor
         selectedBackgroundView = selectedView

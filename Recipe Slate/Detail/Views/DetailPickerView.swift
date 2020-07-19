@@ -20,12 +20,12 @@ class DetailPickerView: UIPickerView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-        
+    override func layoutSubviews() {
+        super.layoutSubviews()
         if #available(iOS 14.0, *) {
-            
+            subviews[1].backgroundColor = .pickerSelectionIndicatorColor
         } else {
+            if subviews.count != 3 { return }
             subviews[1].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
             subviews[2].backgroundColor = UIColor.init(white: 1.0, alpha: 0.2)
         }
