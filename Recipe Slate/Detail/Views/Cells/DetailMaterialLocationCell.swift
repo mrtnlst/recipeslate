@@ -35,6 +35,7 @@ class DetailMaterialLocationCell: UITableViewCell, DetailCellStyle, Guidable {
         contentView.addSubview(icon)
         
         locationLabel = defaultLabel()
+        locationLabel.numberOfLines = 3
         contentView.addSubview(locationLabel)
     }
     

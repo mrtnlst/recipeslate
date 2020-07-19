@@ -81,8 +81,17 @@ struct Material: Listable, Sectionable, Hashable {
     var sections: [DetailTableViewSections] {
         var sections: [DetailTableViewSections] = [.effect, .potency, .resaleValue, .location, .dishes]
         
-        if hearts != nil {
+        if !heartCategories.isEmpty {
             sections.insert(.heartList, at: 0)
+        }
+        
+        if [.duration, .temporaryHearts, .extendsStamina, .restoresStamina].contains(effect?.type) {
+            sections.removeAll(where: { $0 == .potency })
+        }
+        
+        if effect == nil {
+            sections.removeAll(where: { $0 == .potency })
+            sections.removeAll(where: { $0 == .effect })
         }
         return sections
     }
@@ -93,11 +102,10 @@ struct Material: Listable, Sectionable, Hashable {
         return effect?.type == .duration
     }
     var heartCategories: [Hearts] {
-        guard let hearts = hearts else { return [] }
         let fullRestore = effect?.type == EffectType.temporaryHearts
         var categories: [Hearts] = []
         
-        if name != "Wood" && name != "Silent Princess" {
+        if let hearts = hearts, name != "Wood" && name != "Silent Princess" {
             let heartsException: Float? = ["Acorn", "Chickaloo Tree Nut"].contains(name) ? 0.25 : nil
             categories.append(Hearts(numberOfHearts: heartsException ?? hearts, fullRestore: false, type: .raw))
         }
@@ -107,11 +115,12 @@ struct Material: Listable, Sectionable, Hashable {
         if let frozenItem = frozenFoodData.first(where: { $0.ingredientNames.contains(name) }) {
             categories.append(Hearts(numberOfHearts: frozenItem.hearts, fullRestore: false, type: .frozen))
         }
-        
-        categories.append(Hearts(numberOfHearts: name == "Fairy" ? 7 : hearts * 2,
-                                 fullRestore: fullRestore, type: .cooked))
-        
-        
+                
+        if let hearts = hearts {
+            categories.append(Hearts(numberOfHearts: name == "Fairy" ? 7 : hearts * 2,
+                                     fullRestore: fullRestore, type: .cooked))
+            
+        }
         return categories
     }
     

@@ -69,8 +69,7 @@ class DetailResaleCell: UITableViewCell, DetailCellStyle, Guidable {
         self.item = item
         if let meal = item as? Meal {
             configureResaleLabel(ResaleHandler.resaleValue(for: meal, and: []))
-        }
-        if let material = item as? Material {
+        } else if let material = item as? Material {
             configureResaleLabel(material.saleValue ?? 0)
         } else {
             configureResaleLabel(ResaleHandler.resaleValue(for: []))
