@@ -45,12 +45,12 @@ class DetailTitleCell: UITableViewCell {
     }
     
     func setupConstraints() {
-        
+        let margins = contentView.layoutMarginsGuide
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            stackView.topAnchor.constraint(equalTo: margins.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
         ])
     }
     
