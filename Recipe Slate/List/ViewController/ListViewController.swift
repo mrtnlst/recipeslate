@@ -15,12 +15,14 @@ class ListViewController: UIViewController {
     var tableView = ListTableView()
     var dataSource: DataSource
     var segmentedControl = SegmentedControl()
+    var filter: Material?
     lazy var aboutViewController: UIHostingController = {
         UIHostingController(rootView: AboutView(store: AboutStore()))
     }()
     
-    init(dataSource: DataSource) {
+    init(dataSource: DataSource, filter: Material? = nil) {
         self.dataSource = dataSource
+        self.filter = filter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -134,7 +136,7 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         let item = dataSource.getCorrectCellItem(path: indexPath)
-        let detailVC = DetailViewController(item: item, sections: (item as? Sectionable)?.sections ?? [])
+        let detailVC = DetailViewController(item: item, sections: (item as? Sectionable)?.sections ?? [], filter: filter)
         detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }

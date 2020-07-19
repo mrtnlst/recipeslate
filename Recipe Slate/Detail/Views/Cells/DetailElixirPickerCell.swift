@@ -40,6 +40,16 @@ class DetailElixirPickerCell: UITableViewCell, DetailCellStyle, Guidable {
         configurePickers()
     }
     
+    func select(filter: Material?) {
+        guard let filter = filter else { return }
+    
+        if let index = critterPickerData.firstIndex(of: filter) {
+            critterPicker.selectRow(index, inComponent: 0, animated: false)
+        } else if let index = monsterPickerData.firstIndex(of: filter) {
+            monsterPicker.selectRow(index, inComponent: 0, animated: false)
+        }
+    }
+    
     private func configurePickers() {
         let pickers = [amountPicker1, amountPicker2, critterPicker, monsterPicker]
         

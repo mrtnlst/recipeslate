@@ -14,10 +14,12 @@ class DetailViewController: UIViewController, FavoriteProtocol {
     var item: Listable
     var tableView: DetailTableView = DetailTableView()
     var sections: [DetailTableViewSections] = []
+    var filter: Material?
     
-    init(item: Listable, sections: [DetailTableViewSections]) {
+    init(item: Listable, sections: [DetailTableViewSections], filter: Material? = nil) {
         self.item = item
         self.sections = sections
+        self.filter = filter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -149,6 +151,7 @@ extension DetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailMealPickerCell.identifier,
                                                        for: indexPath) as? DetailMealPickerCell else { fatalError() }
         cell.setItem(item)
+        cell.select(filter: filter)
         return cell
     }
     
@@ -191,6 +194,7 @@ extension DetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailElixirPickerCell.identifier,
                                                        for: indexPath) as? DetailElixirPickerCell else { fatalError() }
         cell.setItem(item)
+        cell.select(filter: filter)
         return cell
     }
     
@@ -231,12 +235,12 @@ extension DetailViewController: UITableViewDelegate {
             
             if material.isElixirIngredient && !material.hasDurationEffect {
                 guard let elixir = elixirData.first(where: { $0.effect == material.effect?.type}) else { return }
-                viewController = DetailViewController(item: elixir, sections: elixir.sections)
+                viewController = DetailViewController(item: elixir, sections: elixir.sections, filter: material)
             } else {
                 let dataSource: DataSource = material.isElixirIngredient
                     ? ElixirListDataSource()
                     : MealListDataSource(with: material)
-                viewController = ListViewController(dataSource: dataSource)
+                viewController = ListViewController(dataSource: dataSource, filter: material)
                 viewController.title = material.isElixirIngredient ? "Possible Elixirs" : "Possible Meals"
             }
             navigationController?.pushViewController(viewController, animated: true)
