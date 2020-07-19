@@ -18,15 +18,13 @@ class FavoriteListDataSource: NSObject, ListDataSource, FavoriteProtocol {
     var sectionIndexTitles: [String] = []
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
+    var isSearchActive: Bool = false    
 }
 
 extension FavoriteListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if !filteredResults.isEmpty {
-            return ""
-        }
-        return sectionIndexTitles[section]
+        isSearchActive ? "" : sectionIndexTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -34,17 +32,11 @@ extension FavoriteListDataSource: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if !filteredResults.isEmpty {
-            return 1
-        }
-        return sections.count
+        isSearchActive ? 1 : sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !filteredResults.isEmpty {
-            return filteredResults.count
-        }
-        return sections[section].count
+        isSearchActive ? filteredResults.count : sections[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -28,6 +28,7 @@
 		5B67AD8724C0BDD000D314E6 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67AD8624C0BDD000D314E6 /* UIBarButtonItem.swift */; };
 		5B67AD8924C0C65D00D314E6 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67AD8824C0C65D00D314E6 /* SegmentedControl.swift */; };
 		5B67AD8B24C0C6B000D314E6 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67AD8A24C0C6B000D314E6 /* UITableView.swift */; };
+		5B7C5D6F24C4542500AAAFE3 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7C5D6E24C4542500AAAFE3 /* SearchController.swift */; };
 		5B8CAEE324992EB200C18B85 /* DetailMealMainIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE224992EB200C18B85 /* DetailMealMainIngredientCell.swift */; };
 		5B8CAEE52499360200C18B85 /* DetailMealPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE42499360200C18B85 /* DetailMealPickerCell.swift */; };
 		5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */; };
@@ -92,6 +93,7 @@
 		5B67AD8624C0BDD000D314E6 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = SOURCE_ROOT; };
 		5B67AD8824C0C65D00D314E6 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		5B67AD8A24C0C6B000D314E6 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		5B7C5D6E24C4542500AAAFE3 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = SOURCE_ROOT; };
 		5B8CAEE224992EB200C18B85 /* DetailMealMainIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMealMainIngredientCell.swift; sourceTree = "<group>"; };
 		5B8CAEE42499360200C18B85 /* DetailMealPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMealPickerCell.swift; sourceTree = "<group>"; };
 		5B8CAEE8249BA7E500C18B85 /* DetailResaleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResaleCell.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		5BAAADB0249923240037F685 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B7C5D6E24C4542500AAAFE3 /* SearchController.swift */,
 				5BD890432494C75F0068A36A /* NavigationController.swift */,
 				5B67AD8824C0C65D00D314E6 /* SegmentedControl.swift */,
 				5BD890472494CCA30068A36A /* ListTableView.swift */,
@@ -456,6 +459,7 @@
 				5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */,
 				5BA40D3D2498047100CBD251 /* ElixirListDataSource.swift in Sources */,
 				5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */,
+				5B7C5D6F24C4542500AAAFE3 /* SearchController.swift in Sources */,
 				A9C784D11E80819000551990 /* Effect.swift in Sources */,
 				5BA40D452498123B00CBD251 /* MaterialListDataSource.swift in Sources */,
 				5B5AE3DA1E9E3E16008F5313 /* ListViewController.swift in Sources */,

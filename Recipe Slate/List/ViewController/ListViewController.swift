@@ -11,7 +11,7 @@ import SwiftUI
 
 class ListViewController: UIViewController {
 
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchController = SearchController()
     var tableView = ListTableView()
     var dataSource: DataSource
     var segmentedControl = SegmentedControl()
@@ -45,7 +45,7 @@ class ListViewController: UIViewController {
     // MARK: - User Interface
     
     func setupViews() {        
-        dataSource.createSections(by: .alphabetically)
+        dataSource.createSections(by: .alphabet)
         tableView.delegate = self
         tableView.dataSource = dataSource
         tableView.setTableHeaderView(headerView: segmentedControl)
@@ -99,19 +99,12 @@ extension ListViewController: UISearchBarDelegate {
     
     func setupSearch() {
         searchController.searchBar.delegate = self
-        
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.keyboardAppearance = .dark
-        
-        searchController.searchBar.searchTextField.backgroundColor = #colorLiteral(red: 0.01713882573, green: 0.3089093566, blue: 0.4661796689, alpha: 1)
-        searchController.searchBar.searchTextField.tintColor = .white
-        
         definesPresentationContext = true
         navigationItem.searchController = searchController
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        dataSource.isSearchActive = true
         dataSource.filterContentForSearchText(searchText)
         tableView.reloadData()
     }
@@ -120,12 +113,12 @@ extension ListViewController: UISearchBarDelegate {
         tableView.tableHeaderView = nil
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        tableView.updateHeaderView()
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        tableView.setTableHeaderView(headerView: segmentedControl)
+        tableView.updateHeaderView()
+        dataSource.isSearchActive = false
         dataSource.filteredResults.removeAll()
+        tableView.reloadData()
     }
 }
 

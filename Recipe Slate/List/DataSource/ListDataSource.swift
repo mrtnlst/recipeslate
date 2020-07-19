@@ -9,7 +9,7 @@
 import UIKit
 
 enum SortType: Int {
-    case alphabetically = 0
+    case alphabet = 0
     case effect
 }
 
@@ -24,14 +24,17 @@ protocol ListDataSource {
     var filteredResults: [Listable] { get set }
     
     var sectionIndexTitles: [String] { get set }
+    
+    var isSearchActive: Bool { get set }
 }
 
 extension ListDataSource {
     
     mutating func createSections(by sortType: SortType) {
-        let itemsForSections = filteredResults.isEmpty ? items : filteredResults
+        
+        let itemsForSections = isSearchActive ? filteredResults : items
         switch sortType {
-        case .alphabetically:
+        case .alphabet:
             sectionIndexTitles = Array(Set(itemsForSections.compactMap { $0.titleFirstLetter }))
             sectionIndexTitles.sort()
             sections = sectionIndexTitles.map { firstLetter in
@@ -52,7 +55,7 @@ extension ListDataSource {
     }
     
     func getCorrectCellItem(path: IndexPath) -> Listable {
-        return !filteredResults.isEmpty ? filteredResults[path.row] : sections[path.section][path.row]
+        return isSearchActive ? filteredResults[path.row] : sections[path.section][path.row]
     }
     
     mutating func filterContentForSearchText(_ searchText: String) {

@@ -28,6 +28,7 @@ class MealListDataSource: NSObject, ListDataSource, FavoriteProtocol {
     var sections: [[Listable]] = [[]]
     var filteredResults = [Listable]()
     var filterMaterial: Material?
+    var isSearchActive: Bool = false    
     
     init(with filter: Material? = nil) {
         super.init()
@@ -38,10 +39,7 @@ class MealListDataSource: NSObject, ListDataSource, FavoriteProtocol {
 extension MealListDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if !filteredResults.isEmpty {
-            return ""
-        }
-        return sectionIndexTitles[section]
+        isSearchActive ? "" : sectionIndexTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -49,17 +47,11 @@ extension MealListDataSource: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if !filteredResults.isEmpty {
-            return 1
-        }
-        return sections.count
+        isSearchActive ? 1 : sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !filteredResults.isEmpty {
-            return filteredResults.count
-        }
-        return sections[section].count
+        isSearchActive ? filteredResults.count : sections[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
