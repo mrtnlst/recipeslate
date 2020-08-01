@@ -190,14 +190,16 @@ class EffectsHandler: NSObject {
     }
     
     static func calculatePossiblePotencies(for material: Material) -> [Potency] {
+        let level1Potency = Potency(amount: 0, type: material.effect?.type ?? .none, level: 1)
+        
         guard let materialPotency = material.potency,
               let effectPotencyLv1 = material.effect?.potencyLevel1,
               materialPotency > 0 else {
-            return [Potency(amount: 0, type: material.effect?.type ?? .none, level: 1)]
+            return [level1Potency]
         }
         
         var potencies: [Potency] = []
-        
+
         for amount in 1...5 {
             if amount * materialPotency >= effectPotencyLv1 {
                 potencies.append(Potency(amount: amount, type: material.effect?.type ?? .none, level: 2))
@@ -206,10 +208,7 @@ class EffectsHandler: NSObject {
         }
         
         guard let effectPotencyLv2 = material.effect?.potencyLevel2 else {
-            if potencies.isEmpty {
-                potencies.append(Potency(amount: 0, type: material.effect?.type ?? .none, level: 1))
-            }
-            return potencies
+            return potencies.isEmpty ? [level1Potency] : potencies
         }
         for amount in 1...5 {
             if amount * materialPotency >= effectPotencyLv2 {
@@ -217,6 +216,6 @@ class EffectsHandler: NSObject {
                 break
             }
         }
-        return potencies
+        return potencies.isEmpty ? [level1Potency] : potencies
     }
 }

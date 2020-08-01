@@ -628,7 +628,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -648,7 +648,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4853CED358;
 				INFOPLIST_FILE = "Recipe Slate/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

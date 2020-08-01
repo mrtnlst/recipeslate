@@ -48,7 +48,18 @@ extension ListDataSource {
             sections = sectionIndexTitles.map { firstLetter in
                 return itemsForSections
                     .filter { $0.effectName.uppercased() == firstLetter }
-                    .sorted { $0.name < $1.name }
+                    .sorted { (item1, item2) -> Bool in
+                        if let item1 = item1 as? Material, let item2 = item2 as? Material {
+                            if item1.potency != nil && item2.potency != nil {
+                                return item1.potency ?? 0 > item2.potency ?? 0
+                            }
+                            if item1.effect?.amount != nil && item2.effect?.amount != nil {
+                                return item1.effect?.amount ?? 0 > item2.effect?.amount ?? 0
+                            }
+                            return item1.effect?.duration ?? 0 > item2.effect?.duration ?? 0
+                        }
+                        return item1.name < item2.name
+                    }
             }
         }
         
