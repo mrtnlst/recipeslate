@@ -29,5 +29,5 @@ final class AboutStore {
     let about = """
                 Recipe Slate provides a collection of recipes, elixirs and materials found in Breath of the Wild. Send me any improvements or feature suggestions via Twitter (link below). 
                 """
-    let version = "Version 2.0"
+    let version = "Version 2.0.1"
 }
