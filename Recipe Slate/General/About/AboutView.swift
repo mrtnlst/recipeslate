@@ -23,11 +23,13 @@ struct AboutView: View {
             VStack(alignment: .leading) {
                 AboutTextCell(text: store.about)
                     .padding(.bottom, 10)
+                Text("Twitter")
+                    .foregroundColor(.white)
+                    .font(.headline)
                 AboutLinkCell(content: store.twitter)
-                AboutLinkCell(content: store.homepage)
+                AboutLinkCell(content: store.twitterRecipeSlate)
                 AboutFooterCell(text: store.version)
             }
-            
         }
         .padding()
         .background(Color(.defaultBackground))
@@ -35,12 +37,12 @@ struct AboutView: View {
         .navigationBarTitle("About")
         .listStyle(PlainListStyle())
         .navigationBarItems(trailing:
-                                HStack {
-                                    Button("Done") {
-                                        NotificationHandler.post(.RecipeSlateDismissAboutPressed, object: nil)
-                                    }
-                                    .foregroundColor(.white)
-                                }
+            HStack {
+                Button("Done") {
+                    NotificationHandler.post(.RecipeSlateDismissAboutPressed, object: nil)
+                }
+                .foregroundColor(.white)
+            }
         )
     }
 }
@@ -80,16 +82,11 @@ struct AboutFooterCell: View {
 struct AboutLinkCell: View {
     var content: LinkButtonContent
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(content.sectionTitle)
-                .foregroundColor(.white)
-                .font(.headline)
-            HStack(alignment: .firstTextBaseline) {
-                Image(systemName: content.icon)
-                    .foregroundColor(Color(.primary))
-                Button(content.title) {
-                    UIApplication.shared.open(self.content.url)
-                }
+        HStack(alignment: .firstTextBaseline) {
+            Image(systemName: content.icon)
+                .foregroundColor(Color(.primary))
+            Button(content.title) {
+                UIApplication.shared.open(self.content.url)
             }
         }
         .listRowBackground(Color(.defaultBackground))

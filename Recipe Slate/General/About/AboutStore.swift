@@ -21,11 +21,11 @@ final class AboutStore {
                                     title: "@mrtnlst",
                                     sectionTitle: "Twitter",
                                     icon: "link.circle.fill")
-    var homepage = LinkButtonContent(url: URL(string: "https://martinlist.org")!,
-                                     title: "martinlist.org",
-                                     sectionTitle: "Website",
-                                     icon: "safari.fill")
-    
+    var twitterRecipeSlate = LinkButtonContent(url: URL(string: "https://twitter.com/recipeslate")!,
+                                    title: "@recipeslate",
+                                    sectionTitle: "Twitter",
+                                    icon: "link.circle.fill")
+   
     let about = """
                 Recipe Slate provides a collection of recipes, elixirs and materials found in Breath of the Wild. Send me any improvements or feature suggestions via Twitter (link below). 
                 """
