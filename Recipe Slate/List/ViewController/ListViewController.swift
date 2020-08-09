@@ -127,9 +127,11 @@ extension ListViewController: UISearchBarDelegate {
 extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = .tableHeaderViewColor
-        view.backgroundColor = .tableHeaderViewColor
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .tableHeaderViewColor
+        
         let header = view as! UITableViewHeaderFooterView
+        header.backgroundView = backgroundView
         header.textLabel?.textColor = .secondaryTextColor
     }
     

@@ -221,9 +221,11 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = .defaultBackground
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .defaultBackground
 
         let header = view as! UITableViewHeaderFooterView
+        header.backgroundView = backgroundView
         header.textLabel?.textColor = .white
     }
     
