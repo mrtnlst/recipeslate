@@ -91,5 +91,6 @@ struct AboutLinkCell: View {
         }
         .listRowBackground(Color(.defaultBackground))
         .foregroundColor(Color(.primary))
+        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
     }
 }
