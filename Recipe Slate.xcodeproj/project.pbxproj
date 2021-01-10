@@ -10,6 +10,8 @@
 		5B17A92724A2A45B00983643 /* DetailCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B17A92624A2A45B00983643 /* DetailCellStyle.swift */; };
 		5B22656B24952B5C00459517 /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656A24952B5C00459517 /* Listable.swift */; };
 		5B22656D2497CFB000459517 /* FavoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */; };
+		5B28790525AB2FBE00EE7B3B /* ListTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28790425AB2FBE00EE7B3B /* ListTableViewHeader.swift */; };
+		5B28790825AB302100EE7B3B /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28790725AB302100EE7B3B /* IconButton.swift */; };
 		5B2FF1DA24AC580A00DFD5FC /* DetailMaterialHeartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF1D924AC580A00DFD5FC /* DetailMaterialHeartCell.swift */; };
 		5B2FF1DC24AD352400DFD5FC /* Hearts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF1DB24AD352400DFD5FC /* Hearts.swift */; };
 		5B40173F249D141D00E64294 /* DetailMaterialLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40173E249D141D00E64294 /* DetailMaterialLocationCell.swift */; };
@@ -74,6 +76,8 @@
 		5B17A92624A2A45B00983643 /* DetailCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellStyle.swift; sourceTree = "<group>"; };
 		5B22656A24952B5C00459517 /* Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listable.swift; sourceTree = "<group>"; };
 		5B22656C2497CFB000459517 /* FavoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListDataSource.swift; sourceTree = "<group>"; };
+		5B28790425AB2FBE00EE7B3B /* ListTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewHeader.swift; sourceTree = "<group>"; };
+		5B28790725AB302100EE7B3B /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		5B2FF1D924AC580A00DFD5FC /* DetailMaterialHeartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMaterialHeartCell.swift; sourceTree = "<group>"; };
 		5B2FF1DB24AD352400DFD5FC /* Hearts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hearts.swift; sourceTree = "<group>"; };
 		5B40173E249D141D00E64294 /* DetailMaterialLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMaterialLocationCell.swift; sourceTree = "<group>"; };
@@ -211,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				5BD8904B2494F9D80068A36A /* DetailTableView.swift */,
-				5BCCD51124BAE4AE00280BA2 /* Cells */,
 				5B401744249F9FD400E64294 /* DetailPickerView.swift */,
 			);
 			path = Views;
@@ -258,6 +261,8 @@
 				5B67AD8824C0C65D00D314E6 /* SegmentedControl.swift */,
 				5BD890472494CCA30068A36A /* ListTableView.swift */,
 				5BD890452494C9A50068A36A /* ElementTableViewCell.swift */,
+				5B28790425AB2FBE00EE7B3B /* ListTableViewHeader.swift */,
+				5B28790725AB302100EE7B3B /* IconButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 			children = (
 				5B17A92524A2A44800983643 /* Protocol */,
 				5BA40D3F2498119200CBD251 /* ViewController */,
+				5BCCD51124BAE4AE00280BA2 /* Cells */,
 				5BA40D41249811B300CBD251 /* Views */,
 			);
 			path = Detail;
@@ -439,6 +445,7 @@
 				5B8CAEE9249BA7E500C18B85 /* DetailResaleCell.swift in Sources */,
 				5B22656B24952B5C00459517 /* Listable.swift in Sources */,
 				5BD890422494C6450068A36A /* TabBarController.swift in Sources */,
+				5B28790825AB302100EE7B3B /* IconButton.swift in Sources */,
 				5B401745249F9FD400E64294 /* DetailPickerView.swift in Sources */,
 				5B592DEA24BAF71A00C2F8AF /* AboutView.swift in Sources */,
 				5BCCD51324BAE4CF00280BA2 /* DetailElixirPickerCell.swift in Sources */,
@@ -460,6 +467,7 @@
 				5BA40D47249818F100CBD251 /* EffectListDataSource.swift in Sources */,
 				5B4E149B24A2A13F00FE95C5 /* Guidable.swift in Sources */,
 				5BA40D372497E58100CBD251 /* MealListDataSource.swift in Sources */,
+				5B28790525AB2FBE00EE7B3B /* ListTableViewHeader.swift in Sources */,
 				5BA40D3D2498047100CBD251 /* ElixirListDataSource.swift in Sources */,
 				5BD8904F2494FBCC0068A36A /* DetailTitleCell.swift in Sources */,
 				5B7C5D6F24C4542500AAAFE3 /* SearchController.swift in Sources */,

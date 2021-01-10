@@ -13,7 +13,7 @@ extension UITableView {
         let auxiliaryView = UIView()
         auxiliaryView.translatesAutoresizingMaskIntoConstraints = false
         auxiliaryView.addSubview(headerView)
-        auxiliaryView.backgroundColor = .tableHeaderBackgroundColor
+        auxiliaryView.backgroundColor = .defaultBackground
         
         self.tableHeaderView = auxiliaryView
         

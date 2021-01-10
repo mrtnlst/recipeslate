@@ -53,8 +53,9 @@ class DetailViewController: UIViewController, FavoriteProtocol {
     }
     
     func setupFavoriteButton() {
-        let buttonImage = favorites.contains(where: { $0 == item.name }) ? "detail-favorite" : "detail-unfavorite"
-        let barButton = UIBarButtonItem.barButton(with: buttonImage, target: self, selector: #selector(toggleFavorite))
+        let buttonImage = favorites.contains(where: { $0 == item.name }) ? "star.fill" : "star"
+        let image = UIImage(systemName: buttonImage)
+        let barButton = UIBarButtonItem.barButton(with: image, target: self, selector: #selector(toggleFavorite))
         navigationItem.rightBarButtonItem = barButton
         favoriteButton = barButton.customView as? UIButton
     }
@@ -64,10 +65,10 @@ class DetailViewController: UIViewController, FavoriteProtocol {
         
         if favorites.contains(where: { $0 == item.name }) {
             favoriteArray.removeAll(where: { $0 == item.name })
-            favoriteButton.setImage(UIImage(named: "detail-unfavorite"), for: .normal)
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         } else {
             favoriteArray.append(item.name)
-            favoriteButton.setImage(UIImage(named: "detail-favorite"), for: .normal)
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
         favoriteButton.imageView?.addBounceAnimation()
         UserDefaults.standard.set(favoriteArray, forKey: "favorites")

@@ -11,12 +11,14 @@ import UIKit
 extension UIBarButtonItem {
     
     static func barButton(with buttonImage: String, target: Any, selector: Selector) -> UIBarButtonItem {
-        let image = UIImage(named: buttonImage)
-       
+        return barButton(with: UIImage(named: buttonImage), target: target, selector: selector)
+    }
+    
+    static func barButton(with buttonImage: UIImage?, target: Any, selector: Selector) -> UIBarButtonItem {
         let aboutButton = UIButton(type: .system)
         aboutButton.addTarget(target, action: selector, for: .touchUpInside)
         aboutButton.translatesAutoresizingMaskIntoConstraints = false
-        aboutButton.setImage(image, for: .normal)
+        aboutButton.setImage(buttonImage, for: .normal)
         
         NSLayoutConstraint.activate([
             aboutButton.heightAnchor.constraint(equalToConstant: 32),

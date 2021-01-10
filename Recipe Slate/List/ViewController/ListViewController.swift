@@ -19,6 +19,9 @@ class ListViewController: UIViewController {
     lazy var aboutViewController: UIHostingController = {
         UIHostingController(rootView: AboutView(store: AboutStore()))
     }()
+    lazy var filterView: ListTableViewHeader = {
+        return ListTableViewHeader()
+    }()
     
     init(dataSource: DataSource, filter: Material? = nil) {
         self.dataSource = dataSource
@@ -50,7 +53,7 @@ class ListViewController: UIViewController {
         dataSource.createSections(by: .alphabet)
         tableView.delegate = self
         tableView.dataSource = dataSource
-        tableView.setTableHeaderView(headerView: segmentedControl)
+        tableView.setTableHeaderView(headerView: filterView)
         segmentedControl.addTarget(self, action: #selector(refreshTable) , for: UIControl.Event.valueChanged)
         view.addSubview(tableView)
         
