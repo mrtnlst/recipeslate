@@ -10,6 +10,7 @@ import UIKit
 
 class ListTableViewHeader: UIView {
     
+    // MARK: - Properties
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,17 +22,16 @@ class ListTableViewHeader: UIView {
         let button = IconButton()
         button.icon = UIImage(systemName: "arrow.up.arrow.down.circle")
         button.title = "Sort by"
-        button.addTarget(self, selector: #selector(sortAction))
         return button
     }()
     lazy var filterButton: IconButton = {
         let button = IconButton()
         button.icon = UIImage(systemName: "line.horizontal.3.decrease.circle")
         button.title = "Filter"
-        button.addTarget(self, selector: #selector(filterAction))
         return button
     }()
     
+    // MARK: - Life cycle
     init() {
         super.init(frame: .zero)
         setupView()
@@ -42,15 +42,15 @@ class ListTableViewHeader: UIView {
     }
 }
 
-// MARK: - Action
+// MARK: - Public
 extension ListTableViewHeader {
     
-    @objc func sortAction() {
-        
+    func addSortTarget(_ target: Any?, action: Selector) {
+        sortButton.addTarget(target, selector: action)
     }
     
-    @objc func filterAction() {
-        
+    func addFilterTarget(_ target: Any?, action: Selector) {
+        filterButton.addTarget(target, selector: action)
     }
 }
 

@@ -47,14 +47,21 @@ class ListViewController: UIViewController {
         tableView.updateHeaderView()
     }
     
-    // MARK: - User Interface
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+// MARK: - User Interface
+extension ListViewController {
     
     func setupViews() {        
         dataSource.createSections(by: .alphabet)
         tableView.delegate = self
         tableView.dataSource = dataSource
         tableView.setTableHeaderView(headerView: filterView)
-        segmentedControl.addTarget(self, action: #selector(refreshTable) , for: UIControl.Event.valueChanged)
+
+        filterView.addSortTarget(self, action: #selector(sortAction))
         view.addSubview(tableView)
         
         let barButton = UIBarButtonItem.barButton(with: "bar-about", target: self, selector: #selector(openAbout))
@@ -69,8 +76,10 @@ class ListViewController: UIViewController {
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])
     }
-    
-    // MARK: - Actions
+}
+ 
+// MARK: - Actions
+extension ListViewController {
     
     func setupNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -89,17 +98,19 @@ class ListViewController: UIViewController {
     }
     
     @objc func refreshTable() {
-        dataSource.createSections(by: SortType(rawValue: segmentedControl.selectedSegmentIndex)!)
+        dataSource.createSections(by: .alphabet)
         tableView.reloadData()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @objc func sortAction() {
+        let viewController = SortViewController()
+        viewController.delegate = self 
+        let navController = NavigationController(rootViewController: viewController)
+        navigationController?.present(navController, animated: true, completion: nil)
     }
 }
 
 // MARK: - SearchController
-
 extension ListViewController: UISearchBarDelegate {
     
     func setupSearch() {
@@ -127,6 +138,7 @@ extension ListViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -144,5 +156,14 @@ extension ListViewController: UITableViewDelegate {
         let detailVC = DetailViewController(item: item, sections: (item as? Sectionable)?.sections ?? [], filter: filter)
         detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+// MARK: - SortingOptionDelegate
+extension ListViewController: SortingOptionDelegate {
+    
+    func didSelectSortingOption(_ sortingOption: SortingOption) {
+        dataSource.createSections(by: sortingOption)
+        tableView.reloadData()
     }
 }

@@ -25,8 +25,8 @@ extension UITableView {
             auxiliaryView.topAnchor.constraint(equalTo: self.topAnchor),
             
             headerView.centerXAnchor.constraint(equalTo: auxiliaryView.centerXAnchor),
-            headerView.leadingAnchor.constraint(equalTo: auxiliaryView.leadingAnchor, constant: 15),
-            headerView.trailingAnchor.constraint(equalTo: auxiliaryView.trailingAnchor, constant: -15),
+            headerView.leadingAnchor.constraint(equalTo: auxiliaryView.leadingAnchor, constant: 8),
+            headerView.trailingAnchor.constraint(equalTo: auxiliaryView.trailingAnchor, constant: -8),
             headerView.topAnchor.constraint(equalTo: auxiliaryView.topAnchor, constant: 5),
             headerView.bottomAnchor.constraint(equalTo: auxiliaryView.bottomAnchor, constant: -6),
         ])

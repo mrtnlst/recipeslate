@@ -11,6 +11,7 @@ import UIKit
 /// A button view with an icon on the left side.
 class IconButton: UIView {
 
+    // MARK: - Properties
     lazy var button: UIButton = {
         var button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +29,7 @@ class IconButton: UIView {
         return stackView
     }()
     
+    // MARK: - Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

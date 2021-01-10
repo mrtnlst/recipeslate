@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum SortType: Int {
-    case alphabet = 0
-    case effect
-}
-
 typealias DataSource = ListDataSource & UITableViewDataSource
 
 protocol ListDataSource {
@@ -30,10 +25,10 @@ protocol ListDataSource {
 
 extension ListDataSource {
     
-    mutating func createSections(by sortType: SortType) {
+    mutating func createSections(by option: SortingOption) {
         
         let itemsForSections = isSearchActive ? filteredResults : items
-        switch sortType {
+        switch option {
         case .alphabet:
             sectionIndexTitles = Array(Set(itemsForSections.compactMap { $0.titleFirstLetter }))
             sectionIndexTitles.sort()
