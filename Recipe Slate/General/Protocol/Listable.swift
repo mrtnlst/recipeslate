@@ -12,16 +12,22 @@ protocol Listable {
  
     var name: String { get }
     var effectName: String { get }
+    var baseResaleValue: Int? { get }
 }
 
 extension Listable {
     
     var titleFirstLetter: String {
-        return String(name[name.startIndex]).uppercased()
+        String(name[name.startIndex]).uppercased()
     }
     
     var effectFirstLetter: String {
-        return String(effectName[effectName.startIndex]).uppercased()
+        String(effectName[effectName.startIndex]).uppercased()
+    }
+
+    var baseResaleValueString: String? {
+        guard let value = baseResaleValue else { return nil }
+        return "\(value)"
     }
 }
 

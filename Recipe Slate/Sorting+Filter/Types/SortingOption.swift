@@ -11,6 +11,7 @@ import UIKit
 enum SortingOption: String, CaseIterable {
     case alphabet = "Alphabet"
     case effect = "Effect"
+    case resaleValue = "Resale Value"
     
     var icon: UIImage? {
         switch self {
@@ -18,6 +19,8 @@ enum SortingOption: String, CaseIterable {
             return UIImage(systemName: "textformat.abc")
         case .effect:
             return UIImage(named: "bar-effects")
+        case .resaleValue:
+            return UIImage(named: "detail-rupee")
         }
     }
 }

@@ -34,7 +34,7 @@ class SortViewController: UIViewController {
             return .alphabet
         }
         set {
-            UserDefaults.standard.setValue(newValue.rawValue, forKey: "sorting-option")
+            UserDefaults.standard.setValue(newValue.rawValue  , forKey: "sorting-option")
         }
     }
     

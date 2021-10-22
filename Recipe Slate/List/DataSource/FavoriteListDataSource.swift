@@ -28,7 +28,15 @@ extension FavoriteListDataSource: UITableViewDataSource {
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionIndexTitles.map({ String($0.prefix(1)) })
+        return sectionIndexTitles.compactMap({ title in
+            if title.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
+                if let number = title.split(separator: " ").first {
+                    return String(number)
+                }
+                return nil
+            }
+            return String(title.prefix(1))
+        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

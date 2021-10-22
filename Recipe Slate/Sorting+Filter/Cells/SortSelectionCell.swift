@@ -26,6 +26,7 @@ class SortSelectionCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 8
+        stackView.alignment = .center
         return stackView
     }()
     lazy var label: UILabel = {
@@ -46,6 +47,8 @@ class SortSelectionCell: UITableViewCell {
         icon.tintColor = .secondaryTextColor
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
+        icon.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return icon
     }()
     
@@ -106,12 +109,10 @@ extension SortSelectionCell {
     
     func configureConstraints() {
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            contentStackView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            
-            typeIcon.widthAnchor.constraint(equalToConstant: 30)
         ])
     }
 }

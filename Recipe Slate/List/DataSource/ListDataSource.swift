@@ -56,6 +56,24 @@ extension ListDataSource {
                         return item1.name < item2.name
                     }
             }
+        case .resaleValue:
+            let sectionTitles: [Range<Int>] = [.init(uncheckedBounds: (lower: 1, upper: 5)),
+                                               .init(uncheckedBounds: (lower: 5, upper: 20)),
+                                               .init(uncheckedBounds: (lower: 20, upper: 50)),
+                                               .init(uncheckedBounds: (lower: 50, upper: 100)),
+                                               .init(uncheckedBounds: (lower: 100, upper: 300)),
+                                               .init(uncheckedBounds: (lower: 300, upper: 5000))
+            ]
+            sectionIndexTitles = sectionTitles.map( { "\($0.lowerBound) to \($0.upperBound) Rupees" })
+            sections = sectionTitles.map { range in
+                return itemsForSections
+                    .filter {
+                        range.contains($0.baseResaleValue ?? 0)
+                    }
+                    .sorted { (item1, item2) -> Bool in
+                        return item1.baseResaleValue ?? 0 < item2.baseResaleValue ?? 0
+                    }
+            }
         }
         
     }
