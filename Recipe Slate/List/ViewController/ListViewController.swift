@@ -39,7 +39,6 @@ class ListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupSearch()
-        setupNotifications()
     }
     
     override func viewDidLayoutSubviews() {
@@ -80,12 +79,6 @@ extension ListViewController {
  
 // MARK: - Actions
 extension ListViewController {
-    
-    func setupNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(dismissAbout),
-                                               name: .RecipeSlateDismissAboutPressed, object: nil)
-    }
     
     @objc func openAbout() {
         let barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissAbout))

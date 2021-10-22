@@ -36,14 +36,6 @@ struct AboutView: View {
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle("About")
         .listStyle(PlainListStyle())
-        .navigationBarItems(trailing:
-            HStack {
-                Button("Done") {
-                    NotificationHandler.post(.RecipeSlateDismissAboutPressed, object: nil)
-                }
-                .foregroundColor(.white)
-            }
-        )
     }
 }
 
