@@ -25,25 +25,25 @@ class TabBarController: UITabBarController {
     func setupViewControllers() {
         let favoritesVC = ListViewController(dataSource: FavoriteListDataSource())
         favoritesVC.title = "Favorites"
-        favoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "bar-favorite"), selectedImage: nil)
+        favoritesVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), selectedImage: nil)
         NotificationCenter.default.addObserver(favoritesVC,
                                                selector: #selector(favoritesVC.refreshTable),
                                                name: .RecipeSlateFavoriteDidChange, object: nil)
         
         let mealVC = ListViewController(dataSource: MealListDataSource())
         mealVC.title = "Meals"
-        mealVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "bar-meal"), selectedImage: nil)
+        mealVC.tabBarItem = UITabBarItem(title: "Meals", image: UIImage(named: "pot"), selectedImage: nil)
         NotificationCenter.default.addObserver(mealVC,
                                                selector: #selector(mealVC.refreshTable),
                                                name: .RecipeSlateFavoriteDidChange, object: nil)
         
         let elixirVC = ListViewController(dataSource: ElixirListDataSource())
         elixirVC.title = "Elixirs"
-        elixirVC.tabBarItem = UITabBarItem(title: "Elixirs", image: UIImage(named: "bar-elixir"), selectedImage: nil)
+        elixirVC.tabBarItem = UITabBarItem(title: "Elixirs", image: UIImage(named: "potion"), selectedImage: nil)
 
         let materialVC = ListViewController(dataSource: MaterialListDataSource())
         materialVC.title = "Materials"
-        materialVC.tabBarItem = UITabBarItem(title: "Materials", image: UIImage(named: "bar-food"), selectedImage: nil)
+        materialVC.tabBarItem = UITabBarItem(title: "Materials", image: UIImage(named: "poultry"), selectedImage: nil)
         NotificationCenter.default.addObserver(materialVC,
                                                selector: #selector(materialVC.refreshTable),
                                                name: .RecipeSlateFavoriteDidChange, object: nil)

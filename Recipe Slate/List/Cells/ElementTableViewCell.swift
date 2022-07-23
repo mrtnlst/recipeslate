@@ -12,7 +12,6 @@ class ElementTableViewCell: UITableViewCell {
 
     var effectIcon = UIImageView()
     var favoriteIcon = UIImageView()
-    var iconContainer = UIView()
     var label = UILabel()
     var isFavorite: Bool = false {
         didSet {
@@ -30,26 +29,44 @@ class ElementTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isFavorite = false
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(false, animated: false)
+    }
+}
 
+extension ElementTableViewCell {
+    
+    func updateEffectIcon(with imageView: UIImageView?) {
+        if let imageView = imageView {
+            effectIcon.image = imageView.image
+            effectIcon.tintColor = imageView.tintColor
+        }
+    }
+}
+
+private extension ElementTableViewCell {
     func setupViews() {
         backgroundColor = .defaultBackground
         let selectedView = UIView()
         selectedView.backgroundColor = .tableViewCellSelectedColor
         selectedBackgroundView = selectedView
         
-        iconContainer.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(iconContainer)
-        
         effectIcon.translatesAutoresizingMaskIntoConstraints = false
         effectIcon.contentMode = .scaleAspectFit
-        iconContainer.addSubview(effectIcon)
+        contentView.addSubview(effectIcon)
         
         favoriteIcon.translatesAutoresizingMaskIntoConstraints = false
         favoriteIcon.contentMode = .scaleAspectFit
-        favoriteIcon.image = UIImage(named: "detail-favorite")
+        favoriteIcon.image = UIImage(systemName: "star.fill")
         favoriteIcon.tintColor = .listFavorite
         favoriteIcon.isHidden = !isFavorite
-        addSubview(favoriteIcon)
+        contentView.addSubview(favoriteIcon)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .body)
@@ -68,28 +85,12 @@ class ElementTableViewCell: UITableViewCell {
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            
-            iconContainer.heightAnchor.constraint(equalToConstant: 20),
-            iconContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            
-            effectIcon.topAnchor.constraint(equalTo: iconContainer.topAnchor),
-            effectIcon.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor),
-            effectIcon.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor),
-            
+
+            effectIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            effectIcon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+
             favoriteIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            favoriteIcon.heightAnchor.constraint(equalToConstant: 20),
-            favoriteIcon.widthAnchor.constraint(equalToConstant: 20),
-            favoriteIcon.trailingAnchor.constraint(equalTo: iconContainer.leadingAnchor, constant: -20)
+            favoriteIcon.trailingAnchor.constraint(equalTo: effectIcon.leadingAnchor, constant: -8)
         ])
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        isFavorite = false
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(false, animated: false)
     }
 }

@@ -52,7 +52,7 @@ extension MaterialListDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let material = item as? Material {
-            cell.effectIcon.image = EffectsHandler.icon(for: material)
+            cell.updateEffectIcon(with: EffectsHandler.icon(for: material))
         }
         cell.isFavorite = favorites.contains(where: { $0 == item.name })
         return cell

@@ -38,6 +38,7 @@ class DetailElixirPotencyCell: UITableViewCell, DetailCellStyle, Guidable {
     func setupViews() {
         icon = defaultIcon()
         icon.image = EffectType.none.icon
+        icon.tintColor = EffectType.none.iconColor
         contentView.addSubview(icon)
         
         levelLabel = defaultLabel()
@@ -68,7 +69,7 @@ class DetailElixirPotencyCell: UITableViewCell, DetailCellStyle, Guidable {
     func setPotency(_ level: Int) {
         let text = "Level \(level)"
         icon.image = item?.effect.icon
-        
+        icon.tintColor = item?.effect.iconColor
         if text != levelLabel.text {
             levelLabel.text = "Level \(level)"
             icon.addBounceAnimation()

@@ -13,12 +13,14 @@ class EffectsHandler: NSObject {
     
     // MARK: - Material
     
-    static func icon(for material: Material) -> UIImage? {
+    static func icon(for material: Material) -> UIImageView? {
         if let effect = material.effect {
-            return effect.type.icon
+            return effect.type.image
         }
         if material.hearts != nil {
-            return UIImage(named: "detail-heart-full")
+            let image = UIImageView(image: UIImage(systemName: "heart.fill"))
+            image.tintColor = HeartsType.raw.heartColor
+            return image
         }
         return nil
     }
@@ -47,7 +49,7 @@ class EffectsHandler: NSObject {
     
     /// Checks whether meal ingredients can produce an effect besides duration and temporary hearts.
     /// - Parameter meal: object of type Meal to check
-    /// - Returns: UIImage with effect or heart icon
+    /// - Returns: Returns `true` when only heart effects apply
     static func checkForMealEffect(meal: Meal) -> Bool {
         var materials = meal.categoryIngredients.map({ obtainMaterials(for: $0) }).reduce([], +)
         materials.append(contentsOf: materialData.filter({ meal.mainIngredients.contains($0.name) }))
@@ -56,11 +58,16 @@ class EffectsHandler: NSObject {
         return materials.allSatisfy({ heartEffects.contains($0.effect?.type ?? .none) })
     }
     
-    static func mealListItemImage(meal: Meal) -> UIImage? {
+    /// Checks whether meal ingredients can produce an effect besides duration and temporary hearts.
+    /// - Parameter meal: object of type Meal to check
+    /// - Returns: UIImage with effect or heart icon
+    static func mealListItemImage(meal: Meal) -> UIImageView? {
         if checkForMealEffect(meal: meal) {
-            return UIImage(named: "detail-heart-full")
+            let image = UIImageView(image: UIImage(systemName: "heart.fill"))
+            image.tintColor = HeartsType.raw.heartColor
+            return image
         }
-        return UIImage(named: "effect")
+        return EffectType.someEffect.image
     }
     
     /// Calculates effect for given main and category ingredients.

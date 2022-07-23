@@ -40,34 +40,69 @@ enum EffectType: String {
 }
 
 extension EffectType {
+    var image: UIImageView? {
+        let imageView = UIImageView(image: icon)
+        imageView.tintColor = iconColor
+        return imageView
+    }
+    
     var icon: UIImage? {
         switch self {
         case .attack:
-            return UIImage(named: "attack-up")
+            return UIImage(named: "sword")
         case .defense:
-            return UIImage(named: "defense-up")
+            return UIImage(systemName: "shield.righthalf.filled")
         case .speed:
-            return UIImage(named: "speed-up")
+            return UIImage(named: "speed")
         case .stealth:
-            return UIImage(named: "increased-stealth")
+            return UIImage(named: "stealth")
         case .heat:
-            return UIImage(named: "heat-resistance")
+            return UIImage(systemName: "thermometer.sun.fill")
         case .cold:
-            return UIImage(named: "cold-resistance")
+            return UIImage(systemName: "snowflake")
         case .electricity:
-            return UIImage(named: "electricity-resistance")
+            return UIImage(systemName: "bolt.fill")
         case .fire:
-            return UIImage(named: "fire-proof")
+            return UIImage(systemName: "flame.fill")
         case .restoresStamina:
-            return UIImage(named: "restores-stamina")
+            return UIImage(named: "staminacircle")
         case .extendsStamina:
-            return UIImage(named: "extends-stamina")
+            return UIImage(named: "staminacircle")
         case .temporaryHearts:
-            return UIImage(named: "heart-temporary")
+            return UIImage(systemName: "heart.fill")
         case .duration:
-            return UIImage(named: "duration-up")
+            return UIImage(systemName: "clock.arrow.circlepath")
         case .none, .someEffect:
-            return UIImage(named: "effect")
+            return UIImage(systemName: "wand.and.stars")
+        }
+    }
+    
+    var iconColor: UIColor {
+        switch self {
+        case .attack:
+            return .attackColor
+        case .defense:
+            return .defenseColor
+        case .speed:
+            return .speedColor
+        case .stealth:
+            return .stealthColor
+        case .heat:
+            return .heatColor
+        case .cold:
+            return .coldColor
+        case .electricity:
+            return .electricityColor
+        case .fire:
+            return .fireColor
+        case .restoresStamina:
+            return .restoresStaminaColor
+        case .extendsStamina:
+            return .extendsStaminaColor
+        case .temporaryHearts:
+            return .temporaryHeartsColor
+        default:
+            return .white
         }
     }
 }

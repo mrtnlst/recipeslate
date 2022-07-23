@@ -54,13 +54,13 @@ extension FavoriteListDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let meal = item as? Meal {
-            cell.effectIcon.image = EffectsHandler.mealListItemImage(meal: meal)
+            cell.updateEffectIcon(with: EffectsHandler.mealListItemImage(meal: meal))
         }
         if let material = item as? Material {
-            cell.effectIcon.image = material.effect?.type.icon
+            cell.updateEffectIcon(with: material.effect?.type.image)
         }
         if let elixir = item as? Elixir {
-            cell.effectIcon.image = elixir.effect.icon
+            cell.updateEffectIcon(with: elixir.effect.image)
         }
         return cell
     }

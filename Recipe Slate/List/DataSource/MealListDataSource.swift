@@ -61,7 +61,7 @@ extension MealListDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let meal = item as? Meal {
-            cell.effectIcon.image = EffectsHandler.mealListItemImage(meal: meal)
+            cell.updateEffectIcon(with: EffectsHandler.mealListItemImage(meal: meal))
         }
         cell.isFavorite = favorites.contains(where: { $0 == item.name })
         return cell
