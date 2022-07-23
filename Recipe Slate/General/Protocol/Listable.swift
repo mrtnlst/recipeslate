@@ -12,7 +12,6 @@ protocol Listable {
  
     var name: String { get }
     var effectName: String { get }
-    var baseResaleValue: Int? { get }
 }
 
 extension Listable {
@@ -23,11 +22,6 @@ extension Listable {
     
     var effectFirstLetter: String {
         String(effectName[effectName.startIndex]).uppercased()
-    }
-
-    var baseResaleValueString: String? {
-        guard let value = baseResaleValue else { return nil }
-        return "\(value)"
     }
 }
 

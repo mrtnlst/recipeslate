@@ -119,7 +119,6 @@ struct Effect: Listable, Hashable {
     var duration: TimeInterval?
     var potencyLevel1: Int?
     var potencyLevel2: Int?
-    var baseResaleValue: Int?
     
     init(type: EffectType, amount: Float? = nil, duration: TimeInterval? = nil, potencyLevel1: Int? = nil, potencyLevel2: Int? = nil) {
         self.type = type

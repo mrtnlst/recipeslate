@@ -29,10 +29,7 @@ struct Meal: Listable, Sectionable {
         }
         return sections
     }
-    var baseResaleValue: Int? {
-        ResaleHandler.resaleValue(for: self, and: [])
-    }
-    
+
     init(name: String, mainIngredients: [String], categoryIngredients: [MaterialCategory]) {
         self.name = name
         self.mainIngredients = mainIngredients

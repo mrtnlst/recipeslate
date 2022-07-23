@@ -26,5 +26,4 @@ struct Elixir: Listable, Sectionable {
         return sections
     }
     var effectDescription: String = "Use at least one critter and one monster part. Multiple parts increase the duration. You can combine 5 ingredients at most."
-    var baseResaleValue: Int?
 }
