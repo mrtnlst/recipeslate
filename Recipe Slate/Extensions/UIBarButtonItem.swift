@@ -15,15 +15,11 @@ extension UIBarButtonItem {
     }
     
     static func barButton(with buttonImage: UIImage?, target: Any, selector: Selector) -> UIBarButtonItem {
-        let aboutButton = UIButton(type: .system)
-        aboutButton.addTarget(target, action: selector, for: .touchUpInside)
-        aboutButton.translatesAutoresizingMaskIntoConstraints = false
-        aboutButton.setImage(buttonImage, for: .normal)
-        
-        NSLayoutConstraint.activate([
-            aboutButton.heightAnchor.constraint(equalToConstant: 32),
-            aboutButton.widthAnchor.constraint(equalToConstant: 32),
-        ])
-        return UIBarButtonItem(customView: aboutButton)
+        let button = UIButton(type: .system)
+        button.addTarget(target, action: selector, for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = .white
+        return UIBarButtonItem(customView: button)
     }
 }

@@ -24,6 +24,9 @@ struct Potency {
     var potencyIcon: UIImage {
         return type.icon ?? UIImage()
     }
+    var potencyColor: UIColor {
+        return type.iconColor
+    }
     
     init(amount: Int, type: EffectType, level: Int) {
         self.amount = amount

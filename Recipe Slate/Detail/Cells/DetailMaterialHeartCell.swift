@@ -53,6 +53,7 @@ class DetailMaterialHeartCell: UITableViewCell, DetailCellStyle, Guidable, Itemi
         if hasEffect {
             let frozenIcon = defaultIcon()
             frozenIcon.image = EffectType.heat.icon
+            frozenIcon.tintColor = EffectType.heat.iconColor
             contentView.addSubview(frozenIcon)
             
             NSLayoutConstraint.activate([
@@ -73,7 +74,7 @@ class DetailMaterialHeartCell: UITableViewCell, DetailCellStyle, Guidable, Itemi
                 contentView.addSubview(amountLabel)
                 
                 let icon = defaultIcon()
-                icon.image = EffectsHandler.obtainImage(for: "detail-heart-list")
+                icon.image = UIImage(systemName: "heart.fill")
                 icon.tintColor = heart.type.heartColor
                 contentView.addSubview(icon)
                 

@@ -37,7 +37,7 @@ class DetailResaleCell: UITableViewCell, DetailCellStyle, Guidable {
         applyCellStyle()
 
         icon = defaultIcon()
-        icon.image = UIImage(named: "detail-rupee")
+        icon.image = UIImage(named: "rupee")
         contentView.addSubview(icon)
         
         resaleLabel = defaultLabel()

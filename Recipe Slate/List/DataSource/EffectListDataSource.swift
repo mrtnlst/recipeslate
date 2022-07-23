@@ -45,7 +45,7 @@ extension EffectListDataSource: UITableViewDataSource {
         let item = getCorrectCellItem(path: indexPath)
         cell.label.text = item.name
         if let effect = item as? Effect {
-            cell.effectIcon.image = effect.type.icon
+            cell.updateEffectIcon(with: effect.type.image)
         }
         return cell
     }

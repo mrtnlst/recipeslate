@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum SortType: Int {
+    case alphabet = 0
+    case effect
+}
+
 typealias DataSource = ListDataSource & UITableViewDataSource
 
 protocol ListDataSource {
@@ -25,7 +30,7 @@ protocol ListDataSource {
 
 extension ListDataSource {
     
-    mutating func createSections(by option: SortingOption) {
+    mutating func createSections(by option: SortType) {
         
         let itemsForSections = isSearchActive ? filteredResults : items
         switch option {
@@ -57,7 +62,6 @@ extension ListDataSource {
                     }
             }
         }
-        
     }
     
     func getCorrectCellItem(path: IndexPath) -> Listable {

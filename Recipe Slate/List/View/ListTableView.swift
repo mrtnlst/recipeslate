@@ -19,6 +19,10 @@ class ListTableView: UITableView {
         autoresizingMask = .flexibleHeight
         translatesAutoresizingMaskIntoConstraints = false
         register(ElementTableViewCell.self, forCellReuseIdentifier: ElementTableViewCell.identifier)
+        
+        if #available(iOS 15.0, *) {
+            sectionHeaderTopPadding = 0
+        }
     }
     
     required init?(coder: NSCoder) {

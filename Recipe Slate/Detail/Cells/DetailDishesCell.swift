@@ -39,7 +39,7 @@ class DetailDishesCell: UITableViewCell, DetailCellStyle, Guidable {
         accessoryView = accessoryIcon
 
         icon = defaultIcon()
-        icon.tintColor = .gray
+        icon.tintColor = .white
         contentView.addSubview(icon)
         
         label = defaultLabel()
@@ -72,9 +72,9 @@ class DetailDishesCell: UITableViewCell, DetailCellStyle, Guidable {
         
         if material.isElixirIngredient {
             label.text = "View elixirs with \(item.name)"
-            icon.image = UIImage(named: "detail-elixir")
+            icon.image = UIImage(named: "potion")
         } else {
-            icon.image = UIImage(named: "detail-meal")
+            icon.image = UIImage(named: "pot")
             label.text = "View meals with \(item.name)"
         }
     }

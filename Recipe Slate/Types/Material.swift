@@ -123,7 +123,7 @@ struct Material: Listable, Sectionable, Hashable {
         }
         return categories
     }
-    
+ 
     init(materialName: String, category: [MaterialCategory], hearts: Float? = nil, effect: Effect? = nil, saleValue: Int? = nil, location: String? = nil, potency: Int? = nil) {
         self.name = materialName
         self.category = category

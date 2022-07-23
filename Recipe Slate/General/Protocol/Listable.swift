@@ -17,11 +17,11 @@ protocol Listable {
 extension Listable {
     
     var titleFirstLetter: String {
-        return String(name[name.startIndex]).uppercased()
+        String(name[name.startIndex]).uppercased()
     }
     
     var effectFirstLetter: String {
-        return String(effectName[effectName.startIndex]).uppercased()
+        String(effectName[effectName.startIndex]).uppercased()
     }
 }
 

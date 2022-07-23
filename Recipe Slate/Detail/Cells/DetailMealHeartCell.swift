@@ -37,7 +37,8 @@ class DetailMealHeartCell: UITableViewCell, DetailCellStyle, Guidable {
         applyCellStyle()
         
         icon = defaultIcon()
-        icon.image = UIImage(named: "detail-heart-full")
+        icon.image = UIImage(systemName: "heart.fill")
+        icon.tintColor = HeartsType.raw.heartColor
         contentView.addSubview(icon)
         
         valueLabel = defaultLabel()

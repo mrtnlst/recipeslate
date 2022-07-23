@@ -30,7 +30,7 @@ class DetailMaterialLocationCell: UITableViewCell, DetailCellStyle, Guidable {
         applyCellStyle()
         
         icon = defaultIcon()
-        icon.image = UIImage(named: "detail-map")
+        icon.image = UIImage(systemName: "map.fill")
         icon.tintColor = .cream
         contentView.addSubview(icon)
         

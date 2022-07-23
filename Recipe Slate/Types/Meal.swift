@@ -29,7 +29,7 @@ struct Meal: Listable, Sectionable {
         }
         return sections
     }
-    
+
     init(name: String, mainIngredients: [String], categoryIngredients: [MaterialCategory]) {
         self.name = name
         self.mainIngredients = mainIngredients

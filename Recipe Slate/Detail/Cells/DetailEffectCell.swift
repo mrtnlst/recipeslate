@@ -96,6 +96,7 @@ class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
     func configureEffectLabels(_ effect: Effect?) {
         
         let newEffectName = effect?.type.rawValue
+        let newEffectColor = effect?.type.iconColor
         let newEffectImage = effect?.type.icon
         
         var newEffectDuration: String
@@ -117,6 +118,7 @@ class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
             effectName.text = newEffectName
             effectDuration.text = newEffectDuration
             effectIcon.image = newEffectImage
+            effectIcon.tintColor = newEffectColor
         }
         
         if effect?.type == EffectType.none {
@@ -130,6 +132,7 @@ class DetailEffectCell: UITableViewCell, DetailCellStyle, Guidable {
     
     func configureEffectLabels(for elixir: Elixir) {
         effectIcon.image = elixir.effect.icon
+        effectIcon.tintColor = elixir.effect.iconColor
         effectName.text = elixir.effect.rawValue
         effectDuration.text = " "
         NSLayoutConstraint.deactivate([effectAvailableConstraint])

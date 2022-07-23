@@ -84,6 +84,7 @@ class DetailMaterialPotencyCell: UITableViewCell, DetailCellStyle, Itemize {
             for _ in 0..<potency.level {
                 let icon = defaultIcon()
                 icon.image = potency.potencyIcon
+                icon.tintColor = potency.potencyColor
                 contentView.addSubview(icon)
                 icons.append(icon)
             }
