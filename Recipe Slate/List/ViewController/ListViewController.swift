@@ -16,12 +16,7 @@ class ListViewController: UIViewController {
     var dataSource: DataSource
     var segmentedControl = SegmentedControl()
     var filter: Material?
-    lazy var aboutViewController: UIHostingController = {
-        UIHostingController(rootView: AboutView(store: AboutStore()))
-    }()
-    lazy var filterView: ListTableViewHeader = {
-        return ListTableViewHeader()
-    }()
+    lazy var aboutViewController: UIHostingController = UIHostingController(rootView: AboutView(store: AboutStore()))
     
     init(dataSource: DataSource, filter: Material? = nil) {
         self.dataSource = dataSource
@@ -58,12 +53,11 @@ extension ListViewController {
         dataSource.createSections(by: .alphabet)
         tableView.delegate = self
         tableView.dataSource = dataSource
-        tableView.setTableHeaderView(headerView: filterView)
-
-        filterView.addSortTarget(self, action: #selector(sortAction))
+        tableView.setTableHeaderView(headerView: segmentedControl)
+        segmentedControl.addTarget(self, action: #selector(refreshTable) , for: UIControl.Event.valueChanged)
         view.addSubview(tableView)
         
-        let barButton = UIBarButtonItem.barButton(with: "bar-about", target: self, selector: #selector(openAbout))
+        let barButton = UIBarButtonItem.barButton(with: UIImage(named: "triforce"), target: self, selector: #selector(openAbout))
         navigationItem.rightBarButtonItem = barButton
     }
     
@@ -83,7 +77,11 @@ extension ListViewController {
     @objc func openAbout() {
         let barButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissAbout))
         aboutViewController.navigationItem.rightBarButtonItem = barButton
-        navigationController?.present(NavigationController(rootViewController: aboutViewController), animated: true, completion: nil)
+        navigationController?.present(
+            NavigationController(rootViewController: aboutViewController),
+            animated: true,
+            completion: nil
+        )
     }
     
     @objc func dismissAbout() {
@@ -91,15 +89,8 @@ extension ListViewController {
     }
     
     @objc func refreshTable() {
-        dataSource.createSections(by: .alphabet)
+        dataSource.createSections(by: SortType(rawValue: segmentedControl.selectedSegmentIndex)!)
         tableView.reloadData()
-    }
-    
-    @objc func sortAction() {
-        let viewController = SortViewController()
-        viewController.delegate = self 
-        let navController = NavigationController(rootViewController: viewController)
-        navigationController?.present(navController, animated: true, completion: nil)
     }
 }
 
@@ -149,14 +140,5 @@ extension ListViewController: UITableViewDelegate {
         let detailVC = DetailViewController(item: item, sections: (item as? Sectionable)?.sections ?? [], filter: filter)
         detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
-    }
-}
-
-// MARK: - SortingOptionDelegate
-extension ListViewController: SortingOptionDelegate {
-    
-    func didSelectSortingOption(_ sortingOption: SortingOption) {
-        dataSource.createSections(by: sortingOption)
-        tableView.reloadData()
     }
 }
