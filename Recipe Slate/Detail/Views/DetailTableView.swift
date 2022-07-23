@@ -45,6 +45,9 @@ class DetailTableView: UITableView {
         register(DetailMaterialHeartCell.self, forCellReuseIdentifier: DetailMaterialHeartCell.identifier)
         register(DetailElixirPickerCell.self, forCellReuseIdentifier: DetailElixirPickerCell.identifier)
         register(DetailElixirPotencyCell.self, forCellReuseIdentifier: DetailElixirPotencyCell.identifier)
+        if #available(iOS 15.0, *) {
+            sectionHeaderTopPadding = 0
+        }
     }
     
     required init?(coder: NSCoder) {
