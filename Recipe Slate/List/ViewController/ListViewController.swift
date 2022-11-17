@@ -118,7 +118,7 @@ extension ListViewController: UISearchBarDelegate {
         tableView.updateHeaderView()
         dataSource.isSearchActive = false
         dataSource.filteredResults.removeAll()
-        tableView.reloadData()
+        refreshTable()
     }
 }
 
