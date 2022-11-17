@@ -52,7 +52,7 @@ let materialData = [
     Material(materialName: "Sanke Carp", category: [.seafood, .fish, .exceptPoryOrSalmon], hearts: 1.0, effect: Effect(type: .duration, duration: 30), saleValue: 10, location: "West Necluda"),
     Material(materialName: "Staminoka Bass", category: [.seafood, .fish, .exceptPoryOrSalmon], hearts: 1.0, effect: Effect(type: .restoresStamina, amount: 1.0), saleValue: 18, location: "Hyrule Field\nWest Necluda"),
     Material(materialName: "Stealthfin Trout", category: [.seafood, .fish, .exceptPoryOrSalmon], hearts: 1.0, effect: Effect(type: .stealth, duration: 120, potencyLevel1: 6, potencyLevel2: 9), saleValue: 6, location: "Lake Saria\nGreat Hyrule Forest", potency: 2),
-    Material(materialName: "Voltfin Trout", category: [.seafood, .fish, .exceptPoryOrSalmon], hearts: 1.0, effect: Effect(type: .electricity, duration: 150, potencyLevel1: 4, potencyLevel2: 6), saleValue: 6, location: "Inogo Bridge, above Lanayru Tower\nTabantha Frontier", potency: 3),
+    Material(materialName: "Voltfin Trout", category: [.seafood, .fish, .exceptPoryOrSalmon], hearts: 1.0, effect: Effect(type: .electricity, duration: 150, potencyLevel1: 4, potencyLevel2: 7), saleValue: 6, location: "Inogo Bridge, above Lanayru Tower\nTabantha Frontier", potency: 3),
     
     // Crab.
     Material(materialName: "Bright-Eyed Crab", category: [.seafood, .crab, .crabOrSnail, .exceptPoryOrSalmon], hearts: 1.0, effect: Effect(type: .restoresStamina, amount: 0.2), saleValue: 10, location: "Lanayru Great Spring\nEldin Canyon"),
